@@ -1,52 +1,7 @@
 body { font-family: @fontFamily; text-align: right; }
 text-area, input, button, .form-control { direction: rtl; text-align: right; }
-a.ltr { direction: ltr; display: inline-block; }
-.btn {
-    &.btn-success {
-        background-color: @green; transition: all 0.2s;
-        &:focus, &.focus { background-color: darken(@green, 10%); }
-        &:hover { background-color: darken(@green, 10%); }
-        &:active, &.active, .open > .dropdown-toggle& {
-            background-color: darken(@green, 10%);
-            &:hover,&:focus, &.focus { background-color: darken(@green, 17%); }
-        }
-        &:active, &.active, .open > .dropdown-toggle & { background-image: none; }
-        &.disabled, &[disabled], fieldset[disabled] & {
-            &, &:hover, &:focus, &.focus, &:active, &.active { background-color: @green; }
-        }
-    }
-}
-.modal {
-    .modal-dialog { width: 800px; margin-top: 5%; }
-    .close { float: left; position: relative; z-index: 900; }
-    .modal-header { padding-bottom: 0; }
-    .modal-body { padding-top: 0; }
-    article.item {
-        font-size: 16px; width: 100%; margin: 0;
-        .item-header {
-            margin-bottom: (@grid-gutter-width / 2);
-            h2 { margin-top: 0; }
-            .link-ext { position: absolute; top: 0; left: 50px; }
-        }
-        .item-body {
-            .item-gallery {
-                width: 100%; float: none; margin-right: 0; margin-bottom: (@grid-gutter-width / 2);
-                .img { width: 768px; height: auto; margin: 0; }
-            }
-            .img { width: 100%; float: none; }
-            .item-fulltext { padding-left: 0; margin-left: 0; }
-        }
-    }
-}
+.ltr { direction: ltr; display: inline-block; }
 .tooltip { font-family: Tahoma, Arial; }
-.breadcrumb {
-    a {
-        color: @green; transition: 0.2s all;
-        &:hover { text-decoration: none; color: @darkGreen; }
-    }
-}
-
-
 
 
 /* 
