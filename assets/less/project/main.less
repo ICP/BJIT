@@ -1,9 +1,17 @@
+[class*="col-"] { float: right; direction: rtl; text-align: right; }
 body {
     max-width: 100vw; overflow-x: hidden;
+    &.dark { background: @gray; }
     &.no-scroll { overflow: hidden; }
 }
 .wrapper {
-    direction: rtl;
+    &.gray-lightest { background: @gray-lightest; }
+    &.gray-lighter { background: @gray-lighter; }
+    &.gray-light { background: @gray-light; }
+    &.gray { background: @gray; }
+    &.gray-dark { background: @gray-dark; }
+    &.gray-darker { background: @gray-darker; }
+    &.gray-darkest { background: @gray-darkest; }
 }
 #main {
     & > .wrapper {  }

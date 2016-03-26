@@ -1,0 +1,42 @@
+#header {
+    height: @header-height;
+    .menu {
+        font-family: @menu-font-family; font-size: 0; line-height: @header-height;
+        li {
+            padding: 0; font-size: @menu-font-size;
+            a {
+                display: block; color: white; line-height: @header-height; padding: 0 25px;
+                &:hover { color: @yellow-dark; }
+            }
+        }
+    }
+    .header-anchors {
+        margin-left: @search-toggle-width; height: @header-height; font-size: 0; text-align: left;
+        li {
+            font-family: @headings-font-family; text-align: center; width: @search-toggle-width; border-right: 1px solid @gray-dark; padding: 0;
+            a {
+                color: white; display: block; font-size: 36px; line-height: 40px; padding: 15px 0;
+                span { color: @yellow-dark; font-size: @font-size-base; display: block; line-height: 30px; }
+                &:hover {
+                    background: @yellow;
+                    span { color: black; }
+                }
+            }
+        }
+    }
+    .search {
+        width: @search-toggle-width; height: @header-height; float: left;
+        .search-toggle {
+            display: block; width: 100%; height: 100%; color: @gray-lighter; font-size: 36px; line-height: @header-height; text-align: center; border-right: 1px solid @gray-dark;
+            &:hover { background: @yellow; color: white; }
+        }
+    }
+}
+.logo {
+    width: @logo-width; height: @header-height; background: @gray-darker; margin-right: 80px;
+    a { display: block; width: 100%; height: 100%; overflow: hidden; text-indent: -9999px; background: url(../img/logo.png) no-repeat center center transparent; }
+}
+.header-schedule {
+    width: 80px; float: right; background: @yellow; color: black; height: @header-height; position: relative; z-index: 10; text-align: center;
+    &:after { background: @yellow; display: block; content: ''; position: absolute; left: 80px; top: 0; height: @header-height; width: 1000px; z-index: 1; }
+}

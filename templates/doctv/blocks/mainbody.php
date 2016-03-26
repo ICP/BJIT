@@ -1,25 +1,33 @@
 <body id="bd" class="dark <?php echo strtolower($helper->device); ?>" data-spy="scroll" data-target="#menu">
 	<header id="header">
-		<div class="wrapper _dark-gray">
+		<div class="wrapper gray-darkest">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-3">
-						{Live}
+					<div class="col-xs-12 col-md-3">
+						<div class="header-schedule">
+							{schedule}
+						</div>
 						<div class="logo">
 							<a href="<?php echo JURI::base(); ?>" title="<?php echo $sitename; ?>"><?php echo $sitename; ?></a>
 						</div>
 					</div>
-					<div class="col-md-7">
+					<div class="col-xs-12 col-md-6">
 						<?php if ($helper->countModules('menu')) { ?>
 							<jdoc:include type="modules" name="menu" />
 						<?php } ?>
 					</div>
-					<div class="col-md-2">
-						{header items}
+					<div class="col-md-3">
 						<?php if ($helper->countModules('search')) { ?>
-							{Search}
 							<jdoc:include type="modules" name="search" />
-						<?php } ?>
+						<?php } ?>						
+						<ul class="header-anchors list-inline list-unstyled">
+							<li>
+								<a href="#"><i class="icon-placeholder"></i><span>پخش زنده</span></a>
+							</li>
+							<li>
+								<a href="#"><i class="icon-placeholder"></i><span>کاتالوگ</span></a>
+							</li>
+						</ul>
 					</div>
 				</div>
 			</div>
@@ -73,10 +81,10 @@
 				<div class="container">
 					<div class="row">
 						<?php if ($helper->countModules('main-top-right')) { ?>
-							<div class="col-xs-12 col-md-6"><jdoc:include type="modules" name="main-top-right" /></div>
+							<div class="col-xs-12 col-sm-6"><jdoc:include type="modules" name="main-top-right" /></div>
 						<?php } ?>
 						<?php if ($helper->countModules('main-top-left')) { ?>
-							<div class="col-xs-12 col-md-6"><jdoc:include type="modules" name="main-top-left" /></div>
+							<div class="col-xs-12 col-sm-6"><jdoc:include type="modules" name="main-top-left" /></div>
 						<?php } ?>
 					</div>
 				</div>
@@ -87,10 +95,10 @@
 				<div class="container">
 					<div class="row">
 						<?php if ($helper->countModules('main-right')) { ?>
-							<div class="col-xs-12 col-md-6"><jdoc:include type="modules" name="main-right" /></div>
+							<div class="col-xs-12 col-sm-6"><jdoc:include type="modules" name="main-right" /></div>
 						<?php } ?>
 						<?php if ($helper->countModules('main-left')) { ?>
-							<div class="col-xs-12 col-md-6"><jdoc:include type="modules" name="main-left" /></div>
+							<div class="col-xs-12 col-sm-6"><jdoc:include type="modules" name="main-left" /></div>
 						<?php } ?>
 					</div>
 				</div>
@@ -106,13 +114,15 @@
 		<div class="wrapper gray-darker">
 			<div class="container">
 				<div class="row">
-					<div class="col-xs-12 col-md-3 col-lg-2">
-						<?php if ($helper->countModules('copyright')) { ?>
-							<jdoc:include type="modules" name="copyright" />
-						<?php } ?>
+					<div class="col-xs-12 col-md-3">
+						<div class="footer-about">
+							<a href="<?php echo JURI::base(); ?>"><img src="<?php echo JURI::base() ?>assets/img/logo_footer.png" /></a>
+							<?php if ($helper->countModules('footer-about')) { ?><jdoc:include type="modules" name="footer-about" /><?php } ?>
+						</div>
 					</div>
-					<div class="col-xs-12 col-md-9 col-lg-10">
-						<jdoc:include type="modules" name="footer" />
+					<div class="col-xs-12 col-md-9">
+						<?php if ($helper->countModules('footer')) { ?><jdoc:include type="modules" name="footer" /><?php } ?>
+						<?php if ($helper->countModules('copyright')) { ?><jdoc:include type="modules" name="copyright" /><?php } ?>
 					</div>
 				</div>
 			</div>

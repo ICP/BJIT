@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="1.6" method="upgrade">
+	<name>Social links</name>
+	<creationDate>2016-03-27</creationDate>
+	<author></author>
+	<authorEmail></authorEmail>
+	<authorUrl></authorUrl>
+	<copyright>Copyright (C) 2016  Open Source. All rights reserved.</copyright>	
+	<license></license>
+	<version>1.0</version>
+	<description>Leaving each field empty will result in not showing the icon.</description>
+	<files>
+		<filename module="mod_social_links">mod_social_links.php</filename>
+		<folder>tmpl</folder>
+		<filename>helper.php</filename>
+		<filename>index.html</filename>
+		<filename>mod_social_links.xml</filename>
+	</files>
+	<languages>
+		<language tag="en-GB">language/en-GB.mod_social_links.ini</language>
+    	<language tag="de-DE">language/de-DE.mod_social_links.ini</language>            
+	</languages>
+	<params>
+		<param name="classname" type="text" default="" label="Class Name" description="Class Name Description" />
+	</params>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="facebook" type="text" default="" label="Facebook Page Link" description="" />
+				<field name="twitter" type="text" default="" label="Twitter Page Link" description="" />
+				<field name="gplus" type="text" default="" label="Google+ Page Link" description="" />
+				<field name="youtube" type="text" default="" label="Youtube Page Link" description="" />
+				<field name="vimeo" type="text" default="" label="Vimeo Page Link" description="" />
+				<field name="instagram" type="text" default="" label="Instagram Page Link" description="" />
+				<field name="telegram" type="text" default="" label="Telegram Page Link" description="" />
+				<field name="lenzor" type="text" default="" label="Lenzor Page Link" description="" />
+				<field name="cloob" type="text" default="" label="Cloob Page Link" description="" />
+			</fieldset>
+		</fields>
+	</config>			
+</extension>

@@ -12,6 +12,7 @@ defined('_JEXEC') or die;
 $date = new JDate('now');
 
 ?>
-&copy;&nbsp;<?php echo JHTML::_('date', $date, JText::_('Y')); ?>&nbsp;
-شبکه مستند سیما.&nbsp;
-تمامی حقوق این وب سایت محفوظ است.
+<div class="copyright-text">
+&copy;&nbsp;<?php echo JHTML::_('date', $date, JText::_('Y')); ?>.&nbsp;
+کلیه حقوق این وب‌سایت  متعلق به&nbsp;<a href="<?php echo JURI::base(); ?>">شبکه مستند سیما</a>&nbsp;می‌باشد.
+</div>

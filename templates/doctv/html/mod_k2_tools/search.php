@@ -2,9 +2,9 @@
 // no direct access
 defined('_JEXEC') or die;
 ?>
-
 <div class="search">
-	<form class="" role="form">
+	<a class="search-toggle" href="<?php JURI::base() . 'search'; ?>"><i class="icon-search"></i></a>
+	<form class="hide" role="form">
 		<div class="form-group">
 			<input type="text" name="q" placeholder="" class="form-control" />
 			<button type="submit" class="btn btn-success"><i class="icon-search"></i></button>
@@ -22,6 +22,6 @@ defined('_JEXEC') or die;
 		</div>
 	</form>
 	<?php if ($params->get('liveSearch')) { ?>
-		<div class="search-resluts"></div>
+		<div class="hide search-resluts"></div>
 	<?php } ?>
 </div>

@@ -41,6 +41,7 @@
         <position>main-bot</position>
         <position>footer</position>
         <position>copyright</position>
+        <position>footer-about</position>
     </positions>
     <languages folder="language">
         <language tag="fa-IR">fa-IR/fa-IR.tpl_doctv.ini</language>

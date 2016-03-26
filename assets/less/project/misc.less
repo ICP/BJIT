@@ -1,8 +1,10 @@
-body { font-family: @fontFamily; text-align: right; }
+body { font-family: @font-family-base; text-align: right; }
 text-area, input, button, .form-control { direction: rtl; text-align: right; }
 .ltr { direction: ltr; display: inline-block; }
 .tooltip { font-family: Tahoma, Arial; }
-
+a {
+    transition: 0.2s all;
+}
 
 /* 
  *  Owl Carousel - Animate Plugin
@@ -34,10 +36,7 @@ text-area, input, button, .form-control { direction: rtl; text-align: right; }
     }
 }
 @keyframes fadeOut {
-    0% {
-        opacity: 1;
-    }
-
+    0% { opacity: 1; }
     100% {
         opacity: 0;
     }
