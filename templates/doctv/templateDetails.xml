@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE install PUBLIC "-//Joomla! 2.5//DTD template 1.0//EN" "http://www.joomla.org/xml/dtd/1.6/template-install.dtd">
+<extension version="3.1" type="template" client="site">
+    <name>DocTV</name>
+    <creationDate>March 2016</creationDate>
+    <author>Farid Roshan</author>
+    <authorEmail>faridv@gmail.com</authorEmail>
+    <authorUrl>http://www.faridr.ir</authorUrl>
+    <copyright>Copyright (C) 2016 IRIB DocTV. All rights reserved.</copyright>
+    <license>GNU General Public License version 2 or later</license>
+    <version>1.0.0</version>
+    <description>IRIB Documentray TV: websites template</description>
+    <files>
+        <folder>html</folder>
+        <folder>libs</folder>
+        <folder>sources</folder>
+        <filename>index.html</filename>
+        <filename>index.php</filename>
+        <filename>templateDetails.xml</filename>
+        <filename>helper.php</filename>
+        <filename>error.php</filename>
+    </files>
+    <positions>
+        <position>debug</position>
+        <position>breadcrumbs</position>
+        <position>search</position>
+        <position>schedule</position>
+        <position>menu</position>
+        <position>header-left</position>
+        <position>header-right</position>
+        <position>showcase</position>
+        <position>special</position>
+        <position>content</position>
+        <position>content-left</position>
+        <position>content-center</position>
+        <position>content-right</position>
+        <position>main-top-left</position>
+        <position>main-top-right</position>
+        <position>main-left</position>
+        <position>main-right</position>
+        <position>main-bot</position>
+        <position>footer</position>
+        <position>copyright</position>
+    </positions>
+    <languages folder="language">
+        <language tag="fa-IR">fa-IR/fa-IR.tpl_doctv.ini</language>
+        <language tag="fa-IR">fa-IR/fa-IR.tpl_doctv.sys.ini</language>
+    </languages>
+    <config>
+        <fields name="params">
+            <fieldset name="advanced">
+                <field name="font-size" type="list" default="" label="Default font-size" description="Any values here will overwrite the default value of template">
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>

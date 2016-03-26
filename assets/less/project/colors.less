@@ -1,0 +1,58 @@
+body.yellow {
+    .wrapper._green { background-color: @yellow-match-gray-dark; }
+    .btn.btn-success {
+        background-color: @yellow-main; border-color: @yellow-dark;
+        &:focus, &.focus { background-color: darken(@yellow-main, 10%); }
+        &:hover { background-color: darken(@yellow-main, 10%); }
+        &:active, &.active, .open > .dropdown-toggle& {
+            background-color: darken(@yellow-main, 10%);
+            &:hover,&:focus, &.focus { background-color: darken(@yellow-main, 17%); }
+        }
+    }
+    #header {
+        border-top-color: @yellow-dark;
+        .search-resluts ul li a { color: @yellow-dark; }
+        .menu ul li {
+            &.active, &:hover { color: #fff; background: @yellow-dark; }
+        }
+        .logo a { background-image: url('../img/logo_yellow.png'); }
+    }
+    .category-items .itemlist ul li .item-header h3 a {
+        color: @yellow-dark;
+        &:hover { color: @yellow-main }
+    }
+    .breadcrumb a { 
+        color: @yellow-match-gray;
+        &:hover { color: @yellow-match-gray-dark; }
+    }
+    #panorama {
+        .caption-container h2 { margin-bottom: 30px; }   
+        .items-holder { margin-top: 20px; }
+    }
+    .panel {
+        &.content {
+            .panel-body {
+                .player { background: @yellow-match-gray-dark; }
+                .subcategories  > ul li a:hover { background: @yellow-dark; }
+            }
+            & > .itemlist ul li {
+                & > a:hover { text-decoration: none; background: @yellow-dark; }
+                &.active a { background: @yellow-dark; }
+            }
+        }
+        &.tiles {
+            .tiles ul li {
+                background: @yellow-match-gray; border-color: @yellow-match-gray;
+                &:hover { border-color: #fff; }
+            }
+        }
+        &.interaction {
+            .panel-heading h2 { margin-top: 0 }
+            .contact-form a:hover { color: @yellow-dark; }
+        }
+    }
+    .modal article.item .item-media {
+        float: left; width: 50%; margin-right: 20px;
+        &.has-video, &.item-gallery { float: none; width: 100%; margin-right: 0; }
+    }
+}
