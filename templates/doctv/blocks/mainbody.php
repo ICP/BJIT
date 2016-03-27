@@ -1,22 +1,19 @@
 <body id="bd" class="dark <?php echo strtolower($helper->device); ?>" data-spy="scroll" data-target="#menu">
 	<header id="header">
+		<?php if ($isFrontpage) { ?><h1 class="hide"><?php echo $sitename; ?></h1><?php } ?>
 		<div class="wrapper gray-darkest">
 			<div class="container">
 				<div class="row">
-					<div class="col-xs-12 col-md-3">
+					<div class="col-xs-12">
 						<div class="header-schedule">
 							{schedule}
 						</div>
 						<div class="logo">
 							<a href="<?php echo JURI::base(); ?>" title="<?php echo $sitename; ?>"><?php echo $sitename; ?></a>
 						</div>
-					</div>
-					<div class="col-xs-12 col-md-6">
 						<?php if ($helper->countModules('menu')) { ?>
 							<jdoc:include type="modules" name="menu" />
 						<?php } ?>
-					</div>
-					<div class="col-md-3">
 						<?php if ($helper->countModules('search')) { ?>
 							<jdoc:include type="modules" name="search" />
 						<?php } ?>						
@@ -33,22 +30,22 @@
 			</div>
 		</div>
 	</header>
-	<?php if ($helper->countModules('showcase')) { ?>
+	<?php // if ($helper->countModules('showcase')) { ?>
 		<section id="showcase">
 			<div class="wrapper gray-dark">
 				{Showcase}
 				<jdoc:include type="modules" name="showcase" />
 			</div>
 		</section>
-	<?php } ?>
-	<?php if ($helper->countModules('special')) { ?>
+	<?php // } ?>
+	<?php // if ($helper->countModules('special')) { ?>
 		<aside id="showcase">
 			<div class="wrapper yellow">
 				{Special}
 				<jdoc:include type="modules" name="special" />
 			</div>
 		</aside>
-	<?php } ?>
+	<?php // } ?>
 	<main id="mainbody">
 		<div class="wrapper content gray-dark">
 			<?php if ($isFrontpage) { ?>

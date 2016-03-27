@@ -11,7 +11,12 @@
         }
     }
     .copyright-text { font-family: @headings-font-family; font-size: @copyright-font-size; }
-    .menu { font-family: @headings-font-family; font-size: @footer-menu-font-size; margin-top: 90px; }
+    .menu {
+        font-family: @headings-font-family; font-size: @footer-menu-font-size; margin-top: 90px; font-size: 0;
+        li {
+            font-size: @footer-menu-font-size; padding: 0 (@grid-gutter-width / 2);
+        }
+    }
     .social-links {
         font-size: 0; padding: 24px 0 50px;
         li {

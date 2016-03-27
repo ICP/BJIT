@@ -1,7 +1,7 @@
 #header {
     height: @header-height;
     .menu {
-        font-family: @menu-font-family; font-size: 0; line-height: @header-height;
+        font-family: @menu-font-family; font-size: 0; line-height: @header-height; float: right; height: @header-height; font-weight: bold;
         li {
             padding: 0; font-size: @menu-font-size;
             a {
@@ -11,7 +11,7 @@
         }
     }
     .header-anchors {
-        margin-left: @search-toggle-width; height: @header-height; font-size: 0; text-align: left;
+        height: @header-height; font-size: 0; text-align: left; float: left;
         li {
             font-family: @headings-font-family; text-align: center; width: @search-toggle-width; border-right: 1px solid @gray-dark; padding: 0;
             a {
@@ -33,8 +33,8 @@
     }
 }
 .logo {
-    width: @logo-width; height: @header-height; background: @gray-darker; margin-right: 80px;
-    a { display: block; width: 100%; height: 100%; overflow: hidden; text-indent: -9999px; background: url(../img/logo.png) no-repeat center center transparent; }
+    width: @logo-width; height: @header-height; background: @gray-darker; float: right;
+    a { display: block; width: 100%; height: 100%; overflow: hidden; line-height: 999999px; background: url(../img/logo.png) no-repeat center center transparent; }
 }
 .header-schedule {
     width: 80px; float: right; background: @yellow; color: black; height: @header-height; position: relative; z-index: 10; text-align: center;
