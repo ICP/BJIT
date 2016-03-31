@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<!-- $Id: install.xml 0506753738 2015-01-31 07:07:16 Joomla Farsi Team $ -->
-<extension version="3.4" client="site" type="language" method="upgrade">
+<!-- $Id: install.xml 0506753738 2016-01-31 07:07:16 Joomla Farsi Team $ -->
+<extension version="3.5" client="site" type="language" method="upgrade">
     <name>Persian</name>
     <tag>fa-IR</tag>
-    <version>3.4.8.1</version>
-	<creationDate>2015-12-26</creationDate>
+    <version>3.5.0.1</version>
+	<creationDate>March, 2016</creationDate>
     <author>Persian Translation Team, Joomlafarsi.com</author>
     <authorEmail>info@joomlafarsi.com</authorEmail>
     <authorUrl>www.joomlafarsi.com</authorUrl>
-    <copyright>Copyright (C) 2005 - 2015 Joomlafarsi.com and Open Source Matters. All rights reserved.</copyright>
+    <copyright>Copyright (C) 2005 - 2016 Joomlafarsi.com and Open Source Matters. All rights reserved.</copyright>
 	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
-    <description>Persian site language pack for Joomla 3.4.8</description>
+    <description>Persian site language pack for Joomla 3.5.0</description>
     <files>
         <filename>index.html</filename>
 		<filename>fa-IR.com_ajax.ini</filename>

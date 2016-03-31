@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<!-- $Id: install.xml 0506753738 2015-01-31 07:07:16 Joomla Farsi Team $ -->
-<extension version="3.4" client="administrator" type="language" method="upgrade">
+<!-- $Id: install.xml 0506753738 2016-01-31 07:07:16 Joomla Farsi Team $ -->
+<extension version="3.5" client="administrator" type="language" method="upgrade">
     <name>Persian</name>
     <tag>fa-IR</tag>
-    <version>3.4.8.1</version>
-	<creationDate>2015-12-26</creationDate>
+    <version>3.5.0.1</version>
+	<creationDate>March, 2016</creationDate>
     <author>Persian Translation Team, Joomlafarsi.com</author>
     <authorEmail>info@joomlafarsi.com</authorEmail>
     <authorUrl>www.joomlafarsi.com</authorUrl>
-	<copyright>Copyright (C) 2005 - 2015 Joomlafarsi.com and Open Source Matters. All rights reserved.</copyright>
+	<copyright>Copyright (C) 2005 - 2016 Joomlafarsi.com and Open Source Matters. All rights reserved.</copyright>
 	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
-    <description>Persian administrator language pack for Joomla 3.4.8</description>
+    <description>Persian administrator language pack for Joomla 3.5.0</description>
     <files>
         <filename>fa-IR.com_admin.ini</filename>
 		<filename>fa-IR.com_admin.sys.ini</filename>
@@ -143,6 +143,8 @@
 		<filename>fa-IR.plg_editors-xtd_article.sys.ini</filename>
 		<filename>fa-IR.plg_editors-xtd_image.ini</filename>
 		<filename>fa-IR.plg_editors-xtd_image.sys.ini</filename>
+		<filename>fa-IR.plg_editors-xtd_module.ini</filename>
+		<filename>fa-IR.plg_editors-xtd_module.sys.ini</filename>
 		<filename>fa-IR.plg_editors-xtd_pagebreak.ini</filename>
 		<filename>fa-IR.plg_editors-xtd_pagebreak.sys.ini</filename>
 		<filename>fa-IR.plg_editors-xtd_readmore.ini</filename>
@@ -201,6 +203,10 @@
 		<filename>fa-IR.plg_system_remember.sys.ini</filename>
 		<filename>fa-IR.plg_system_sef.ini</filename>
 		<filename>fa-IR.plg_system_sef.sys.ini</filename>
+		<filename>fa-IR.plg_system_stats.ini</filename>
+		<filename>fa-IR.plg_system_stats.sys.ini</filename>
+		<filename>fa-IR.plg_system_updatenotification.ini</filename>
+		<filename>fa-IR.plg_system_updatenotification.sys.ini</filename>
 		<filename>fa-IR.plg_twofactorauth_totp.ini</filename>
 		<filename>fa-IR.plg_twofactorauth_totp.sys.ini</filename>
 		<filename>fa-IR.plg_twofactorauth_yubikey.ini</filename>
