@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="1.6" type="file" method="upgrade">
+  <name>Persian (Iran) language pack for K2</name>
+  <author>getk2.org</author>
+  <authorEmail>nospam@getk2.org</authorEmail>
+  <authorUrl>getk2.org</authorUrl>
+  <creationDate>March 31, 2016</creationDate>
+  <copyright>Copyright (c) 2006 - 2011 JoomlaWorks Ltd. All rights reserved.</copyright>
+  <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+  <version>2.5.0</version>
+  <description>Persian (Iran) language pack for K2</description>
+  <fileset>
+    <files folder="administrator" target="administrator/language/fa-IR"/>
+    <files folder="site" target="language/fa-IR"/>
+  </fileset>
+</extension>
