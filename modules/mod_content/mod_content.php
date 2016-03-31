@@ -52,5 +52,5 @@ $items = modK2ContentHelper::getItems($params);
 
 if (count($items))
 {
-    require (JModuleHelper::getLayoutPath('mod_k2_content', $getTemplate.DS.'default'));
+    require (JModuleHelper::getLayoutPath('mod_content', $getTemplate.DS.'default'));
 }

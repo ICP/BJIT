@@ -48,7 +48,7 @@
 	<?php // } ?>
 	<main id="mainbody">
 		<div class="wrapper content gray-dark">
-			<?php if ($isFrontpage) { ?>
+			<?php if (!$isFrontpage) { ?>
 				<div class="container">
 					<div class="row">
 						<div class="col-xs-12">
@@ -61,13 +61,13 @@
 				<div class="container">
 					<div class="row">
 						<?php if ($helper->countModules('content-right')) { ?>
-							<div class="col-xs-12 col-md-4"><jdoc:include type="modules" name="content-right" /></div>
+							<div class="col-xs-12 col-md-4"><jdoc:include type="modules" name="content-right" style="content" /></div>
 						<?php } ?>
 						<?php if ($helper->countModules('content-center')) { ?>
-							<div class="col-xs-12 col-md-4"><jdoc:include type="modules" name="content-center" /></div>
+							<div class="col-xs-12 col-md-4"><jdoc:include type="modules" name="content-center" style="content" /></div>
 						<?php } ?>
 						<?php if ($helper->countModules('content-left')) { ?>
-							<div class="col-xs-12 col-md-4"><jdoc:include type="modules" name="content-left" /></div>
+							<div class="col-xs-12 col-md-4"><jdoc:include type="modules" name="content-left" style="content" /></div>
 						<?php } ?>
 					</div>
 				</div>
@@ -78,10 +78,10 @@
 				<div class="container">
 					<div class="row">
 						<?php if ($helper->countModules('main-top-right')) { ?>
-							<div class="col-xs-12 col-sm-6"><jdoc:include type="modules" name="main-top-right" /></div>
+							<div class="col-xs-12 col-sm-6"><jdoc:include type="modules" name="main-top-right" style="content" /></div>
 						<?php } ?>
 						<?php if ($helper->countModules('main-top-left')) { ?>
-							<div class="col-xs-12 col-sm-6"><jdoc:include type="modules" name="main-top-left" /></div>
+							<div class="col-xs-12 col-sm-6"><jdoc:include type="modules" name="main-top-left" style="content" /></div>
 						<?php } ?>
 					</div>
 				</div>

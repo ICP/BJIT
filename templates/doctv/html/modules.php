@@ -105,4 +105,16 @@ function modChrome_aside ($module, &$params, &$attribs) {
 	}
 }
 
+// Module chrom for left sidebar position
+function modChrome_content ($module, $params, $attribs) {
+	if (!empty ($module->content)) {
+		$sfx = ($params->get('moduleclass_sfx') != '') ? ' ' . $params->get('moduleclass_sfx') : '';
+		echo '<section class="box content' . $sfx . '">';
+			if ($module->showtitle)
+				echo '<header><h2>' . $module->title . '</h2></header>';
+			echo '<div class="block-content">' . $module->content . '</div>';
+		echo '</div>';
+	}
+}
+
 ?>
