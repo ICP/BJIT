@@ -1,9 +1,9 @@
 <?php
 /**
- * @version		4.6.1
+ * @version		4.7.0
  * @package		AllVideos (plugin)
  * @author    	JoomlaWorks - http://www.joomlaworks.net
- * @copyright	Copyright (c) 2006 - 2014 JoomlaWorks Ltd. All rights reserved.
+ * @copyright	Copyright (c) 2006 - 2015 JoomlaWorks Ltd. All rights reserved.
  * @license		GNU/GPL license: http://www.gnu.org/copyleft/gpl.html
  */
 
@@ -24,8 +24,8 @@ echo "\n\n";
 echo "/* wmvplayer.js */\n";
 include(dirname( __FILE__ ).DS."wmvplayer".DS."wmvplayer.js");
 echo "\n\n";
-echo "/* AC_QuickTime.js */\n";
-include(dirname( __FILE__ ).DS."quicktimeplayer".DS."AC_QuickTime.js");
+echo "/* ac_quicktime.js */\n";
+include(dirname( __FILE__ ).DS."quicktimeplayer".DS."ac_quicktime.js");
 echo "\n\n";
 
 ob_end_flush();

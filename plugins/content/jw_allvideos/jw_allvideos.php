@@ -1,9 +1,9 @@
 <?php
 /**
- * @version		4.6.1
+ * @version		4.7.0
  * @package		AllVideos (plugin)
  * @author    	JoomlaWorks - http://www.joomlaworks.net
- * @copyright	Copyright (c) 2006 - 2014 JoomlaWorks Ltd. All rights reserved.
+ * @copyright	Copyright (c) 2006 - 2015 JoomlaWorks Ltd. All rights reserved.
  * @license		GNU/GPL license: http://www.gnu.org/copyleft/gpl.html
  */
 
@@ -11,7 +11,7 @@
 defined('_JEXEC') or die('Restricted access');
 
 jimport('joomla.plugin.plugin');
-if (version_compare(JVERSION, '1.6.0', 'ge')) {
+if (version_compare(JVERSION, '2.5.0', 'ge')) {
 	jimport('joomla.html.parameter');
 }
 
@@ -19,8 +19,8 @@ class plgContentJw_allvideos extends JPlugin {
 
 	// JoomlaWorks reference parameters
 	var $plg_name					= "jw_allvideos";
-	var $plg_copyrights_start		= "\n\n<!-- JoomlaWorks \"AllVideos\" Plugin (v4.6.1) starts here -->\n";
-	var $plg_copyrights_end			= "\n<!-- JoomlaWorks \"AllVideos\" Plugin (v4.6.1) ends here -->\n\n";
+	var $plg_copyrights_start		= "\n\n<!-- JoomlaWorks \"AllVideos\" Plugin (v4.7.0) starts here -->\n";
+	var $plg_copyrights_end			= "\n<!-- JoomlaWorks \"AllVideos\" Plugin (v4.7.0) ends here -->\n\n";
 
 	function plgContentJw_allvideos( &$subject, $params ) {
 		parent::__construct( $subject, $params );
@@ -46,13 +46,13 @@ class plgContentJw_allvideos extends JPlugin {
 
 		// API
 		jimport('joomla.filesystem.file');
-		$mainframe = JFactory::getApplication();
+		$app = JFactory::getApplication();
 		$document  = JFactory::getDocument();
 
 		// Assign paths
 		$sitePath = JPATH_SITE;
 		$siteUrl  = JURI::root(true);
-		if (version_compare(JVERSION, '1.6.0', 'ge')) {
+		if (version_compare(JVERSION, '2.5.0', 'ge')) {
 			$pluginLivePath = $siteUrl.'/plugins/content/'.$this->plg_name.'/'.$this->plg_name;
 		} else {
 			$pluginLivePath = $siteUrl.'/plugins/content/'.$this->plg_name;
@@ -88,7 +88,7 @@ class plgContentJw_allvideos extends JPlugin {
 		$pluginParams = class_exists('JParameter') ? new JParameter($plugin->params) : new JRegistry($plugin->params);
 
 		/* Video Parameters */
-		$playerTemplate					= ($params->get('playerTemplate')) ? $params->get('playerTemplate') : $pluginParams->get('playerTemplate','Classic');
+		$playerTemplate					= ($params->get('playerTemplate')) ? $params->get('playerTemplate') : $pluginParams->get('playerTemplate','Responsive');
 		$vfolder 						= ($params->get('vfolder')) ? $params->get('vfolder') : $pluginParams->get('vfolder','images/stories/videos');
 		$vwidth 						= ($params->get('vwidth')) ? $params->get('vwidth') : $pluginParams->get('vwidth',400);
 		$vheight 						= ($params->get('vheight')) ? $params->get('vheight') : $pluginParams->get('vheight',300);
@@ -106,6 +106,7 @@ class plgContentJw_allvideos extends JPlugin {
 		$allowAudioDownloading			= $pluginParams->get('allowAudioDownloading',0);
 		/* Global Parameters */
 		$autoplay 						= ($params->get('autoplay')) ? $params->get('autoplay') : $pluginParams->get('autoplay',0);
+		$loop 							= ($params->get('loop')) ? $params->get('loop') : $pluginParams->get('loop',0);
 		/* Performance Parameters */
 		$gzipScripts					= $pluginParams->get('gzipScripts',0);
 		/* Advanced */
@@ -135,23 +136,23 @@ class plgContentJw_allvideos extends JPlugin {
 			$document->addStyleSheet($avCSS);
 
 			// JS
-			if (version_compare(JVERSION,'1.6.0','ge')) {
+			if (version_compare(JVERSION,'2.5.0','ge')) {
 				JHtml::_('behavior.framework');
 			} else {
 				JHTML::_('behavior.mootools');
 			}
 
 			if ($gzipScripts) {
-				$document->addScript($pluginLivePath.'/includes/js/jwp.js.php?v=4.6.1');
+				$document->addScript($pluginLivePath.'/includes/js/jwp.js.php?v=4.7.0');
 			} else {
-				$document->addScript($pluginLivePath.'/includes/js/behaviour.js?v=4.6.1');
-				$document->addScript($pluginLivePath.'/includes/js/wmvplayer/silverlight.js?v=4.6.1');
-				$document->addScript($pluginLivePath.'/includes/js/wmvplayer/wmvplayer.js?v=4.6.1');
-				$document->addScript($pluginLivePath.'/includes/js/quicktimeplayer/AC_QuickTime.js?v=4.6.1');
+				$document->addScript($pluginLivePath.'/includes/js/behaviour.js?v=4.7.0');
+				$document->addScript($pluginLivePath.'/includes/js/wmvplayer/silverlight.js?v=4.7.0');
+				$document->addScript($pluginLivePath.'/includes/js/wmvplayer/wmvplayer.js?v=4.7.0');
+				$document->addScript($pluginLivePath.'/includes/js/quicktimeplayer/ac_quicktime.js?v=4.7.0');
 			}
 
 			if($jwPlayerLoading=='local'){
-				$document->addScript($pluginLivePath.'/includes/js/jwplayer/jwplayer.js?v=4.6.1');
+				$document->addScript($pluginLivePath.'/includes/js/jwplayer/jwplayer.js?v=4.7.0');
 				$document->addScriptDeclaration('
 					/* JW Player API Key */
 					jwplayer.key="'.$jwPlayerAPIKey.'";
@@ -178,9 +179,10 @@ class plgContentJw_allvideos extends JPlugin {
 				// start the replace loop
 				foreach ($matches[0] as $key => $match) {
 
-					$tagcontent 		= preg_replace("/{.+?}/", "", $match);
-					$tagparams 			= explode('|',$tagcontent);
-					$tagsource 			= trim(strip_tags($tagparams[0]));
+					$tagcontent 	= preg_replace("/{.+?}/", "", $match);
+					$tagcontent		= str_replace(array('"','\'','`'), array('&quot;','&apos;','&#x60;'), $tagcontent); // Address potential XSS attacks
+					$tagparams 		= explode('|',$tagcontent);
+					$tagsource 		= trim(strip_tags($tagparams[0]));
 
 					// Prepare the HTML
 					$output = new JObject;
@@ -240,6 +242,10 @@ class plgContentJw_allvideos extends JPlugin {
 					$final_autoplay = (@$tagparams[3]) ? $tagparams[3] : $autoplay;
 					$final_autoplay	= ($final_autoplay) ? 'true' : 'false';
 
+					// Loop
+					$final_loop = (@$tagparams[4]) ? $tagparams[4] : $loop;
+					$final_loop	= ($final_loop) ? 'true' : 'false';
+
 					// Special treatment for specific video providers
 					if ($plg_tag=="dailymotion") {
 						$tagsource = preg_replace("~(http|https):(.+?)dailymotion.com\/video\/~s","",$tagsource);
@@ -247,9 +253,9 @@ class plgContentJw_allvideos extends JPlugin {
 						$tagsource = $tagsourceDailymotion[0];
 						if ($final_autoplay=='true') {
 							if (strpos($tagsource,'?')!==false) {
-								$tagsource = $tagsource.'&amp;autoPlay=1';
+								$tagsource = $tagsource.'&amp;autoplay=1';
 							} else {
-								$tagsource = $tagsource.'?autoPlay=1';
+								$tagsource = $tagsource.'?autoplay=1';
 							}
 						}
 					}
@@ -276,19 +282,6 @@ class plgContentJw_allvideos extends JPlugin {
 						$tagsource = str_replace('.shtml','',$tagsource[0]);
 					}
 
-					if ($plg_tag=="tnaondemand") {
-						$tagsource = parse_url($tagsource);
-						$tagsource = explode('&',$tagsource['query']);
-						$tagsource = str_replace('vidid=','',$tagsource[0]);
-					}
-
-					if ($plg_tag=="twitvid") {
-						$tagsource = preg_replace("~(http|https):(.+?)twitvid.com\/~s","",$tagsource);
-						if ($final_autoplay=='true') {
-							$tagsource = $tagsource.'&amp;autoplay=1';
-						}
-					}
-
 					if ($plg_tag=="vidiac") {
 						$tagsourceVidiac = explode(';',$tagsource);
 						$tagsource = $tagsourceVidiac[0];
@@ -304,12 +297,15 @@ class plgContentJw_allvideos extends JPlugin {
 						if ($final_autoplay=='true') {
 							$tagsource = $tagsource.'&amp;autoplay=1';
 						}
+						if ($final_loop=='true') {
+							$tagsource = $tagsource.'&amp;loop=1';
+						}
 					}
 
-					if ($plg_tag=="yahoo") {
-						$tagsourceYahoo = explode('-',str_replace('.html','',$tagsource));
-						$tagsourceYahoo = array_reverse($tagsourceYahoo);
-						$tagsource = $tagsourceYahoo[0];
+					if ($plg_tag=="vine") {
+						if (strpos($tagsource,'http')===false) {
+							$tagsource = 'https://vine.co/v/'.$tagsource;
+						}
 					}
 
 					if ($plg_tag=="yfrog") {
@@ -327,31 +323,57 @@ class plgContentJw_allvideos extends JPlugin {
 					}
 
 					if ($plg_tag=="youtube") {
-						if (strpos($tagsource,'youtube.com')!==false) {
-							$tagsource = preg_replace("~(http|https):(.+?)youtube.com\/watch\?~s","",$tagsource);
+
+						// Check the presence of fully pasted URLs
+						if (strpos($tagsource,'youtube.com')!==false || strpos($tagsource,'youtu.be')!==false) {
+							$ytQuery = parse_url($tagsource, PHP_URL_QUERY);
+							$ytQuery = str_replace('&amp;', '&', $ytQuery);
+						} else {
+							$ytQuery = $tagsource;
 						}
-						if (strpos($tagsource,'youtu.be')!==false) {
-							$tagsource = preg_replace("~(http|https):(.+?)youtu.be\/~s","",$tagsource);
-						}
-						if (strpos($tagsource,'&')!==false) {
-							$tagsourceYoutube = explode('&',$tagsource);
-							foreach($tagsourceYoutube as $ytVideoParam) {
-								if (preg_match("~v=~s", $ytVideoParam)) {
-									$tagsource = str_replace("v=", "", $ytVideoParam);
-								}
+
+						// Process string
+						if (strpos($ytQuery,'&')!==false) {
+							$ytQuery = explode('&',$ytQuery);
+							$ytParams = array();
+							foreach($ytQuery as $ytParam) {
+								$ytParam = explode('=',$ytParam);
+								$ytParams[$ytParam[0]] = $ytParam[1];
+							}
+							if(array_key_exists('v', $ytParams)){
+								$tagsource = $ytParams['v'];
+							} elseif(array_key_exists('list', $ytParams)){
+								$tagsource = 'videoseries?list='.$ytParams['list'];
+							}
+						} elseif (strpos($ytQuery,'=')!==false) {
+							$ytQuery = explode('=',$ytQuery);
+							$ytParams = array();
+							$ytParams[$ytQuery[0]] = $ytQuery[1];
+							if(array_key_exists('v', $ytParams)){
+								$tagsource = $ytParams['v'];
+							} elseif(array_key_exists('list', $ytParams)){
+								$tagsource = 'videoseries?list='.$ytParams['list'];
 							}
 						} else {
-							if (strpos($tagsource,'=')!==false) {
-								$tagsourceYoutube = explode('=',$tagsource);
-								$tagsource = $tagsourceYoutube[1];
+							if(substr($tagsource, 0, 2)=="PL"){
+								$tagsource = 'videoseries?list='.$tagsource;
 							}
 						}
 
-						$tagsource = $tagsource.'?rel=0&amp;fs=1&amp;wmode=transparent';
+						if (strpos($tagsource,'?')!==false) {
+							$tagsource = $tagsource.'&amp;rel=0&amp;fs=1&amp;wmode=transparent';
+						} else {
+							$tagsource = $tagsource.'?rel=0&amp;fs=1&amp;wmode=transparent';
+						}
 
+						// Additional playback parameters
 						if ($final_autoplay=='true') {
 							$tagsource = $tagsource.'&amp;autoplay=1';
 						}
+						if ($final_loop=='true') {
+							$tagsource = $tagsource.'&amp;loop=1';
+						}
+
 					}
 
 					// Poster frame
@@ -370,7 +392,7 @@ class plgContentJw_allvideos extends JPlugin {
 					$output->posterFrameRemote = substr($tagsource,0,-3).'jpg';
 
 					// Set a unique ID
-					$output->playerID = 'AVPlayerID_'.substr(md5($tagsource),1,8).'_'.rand();
+					$output->playerID = 'AVPlayerID_'.$key.'_'.md5($tagsource);
 
 					// Placeholder elements
 					$findAVparams = array(
@@ -380,6 +402,7 @@ class plgContentJw_allvideos extends JPlugin {
 						"{WIDTH}",
 						"{HEIGHT}",
 						"{PLAYER_AUTOPLAY}",
+						"{PLAYER_LOOP}",
 						"{PLAYER_TRANSPARENCY}",
 						"{PLAYER_BACKGROUND}",
 						"{PLAYER_BACKGROUNDQT}",
@@ -403,6 +426,7 @@ class plgContentJw_allvideos extends JPlugin {
 						$output->playerWidth,
 						$output->playerHeight,
 						$final_autoplay,
+						$final_loop,
 						$transparency,
 						$background,
 						$backgroundQT,
