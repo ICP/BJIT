@@ -10,28 +10,26 @@
 defined('_JEXEC') or die('Restricted access');
 ?>
 <?php if (count($items)) { ?>
-	<a href="<?php echo JRoute::_('index.php?option=com_k2&view=itemlist&id=' . $params->get('category_link')); ?>" class="btn category-link">بیشتر</a>
+	<a href="<?php echo JRoute::_('index.php?option=com_k2&view=itemlist&id=' . $params->get('category_link')); ?>" class="btn btn-default category-link">بیشتر</a>
 	<ul>
 		<?php foreach ($items as $key => $item) { ?>
 			<li>
 				<?php if ($key == 0) { ?>
 					<?php if ($params->get('itemImage') || $params->get('itemIntroText')) { ?>
-						<div class="moduleItemIntrotext">
-							<?php if ($params->get('itemImage') && isset($item->image)) { ?>
-								<figure>
-									<a href="<?php echo $item->link; ?>">
-										<img src="<?php echo $item->image; ?>" alt="<?php echo K2HelperUtilities::cleanHtml($item->title); ?>"/>
-									</a>
-								</figure>
+						<?php if ($params->get('itemImage') && isset($item->image)) { ?>
+							<figure>
+								<a href="<?php echo $item->link; ?>">
+									<img src="<?php echo $item->image; ?>" alt="<?php echo K2HelperUtilities::cleanHtml($item->title); ?>"/>
+								</a>
+							</figure>
+						<?php } ?>
+						<div class="desc">
+							<?php if ($params->get('itemTitle')) { ?>
+								<h3><a href="<?php echo $item->link; ?>"><?php echo $item->title; ?></a></h3>
 							<?php } ?>
-							<div class="desc">
-								<?php if ($params->get('itemTitle')) { ?>
-									<h3><a href="<?php echo $item->link; ?>"><?php echo $item->title; ?></a></h3>
-								<?php } ?>
-								<?php if ($params->get('itemIntroText')) { ?>
-									<p><?php echo $item->introtext; ?></p>
-								<?php } ?>
-							</div>
+							<?php if ($params->get('itemIntroText')) { ?>
+								<p><?php echo $item->introtext; ?></p>
+							<?php } ?>
 						</div>
 					<?php } ?>
 				<?php } else { ?>
@@ -41,13 +39,3 @@ defined('_JEXEC') or die('Restricted access');
 		<?php } ?>
 	</ul>
 <?php } ?>
-
-<?php if ($params->get('feed')): ?>
-	<div class="k2FeedIcon">
-		<a href="<?php echo JRoute::_('index.php?option=com_k2&view=itemlist&format=feed&moduleID=' . $module->id); ?>" title="<?php echo JText::_('K2_SUBSCRIBE_TO_THIS_RSS_FEED'); ?>">
-			<span><?php echo JText::_('K2_SUBSCRIBE_TO_THIS_RSS_FEED'); ?></span>
-		</a>
-		<div class="clr"></div>
-	</div>
-<?php endif; ?>
-</div>
