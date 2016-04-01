@@ -92,29 +92,35 @@ function modChrome_standard($module, &$params, &$attribs) {
 	<?php endif;
 }
 
-// Module chrom for left sidebar position
-function modChrome_aside ($module, &$params, &$attribs) {
-	if (!empty ($module->content)) {
-		$sfx = ($params->get('moduleclass_sfx') != '') ? ' ' . $params->get('moduleclass_sfx') : '';
-		echo '<div class="block aside-block' . $sfx . '">';
-			if ($module->showtitle != 0) {
-				echo '<header class="block-title"><h2>' . $module->title . '</h2></header>';
-			}
-			echo '<section class="block-content">' . $module->content . '</section>';
-		echo '</div>';
-	}
-}
-
-// Module chrom for left sidebar position
-function modChrome_content ($module, $params, $attribs) {
+// Module chrome for left sidebar position
+function modChrome_hascontainer ($module, $params, $attribs) {
 	if (!empty ($module->content)) {
 		$sfx = ($params->get('moduleclass_sfx') != '') ? ' ' . $params->get('moduleclass_sfx') : '';
 		echo '<section class="box content' . $sfx . '">';
 			if ($module->showtitle)
-				echo '<header><h2>' . $module->title . '</h2></header>';
-			echo '<div class="block-content">' . $module->content . '</div>';
-		echo '</div>';
+				echo '<header><h2>' . handleDefaultChromeTitle($module->title) . '</h2></header>';
+			echo '<div>' . $module->content . '</div>';
+		echo '</section>';
 	}
+}
+
+function modChrome_default ($module, $params, $attribs) {
+	if (!empty ($module->content)) {
+		$sfx = ($params->get('moduleclass_sfx') != '') ? ' ' . $params->get('moduleclass_sfx') : '';
+		echo '<section class="box content' . $sfx . '">';
+			if ($module->showtitle)
+				echo '<header><h2>' . handleDefaultChromeTitle($module->title) . '</h2></header>';
+			echo '<div>' . $module->content . '</div>';
+		echo '</section>';
+	}
+}
+
+function handleDefaultChromeTitle ($title) {
+	if (stristr($title, '|')) {
+		list($title, $subtitle) = explode('|', $title);
+		return $title . '<span>' . $subtitle . '</span>';
+	}
+	return $title;
 }
 
 ?>
