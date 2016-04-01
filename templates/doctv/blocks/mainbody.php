@@ -38,14 +38,13 @@
 			</div>
 		</section>
 	<?php // } ?>
-	<?php // if ($helper->countModules('special')) { ?>
+	<?php if ($helper->countModules('special')) { ?>
 		<aside id="showcase">
 			<div class="wrapper yellow">
-				{Special}
-				<jdoc:include type="modules" name="special" />
+				<jdoc:include type="modules" name="special" style="basic" />
 			</div>
 		</aside>
-	<?php // } ?>
+	<?php } ?>
 	<main id="mainbody">
 		<div class="wrapper content gray-dark">
 			<?php if (!$isFrontpage) { ?>
@@ -61,13 +60,13 @@
 				<div class="container">
 					<div class="row">
 						<?php if ($helper->countModules('content-right')) { ?>
-							<div class="col-xs-12 col-md-4"><jdoc:include type="modules" name="content-right" style="content" /></div>
+							<div class="col-xs-12 col-md-4"><jdoc:include type="modules" name="content-right" style="default" /></div>
 						<?php } ?>
 						<?php if ($helper->countModules('content-center')) { ?>
-							<div class="col-xs-12 col-md-4"><jdoc:include type="modules" name="content-center" style="content" /></div>
+							<div class="col-xs-12 col-md-4"><jdoc:include type="modules" name="content-center" style="default" /></div>
 						<?php } ?>
 						<?php if ($helper->countModules('content-left')) { ?>
-							<div class="col-xs-12 col-md-4"><jdoc:include type="modules" name="content-left" style="content" /></div>
+							<div class="col-xs-12 col-md-4"><jdoc:include type="modules" name="content-left" style="default" /></div>
 						<?php } ?>
 					</div>
 				</div>
@@ -78,10 +77,10 @@
 				<div class="container">
 					<div class="row">
 						<?php if ($helper->countModules('main-top-right')) { ?>
-							<div class="col-xs-12 col-sm-6"><jdoc:include type="modules" name="main-top-right" style="content" /></div>
+							<div id="main-top-right" class="col-xs-12 col-sm-6"><jdoc:include type="modules" name="main-top-right" style="default" /></div>
 						<?php } ?>
 						<?php if ($helper->countModules('main-top-left')) { ?>
-							<div class="col-xs-12 col-sm-6"><jdoc:include type="modules" name="main-top-left" style="content" /></div>
+							<div id="main-top-left" class="col-xs-12 col-sm-6"><jdoc:include type="modules" name="main-top-left" style="default" /></div>
 						<?php } ?>
 					</div>
 				</div>
@@ -92,10 +91,10 @@
 				<div class="container">
 					<div class="row">
 						<?php if ($helper->countModules('main-right')) { ?>
-							<div class="col-xs-12 col-sm-6"><jdoc:include type="modules" name="main-right" /></div>
+							<div  id="main-right" class="col-xs-12 col-sm-6"><jdoc:include type="modules" name="main-right" style="default" /></div>
 						<?php } ?>
 						<?php if ($helper->countModules('main-left')) { ?>
-							<div class="col-xs-12 col-sm-6"><jdoc:include type="modules" name="main-left" /></div>
+							<div id="main-left" class="col-xs-12 col-sm-6"><jdoc:include type="modules" name="main-left" style="default" /></div>
 						<?php } ?>
 					</div>
 				</div>
@@ -127,10 +126,8 @@
 		<?php if ($helper->countMessages($app->getMessageQueue())) { ?><jdoc:include type="message" /><?php } ?>
 	</footer>
 	<script src="<?php echo JURI::base(); ?>assets/js/jquery-1.11.1.min.js"></script>
-	<script src="<?php echo JURI::base(); ?>assets/js/imagesloaded.pkgd.min.js"></script>
 	<script src="<?php echo JURI::base(); ?>assets/js/bootstrap.min.js"></script>
-	<script src="<?php echo JURI::base(); ?>assets/js/jquery.carouFredSel-6.2.1-packed.js"></script>
-	<script src="<?php echo JURI::base(); ?>assets/js/main.min.js?_=20160326"></script>
+	<script src="<?php echo JURI::base(); ?>assets/js/main.js?_=20160326"></script>
 	<script type="text/javascript">
         // Piwik code
 	</script>
