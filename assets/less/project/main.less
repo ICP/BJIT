@@ -15,6 +15,22 @@ body {
     &.gray-darker { background: @gray-darker; }
     &.gray-darkest { background: @gray-darkest; }
 }
-#main {
+#mainbody {
     & > .wrapper {  }
+    .box { margin: (@grid-gutter-width * 3) 0; }
+}
+
+#main-top-right, #main-left {
+    background: @gray-darkest; position: relative;
+    &:before { display: block; content: ''; background: @gray-darkest; position: absolute; top: 0; left: 100%; width: 50vw; height: 100%; z-index: 0; }
+}
+#main-top-right, #main-right {
+    .box { padding-left: @grid-gutter-width * 4; }
+}
+#main-top-left, #main-left {
+    .box { padding-right: @grid-gutter-width * 4; }
+}
+#main-left:before {
+    left: auto; right: 100%;
+    .box { padding-right: @grid-gutter-width * 4; }
 }
