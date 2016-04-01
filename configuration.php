@@ -58,7 +58,7 @@ class JConfig {
 	public $feed_email = 'none';
 	public $log_path = 'C:\\xampp\\htdocs\\irib\\doctv/logs';
 	public $tmp_path = 'C:\\xampp\\htdocs\\irib\\doctv/tmp';
-	public $lifetime = '15';
+	public $lifetime = '15000';
 	public $session_handler = 'database';
 	public $memcache_persist = '1';
 	public $memcache_compress = '0';
