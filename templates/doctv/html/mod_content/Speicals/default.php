@@ -20,7 +20,7 @@ if (count($items)) {
 			<div class="row">
 				<div class="col-xs-12">
 					<section class="box special<?php if ($params->get('moduleclass_sfx')) echo ' ' . $params->get('moduleclass_sfx'); ?>">
-						<header><h2><?php echo $module->title; ?></h2></header>
+						<header><h2><span class="icon-holder"><i class="icon-placeholder"></i></span><?php echo $module->title; ?></h2></header>
 						<div class="row">
 							<div class="cat-desc col-md-4">
 								<h3><a href="<?php echo $items[0]->categoryLink ?>"><?php echo $items[0]->categoryname; ?></a></h3>

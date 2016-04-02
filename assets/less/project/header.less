@@ -16,7 +16,7 @@
         li {
             font-family: @headings-font-family; text-align: center; width: @search-toggle-width; border-right: 1px solid @gray-dark; padding: 0;
             a {
-                color: white; display: block; font-size: 36px; line-height: 40px; padding: 15px 0;
+                color: white; display: block; font-size: 24px; line-height: 30px; padding: 20px 0;
                 span { color: @yellow-dark; font-size: @font-size-base; display: block; line-height: 30px; }
                 &:hover {
                     background: @yellow;
@@ -41,6 +41,10 @@
     a { display: block; width: 100%; height: 100%; overflow: hidden; line-height: 999999px; background: url(../img/logo.png) no-repeat center center transparent; }
 }
 .header-schedule {
-    width: 80px; float: right; background: @yellow; color: black; height: @header-height; position: relative; z-index: 10; text-align: center;
-    &:after { background: @yellow; display: block; content: ''; position: absolute; left: 80px; top: 0; height: @header-height; width: 1000px; z-index: 1; }
+    width: 100px; float: right; background: @yellow; color: black; height: @header-height; position: relative; z-index: 10; text-align: center;
+    &:after { background: @yellow; display: block; content: ''; position: absolute; left: 100px; top: 0; height: @header-height; width: 1000px; z-index: 1; }
+    .schedule-toggle {
+        color: black; display: block; font-size: @font-size-base + 4; line-height: 1.5; padding: 30px 0 13px; color: black;
+        span { color: black; font-size: @font-size-base; display: block; line-height: 30px; }
+    }
 }
