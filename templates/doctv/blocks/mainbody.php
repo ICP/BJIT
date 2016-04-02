@@ -14,9 +14,9 @@
 						<?php if ($helper->countModules('menu')) { ?>
 							<jdoc:include type="modules" name="menu" />
 						<?php } ?>
-						<?php if ($helper->countModules('search')) { ?>
-							<jdoc:include type="modules" name="search" />
-						<?php } ?>						
+						<div class="search">
+							<a class="search-toggle" href="<?php JURI::base() . 'search'; ?>" data-toggle="toggle" data-target="#search" data-focus="#search input[type='text']"><i class="icon-search"></i></a>
+						</div>
 						<ul class="header-anchors list-inline list-unstyled">
 							<li>
 								<a href="#"><i class="icon-placeholder"></i><span>پخش زنده</span></a>
@@ -30,13 +30,14 @@
 			</div>
 		</div>
 	</header>
+	<?php if ($helper->countModules('search')) { ?><jdoc:include type="modules" name="search" /><?php } ?>
 	<?php // if ($helper->countModules('showcase')) { ?>
-		<section id="showcase">
-			<div class="wrapper gray-dark">
-				{Showcase}
-				<jdoc:include type="modules" name="showcase" />
-			</div>
-		</section>
+	<section id="showcase">
+		<div class="wrapper gray-dark">
+			{Showcase}
+			<jdoc:include type="modules" name="showcase" />
+		</div>
+	</section>
 	<?php // } ?>
 	<?php if ($helper->countModules('special')) { ?>
 		<aside id="showcase">
@@ -129,6 +130,6 @@
 	<script src="<?php echo JURI::base(); ?>assets/js/bootstrap.min.js"></script>
 	<script src="<?php echo JURI::base(); ?>assets/js/main.js?_=20160326"></script>
 	<script type="text/javascript">
-        // Piwik code
+		// Piwik code
 	</script>
 </body>
