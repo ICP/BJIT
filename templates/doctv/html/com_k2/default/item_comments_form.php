@@ -1,10 +1,10 @@
 <?php
 /**
- * @version		$Id: item_comments_form.php 1618 2012-09-21 11:23:08Z lefteris.kavadas $
- * @package		K2
- * @author		JoomlaWorks http://www.joomlaworks.net
- * @copyright	Copyright (c) 2006 - 2012 JoomlaWorks Ltd. All rights reserved.
- * @license		GNU/GPL license: http://www.gnu.org/copyleft/gpl.html
+ * @version    2.7.x
+ * @package    K2
+ * @author     JoomlaWorks http://www.joomlaworks.net
+ * @copyright  Copyright (c) 2006 - 2016 JoomlaWorks Ltd. All rights reserved.
+ * @license    GNU/GPL license: http://www.gnu.org/copyleft/gpl.html
  */
 
 // no direct access
@@ -12,8 +12,8 @@ defined('_JEXEC') or die;
 
 ?>
 
-<?php  /* <h3><?php echo JText::_('K2_LEAVE_A_COMMENT') ?></h3> */ ?>
-<h3>نظر شما درباره این برنامه</h3>
+<!-- Comments Form -->
+<h3><?php echo JText::_('K2_LEAVE_A_COMMENT') ?></h3>
 
 <?php if($this->params->get('commentsFormNotes')): ?>
 <p class="itemCommentsFormNotes">
@@ -35,15 +35,17 @@ defined('_JEXEC') or die;
 	<label class="formEmail" for="commentEmail"><?php echo JText::_('K2_EMAIL'); ?> *</label>
 	<input class="inputbox" type="text" name="commentEmail" id="commentEmail" value="<?php echo JText::_('K2_ENTER_YOUR_EMAIL_ADDRESS'); ?>" onblur="if(this.value=='') this.value='<?php echo JText::_('K2_ENTER_YOUR_EMAIL_ADDRESS'); ?>';" onfocus="if(this.value=='<?php echo JText::_('K2_ENTER_YOUR_EMAIL_ADDRESS'); ?>') this.value='';" />
 
-	<?php /* <label class="formUrl" for="commentURL"><?php echo JText::_('K2_WEBSITE_URL'); ?></label> */ ?>
-	<input class="inputbox" type="hidden" name="commentURL" id="commentURL" value="<?php echo $_SERVER['REMOTE_ADDR'] ?>" />
+	<label class="formUrl" for="commentURL"><?php echo JText::_('K2_WEBSITE_URL'); ?></label>
+	<input class="inputbox" type="text" name="commentURL" id="commentURL" value="<?php echo JText::_('K2_ENTER_YOUR_SITE_URL'); ?>"  onblur="if(this.value=='') this.value='<?php echo JText::_('K2_ENTER_YOUR_SITE_URL'); ?>';" onfocus="if(this.value=='<?php echo JText::_('K2_ENTER_YOUR_SITE_URL'); ?>') this.value='';" />
 
-	<?php if($this->params->get('recaptcha') && $this->user->guest): ?>
+	<?php if($this->params->get('recaptcha') && ($this->user->guest || $this->params->get('recaptchaForRegistered', 1))): ?>
+	<?php if(!$this->params->get('recaptchaV2')): ?>
 	<label class="formRecaptcha"><?php echo JText::_('K2_ENTER_THE_TWO_WORDS_YOU_SEE_BELOW'); ?></label>
-	<div id="recaptcha"></div>
+	<?php endif; ?>
+	<div id="recaptcha" class="<?php echo $this->recaptchaClass; ?>"></div>
 	<?php endif; ?>
 
-	<input type="submit" class="btn" id="submitCommentButton" value="<?php echo JText::_('K2_SUBMIT_COMMENT'); ?>" />
+	<input type="submit" class="button" id="submitCommentButton" value="<?php echo JText::_('K2_SUBMIT_COMMENT'); ?>" />
 
 	<span id="formLog"></span>
 

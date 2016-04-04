@@ -5,26 +5,20 @@
         <group>
             <file>file:/C:/xampp/htdocs/irib/doctv/templates/doctv/html/mod_content/FirstFeatured/default.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/templates/doctv/html/mod_content/Default/default.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/modules/mod_content/helper.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/modules/mod_content/tmpl/Default/default.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/project/buttons.less</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/bootstrap/mixins/buttons.less</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/project/footer.less</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/bootstrap/bootstrap.less</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/project/variables.less</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/project/misc.less</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/templates/doctv/html/mod_content/Thumbs/default.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/project/header.less</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/project/box.less</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/fframework/icons.less</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/project/variables.less</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/templates/doctv/html/mod_content/Speicals/default.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/bootstrap/buttons.less</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/js/main.js</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/templates/doctv/blocks/mainbody.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/fframework/misc.less</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/doctv/html/mod_k2_tools/search.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/templates/doctv/html/modules.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/modules/mod_content/mod_content.xml</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/fframework/variables.less</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/templates/doctv/html/mod_footer/default.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/project/project.less</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/modules/mod_social_links/helper.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/project/main.less</file>
         </group>
     </open-files>

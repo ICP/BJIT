@@ -19,6 +19,9 @@
 						</div>
 						<ul class="header-anchors list-inline list-unstyled">
 							<li>
+								<a href="#"><span>En</span></a>
+							</li>
+							<li>
 								<a href="#"><i class="icon-placeholder"></i><span>پخش زنده</span></a>
 							</li>
 							<li>
@@ -31,14 +34,13 @@
 		</div>
 	</header>
 	<?php if ($helper->countModules('search')) { ?><jdoc:include type="modules" name="search" /><?php } ?>
-	<?php // if ($helper->countModules('showcase')) { ?>
+	<?php if ($helper->countModules('showcase')) { ?>
 	<section id="showcase">
 		<div class="wrapper gray-dark">
-			{Showcase}
 			<jdoc:include type="modules" name="showcase" />
 		</div>
 	</section>
-	<?php // } ?>
+	<?php } ?>
 	<?php if ($helper->countModules('special')) { ?>
 		<aside id="showcase">
 			<div class="wrapper yellow">
@@ -52,7 +54,14 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-xs-12">
-							<jdoc:include type="component" />
+							<div class="page">
+								<header class="page-header">
+									<h1><?php echo JFactory::getDocument()->getTitle(); ?></h1>
+								</header>
+								<section class="page-conntent">
+									<jdoc:include type="component" />
+								</section>
+							</div>
 						</div>
 					</div>
 				</div>
