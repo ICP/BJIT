@@ -67,7 +67,7 @@ K2HelperUtilities::setDefaultImage($this->item, 'itemlist', $this->params);
 		</div>
 	<?php } ?>
 	<?php if ($this->item->params->get('catItemDateCreated')) { ?>
-		<date class="created"><?php echo JHTML::_('date', $this->item->created, JText::_('K2_DATE_FORMAT_LC2')); ?></date>
+		<time class="created"><?php echo JHTML::_('date', $this->item->created, JText::_('K2_DATE_FORMAT_LC2')); ?></time>
 		<?php } ?>
 </div>
 <?php echo $this->item->event->AfterDisplay; ?>
