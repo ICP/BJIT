@@ -13,6 +13,9 @@ $isFrontpage = $helper->isFrontpage($app->getMenu());
 
 $this->setGenerator(''); // Remove Joomla generator tag
 $sitename = $app->getCfg('sitename');
+
+$pageSuffix = JFactory::getApplication()->getMenu()->getActive()->params["pageclass_sfx"];
+$theme = (isset($pageSuffix) && $pageSuffix !== null) ? $pageSuffix : 'dark';
 ?><html class="no-js<?php echo $helper->getBaseClasses($app->getMenu()); ?>">
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
