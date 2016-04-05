@@ -1,8 +1,12 @@
 [class*="col-"] { float: right; direction: rtl; text-align: right; }
 body {
     max-width: 100vw; overflow-x: hidden;
-    &.dark { background: @gray; }
     &.no-scroll { overflow: hidden; }
+    &.dark { background: @gray; }
+    &.light {
+        background: white;
+        .wrapper.content { background: white; }
+    }
 }
 .wrapper {
     max-width: 100vw; overflow-x: hidden;
@@ -17,6 +21,8 @@ body {
 }
 #mainbody {
     & > .wrapper {  }
+}
+.main-top, .main {
     .box { margin: (@grid-gutter-width * 3) 0; }
 }
 

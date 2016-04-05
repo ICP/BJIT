@@ -121,6 +121,25 @@
             .btn { display: none; }
         }
     }
+    &.articles {
+        .clearfix();
+        margin: 0 -(@grid-gutter-width / 2);
+        .item {
+            padding: 0 (@grid-gutter-width / 2);
+        }
+        &.top {
+            .item {
+                figure {
+                    width: 50%; float: left;
+                }
+            }
+        }
+        &.secondary {
+            .item {
+                width: 33.333333%; float: right;
+            }
+        }
+    }
 }
 .box-wrapper {
     position: relative; padding-bottom: 40px;
