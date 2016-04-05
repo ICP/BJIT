@@ -1,4 +1,4 @@
-<body id="bd" class="dark <?php echo strtolower($helper->device); ?>" data-spy="scroll" data-target="#menu">
+<body id="bd" class="<?php echo $theme . ' ' . strtolower($helper->device); ?>" data-spy="scroll" data-target="#menu">
 	<header id="header">
 		<?php if ($isFrontpage) { ?><h1 class="hide"><?php echo $sitename; ?></h1><?php } ?>
 		<div class="wrapper gray-darkest">
@@ -33,112 +33,118 @@
 			</div>
 		</div>
 	</header>
-	<?php if ($helper->countModules('search')) { ?><jdoc:include type="modules" name="search" /><?php } ?>
-	<?php if ($helper->countModules('showcase')) { ?>
+<?php if ($helper->countModules('search')) { ?><jdoc:include type="modules" name="search" /><?php } ?>
+<?php if ($helper->countModules('showcase')) { ?>
 	<section id="showcase">
 		<div class="wrapper gray-dark">
-			<jdoc:include type="modules" name="showcase" />
+			<jdoc:include type="modules" name="showcase" style="basic" />
 		</div>
 	</section>
-	<?php } ?>
-	<?php if ($helper->countModules('special')) { ?>
-		<aside id="showcase">
-			<div class="wrapper yellow">
-				<jdoc:include type="modules" name="special" style="basic" />
-			</div>
-		</aside>
-	<?php } ?>
-	<main id="mainbody">
-		<div class="wrapper content gray-dark">
-			<?php if (!$isFrontpage) { ?>
-				<div class="container">
-					<div class="row">
-						<div class="col-xs-12">
-							<div class="page">
-								<header class="page-header">
-									<h1><?php echo JFactory::getDocument()->getTitle(); ?></h1>
-								</header>
-								<section class="page-conntent">
-									<jdoc:include type="component" />
-								</section>
+<?php } ?>
+<?php if ($helper->countModules('special')) { ?>
+	<aside id="showcase">
+		<div class="wrapper yellow">
+			<jdoc:include type="modules" name="special" style="basic" />
+		</div>
+	</aside>
+<?php } ?>
+<main id="mainbody">
+	<div class="wrapper content gray-dark">
+		<?php if (!$isFrontpage) { ?>
+			<div class="page">
+				<header class="page-header">
+					<div class="container">
+						<div class="row">
+							<div class="col-xs-12">
+								<h1><?php echo JFactory::getApplication()->getMenu()->getActive()->title; ?></h1>
 							</div>
 						</div>
 					</div>
-				</div>
-			<?php } ?>
-			<?php if ($helper->countModules('content-left') || $helper->countModules('content-center') || $helper->countModules('content-right')) { ?>
+				</header>
 				<div class="container">
 					<div class="row">
-						<?php if ($helper->countModules('content-right')) { ?>
-							<div class="col-xs-12 col-md-4"><jdoc:include type="modules" name="content-right" style="default" /></div>
-						<?php } ?>
-						<?php if ($helper->countModules('content-center')) { ?>
-							<div class="col-xs-12 col-md-4"><jdoc:include type="modules" name="content-center" style="default" /></div>
-						<?php } ?>
-						<?php if ($helper->countModules('content-left')) { ?>
-							<div class="col-xs-12 col-md-4"><jdoc:include type="modules" name="content-left" style="default" /></div>
-						<?php } ?>
-					</div>
-				</div>
-			<?php } ?>
-		</div>
-		<?php if ($helper->countModules('main-top-left') || $helper->countModules('main-top-right')) { ?>
-			<div class="wrapper main-top gray-darker">
-				<div class="container">
-					<div class="row">
-						<?php if ($helper->countModules('main-top-right')) { ?>
-							<div id="main-top-right" class="col-xs-12 col-sm-6"><jdoc:include type="modules" name="main-top-right" style="default" /></div>
-						<?php } ?>
-						<?php if ($helper->countModules('main-top-left')) { ?>
-							<div id="main-top-left" class="col-xs-12 col-sm-6"><jdoc:include type="modules" name="main-top-left" style="default" /></div>
-						<?php } ?>
-					</div>
-				</div>
-			</div>
-		<?php } ?>
-		<?php if ($helper->countModules('main-left') || $helper->countModules('main-right')) { ?>
-			<div class="wrapper main gray-dark">
-				<div class="container">
-					<div class="row">
-						<?php if ($helper->countModules('main-right')) { ?>
-							<div  id="main-right" class="col-xs-12 col-sm-6"><jdoc:include type="modules" name="main-right" style="default" /></div>
-						<?php } ?>
-						<?php if ($helper->countModules('main-left')) { ?>
-							<div id="main-left" class="col-xs-12 col-sm-6"><jdoc:include type="modules" name="main-left" style="default" /></div>
-						<?php } ?>
-					</div>
-				</div>
-			</div>
-		<?php } ?>
-		<?php if ($helper->countModules('main-bot')) { ?>
-			<div class="wrapper main-bot gray">
-				<jdoc:include type="modules" name="main-bot" />
-			</div>
-		<?php } ?>
-	</main>
-	<footer id="footer">
-		<div class="wrapper gray-darker">
-			<div class="container">
-				<div class="row">
-					<div class="col-xs-12 col-md-3">
-						<div class="footer-about">
-							<a href="<?php echo JURI::base(); ?>"><img src="<?php echo JURI::base() ?>assets/img/logo_footer.png" /></a>
-							<?php if ($helper->countModules('footer-about')) { ?><jdoc:include type="modules" name="footer-about" /><?php } ?>
+						<div class="col-xs-12">
+							<section class="page-conntent">
+								<jdoc:include type="component" />
+							</section>
 						</div>
 					</div>
-					<div class="col-xs-12 col-md-9">
-						<?php if ($helper->countModules('footer')) { ?><jdoc:include type="modules" name="footer" /><?php } ?>
-						<?php if ($helper->countModules('copyright')) { ?><jdoc:include type="modules" name="copyright" /><?php } ?>
-					</div>
+				</div>
+			</div>
+		<?php } ?>
+		<?php if ($helper->countModules('content-left') || $helper->countModules('content-center') || $helper->countModules('content-right')) { ?>
+			<div class="container">
+				<div class="row">
+					<?php if ($helper->countModules('content-right')) { ?>
+						<div class="col-xs-12 col-md-4"><jdoc:include type="modules" name="content-right" style="default" /></div>
+					<?php } ?>
+					<?php if ($helper->countModules('content-center')) { ?>
+						<div class="col-xs-12 col-md-4"><jdoc:include type="modules" name="content-center" style="default" /></div>
+					<?php } ?>
+					<?php if ($helper->countModules('content-left')) { ?>
+						<div class="col-xs-12 col-md-4"><jdoc:include type="modules" name="content-left" style="default" /></div>
+					<?php } ?>
+				</div>
+			</div>
+		<?php } ?>
+	</div>
+	<?php if ($helper->countModules('main-top-left') || $helper->countModules('main-top-right')) { ?>
+		<div class="wrapper main-top gray-darker">
+			<div class="container">
+				<div class="row">
+					<?php if ($helper->countModules('main-top-right')) { ?>
+						<div id="main-top-right" class="col-xs-12 col-sm-6"><jdoc:include type="modules" name="main-top-right" style="default" /></div>
+					<?php } ?>
+					<?php if ($helper->countModules('main-top-left')) { ?>
+						<div id="main-top-left" class="col-xs-12 col-sm-6"><jdoc:include type="modules" name="main-top-left" style="default" /></div>
+					<?php } ?>
 				</div>
 			</div>
 		</div>
-		<?php if ($helper->countMessages($app->getMessageQueue())) { ?><jdoc:include type="message" /><?php } ?>
-	</footer>
-	<script src="<?php echo JURI::base(); ?>assets/js/jquery-1.11.1.min.js"></script>
-	<script src="<?php echo JURI::base(); ?>assets/js/bootstrap.min.js"></script>
-	<script src="<?php echo JURI::base(); ?>assets/js/main.js?_=20160326"></script>
-	<script type="text/javascript">
-		// Piwik code
-	</script>
+	<?php } ?>
+	<?php if ($helper->countModules('main-left') || $helper->countModules('main-right')) { ?>
+		<div class="wrapper main gray-dark">
+			<div class="container">
+				<div class="row">
+					<?php if ($helper->countModules('main-right')) { ?>
+						<div  id="main-right" class="col-xs-12 col-sm-6"><jdoc:include type="modules" name="main-right" style="default" /></div>
+					<?php } ?>
+					<?php if ($helper->countModules('main-left')) { ?>
+						<div id="main-left" class="col-xs-12 col-sm-6"><jdoc:include type="modules" name="main-left" style="default" /></div>
+					<?php } ?>
+				</div>
+			</div>
+		</div>
+	<?php } ?>
+	<?php if ($helper->countModules('main-bot')) { ?>
+		<div class="wrapper main-bot gray">
+			<jdoc:include type="modules" name="main-bot" />
+		</div>
+	<?php } ?>
+</main>
+<footer id="footer">
+	<div class="wrapper gray-darker">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 col-md-3">
+					<div class="footer-about">
+						<a href="<?php echo JURI::base(); ?>"><img src="<?php echo JURI::base() ?>assets/img/logo_footer.png" /></a>
+						<?php if ($helper->countModules('footer-about')) { ?><jdoc:include type="modules" name="footer-about" /><?php } ?>
+					</div>
+				</div>
+				<div class="col-xs-12 col-md-9">
+					<?php if ($helper->countModules('footer')) { ?><jdoc:include type="modules" name="footer" /><?php } ?>
+					<?php if ($helper->countModules('copyright')) { ?><jdoc:include type="modules" name="copyright" /><?php } ?>
+				</div>
+			</div>
+		</div>
+	</div>
+	<?php if ($helper->countMessages($app->getMessageQueue())) { ?><jdoc:include type="message" /><?php } ?>
+</footer>
+<script src="<?php echo JURI::base(); ?>assets/js/jquery-1.11.1.min.js"></script>
+<script src="<?php echo JURI::base(); ?>assets/js/bootstrap.min.js"></script>
+<script src="<?php echo JURI::base(); ?>assets/js/main.js?_=20160326"></script>
+<script type="text/javascript">
+    // Piwik code
+</script>
 </body>
