@@ -63,64 +63,73 @@
 				</header>
 				<div class="container">
 					<div class="row">
-						<div class="col-xs-12">
-							<section class="page-conntent">
-								<jdoc:include type="component" />
-							</section>
+						<?php if (JFactory::getApplication()->getMenu()->getActive()->note === 'cols-9-3') { ?>
+							<div class="col-xs-12 col-md-9">
+							<?php } else { ?>
+								<div class="col-xs-12">
+								<?php } ?>
+								<section class="page-conntent">
+									<jdoc:include type="component" />
+								</section>
+							</div>
+							<?php if (JFactory::getApplication()->getMenu()->getActive()->note === 'cols-9-3') { ?>
+								<div class="col-xs-12 col-md-3">
+									<jdoc:include type="modules" name="sidebar" style="default" />
+								</div>
+							<?php } ?>
 						</div>
+					</div>
+				</div>
+			<?php } ?>
+			<?php if ($helper->countModules('content-left') || $helper->countModules('content-center') || $helper->countModules('content-right')) { ?>
+				<div class="container">
+					<div class="row">
+						<?php if ($helper->countModules('content-right')) { ?>
+							<div class="col-xs-12 col-md-4"><jdoc:include type="modules" name="content-right" style="default" /></div>
+						<?php } ?>
+						<?php if ($helper->countModules('content-center')) { ?>
+							<div class="col-xs-12 col-md-4"><jdoc:include type="modules" name="content-center" style="default" /></div>
+						<?php } ?>
+						<?php if ($helper->countModules('content-left')) { ?>
+							<div class="col-xs-12 col-md-4"><jdoc:include type="modules" name="content-left" style="default" /></div>
+						<?php } ?>
+					</div>
+				</div>
+			<?php } ?>
+		</div>
+		<?php if ($helper->countModules('main-top-left') || $helper->countModules('main-top-right')) { ?>
+			<div class="wrapper main-top gray-darker">
+				<div class="container">
+					<div class="row">
+						<?php if ($helper->countModules('main-top-right')) { ?>
+							<div id="main-top-right" class="col-xs-12 col-sm-6"><jdoc:include type="modules" name="main-top-right" style="default" /></div>
+						<?php } ?>
+						<?php if ($helper->countModules('main-top-left')) { ?>
+							<div id="main-top-left" class="col-xs-12 col-sm-6"><jdoc:include type="modules" name="main-top-left" style="default" /></div>
+						<?php } ?>
 					</div>
 				</div>
 			</div>
 		<?php } ?>
-		<?php if ($helper->countModules('content-left') || $helper->countModules('content-center') || $helper->countModules('content-right')) { ?>
-			<div class="container">
-				<div class="row">
-					<?php if ($helper->countModules('content-right')) { ?>
-						<div class="col-xs-12 col-md-4"><jdoc:include type="modules" name="content-right" style="default" /></div>
-					<?php } ?>
-					<?php if ($helper->countModules('content-center')) { ?>
-						<div class="col-xs-12 col-md-4"><jdoc:include type="modules" name="content-center" style="default" /></div>
-					<?php } ?>
-					<?php if ($helper->countModules('content-left')) { ?>
-						<div class="col-xs-12 col-md-4"><jdoc:include type="modules" name="content-left" style="default" /></div>
-					<?php } ?>
+		<?php if ($helper->countModules('main-left') || $helper->countModules('main-right')) { ?>
+			<div class="wrapper main gray-dark">
+				<div class="container">
+					<div class="row">
+						<?php if ($helper->countModules('main-right')) { ?>
+							<div  id="main-right" class="col-xs-12 col-sm-6"><jdoc:include type="modules" name="main-right" style="default" /></div>
+						<?php } ?>
+						<?php if ($helper->countModules('main-left')) { ?>
+							<div id="main-left" class="col-xs-12 col-sm-6"><jdoc:include type="modules" name="main-left" style="default" /></div>
+						<?php } ?>
+					</div>
 				</div>
 			</div>
 		<?php } ?>
-	</div>
-	<?php if ($helper->countModules('main-top-left') || $helper->countModules('main-top-right')) { ?>
-		<div class="wrapper main-top gray-darker">
-			<div class="container">
-				<div class="row">
-					<?php if ($helper->countModules('main-top-right')) { ?>
-						<div id="main-top-right" class="col-xs-12 col-sm-6"><jdoc:include type="modules" name="main-top-right" style="default" /></div>
-					<?php } ?>
-					<?php if ($helper->countModules('main-top-left')) { ?>
-						<div id="main-top-left" class="col-xs-12 col-sm-6"><jdoc:include type="modules" name="main-top-left" style="default" /></div>
-					<?php } ?>
-				</div>
+		<?php if ($helper->countModules('main-bot')) { ?>
+			<div class="wrapper main-bot gray">
+				<jdoc:include type="modules" name="main-bot" />
 			</div>
-		</div>
-	<?php } ?>
-	<?php if ($helper->countModules('main-left') || $helper->countModules('main-right')) { ?>
-		<div class="wrapper main gray-dark">
-			<div class="container">
-				<div class="row">
-					<?php if ($helper->countModules('main-right')) { ?>
-						<div  id="main-right" class="col-xs-12 col-sm-6"><jdoc:include type="modules" name="main-right" style="default" /></div>
-					<?php } ?>
-					<?php if ($helper->countModules('main-left')) { ?>
-						<div id="main-left" class="col-xs-12 col-sm-6"><jdoc:include type="modules" name="main-left" style="default" /></div>
-					<?php } ?>
-				</div>
-			</div>
-		</div>
-	<?php } ?>
-	<?php if ($helper->countModules('main-bot')) { ?>
-		<div class="wrapper main-bot gray">
-			<jdoc:include type="modules" name="main-bot" />
-		</div>
-	<?php } ?>
+		<?php } ?>
 </main>
 <footer id="footer">
 	<div class="wrapper gray-darker">

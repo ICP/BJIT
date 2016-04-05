@@ -39,6 +39,7 @@
         <position>main-left</position>
         <position>main-right</position>
         <position>main-bot</position>
+        <position>sidebar</position>
         <position>footer</position>
         <position>copyright</position>
         <position>footer-about</position>
