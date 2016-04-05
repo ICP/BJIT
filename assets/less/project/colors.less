@@ -1,0 +1,22 @@
+body {
+    &.dark { background: @gray; }
+    &.light {
+        background: white; color: @gray-lighter;
+        .wrapper.content { background: white; }
+        a {
+            color: @link-color-light;
+            &:hover { color: @link-hover-light; }
+        }
+        .box {
+            &.bg-gray {
+                background: #efefef; padding: (@grid-gutter-width / 2);
+            }
+            &.sidebar {
+                header {
+                    padding: (@grid-gutter-width / 2) 0;
+                    h2 { color: black; }
+                }
+            }
+        }
+    }
+}

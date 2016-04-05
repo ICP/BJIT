@@ -1,3 +1,40 @@
+.box-wrapper {
+    position: relative; padding-bottom: 40px;
+    &.special {
+        .cat-img {
+            position: absolute; left: 0; width: 100%; height: 100%;
+            &:after {
+                display: block; content: ''; position: absolute; right: 0; top: 0; height: 100%; width: 90%; 
+                background: linear-gradient(to left, @yellow 75%, transparent 100%);
+            }
+            img { display: block; height: 100%; width: auto; opacity: 0.6; }
+        }
+        .box {
+            color: @gray-darkest;
+            header h2 { color: @gray-darkest; font-size: @font-size-base + 2; }
+
+            .cat-desc {
+                a, p { color: @gray-darkest; display: block; }
+                h3 {
+                    font-weight: bold; margin: 0;
+                    a { padding: (@grid-gutter-width / 2) 0;}
+                }
+                .more { font-weight: bold; margin-top: @grid-gutter-width; }
+            }
+            .cat-thumb {
+                margin-top: @grid-gutter-width;
+                img { display: block; width: 100%; height: auto; }
+            }
+        }
+    }
+    &.showcase {
+        padding: 80px 0;
+        .active-img {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden;
+            img { display: block; width: 100%; height: auto; opacity: 0.5; }
+        }
+    }
+}
 .box {
     margin: @grid-gutter-width 0; position: relative;
     & > header {
@@ -11,6 +48,10 @@
     .category-link {
         position: absolute; top: -50px; left: 0;
         &:hover { background: @yellow; color: @gray-darker; }
+    }
+
+    &.sidebar {
+        header h2 { margin: 0; font-size: 18px; font-weight: bold; }
     }
 
     &.content {
@@ -30,7 +71,7 @@
                         list-style: none; margin-bottom: (@grid-gutter-width / 2);
                         &:before { display: none; }
                         h3 {
-                            font-size: 22px; line-height: 1.5;
+                            font-size: 22px; line-height: 1.5; padding: 0;
                             a {
                                 display: block; padding: (@grid-gutter-width / 2) 0; color: white;
                                 &:hover { color: @yellow-dark; }
@@ -45,15 +86,21 @@
         ul {
             /*list-style: disc inside;*/
             li {
-                position: relative;
-                &:before { content: '●'; font-size: 24px; padding-left: 10px; }
+                position: relative; margin: (@grid-gutter-width / 2) 0;
+                &:before { content: '●'; font-size: 24px; position: absolute; top: -8px; right: 0px; }
                 h3 {
-                    display: inline-block; font-size: 16px; margin: 0;
+                    display: inline-block; font-size: 16px; margin: 0; padding-right: 24px;
                     a {
                         color: @gray-lightest;
                         &:hover { color: @yellow; }
                     }
                 }
+            }
+        }
+        &.bordered {
+            ul li {
+                border-bottom: 1px solid #ddd; padding-bottom: (@grid-gutter-width / 2);
+                &:last-child { border: 0 none; padding-bottom: 0; }
             }
         }
         &.thumbs {
@@ -65,7 +112,7 @@
                         h3 a { color: @yellow; }
                     }
                     h3 {
-                        line-height: 1.5;
+                        line-height: 1.5; padding: 0;
                         a { display: block; padding: (@grid-gutter-width / 2) 0; }
                     }
                 }
@@ -77,7 +124,26 @@
                     figure {
                         width: 130px; float: right;
                     }
-                    .desc { margin-right: 130 + @grid-gutter-width; }
+                    .desc {
+                        margin-right: 130 + @grid-gutter-width;
+                        h3 {
+                            a { padding-top: 0; }
+                        }
+                    }
+                }
+            }
+        }
+        &.sidebar {
+            &.list {
+                h3 { font-size: 15px; }
+                &.thumbs.vertical {
+                    ul li { padding: 0; margin: 0 0 (@grid-gutter-width / 2) 0; }
+                    figure { float: right; width: 100px; }
+                    h3 {
+                        margin: 0 100px 0 0; display: block; font-size: 15px; line-height: 1.3; padding: 0;
+                        a { padding: 0 (@grid-gutter-width / 2) 0 0; color: @text-color; }
+                    }
+                    .desc { margin: (@grid-gutter-width / 2) 0 0 0; color: @gray-lightest; font-size: 13px; }
                 }
             }
         }
@@ -196,43 +262,6 @@
                     &:hover { color: @yellow-dark; }
                 }
             }
-        }
-    }
-}
-.box-wrapper {
-    position: relative; padding-bottom: 40px;
-    &.special {
-        .cat-img {
-            position: absolute; left: 0; width: 100%; height: 100%;
-            &:after {
-                display: block; content: ''; position: absolute; right: 0; top: 0; height: 100%; width: 90%; 
-                background: linear-gradient(to left, @yellow 75%, transparent 100%);
-            }
-            img { display: block; height: 100%; width: auto; opacity: 0.6; }
-        }
-        .box {
-            color: @gray-darkest;
-            header h2 { color: @gray-darkest; font-size: @font-size-base + 2; }
-
-            .cat-desc {
-                a, p { color: @gray-darkest; display: block; }
-                h3 {
-                    font-weight: bold; margin: 0;
-                    a { padding: (@grid-gutter-width / 2) 0;}
-                }
-                .more { font-weight: bold; margin-top: @grid-gutter-width; }
-            }
-            .cat-thumb {
-                margin-top: @grid-gutter-width;
-                img { display: block; width: 100%; height: auto; }
-            }
-        }
-    }
-    &.showcase {
-        padding: 80px 0;
-        .active-img {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden;
-            img { display: block; width: 100%; height: auto; opacity: 0.5; }
         }
     }
 }

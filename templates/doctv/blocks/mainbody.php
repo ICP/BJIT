@@ -73,7 +73,7 @@
 								</section>
 							</div>
 							<?php if (JFactory::getApplication()->getMenu()->getActive()->note === 'cols-9-3') { ?>
-								<div class="col-xs-12 col-md-3">
+								<div id="sidebar" class="col-xs-12 col-md-3">
 									<jdoc:include type="modules" name="sidebar" style="default" />
 								</div>
 							<?php } ?>

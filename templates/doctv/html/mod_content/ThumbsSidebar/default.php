@@ -24,17 +24,17 @@ defined('_JEXEC') or die('Restricted access');
 							</a>
 						</figure>
 					<?php } ?>
-					<div class="desc">
-						<?php if ($params->get('itemTitle')) { ?>
-							<h3><a href="<?php echo $item->link; ?>"><?php echo $item->title; ?></a></h3>
-						<?php } ?>
-						<?php if ($params->get('itemIntroText')) { ?>
+					<?php if ($params->get('itemTitle')) { ?>
+						<h3><a href="<?php echo $item->link; ?>"><?php echo $item->title; ?></a></h3>
+					<?php } ?>
+					<?php if ($params->get('itemIntroText')) { ?>
+						<div class="desc">
 							<p><?php echo $item->introtext; ?></p>
-						<?php } ?>
-					</div>
+						</div>
+					<?php } ?>
 				<?php } ?>
 			</li>
 		<?php } ?>
 	</ul>
-<?php
+	<?php
 }
