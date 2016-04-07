@@ -11,20 +11,7 @@
 defined('_JEXEC') or die('Restricted access');
 
 /* -------------------------------- Embed templates for VIDEO -------------------------------- */
-$mediaplayerEmbed = "
-<div id=\"avID_{SOURCEID}\" style=\"width:{WIDTH}px;height:{HEIGHT}px;\" title=\"JoomlaWorks AllVideos Player\"></div>
-<script type=\"text/javascript\">
-	jwplayer('avID_{SOURCEID}').setup({
-		'file': '{SITEURL}/{FOLDER}/{SOURCE}.{FILE_EXT}',
-		'image': '{PLAYER_POSTER_FRAME}',
-		'height': '{HEIGHT}',
-		'width': '{WIDTH}',
-		'autostart': '{PLAYER_AUTOPLAY}',
-		'repeat': '{PLAYER_LOOP}',
-		'controls': '{JWPLAYER_CONTROLS}'
-	});
-</script>
-";
+$mediaplayerEmbed = '"{SITEURL}/{FOLDER}/{SOURCE}.{FILE_EXT}"';
 
 $mediaplayerEmbedRemote = "
 <div id=\"avID_{SOURCEID}\" style=\"width:{WIDTH}px;height:{HEIGHT}px;\" title=\"JoomlaWorks AllVideos Player\"></div>

@@ -133,32 +133,32 @@ class plgContentJw_allvideos extends JPlugin {
 			// CSS
 			$avCSS = $AllVideosHelper->getTemplatePath($this->plg_name,'css/template.css',$playerTemplate);
 			$avCSS = $avCSS->http;
-			$document->addStyleSheet($avCSS);
+//			$document->addStyleSheet($avCSS);
 
 			// JS
 			if (version_compare(JVERSION,'2.5.0','ge')) {
-				JHtml::_('behavior.framework');
+//				JHtml::_('behavior.framework');
 			} else {
 				JHTML::_('behavior.mootools');
 			}
 
 			if ($gzipScripts) {
-				$document->addScript($pluginLivePath.'/includes/js/jwp.js.php?v=4.7.0');
+//				$document->addScript($pluginLivePath.'/includes/js/jwp.js.php?v=4.7.0');
 			} else {
-				$document->addScript($pluginLivePath.'/includes/js/behaviour.js?v=4.7.0');
-				$document->addScript($pluginLivePath.'/includes/js/wmvplayer/silverlight.js?v=4.7.0');
-				$document->addScript($pluginLivePath.'/includes/js/wmvplayer/wmvplayer.js?v=4.7.0');
-				$document->addScript($pluginLivePath.'/includes/js/quicktimeplayer/ac_quicktime.js?v=4.7.0');
+//				$document->addScript($pluginLivePath.'/includes/js/behaviour.js?v=4.7.0');
+//				$document->addScript($pluginLivePath.'/includes/js/wmvplayer/silverlight.js?v=4.7.0');
+//				$document->addScript($pluginLivePath.'/includes/js/wmvplayer/wmvplayer.js?v=4.7.0');
+//				$document->addScript($pluginLivePath.'/includes/js/quicktimeplayer/ac_quicktime.js?v=4.7.0');
 			}
 
 			if($jwPlayerLoading=='local'){
-				$document->addScript($pluginLivePath.'/includes/js/jwplayer/jwplayer.js?v=4.7.0');
+//				$document->addScript($pluginLivePath.'/includes/js/jwplayer/jwplayer.js?v=4.7.0');
 				$document->addScriptDeclaration('
 					/* JW Player API Key */
 					jwplayer.key="'.$jwPlayerAPIKey.'";
 				');
 			} else {
-				$document->addScript($jwPlayerCDNUrl);
+//				$document->addScript($jwPlayerCDNUrl);
 			}
 
 		}
@@ -450,7 +450,7 @@ class plgContentJw_allvideos extends JPlugin {
 					$getTemplatePath = $AllVideosHelper->getTemplatePath($this->plg_name,'default.php',$playerTemplate);
 					$getTemplatePath = $getTemplatePath->file;
 					include($getTemplatePath);
-					$getTemplate = $this->plg_copyrights_start.ob_get_contents().$this->plg_copyrights_end;
+					$getTemplate = ob_get_contents();
 					ob_end_clean();
 
 					// Output

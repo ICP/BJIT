@@ -28,5 +28,5 @@ if ($app->isAdmin()) {
 	</div>
 </div>
 <?php } else {
-echo print_r($output);
+	echo $output->player;
 }
