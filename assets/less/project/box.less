@@ -264,4 +264,26 @@
             }
         }
     }
+    &.gallery {
+        & > div {
+            background: @gray;
+        }
+        .preview {
+            margin-left: 30%;
+            figure {
+                a, img { display: block; width: 100%; height: auto; }
+            }
+            
+        }
+        .thumbs {
+            width: 30%; float: left;
+            ul {
+                list-style: none; margin: 0; padding: (@grid-gutter-width / 4);
+                li {
+                    width: 50%; float: right;
+                    a { display: block; padding: (@grid-gutter-width / 4); }
+                }
+            }
+        }
+    }
 }

@@ -455,7 +455,7 @@ class plgContentJw_sigpro extends JPlugin
 								'qihoo360' 		=> 'http://ajax.useso.com/ajax/libs/jquery/'.$jQueryMinorRelease.'/jquery.min.js'
 							);
 							$jQueryURL = $jQueryLocation[$jQueryHandling];
-							$document->addScript($jQueryURL);
+//							$document->addScript($jQueryURL);
 						}
 
 					}
@@ -466,29 +466,29 @@ class plgContentJw_sigpro extends JPlugin
 						{
 							if (substr($script, 0, 4) == 'http' || substr($script, 0, 2) == '//')
 							{
-								$document->addScript($script);
+//								$document->addScript($script);
 							}
 							else
 							{
-								$document->addScript($popupPath.'/'.$script);
+//								$document->addScript($popupPath.'/'.$script);
 							}
 						}
 					}
 					if (count($scriptDeclarations))
 						foreach ($scriptDeclarations as $scriptDeclaration)
-							$document->addScriptDeclaration($scriptDeclaration);
+//							$document->addScriptDeclaration($scriptDeclaration);
 
 					// CSS
 					if (count($stylesheets))
 						foreach ($stylesheets as $stylesheet)
-							$document->addStyleSheet($popupPath.'/'.$stylesheet);
+//							$document->addStyleSheet($popupPath.'/'.$stylesheet);
 					if (count($stylesheetDeclarations))
 						foreach ($stylesheetDeclarations as $stylesheetDeclaration)
-							$document->addStyleDeclaration($stylesheetDeclaration);
+//							$document->addStyleDeclaration($stylesheetDeclaration);
 
 					// Other
 					if ($legacyHeadIncludes)
-						$document->addCustomTag($this->plg_copyrights_start.$legacyHeadIncludes.$this->plg_copyrights_end);
+//						$document->addCustomTag($this->plg_copyrights_start.$legacyHeadIncludes.$this->plg_copyrights_end);
 
 					if ($extraClass)
 						$extraClass = ' '.$extraClass;
@@ -501,10 +501,10 @@ class plgContentJw_sigpro extends JPlugin
 
 					$pluginCSS = SimpleImageGalleryProHelper::getTemplatePath($this->plg_name, 'css/template.css', $gal_template);
 					$pluginCSS = $pluginCSS->http;
-					$document->addStyleSheet($pluginCSS, 'text/css', 'screen');
+//					$document->addStyleSheet($pluginCSS, 'text/css', 'screen');
 
 					// Print CSS
-					$document->addStyleSheet($pluginLivePath.'/includes/css/print.css', 'text/css', 'print');
+//					$document->addStyleSheet($pluginLivePath.'/includes/css/print.css', 'text/css', 'print');
 
 					// Message to show when printing an article/item with a gallery
 					$websiteURL = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != "off") ? "https://".$_SERVER['HTTP_HOST'] : "http://".$_SERVER['HTTP_HOST'];
@@ -522,7 +522,7 @@ class plgContentJw_sigpro extends JPlugin
 				$templatePath = SimpleImageGalleryProHelper::getTemplatePath($this->plg_name, 'default.php', $gal_template);
 				$templatePath = $templatePath->file;
 				include ($templatePath);
-				$getTemplate = $this->plg_copyrights_start.ob_get_contents().$this->plg_copyrights_end;
+				$getTemplate = ob_get_contents();
 				ob_end_clean();
 
 				// Output
@@ -536,7 +536,7 @@ class plgContentJw_sigpro extends JPlugin
 			// Global head includes
 			if (JRequest::getCmd('format') == '' || JRequest::getCmd('format') == 'html')
 			{
-				$document->addScript($pluginLivePath.'/includes/js/behaviour.js');
+//				$document->addScript($pluginLivePath.'/includes/js/behaviour.js');
 			}
 
 		} // end if

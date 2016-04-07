@@ -185,13 +185,13 @@ defined('_JEXEC') or die;
 				</div>
 			</section>
 		<?php } ?>
+		<?php if ($this->item->params->get('itemImageGallery') && !empty($this->item->gallery)) { ?>
+			<section class="box gallery">
+				<header><h2>گالری</h2></header>
+				<?php echo $this->item->gallery; ?>
+			</section>
+		<?php } ?>
 	</div>
-	<?php if ($this->item->params->get('itemImageGallery') && !empty($this->item->gallery)) { ?>
-		<div class="item-gallery">
-			<h3><?php echo JText::_('K2_IMAGE_GALLERY'); ?></h3>
-			<?php echo $this->item->gallery; ?>
-		</div>
-	<?php } ?>
 	<?php echo $this->item->event->AfterDisplay; ?>
 	<?php echo $this->item->event->K2AfterDisplay; ?>
 	<?php
