@@ -19,7 +19,7 @@ defined('_JEXEC') or die;
 	<?php echo $this->item->event->K2BeforeDisplay; ?>
 	<header class="item-header">
 		<div class="row">
-			<div class="col-xs-6 item-tools">
+			<div class="col-xs-6  col-md-3 item-tools">
 				<ul class="list-inline list-unstyled">
 					<?php if ($this->item->params->get('itemPrintButton') && !JRequest::getInt('print')) { ?>
 						<li>
@@ -35,14 +35,14 @@ defined('_JEXEC') or die;
 				</ul>
 			</div>
 			<?php if ($this->item->params->get('itemDateCreated')) { ?>
-				<div class="col-xs-6 item-date">
+				<div class="col-xs-6 col-md-9 item-date">
 					<time><?php echo JHTML::_('date', $this->item->created, JText::_('K2_DATE_FORMAT_LC2')); ?></time>
 				</div>
 			<?php } ?>
 		</div>
 		<?php if ($this->item->params->get('itemTitle')) { ?>
 			<div class="page-title">
-				<h2 class="itemTitle">
+				<h2 class="item-title">
 					<?php echo $this->item->title; ?>
 				</h2>
 			</div>
@@ -64,7 +64,8 @@ defined('_JEXEC') or die;
 		<?php echo $this->item->event->BeforeDisplayContent; ?>
 		<?php echo $this->item->event->K2BeforeDisplayContent; ?>
 		<?php if ($this->item->params->get('itemImage') && !empty($this->item->image)) { ?>
-			<figure class="item-image">
+			<?php $video = ($this->item->params->get('itemVideo') && !empty($this->item->video)) ? $this->item->video : null; ?>
+			<figure class="item-image"<?php echo ($video) ? ' data-video=' . $video : '' ?>>
 				<a href="<?php echo $this->item->imageXLarge; ?>" title="<?php echo JText::_('K2_CLICK_TO_PREVIEW_IMAGE'); ?>">
 					<img src="<?php echo $this->item->image; ?>" alt="<?php
 					if (!empty($this->item->image_caption))
@@ -185,11 +186,6 @@ defined('_JEXEC') or die;
 			</section>
 		<?php } ?>
 	</div>
-	<?php if ($this->item->params->get('itemVideo') && !empty($this->item->video)) { ?>
-		<div class="itemVideoBlock">
-			<span class="itemVideo"><?php echo $this->item->video; ?></span>
-		</div>
-	<?php } ?>
 	<?php if ($this->item->params->get('itemImageGallery') && !empty($this->item->gallery)) { ?>
 		<div class="item-gallery">
 			<h3><?php echo JText::_('K2_IMAGE_GALLERY'); ?></h3>
