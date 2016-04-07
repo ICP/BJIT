@@ -1,0 +1,27 @@
+#item {
+    .item-tools {
+        ul {
+            font-size: 0;
+            li {
+                font-size: @font-size-base + 2; line-height: 48px;
+                a {
+                    color: @yellow-dark;
+                    &:hover { color: darken(@yellow-dark, 10%); }
+                }
+            }
+        }
+    }
+    .item-date {
+        line-height: 48px; font-size: @font-size-base - 2; color: #ababab; text-align: left;
+    }
+    .item-header {
+        .page-title {
+            border-top: 1px solid #ddd;
+            h2 { margin: 0; padding: (@grid-gutter-width) 0; font-size: 28px; color: @link-color-light; line-height: 1.5; }
+        }
+    }
+    .item-image {
+        margin-bottom: @grid-gutter-width;
+        a, img { display: block; width: 100%; height: auto; }
+    }
+}
