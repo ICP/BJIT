@@ -10,13 +10,15 @@
 defined('_JEXEC') or die('Restricted access');
 ?>
 <div class="gallery-inner" data-id="<?php echo $gal_id; ?>">
-	<div class="thumbs">
+	<div class="thumbs grayscale color-on-hover">
 		<ul>
-			<?php foreach ($gallery as $count => $photo) { ?>
-				<li>
-					<a href="<?php echo $photo->sourceImageFilePath; ?>" title="<?php echo ($gal_captions && $photo->captionTitle) ? $photo->captionTitle : '' ?>" class="img thumbnail grayscale">
-						<img src="<?php echo $photo->thumbImageFilePath; ?>" alt="<?php echo ($gal_captions && $photo->captionTitle) ? $photo->captionTitle : '' ?>" />
-					</a>
+			<?php foreach ($gallery as $key => $photo) { ?>
+				<li<?php echo ($key == 0) ? ' class="active"' : ''; ?>>
+					<figure class="img">
+						<a href="<?php echo $photo->sourceImageFilePath; ?>" title="<?php echo ($gal_captions && $photo->captionTitle) ? $photo->captionTitle : '' ?>" class=" thumbnail">
+							<img src="<?php echo $photo->thumbImageFilePath; ?>" alt="<?php echo ($gal_captions && $photo->captionTitle) ? $photo->captionTitle : '' ?>" />
+						</a>
+					</figure>
 				</li>
 			<?php } ?>
 		</ul>

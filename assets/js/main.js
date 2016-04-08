@@ -26,49 +26,70 @@ $(function () {
             e.preventDefault();
         });
     });
+
+    $(".item-image[data-video]").each(function () {
+        var poster = $(this).find("img:first").attr('src');
+        var file = $(this).attr('data-video');
+        jwplayer($(this).attr('id')).setup({
+            file: file,
+            image: poster,
+            width: "100%",
+            aspectratio: "16:9",
+        });
+    });
     
+    $(".box.gallery").on('click', ".thumbnail", function(e) {
+        var imgPath = $(this).attr('href');
+        $(".box.gallery .thumbs li").removeClass('active');
+        $(this).parents("li:first").addClass('active');
+        var $preview = $(".box.gallery .preview").find("img");
+        $preview.fadeOut(function() {
+            $preview.attr('src', imgPath).fadeIn();
+        });
+        e.preventDefault();
+    });
+
     $itemWidth = $(".box.showcase > div ul").find("li:first").width();
-    $(".box.showcase > div ul").find("li").each(function() {
+    $(".box.showcase > div ul").find("li").each(function () {
         $(this).width($itemWidth);
     });
     $(".box.showcase > div ul").owlCarousel({
         margin: 0
-        , loop:true
+        , loop: true
         , center: true
-        , items:1
-        , autoWidth:true
-        , rtl:true
+        , items: 1
+        , autoWidth: true
+        , rtl: true
         , themeClass: 'carousel-theme'
-		, baseClass: 'items-carousel'
-		, itemClass: 'item'
+        , baseClass: 'items-carousel'
+        , itemClass: 'item'
         , animateOut: 'fadeOut'
     });
-    
-    
+
+
     $itemWidth = $(".box.special > .carousel ul").find("li:first").width();
-    $(".box.showcase > .carousel ul").find("li").each(function() {
+    $(".box.showcase > .carousel ul").find("li").each(function () {
         $(this).width($itemWidth);
     });
     $(".box.special > div ul").owlCarousel({
         margin: 0
-        , loop:true
+        , loop: true
         , center: false
-        , items:2
-        , autoWidth:false
-        , rtl:true
+        , items: 2
+        , autoWidth: false
+        , rtl: true
         , themeClass: 'carousel-theme'
-		, baseClass: 'items-carousel'
-		, itemClass: 'item'
+        , baseClass: 'items-carousel'
+        , itemClass: 'item'
     });
-    
-    
+
 
     $(".grayscale.color-on-hover figure").hover(
             function () {
-                $(this).find('.gotcolors').stop().animate({opacity: 1}, 500);
+                $(this).find('.original').stop().animate({opacity: 1}, 500);
             },
             function () {
-                $(this).find('.gotcolors').stop().animate({opacity: 0}, 500);
+                $(this).find('.original').stop().animate({opacity: 0}, 500);
             }
     );
 });
@@ -76,7 +97,7 @@ $(function () {
 $(window).load(function () {
     $('.grayscale img').each(function () {
         var $wrapper = '<div style="position: relative; display:inline-block;width:' + this.width + 'px;height:' + this.height + 'px;">';
-        $(this).wrap($wrapper).clone().addClass('gotcolors').css({'position': 'absolute', 'opacity': 0}).insertBefore(this);
+        $(this).wrap($wrapper).clone().addClass('original').css({'position': 'absolute', 'opacity': 0}).insertBefore(this);
         this.src = grayscale(this.src);
     }).animate({opacity: 1}, 1);
 });

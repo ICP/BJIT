@@ -65,7 +65,7 @@ defined('_JEXEC') or die;
 		<?php echo $this->item->event->K2BeforeDisplayContent; ?>
 		<?php if ($this->item->params->get('itemImage') && !empty($this->item->image)) { ?>
 			<?php $video = ($this->item->params->get('itemVideo') && !empty($this->item->video)) ? $this->item->video : null; ?>
-			<figure class="item-image"<?php echo ($video) ? ' data-video=' . $video : '' ?>>
+			<figure id="item-media" class="item-image"<?php echo ($video) ? ' data-video=' . $video : '' ?>>
 				<a href="<?php echo $this->item->imageXLarge; ?>" title="<?php echo JText::_('K2_CLICK_TO_PREVIEW_IMAGE'); ?>">
 					<img src="<?php echo $this->item->image; ?>" alt="<?php
 					if (!empty($this->item->image_caption))
