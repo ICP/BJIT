@@ -252,6 +252,8 @@
         ul {
             list-style: none; padding: 0;
             li {
+                width: @container-lg; margin: 0 55px;
+                ~ li  { display: hidden; }
                 .clearfix();
                 figure {
                     width: 60%; float: left; max-height: 385px; overflow: hidden;
@@ -269,6 +271,10 @@
                         &:hover { color: @yellow-dark; }
                     }
                 }
+            }
+            .item {
+                opacity: 0.6; transition: 0.2s all;
+                &.center + .item { opacity: 1; }
             }
         }
     }

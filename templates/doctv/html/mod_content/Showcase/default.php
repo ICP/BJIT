@@ -14,9 +14,9 @@ defined('_JEXEC') or die('Restricted access');
 		<div class="active-img grayscale">
 			<img src="<?php echo $items[0]->image; ?>" alt="<?php echo K2HelperUtilities::cleanHtml($items[0]->title); ?>"/>
 		</div>
-		<div class="container">
+<!--		<div class="container">
 			<div class="row">
-				<div class="col-xs-12">
+				<div class="col-xs-12">-->
 					<section class="box showcase<?php if ($params->get('moduleclass_sfx')) echo ' ' . $params->get('moduleclass_sfx'); ?>">
 						<?php if ($module->showtitle) { ?><header><h2><span class="icon-holder"><i class="icon-placeholder"></i></span><?php echo $module->title; ?></h2></header><?php } ?>
 						<div>
@@ -48,8 +48,8 @@ defined('_JEXEC') or die('Restricted access');
 							</ul>
 						</div>
 					</section>
-				</div>
+<!--				</div>
 			</div>
-		</div>
+		</div>-->
 	</div>
 <?php } ?>
