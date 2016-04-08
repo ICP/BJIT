@@ -26,6 +26,9 @@ $(function () {
             e.preventDefault();
         });
     });
+    $(".search-toggle").click(function() {
+        $("html").toggleClass('no-scroll');
+    })
 
     $(".item-image[data-video]").each(function () {
         var poster = $(this).find("img:first").attr('src');
