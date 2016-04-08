@@ -6,8 +6,12 @@
     }
     .footer-about {
         padding-top: 30px; border-left: 1px solid @gray-light;
-        a {
-            display: block; text-align: center;
+        a { display: block; text-align: center; }
+        .desc {
+            margin: (@grid-gutter-width * 2) 0 0 (@grid-gutter-width ); text-align: justify;
+            .more {
+                color: @yellow-dark; text-align: right;
+            }
         }
     }
     .copyright-text { font-family: @headings-font-family; font-size: @copyright-font-size; }
