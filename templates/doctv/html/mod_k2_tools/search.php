@@ -3,7 +3,7 @@
 defined('_JEXEC') or die;
 ?>
 <aside id="search" class="box search">
-	<form class="search-form" role="form">
+	<form class="search-form" role="form" action="<?php echo JUri::root() . 'search'; ?>">
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-12">
