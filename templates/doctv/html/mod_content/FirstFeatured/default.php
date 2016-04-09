@@ -10,7 +10,9 @@
 defined('_JEXEC') or die('Restricted access');
 ?>
 <?php if (count($items)) { ?>
-	<a href="<?php echo JRoute::_('index.php?option=com_k2&view=itemlist&id=' . $params->get('category_link')); ?>" class="btn btn-default category-link">بیشتر</a>
+	<?php if ($params->get('category_link') && $params->get('mymenu_id')) { ?>
+		<a href="<?php echo JRoute::_('index.php?option=com_k2&Itemid=' . $params->get('mymenu_id')); ?>" class="btn btn-default category-link">بیشتر</a>
+	<?php } ?>
 	<ul>
 		<?php foreach ($items as $key => $item) { ?>
 			<li>

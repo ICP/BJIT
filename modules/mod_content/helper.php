@@ -324,6 +324,7 @@ class modK2ContentHelper {
 				//Category link
 //				if ($params->get('itemCategory'))
 				$item->categoryLink = urldecode(JRoute::_(K2HelperRoute::getCategoryRoute($item->catid . ':' . urlencode($item->categoryalias))));
+//				$item->categoryLink = urldecode(JRoute::_(K2HelperRoute::getCategoryRoute($params->get('itemCategory') . ':' . urlencode($item->categoryalias))));
 
 				//Extra fields
 				if ($params->get('itemExtraFields')) {
