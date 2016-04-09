@@ -80,7 +80,9 @@ $(function () {
         , themeClass: 'carousel-theme'
         , baseClass: 'items-carousel'
         , itemClass: 'item'
-        , animateOut: 'fadeOut'
+        , animateOut: ''
+        , nav: true
+        , navText: ["", ""]
     });
 
 

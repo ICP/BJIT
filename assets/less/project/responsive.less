@@ -15,6 +15,12 @@
                 width: @container-md !important; margin-bottom: 60px; margin: 0 30px 60px;
                 .desc { max-height: 324px; padding: @grid-gutter-width; overflow: hidden; }
             }
+            .owl-controls {
+                width: @container-md + 160; margin-left: -((@container-md + 160) / 2);
+                .owl-nav {
+                    & > * { margin-top: 110px; }
+                }
+            }
         }
         &.special {
             .cat-desc {
@@ -151,6 +157,12 @@
                             p { font-size: 12px; }
                         }
                     }
+                }
+            }
+            .owl-controls {
+                width: @container-sm + 20; margin-left: -((@container-sm + 20) / 2);
+                .owl-nav {
+                    & > * { margin-top: 110px; }
                 }
             }
         }
