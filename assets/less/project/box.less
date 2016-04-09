@@ -187,8 +187,9 @@
         .search-form {
             padding: (@grid-gutter-width * 5) 0;
             .form-group {
-                position: relative;
+                position: relative; margin-left: 80px;
                 &:after { content: '\e800'; font-family: @font-family-icons; display: block; position: absolute; top: 0; right: 0; color: white; font-size: 64px; right: 25px; top: 10px; }
+                .btn-link { display: block; color: black; font-size: 48px; position: absolute; top: 0; left: -80px; width: 80px; height: 100px; line-height: 80px; }
             }
             input[type="text"] { border: 0 none; color: #000; background: @yellow; line-height: 64px; height: 100px; border-radius: 0; font-size: 48px; padding-right: 100px; }
             .btn { display: none; }

@@ -16,19 +16,22 @@ $(function () {
                 case 'menuslide':
                     $(this).parent().toggleClass('active');
                     if ($(href).is(":hidden"))
-                        $(href).slideDown("fast", function() {
-                            $(".header-anchors li").fadeIn();
+                        $(href).slideDown("fast", function () {
+                            $(".header-anchors li").fadeIn(100);
                         });
                     else {
-                        $(".header-anchors li").not(".lang-anchor").fadeOut("fast");
+                        $(".header-anchors li").not(".lang-anchor").fadeOut(100);
                         $(href).slideUp("fast");
                     }
                     break;
                 case 'toggle':
                     $(this).parent().toggleClass('active');
-                    if ($(href).is(":visible"))
+                    if ($(href).is(":visible")) {
                         $(href).fadeOut("fast");
-                    else
+                        if (href === "#search")
+                            if ($("#header .search").hasClass("active"))
+                                $("#header .search").removeClass("active");
+                    } else
                         $(href).fadeIn("fast");
                     if (typeof $(this).attr('data-focus') !== "undefined")
                         $($(this).attr('data-focus')).focus();
@@ -37,7 +40,7 @@ $(function () {
             e.preventDefault();
         });
     });
-    $(".search-toggle").click(function() {
+    $(".search-toggle").click(function () {
         $("html").toggleClass('no-scroll');
     })
 
@@ -51,13 +54,13 @@ $(function () {
             aspectratio: "16:9",
         });
     });
-    
-    $(".box.gallery").on('click', ".thumbnail", function(e) {
+
+    $(".box.gallery").on('click', ".thumbnail", function (e) {
         var imgPath = $(this).attr('href');
         $(".box.gallery .thumbs li").removeClass('active');
         $(this).parents("li:first").addClass('active');
         var $preview = $(".box.gallery .preview").find("img");
-        $preview.fadeOut(function() {
+        $preview.fadeOut(function () {
             $preview.attr('src', imgPath).fadeIn();
         });
         e.preventDefault();
@@ -98,7 +101,7 @@ $(function () {
     });
 
     var fullHeightHeught = 0;
-    $(".full-height").each(function() {
+    $(".full-height").each(function () {
         fullHeightHeught = ($(this).height() > fullHeightHeught) ? $(this).height() : fullHeightHeught;
     });
     $(".full-height").height(fullHeightHeught);

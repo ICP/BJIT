@@ -10,6 +10,7 @@ defined('_JEXEC') or die;
 					<div class="form-group">
 						<input type="text" name="q" placeholder="برای جستجو بنویسید" class="form-control" />
 						<button type="submit" class="btn btn-success"><?php echo JTEXT::_('K2_SEARCH'); ?></button>
+						<button class="btn btn-link" data-toggle="toggle" data-target="#search">&times;</button>
 						<input type="hidden" name="categories" value="<?php echo $categoryFilter; ?>" />
 						<?php if (!$app->getCfg('sef')) { ?>
 							<input type="hidden" name="option" value="com_k2" />
