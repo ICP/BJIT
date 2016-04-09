@@ -108,7 +108,10 @@
         & > header { padding-top: 0; }
     }
     .box-wrapper {
-        &.showcase { max-height: none; padding: 0; }
+        &.showcase {
+            max-height: none; padding: 0;
+            .active-img img { height: 100%; width: auto; }
+        }
         &.special {
             max-height: none; padding: 0;
             .cat-img:after { width: 70%; }
@@ -136,12 +139,18 @@
         }
         &.showcase {
             margin: 0;
-            ul .item li {
-                width: @container-sm - 160 !important; margin-bottom: 0; margin: 0 0 0;
-                figure { width: 100%; width: 100%; }
-                .desc {
-                    max-height: none; padding: @grid-gutter-width; overflow: hidden; margin: 0;
-                    p { font-size: 12px; }
+            ul {
+                margin-bottom: 0;
+                .item {
+                    opacity: 0.5;
+                    li {
+                        width: @container-sm - 160 !important; margin-bottom: 0; margin: 0 0 0;
+                        figure { width: 100%; width: 100%; }
+                        .desc {
+                            max-height: 230px; padding: @grid-gutter-width; overflow: hidden; margin: 0; background: fade(@gray-darker, 75%);
+                            p { font-size: 12px; }
+                        }
+                    }
                 }
             }
         }
