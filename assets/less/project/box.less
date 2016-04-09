@@ -1,13 +1,17 @@
 .box-wrapper {
     position: relative; padding-bottom: 40px; overflow-y: hidden;
     &.special {
+        height: 400px;
         .cat-img {
             position: absolute; left: 0; width: 100%; height: 100%;
             &:after {
                 display: block; content: ''; position: absolute; right: 0; top: 0; height: 100%; width: 90%; 
                 background: linear-gradient(to left, @yellow 75%, transparent 100%);
             }
-            img { display: block; height: 100%; width: auto; opacity: 0.6; }
+            img {
+                display: block; height: 100%; width: auto; opacity: 0.6 !important;
+                &.original { display: none; }
+            }
             & > div { width: 100% !important; height: 100% !important; opacity: 0.6; }
         }
         .box {
@@ -29,10 +33,10 @@
         }
     }
     &.showcase {
-        padding: 80px 0;
+        padding: 80px 0; max-height: 585px; overflow: hidden;
         .active-img {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden;
-            img { display: block; width: 100%; height: auto; opacity: 0.5; }
+            img { display: block; width: 100%; height: auto; opacity: 0.5; display: none; }
             & > div { width: 100% !important; height: 100% !important; opacity: 0.5; }
         }
     }
@@ -136,17 +140,15 @@
             }
         }
         &.sidebar {
-            &.list {
-                h3 { font-size: 15px; }
-                &.thumbs.vertical {
-                    ul li { padding: 0; margin: 0 0 (@grid-gutter-width / 2) 0; }
-                    figure { float: right; width: 100px; }
-                    h3 {
-                        margin: 0 100px 0 0; display: block; font-size: 15px; line-height: 1.3; padding: 0;
-                        a { padding: 0 (@grid-gutter-width / 2) 0 0; color: @text-color; }
-                    }
-                    .desc { margin: (@grid-gutter-width / 2) 0 0 0; color: @gray-lightest; font-size: 13px; }
+            h3 { font-size: 15px; }
+            &.thumbs.vertical {
+                ul li { padding: 0; margin: 0 0 (@grid-gutter-width / 2) 0; }
+                figure { float: right; width: 100px; }
+                h3 {
+                    margin: 0 100px 0 0; display: block; font-size: 15px; line-height: 1.3; padding: 0;
+                    a { padding: 0 (@grid-gutter-width / 2) 0 0; color: @text-color; }
                 }
+                .desc { margin: (@grid-gutter-width / 2) 0 0 0; color: @gray-lightest; font-size: 13px; }
             }
         }
     }
@@ -162,7 +164,7 @@
     &.special {
         .carousel {
             .clearfix();
-            background: rgba(0, 0, 0, 0.5); min-height: 206px; margin: @grid-gutter-width -@grid-gutter-width 0 -@grid-gutter-width;
+            background: rgba(0, 0, 0, 0.5); height: 206px; margin: @grid-gutter-width -@grid-gutter-width 0 -@grid-gutter-width; overflow-y: hidden;
             ul {
                 list-style: none; padding: 0 0 0 40px;
                 li {
@@ -252,7 +254,7 @@
         ul {
             list-style: none; padding: 0;
             li {
-                width: @container-lg; margin: 0 55px;
+                width: @container-lg; margin: 0 55px; margin-bottom: 100px; opacity: 0; transition: 0.2s all;
                 ~ li  { display: hidden; }
                 .clearfix();
                 figure {
@@ -275,6 +277,7 @@
             .item {
                 opacity: 0.6; transition: 0.2s all;
                 &.center + .item { opacity: 1; }
+                li { opacity: 1; }
             }
         }
     }

@@ -1,8 +1,120 @@
 @media (max-width: @screen-md-max){
-
+    #header {
+        .menu li {
+            font-size: 16px;
+            a { padding: 0 (@grid-gutter-width); }
+        }
+    }
+    .box-wrapper {
+        &.showcase { padding-bottom: 0; }
+    }
+    .box {
+        &.showcase {
+            margin-bottom: 60px;
+            ul .item li {
+                width: @container-md !important; margin-bottom: 60px; margin: 0 30px 60px;
+                .desc { max-height: 324px; padding: @grid-gutter-width; overflow: hidden; }
+            }
+        }
+        &.special {
+            .cat-desc {
+                .introtext { max-height: 85px; overflow: hidden; }
+            }
+            .carousel { height: 169px; }
+        }
+        &.list {
+            &.thumbs {
+                &.vertical {
+                    ul li { padding-left: @grid-gutter-width; }
+                    &.sidebar {
+                        figure { margin: 0 0 0 (@grid-gutter-width / 2); }
+                        h3 {
+                            margin-right: 0;
+                            a { padding: 0; }
+                        }
+                    }
+                }
+            }
+        }
+        &.articles {
+            &.top {
+                .item .desc h3 { font-size: 20px; }
+            }
+            &.secondary {
+                .item .desc h3 { font-size: 16px; }
+            }
+            &.highlights {
+                .item .desc h3 { font-size: 15px; }
+            }
+        }
+    }
 }
 @media (max-width: @screen-sm-max){
-
+    #header{
+        position: relative;
+        &, .wrapper { overflow: visible; }
+        .header-schedule {
+            width: 70px;
+            &:after { left: 70px; }
+            .schedule-toggle span { font-size: 11px; font-weight: bold; }
+        }
+        .menu-toggle {
+            width: 70px; height: @header-height; line-height: @header-height; position: absolute; top: 0; left: @grid-gutter-width / 2; background: @gray; text-align: center; font-size: 36px; float: left;
+            &.active {
+                background: @yellow-light;
+                a { color: @text-color; }
+            }
+        }
+        .header-anchors {
+            margin-left: 70px;
+            li {
+                position: absolute; left: 0; z-index: 130; border: 0 none; width: 100px; height: 70px; display: none;
+                &.search { top: 115px; }
+                &.catalog-anchor { top: 185px; }
+                &.live-anchor { top: 255px; }
+                a {
+                    color: @text-color; padding: 0; line-height: 40px;
+                    span { color: black; line-height: 10px; }
+                }
+                &.lang-anchor {
+                    position: static; width: 70px; height: @header-height; display: block;
+                    a, a span { color: @yellow; height: @header-height; line-height: @header-height; padding: 0; }
+                }
+            }
+        }
+        .search {
+            /*float: none; position: absolute; top: @header-height; left: 0; z-index: 120;  width: 100px;*/
+            .search-toggle { border: 0 none; color: @text-color; height: 70px; line-height: 40px; }
+        }
+        .menu {
+            .clearfix();
+            background: @yellow-light; position: absolute; top: @header-height; left: 50%; z-index: 100; width: 100vw; margin: 0 0 0 -50vw; height: auto; padding: (@grid-gutter-width) 0; display: none;
+            li {
+                display: block; margin: 0 auto; max-width: @container-sm; padding-left: 160px;
+                a {
+                    color: @text-color; padding: 0 (@grid-gutter-width); line-height: (@header-height / 2);
+                    &:hover { color: @text-color; }
+                }
+                &.active a { color: @text-color; }
+            }
+        }
+    }
+    .box-wrapper {
+        &.showcase { max-height: none; padding: 0; }
+    }
+    .box {
+        &.showcase {
+            margin: 0;
+            ul .item li {
+                width: @container-sm - 160 !important; margin-bottom: 0; margin: 0 0 0;
+                figure { width: 100%; width: 100%; }
+                .desc {
+                    max-height: none; padding: @grid-gutter-width; overflow: hidden; margin: 0;
+                    p { font-size: 12px; }
+                }
+            }
+        }
+    }
 }
 @media (max-width: @screen-xs-max){
 

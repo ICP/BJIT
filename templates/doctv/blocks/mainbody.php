@@ -14,18 +14,22 @@
 						<?php if ($helper->countModules('menu')) { ?>
 							<jdoc:include type="modules" name="menu" />
 						<?php } ?>
-						<div class="search">
+						<div class="menu-toggle hidden-md hidden-lg"><a href="#" data-toggle="menuslide" data-target=".menu"><i class="icon-menu"></i></a></div>
+						<div class="search hidden-sm hidden-xs">
 							<a class="search-toggle" href="<?php JURI::base() . 'search'; ?>" data-toggle="toggle" data-target="#search" data-focus="#search input[type='text']"><i class="icon-search"></i></a>
 						</div>
 						<ul class="header-anchors list-inline list-unstyled">
-							<li>
+							<li class="lang-anchor">
 								<a href="#"><span>En</span></a>
 							</li>
-							<li>
+							<li class="live-anchor">
 								<a href="#"><i class="icon-placeholder"></i><span>پخش زنده</span></a>
 							</li>
-							<li>
+							<li class="catalog-anchor">
 								<a href="#"><i class="icon-download"></i><span>کاتالوگ</span></a>
+							</li>
+							<li class="search hidden-md hidden-lg">
+								<a class="search-toggle" href="<?php JURI::base() . 'search'; ?>" data-toggle="toggle" data-target="#search" data-focus="#search input[type='text']"><i class="icon-search"></i><span>جستجو</span></a>
 							</li>
 						</ul>
 					</div>
@@ -116,10 +120,10 @@
 				<div class="container">
 					<div class="row">
 						<?php if ($helper->countModules('main-right')) { ?>
-							<div  id="main-right" class="col-xs-12 col-sm-6"><jdoc:include type="modules" name="main-right" style="default" /></div>
+							<div  id="main-right" class="col-xs-12 col-sm-6 full-height"><jdoc:include type="modules" name="main-right" style="default" /></div>
 						<?php } ?>
 						<?php if ($helper->countModules('main-left')) { ?>
-							<div id="main-left" class="col-xs-12 col-sm-6"><jdoc:include type="modules" name="main-left" style="default" /></div>
+							<div id="main-left" class="col-xs-12 col-sm-6 full-height"><jdoc:include type="modules" name="main-left" style="default" /></div>
 						<?php } ?>
 					</div>
 				</div>

@@ -13,6 +13,17 @@ $(function () {
                     else
                         $(href).slideDown("fast");
                     break;
+                case 'menuslide':
+                    $(this).parent().toggleClass('active');
+                    if ($(href).is(":hidden"))
+                        $(href).slideDown("fast", function() {
+                            $(".header-anchors li").fadeIn();
+                        });
+                    else {
+                        $(".header-anchors li").not(".lang-anchor").fadeOut("fast");
+                        $(href).slideUp("fast");
+                    }
+                    break;
                 case 'toggle':
                     $(this).parent().toggleClass('active');
                     if ($(href).is(":visible"))
@@ -86,15 +97,20 @@ $(function () {
         , itemClass: 'item'
     });
 
+    var fullHeightHeught = 0;
+    $(".full-height").each(function() {
+        fullHeightHeught = ($(this).height() > fullHeightHeught) ? $(this).height() : fullHeightHeught;
+    });
+    $(".full-height").height(fullHeightHeught);
 
-    $(".grayscale.color-on-hover figure").hover(
-            function () {
-                $(this).find('.original').stop().animate({opacity: 1}, 500);
-            },
-            function () {
-                $(this).find('.original').stop().animate({opacity: 0}, 500);
-            }
-    );
+//    $(".grayscale.color-on-hover figure").hover(
+//            function () {
+//                $(this).find('.original').stop().animate({opacity: 1}, 500);
+//            },
+//            function () {
+//                $(this).find('.original').stop().animate({opacity: 0}, 500);
+//            }
+//    );
 });
 
 $(window).load(function () {
@@ -102,7 +118,9 @@ $(window).load(function () {
         var $wrapper = '<div style="position: relative; display:inline-block;width:' + this.width + 'px;height:' + this.height + 'px;">';
         $(this).wrap($wrapper).clone().addClass('original').css({'position': 'absolute', 'opacity': 0}).insertBefore(this);
         this.src = grayscale(this.src);
-    }).animate({opacity: 1}, 1);
+        if ($(this).is(":hidden"))
+            $(this).fadeIn(500);
+    });
 });
 
 // http://net.tutsplus.com/tutorials/javascript-ajax/how-to-transition-an-image-from-bw-to-color-with-canvas/

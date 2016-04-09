@@ -24,7 +24,7 @@ if (count($items)) {
 						<div class="row">
 							<div class="cat-desc col-md-4">
 								<h3><a href="<?php echo $items[0]->categoryLink ?>"><?php echo $items[0]->categoryname; ?></a></h3>
-								<p><?php echo $items[0]->categorydesc; ?></p>
+								<div class="introtext"><?php echo $items[0]->categorydesc; ?></div>
 								<a class="more" href="<?php echo $items[0]->categoryLink ?>"><i class="icon-placeholder"></i> بیشتر</a>
 							</div>
 							<div class="cat-thumb col-md-4">
@@ -50,7 +50,6 @@ if (count($items)) {
 													<?php if ($params->get('itemTitle')) { ?>
 														<h3><a href="<?php echo $item->link; ?>"><?php echo $item->title; ?></a></h3>
 													<?php } ?>
-
 												<?php } ?>
 											</li>
 										<?php } ?>

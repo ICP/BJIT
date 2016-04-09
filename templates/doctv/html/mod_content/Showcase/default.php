@@ -36,7 +36,7 @@ defined('_JEXEC') or die('Restricted access');
 													<h3><a href="<?php echo $item->link; ?>"><?php echo $item->title; ?></a></h3>
 												<?php } ?>
 												<?php if ($params->get('itemIntroText')) { ?>
-													<p><?php echo $item->introtext; ?></p>
+													<div class="introtext"><?php echo $item->introtext; ?></div>
 												<?php } ?>
 												<?php if ($params->get('itemReadMore')) { ?>
 													<a class="more" href="<?php echo $item->link; ?>">بیشتر</a>
