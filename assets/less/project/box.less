@@ -301,4 +301,47 @@
             }
         }
     }
+    &.subcategories {
+        ul {
+            list-style: none; padding: 0;
+            li {
+                .clearfix();
+                border-bottom: 1px dotted @gray; padding-bottom: @grid-gutter-width;
+                &:last-child { border-bottom: 0 none; }
+                & ~ li { padding-top: @grid-gutter-width; }
+                .cat-img { float: left; width: 60%; }
+                .desc {
+                    padding-left: @grid-gutter-width; margin-left: 60%; color: @gray-light;
+                    h2 a { display: block; margin-top: 0; margin-bottom: @grid-gutter-width; font-size: 30px; padding-top: @grid-gutter-width / 2; color: @text-color; }
+                }
+                .category-link { position: static; }
+            }
+        }
+    }
+    &.category-desc {
+        .clearfix();
+        border-bottom: 1px dotted @gray;
+        #item-media { margin-bottom: @grid-gutter-width; }
+        .cat-img { float: left; width: 60%; }
+        .desc {
+            padding-left: @grid-gutter-width; margin-left: 60%; color: @gray-light;
+            h2 { margin-top: 0; margin-bottom: @grid-gutter-width; font-size: 30px; padding-top: @grid-gutter-width / 2; color: @text-color; }
+        }
+    }
+    &.tiles {
+        &.highlights {
+            ul {
+                margin: 0 -@grid-gutter-width; list-style: none; padding: 0;
+                li {
+                    width: 25%; float: right; padding: 0 @grid-gutter-width @grid-gutter-width;
+                    figure { max-height: 143px; overflow: hidden; }
+                    .item-title {
+                        margin: (-(@grid-gutter-width) + 4) (@grid-gutter-width / 2) 0 0;
+                        a { color: @text-color; background: white; display: inline-block; min-height: 30px; min-width: 30px; border-radius: 30px; text-align: center; line-height: 30px; font-size: 16px; font-weight: bold; padding: 0 10px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; max-width: 95%; }
+                    }
+                    .created { font-weight: bold; font-size: @font-size-base - 1; }
+                }
+            }
+        }
+    }
 }
