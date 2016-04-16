@@ -82,7 +82,24 @@ $(function () {
         , itemClass: 'item'
         , animateOut: ''
         , nav: true
-        , navText: ["", ""]
+        , navText: ["", ""]
+    });
+    
+    
+    
+    $(".box.thumbs.carousel > div ul").owlCarousel({
+        margin: 0
+        , loop: true
+//        , center: true
+        , items: 4
+        , autoWidth: false
+        , rtl: true
+        , themeClass: 'carousel-theme'
+        , baseClass: 'items-carousel'
+        , itemClass: 'item'
+        , animateOut: ''
+        , nav: true
+        , navText: ["", ""]
     });
 
 
