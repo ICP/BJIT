@@ -1,5 +1,5 @@
 {
-  "name": "tourism",
+  "name": "doctv",
   "css_prefix_text": "icon-",
   "css_use_suffix": false,
   "hinting": true,
@@ -9,7 +9,7 @@
     {
       "uid": "c2129ecb03a3f2ef851439d142c8be81",
       "css": "aparat",
-      "code": 59422,
+      "code": 59392,
       "src": "custom_icons",
       "selected": true,
       "svg": {
@@ -23,7 +23,7 @@
     {
       "uid": "be1bbdce6f827746d675c2dce1b9c890",
       "css": "history",
-      "code": 59418,
+      "code": 59393,
       "src": "custom_icons",
       "selected": true,
       "svg": {
@@ -37,7 +37,7 @@
     {
       "uid": "9e80c074e9c77e3808e98df6e8285e81",
       "css": "food",
-      "code": 59417,
+      "code": 59394,
       "src": "custom_icons",
       "selected": true,
       "svg": {
@@ -51,7 +51,7 @@
     {
       "uid": "5482dcd05a50d71dead00d21b3b389f2",
       "css": "nature",
-      "code": 59416,
+      "code": 59395,
       "src": "custom_icons",
       "selected": true,
       "svg": {
@@ -65,7 +65,7 @@
     {
       "uid": "9e79c5725393ee4f38306cc3f1129aa9",
       "css": "health",
-      "code": 59415,
+      "code": 59396,
       "src": "custom_icons",
       "selected": true,
       "svg": {
@@ -79,7 +79,7 @@
     {
       "uid": "37c924a8786810a17baa9a25907288a3",
       "css": "society",
-      "code": 59420,
+      "code": 59397,
       "src": "custom_icons",
       "selected": true,
       "svg": {
@@ -93,7 +93,7 @@
     {
       "uid": "4027f3a8efc19397531ccda69a59df7a",
       "css": "music",
-      "code": 59419,
+      "code": 59398,
       "src": "custom_icons",
       "selected": true,
       "svg": {
@@ -107,7 +107,7 @@
     {
       "uid": "a7b9b9aa80ee81fcb92ef885b99eb819",
       "css": "mosque",
-      "code": 59421,
+      "code": 59399,
       "src": "custom_icons",
       "selected": true,
       "svg": {
@@ -121,7 +121,7 @@
     {
       "uid": "eda08fd6a60b36c6d676526aab19e326",
       "css": "telegram",
-      "code": 59426,
+      "code": 59400,
       "src": "custom_icons",
       "selected": true,
       "svg": {
@@ -135,7 +135,7 @@
     {
       "uid": "de5ee87d4784eb16eab1ee8ca384a038",
       "css": "tebiyan",
-      "code": 59427,
+      "code": 59401,
       "src": "custom_icons",
       "selected": true,
       "svg": {
@@ -149,170 +149,330 @@
     {
       "uid": "bf882b30900da12fca090d9796bc3030",
       "css": "mail",
-      "code": 59409,
+      "code": 59402,
       "src": "fontawesome"
     },
     {
       "uid": "e15f0d620a7897e2035c18c80142f6d9",
       "css": "link-ext",
-      "code": 59424,
+      "code": 59403,
       "src": "fontawesome"
     },
     {
       "uid": "7034e4d22866af82bef811f52fb1ba46",
       "css": "code",
-      "code": 59423,
+      "code": 59404,
       "src": "fontawesome"
     },
     {
       "uid": "5cbe092278ff71fc27c920298b0f3ca3",
       "css": "fax",
-      "code": 59407,
+      "code": 59405,
       "src": "fontawesome"
     },
     {
       "uid": "559647a6f430b3aeadbecd67194451dd",
       "css": "menu",
-      "code": 59404,
+      "code": 59406,
       "src": "fontawesome"
     },
     {
       "uid": "ce06b5805120d0c2f8d60cd3f1a4fdb5",
       "css": "play",
-      "code": 59402,
+      "code": 59407,
       "src": "fontawesome"
     },
     {
       "uid": "4c1ef492f1d2c39a2250ae457cee2a6e",
       "css": "instagram",
-      "code": 59397,
+      "code": 59408,
       "src": "fontawesome"
     },
     {
       "uid": "6274e0601f2feef7eced89146e708de0",
       "css": "user-add",
-      "code": 59429,
+      "code": 59409,
       "src": "entypo"
     },
     {
       "uid": "b08cfe8039de2ce815686aced2caef06",
       "css": "download",
-      "code": 59406,
+      "code": 59410,
       "src": "entypo"
     },
     {
       "uid": "44199a54057e6e264fde61a49b034171",
       "css": "upload",
-      "code": 59405,
+      "code": 59411,
       "src": "entypo"
     },
     {
       "uid": "28f124a10127a47b9d9472699193d75a",
       "css": "print",
-      "code": 59413,
+      "code": 59412,
       "src": "entypo"
     },
     {
       "uid": "5854855e963044f93b15738a5bb27a29",
       "css": "phone",
-      "code": 59408,
+      "code": 59413,
       "src": "entypo"
     },
     {
       "uid": "289b5f92f23acf1059c93fbf401c1ad5",
       "css": "down",
-      "code": 59398,
+      "code": 59414,
       "src": "entypo"
     },
     {
       "uid": "884cfc3e6e2d456dd2a2ca0dbb9e6337",
       "css": "left",
-      "code": 59399,
+      "code": 59415,
       "src": "entypo"
     },
     {
       "uid": "004882ab2d5c418c5b2060e80596279b",
       "css": "right",
-      "code": 59400,
+      "code": 59416,
       "src": "entypo"
     },
     {
       "uid": "0805cca616b3c12714f35af4d0912c10",
       "css": "up",
-      "code": 59401,
+      "code": 59417,
       "src": "entypo"
     },
     {
       "uid": "538531af0e023b15882c505ee2297cbe",
       "css": "vimeo",
-      "code": 59393,
+      "code": 59418,
       "src": "entypo"
     },
     {
       "uid": "d090355c31f497b61d676416c1fd39fb",
       "css": "twitter",
-      "code": 59394,
+      "code": 59419,
       "src": "entypo"
     },
     {
       "uid": "b945f4ac2439565661e8e4878e35d379",
       "css": "gplus",
-      "code": 59412,
+      "code": 59420,
       "src": "entypo"
     },
     {
       "uid": "e9ede58f5f90bbc3e52bf4bf53da71c0",
       "css": "placeholder",
-      "code": 59411,
+      "code": 59421,
       "src": "entypo"
     },
     {
       "uid": "id8wp0cygl9trzbhlbd9o0fygiesi629",
-      "css": "search",
-      "code": 59392,
+      "css": "search2",
+      "code": 59422,
       "src": "modernpics"
     },
     {
       "uid": "7ssl5z5jrhu13tb13cd3gb4bdfkzbfzw",
       "css": "print2",
-      "code": 59414,
+      "code": 59423,
       "src": "modernpics"
     },
     {
       "uid": "1fb8776fe6f1d3bbf970996fdfcf0f94",
       "css": "link",
-      "code": 59425,
+      "code": 59424,
       "src": "mfglabs"
     },
     {
       "uid": "5287c0dd80c29636f3d45b8b52cd3021",
       "css": "podcast",
-      "code": 59403,
+      "code": 59425,
       "src": "zocial"
     },
     {
       "uid": "240979dd9fcf2e46250e66792edb8092",
       "css": "facebook",
-      "code": 59396,
+      "code": 59426,
       "src": "brandico"
     },
     {
       "uid": "e36d581e4f2844db345bddc205d15dda",
       "css": "group",
-      "code": 59428,
+      "code": 59427,
       "src": "elusive"
     },
     {
       "uid": "21f6a88daf13c62e5a70f5ef6ad9e23f",
       "css": "chat",
-      "code": 59410,
+      "code": 59428,
       "src": "websymbols"
     },
     {
       "uid": "2d3ce9463ed5525c6faa01f84c957843",
       "css": "youtube",
-      "code": 59395,
+      "code": 59429,
       "src": "websymbols"
+    },
+    {
+      "uid": "31accb20e8819b200c297df608e68830",
+      "css": "video",
+      "code": 59430,
+      "src": "elusive"
+    },
+    {
+      "uid": "221947bea81f49a11b863c686a7bd235",
+      "css": "search",
+      "code": 59431,
+      "src": "websymbols"
+    },
+    {
+      "uid": "93faa7cec68bf69ec455bbab61e58e48",
+      "css": "th",
+      "code": 59432,
+      "src": "elusive"
+    },
+    {
+      "uid": "50e664a6f12199784c02600b2ccfd60a",
+      "css": "th-list",
+      "code": 59433,
+      "src": "elusive"
+    },
+    {
+      "uid": "84d19120538dd143b9cf5433f2417f48",
+      "css": "list",
+      "code": 59434,
+      "src": "websymbols"
+    },
+    {
+      "uid": "ccddff8e8670dcd130e3cb55fdfc2fd0",
+      "css": "down-open",
+      "code": 59435,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "d870630ff8f81e6de3958ecaeac532f2",
+      "css": "left-open",
+      "code": 59436,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "399ef63b1e23ab1b761dfbb5591fa4da",
+      "css": "right-open",
+      "code": 59437,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "fe6697b391355dec12f3d86d6d490397",
+      "css": "up-open",
+      "code": 59438,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "21e2e7c79f81aaffed53d4cb921ce6e2",
+      "css": "click",
+      "code": 59439,
+      "src": "custom_icons",
+      "selected": true,
+      "svg": {
+        "path": "M852.6 599L647 557.8V353C647 326 625.1 304 598 304H500C472.9 304 451 326 451 353V598H353C336 598 320.2 606.8 311.3 621.3 302.4 635.7 301.6 653.8 309.1 669L456.1 963C464.4 979.6 481.4 990.1 499.9 990.1H842.9C870 990.1 891.9 968.2 891.9 941.1V647C892 623.6 875.5 603.5 852.6 599ZM794 10H206C152 10 108 54 108 108V451C108 505 152 549 206 549H353V451H206V108H794V451H892V108C892 54 848 10 794 10Z",
+        "width": 1000
+      },
+      "search": [
+        "click"
+      ]
+    },
+    {
+      "uid": "c1c9d54254e558ba583af72940fcf012",
+      "css": "film",
+      "code": 59440,
+      "src": "custom_icons",
+      "selected": true,
+      "svg": {
+        "path": "M861.4 115.3H134.5C87.3 115.3 49 153.6 49 200.8V799.4C49 846.6 87.3 884.9 134.5 884.9H861.4C908.6 884.9 946.9 846.6 946.9 799.4V200.8C946.9 153.6 908.6 115.3 861.4 115.3ZM348.3 200.8H433.8V286.3H348.3V200.8ZM220 799.4H134.5V713.9H220V799.4ZM220 286.3H134.5V200.8H220V286.3ZM433.8 799.4H348.3V713.9H433.8V799.4ZM647.6 799.4H562.1V713.9H647.6V799.4ZM391.1 628.4V371.8L647.7 500.1 391.1 628.4ZM647.6 286.3H562.1V200.8H647.6V286.3ZM861.4 799.4H775.9V713.9H861.4V799.4ZM861.4 286.3H775.9V200.8H861.4V286.3Z",
+        "width": 1000
+      },
+      "search": [
+        "film"
+      ]
+    },
+    {
+      "uid": "04ff8d6592fe548b332b27ed87ce397a",
+      "css": "box",
+      "code": 59441,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "f8aa663c489bcbd6e68ec8147dca841e",
+      "css": "folder",
+      "code": 59442,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "c95735c17a10af81448c7fed98a04546",
+      "css": "folder-open",
+      "code": 59443,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "0d08dbb1dd648a43bdea81b7e6c9e036",
+      "css": "location",
+      "code": 59444,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "4a6851c02d526d719f310dab4c997467",
+      "css": "camera",
+      "code": 59445,
+      "src": "custom_icons",
+      "selected": true,
+      "svg": {
+        "path": "M926.7 589.7L774.9 635.3V575.4C774.9 520.5 730 475.6 675.1 475.6H276C221.1 475.6 176.2 520.5 176.2 575.4V874.7C176.2 929.6 221.1 974.5 276 974.5H675.1C730 974.5 774.9 929.6 774.9 874.7V814.8L926.7 860.4C953 868.3 974.5 852.2 974.5 824.8V625.2C974.4 597.8 952.9 581.8 926.7 589.7ZM425.7 226.1C425.7 115.9 336.3 26.5 226.1 26.5S26.6 115.9 26.6 226.1 116 425.7 226.2 425.7 425.7 336.3 425.7 226.1ZM675.1 425.7C785.3 425.7 874.7 336.3 874.7 226.1S785.3 26.6 675.1 26.6 475.5 116 475.5 226.2 564.9 425.7 675.1 425.7Z",
+        "width": 1000
+      },
+      "search": [
+        "camera"
+      ]
+    },
+    {
+      "uid": "dd606155baa6a1dd6da5a6423e43f0d3",
+      "css": "camera-play",
+      "code": 59446,
+      "src": "custom_icons",
+      "selected": true,
+      "svg": {
+        "path": "M424.8 222.9C424.8 111.4 334.4 21 222.9 21S21 111.4 21 222.9 111.4 424.8 222.9 424.8 424.8 334.4 424.8 222.9ZM677.2 424.8C788.7 424.8 879.1 334.4 879.1 222.9S788.7 21 677.2 21 475.3 111.4 475.3 222.9 565.7 424.8 677.2 424.8ZM931.6 590.7L778.1 636.8V576.2C778.1 520.7 732.7 475.3 677.2 475.3H273.4C217.9 475.3 172.5 520.7 172.5 576.2V879C172.5 934.5 217.9 979.9 273.4 979.9H677.2C732.7 979.9 778.1 934.5 778.1 879V818.4L931.6 864.5C958.2 872.5 980 856.2 980 828.5V626.7C980 598.9 958.2 582.8 931.6 590.7ZM402.7 852.6V602.7L610.9 727.6 402.7 852.6Z",
+        "width": 1000
+      },
+      "search": [
+        "camera-play"
+      ]
+    },
+    {
+      "uid": "09e5ca80ef6d07809bd446eacd959ef7",
+      "css": "live",
+      "code": 59447,
+      "src": "custom_icons",
+      "selected": true,
+      "svg": {
+        "path": "M899.1 100.9H100.9C51.9 100.9 12.2 140.6 12.2 189.6V810.4C12.2 859.4 51.9 899.1 100.9 899.1H899.1C948.1 899.1 987.8 859.4 987.8 810.4V189.6C987.8 140.6 948.1 100.9 899.1 100.9ZM500 810.4C328.8 810.4 189.6 671.2 189.6 500 189.6 328.9 328.9 189.6 500 189.6S810.4 328.9 810.4 500C810.4 671.2 671.2 810.4 500 810.4ZM500 278.3C377.7 278.3 278.3 377.8 278.3 500 278.3 622.3 377.8 721.7 500 721.7S721.7 622.3 721.7 500C721.7 377.7 622.3 278.3 500 278.3ZM411.3 633V367L633 500 411.3 633Z",
+        "width": 1000
+      },
+      "search": [
+        "live"
+      ]
+    },
+    {
+      "uid": "a263473d2d406881ea08f991c1b38694",
+      "css": "left-circle",
+      "code": 59448,
+      "src": "iconic"
+    },
+    {
+      "uid": "ccee648b9e12a533f6957967e29ebdef",
+      "css": "right-circle",
+      "code": 59449,
+      "src": "iconic"
     }
   ]
 }
