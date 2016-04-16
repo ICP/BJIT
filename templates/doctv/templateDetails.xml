@@ -43,6 +43,7 @@
         <position>footer</position>
         <position>copyright</position>
         <position>footer-about</position>
+        <position>multimedia_carousels</position>
     </positions>
     <languages folder="language">
         <language tag="fa-IR">fa-IR/fa-IR.tpl_doctv.ini</language>
