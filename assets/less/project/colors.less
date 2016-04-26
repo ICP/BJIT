@@ -1,5 +1,11 @@
 body {
-    &.dark { background: @gray; }
+    &.dark {
+        background: @gray;
+        #item {
+            .item-header .page-title h2 { color: white; }
+            .item-body { color: white; font-size: @font-size-base + 2; line-height: 1.5; }
+        }
+    }
     &.light {
         background: white; color: @gray-lighter;
         .wrapper.content { background: white; }
