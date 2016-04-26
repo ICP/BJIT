@@ -11,17 +11,21 @@ defined('_JEXEC') or die('Restricted access');
 ?>
 <div class="gallery-inner" data-id="<?php echo $gal_id; ?>">
 	<div class="thumbs grayscale color-on-hover">
-		<ul>
-			<?php foreach ($gallery as $key => $photo) { ?>
-				<li<?php echo ($key == 0) ? ' class="active"' : ''; ?>>
-					<figure class="img">
-						<a href="<?php echo $photo->sourceImageFilePath; ?>" title="<?php echo ($gal_captions && $photo->captionTitle) ? $photo->captionTitle : '' ?>" class=" thumbnail">
-							<img src="<?php echo $photo->thumbImageFilePath; ?>" alt="<?php echo ($gal_captions && $photo->captionTitle) ? $photo->captionTitle : '' ?>" />
-						</a>
-					</figure>
-				</li>
-			<?php } ?>
-		</ul>
+		<div class="nano">
+			<div class="nano-content">
+				<ul>
+					<?php foreach ($gallery as $key => $photo) { ?>
+						<li<?php echo ($key == 0) ? ' class="active"' : ''; ?>>
+							<figure class="img">
+								<a href="<?php echo $photo->sourceImageFilePath; ?>" title="<?php echo ($gal_captions && $photo->captionTitle) ? $photo->captionTitle : '' ?>" class=" thumbnail">
+									<img src="<?php echo $photo->thumbImageFilePath; ?>" alt="<?php echo ($gal_captions && $photo->captionTitle) ? $photo->captionTitle : '' ?>" />
+								</a>
+							</figure>
+						</li>
+					<?php } ?>
+				</ul>
+			</div>
+		</div>
 	</div>
 	<div class="preview">
 		<figure>

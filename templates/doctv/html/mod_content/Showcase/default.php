@@ -18,7 +18,6 @@ defined('_JEXEC') or die('Restricted access');
 			<div class="row">
 				<div class="col-xs-12">-->
 					<section class="box showcase<?php if ($params->get('moduleclass_sfx')) echo ' ' . $params->get('moduleclass_sfx'); ?>">
-						<?php if ($module->showtitle) { ?><header><h2><span class="icon-holder"><i class="icon-placeholder"></i></span><?php echo $module->title; ?></h2></header><?php } ?>
 						<div>
 							<ul>
 								<?php foreach ($items as $key => $item) { ?>
