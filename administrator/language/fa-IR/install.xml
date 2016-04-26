@@ -3,14 +3,14 @@
 <extension version="3.5" client="administrator" type="language" method="upgrade">
     <name>Persian</name>
     <tag>fa-IR</tag>
-    <version>3.5.0.1</version>
-	<creationDate>March, 2016</creationDate>
+    <version>3.5.1.1</version>
+	<creationDate>April, 2016</creationDate>
     <author>Persian Translation Team, Joomlafarsi.com</author>
     <authorEmail>info@joomlafarsi.com</authorEmail>
     <authorUrl>www.joomlafarsi.com</authorUrl>
 	<copyright>Copyright (C) 2005 - 2016 Joomlafarsi.com and Open Source Matters. All rights reserved.</copyright>
 	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
-    <description>Persian administrator language pack for Joomla 3.5.0</description>
+    <description>Persian administrator language pack for Joomla 3.5.1</description>
     <files>
         <filename>fa-IR.com_admin.ini</filename>
 		<filename>fa-IR.com_admin.sys.ini</filename>
