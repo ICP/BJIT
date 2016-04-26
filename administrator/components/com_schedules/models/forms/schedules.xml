@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset>
+
+              <field name="id" type="text" default="0" label="COM_SCHEDULES_FORM_LBL_SCHEDULES_ID"
+            readonly="true" class="readonly"
+            description="JGLOBAL_FIELD_ID_DESC" /> 
+
+       <field name="date" type="calendar" class="inputbox"
+         required="true" 
+        
+         default="0000-00-00" 
+        
+            label="COM_SCHEDULES_FORM_LBL_SCHEDULES_DATE"
+            description="COM_SCHEDULES_FORM_DESC_SCHEDULES_DATE" 
+        filter="safehtml" /> 
+
+       <field name="occassion" type="text"
+                
+            label="COM_SCHEDULES_FORM_LBL_SCHEDULES_OCCASSION"
+            description="COM_SCHEDULES_FORM_DESC_SCHEDULES_OCCASSION" 
+                
+                
+                
+            filter="string" /> 
+
+       <field name="programs" type="editor" buttons="true"
+        class="inputbox"
+        filter="safehtml"
+         required="true" 
+        
+        
+        
+            label="COM_SCHEDULES_FORM_LBL_SCHEDULES_PROGRAMS"
+            description="COM_SCHEDULES_FORM_DESC_SCHEDULES_PROGRAMS"  /> 
+
+         <field
+        name="state"
+        type="list"
+        label="JSTATUS"
+        description="JFIELD_PUBLISHED_DESC"
+        class="inputbox"
+        size="1"
+        default="1">
+        <option value="1">JPUBLISHED</option>
+        <option value="0">JUNPUBLISHED</option>
+    </field> 
+
+                        <field name="checked_out" type="hidden" filter="unset" />
+        <field name="checked_out_time" type="hidden" filter="unset" />
+
+	</fieldset>
+
+</form>

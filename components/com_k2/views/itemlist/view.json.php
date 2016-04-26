@@ -398,7 +398,7 @@ class K2ViewItemlist extends K2View
                     $cacheFlag = false;
                 }
             }
-
+			
             //Prepare item
             if ($cacheFlag)
             {
@@ -441,7 +441,10 @@ class K2ViewItemlist extends K2View
         }
 
         $response->items = $rows;
-        
+		foreach($response->items as $item) {
+			$item->time = JHTML::_('date', $item->created, JText::_('K2_DATE_FORMAT_LC2'));
+		}
+		       
         // Prevent spammers from using the tag view
         if ($task == 'tag' && !count($response->items))
         {
@@ -457,7 +460,7 @@ class K2ViewItemlist extends K2View
         }
 
         // Output
-        $json = json_encode($response);
+        $json = json_encode($response, JSON_UNESCAPED_UNICODE);
         $callback = JRequest::getCmd('callback');
         if ($callback)
         {
