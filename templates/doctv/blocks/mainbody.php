@@ -23,7 +23,7 @@
 								<a href="#"><span>En</span></a>
 							</li>
 							<li class="live-anchor">
-								<a href="#"><i class="icon-placeholder"></i><span>پخش زنده</span></a>
+								<a href="<?php JURI::base() . 'live'; ?>"><i class="icon-live"></i><span>پخش زنده</span></a>
 							</li>
 							<li class="catalog-anchor">
 								<a href="#"><i class="icon-download"></i><span>کاتالوگ</span></a>
@@ -60,7 +60,7 @@
 					<div class="container">
 						<div class="row">
 							<div class="col-xs-12">
-								<h1><?php echo JFactory::getApplication()->getMenu()->getActive()->title; ?></h1>
+								<h1><?php echo isset(JFactory::getApplication()->getMenu()->getActive()->title) ? JFactory::getApplication()->getMenu()->getActive()->title : $sitename; ?></h1>
 							</div>
 						</div>
 					</div>
@@ -87,15 +87,15 @@
 			<?php } ?>
 			<?php if ($helper->countModules('content-left') || $helper->countModules('content-center') || $helper->countModules('content-right')) { ?>
 				<div class="container">
-					<div class="row">
+					<div id="contents" class="row">
 						<?php if ($helper->countModules('content-right')) { ?>
-							<div class="col-xs-12 col-md-4"><jdoc:include type="modules" name="content-right" style="default" /></div>
+							<div id="content-right" class="col-xs-12 col-md-4"><jdoc:include type="modules" name="content-right" style="default" /></div>
 						<?php } ?>
 						<?php if ($helper->countModules('content-center')) { ?>
-							<div class="col-xs-12 col-md-4"><jdoc:include type="modules" name="content-center" style="default" /></div>
+							<div id="content-center" class="col-xs-12 col-md-4"><jdoc:include type="modules" name="content-center" style="default" /></div>
 						<?php } ?>
 						<?php if ($helper->countModules('content-left')) { ?>
-							<div class="col-xs-12 col-md-4"><jdoc:include type="modules" name="content-left" style="default" /></div>
+							<div id="content-left" class="col-xs-12 col-md-4"><jdoc:include type="modules" name="content-left" style="default" /></div>
 						<?php } ?>
 					</div>
 				</div>
@@ -157,6 +157,7 @@
 <script src="<?php echo JURI::base(); ?>assets/js/jquery-1.11.1.min.js"></script>
 <script src="<?php echo JURI::base(); ?>assets/js/bootstrap.min.js"></script>
 <script src="<?php echo JURI::base(); ?>assets/js/owl.carousel.js"></script>
+<script src="<?php echo JURI::base(); ?>assets/js/jquery.nanoscroller.min.js"></script>
 <script src="<?php echo JURI::base(); ?>assets/js/main.js?_=20160326"></script>
 <script type="text/javascript">
     // Piwik code
