@@ -20,10 +20,10 @@
 						</div>
 						<ul class="header-anchors list-inline list-unstyled">
 							<li class="lang-anchor">
-								<a href="#"><span>En</span></a>
+								<a href="#"><span>English</span></a>
 							</li>
 							<li class="live-anchor">
-								<a href="<?php JURI::base() . 'live'; ?>"><i class="icon-live"></i><span>پخش زنده</span></a>
+								<a href="<?php echo JURI::base() . 'live'; ?>"><i class="icon-live"></i><span>پخش زنده</span></a>
 							</li>
 							<li class="catalog-anchor">
 								<a href="#"><i class="icon-download"></i><span>کاتالوگ</span></a>

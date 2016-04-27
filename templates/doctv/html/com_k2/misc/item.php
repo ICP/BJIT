@@ -89,7 +89,7 @@ defined('_JEXEC') or die;
 		<?php if ($this->item->params->get('itemExtraFields') && count($this->item->extra_fields)) { ?>
 			<?php foreach ($this->item->extra_fields as $key => $extraField) { ?>
 				<?php if ($extraField->alias == "embed" && $extraField->value != '') { ?>
-					<div class="item-fields" data-type="<?php echo $extraField->name; ?>">
+					<div class="item-embed" data-type="<?php echo $extraField->name; ?>">
 						<?php echo $extraField->value; ?>
 					</div>
 				<?php } ?>
@@ -111,25 +111,24 @@ defined('_JEXEC') or die;
 				<?php echo $this->item->introtext; ?>
 			</div>
 		<?php } ?>
-		<?php /* if ($this->item->params->get('itemExtraFields') && count($this->item->extra_fields)) { ?>
-		  <div class="item-fields">
-		  <h3><?php echo JText::_('K2_ADDITIONAL_INFO'); ?></h3>
-		  <dl class="dl-horizontal">
-		  <?php foreach ($this->item->extra_fields as $key => $extraField) { ?>
-		  <?php if ($extraField->value != '') { ?>
-		  <dt class="field-label type<?php echo $extraField->type; ?> group<?php echo $extraField->group; ?>">
-		  <?php if ($extraField->type == 'header') { ?>
-		  <h4 class="field-title"><?php echo $extraField->name; ?></h4>
-		  <?php } else { ?>
-		  <?php echo $extraField->name; ?>
-		  <?php } ?>
-		  </dt>
-		  <dd class="field-value"><?php echo $extraField->value; ?></dd>
-		  <?php } ?>
-		  <?php } ?>
-		  </dl>
-		  </div>
-		  <?php } */ ?>
+		<?php if ($this->item->params->get('itemExtraFields') && count($this->item->extra_fields) && $this->item->extra_fields[0]->alias != "embed") { ?>
+			<div class="item-fields table-responsive">
+				<table class="table table-bordered">
+					<tbody>
+						<?php foreach ($this->item->extra_fields as $key => $extraField) { ?>
+							<?php if ($extraField->value != '') { ?>
+								<tr>
+									<td class="title col-xs-2">
+										<i class="icon-<?php echo $extraField->alias ?>"></i> <?php echo $extraField->name ?>
+									</td>
+									<td<?php echo (in_array($extraField->alias, array('phone', 'email', 'telegram'))) ? ' class="ltr"' : ''; ?>><?php echo $extraField->value; ?></td>
+								</tr>
+							<?php } ?>
+						<?php } ?>
+					</tbody>
+				</table>
+			</div>
+		<?php } ?>
 		<?php echo $this->item->event->AfterDisplayContent; ?>
 		<?php echo $this->item->event->K2AfterDisplayContent; ?>
 	</div>
