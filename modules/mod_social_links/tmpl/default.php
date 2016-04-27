@@ -10,13 +10,14 @@
 defined('_JEXEC') or die('Restricted access'); 
 ?>
 <ul class="social-links list-ustyled list-inline">
-	<?php if ($params->get('facebook')) { ?><li><a href="#"><i class="icon-facebook"></i></a></li><?php } ?>
-	<?php if ($params->get('twitter')) { ?><li><a href="#"><i class="icon-twitter"></i></a></li><?php } ?>
-	<?php if ($params->get('gplus')) { ?><li><a href="#"><i class="icon-gplus"></i></a></li><?php } ?>
-	<?php if ($params->get('youtube')) { ?><li><a href="#"><i class="icon-youtube"></i></a></li><?php } ?>
-	<?php if ($params->get('vimeo')) { ?><li><a href="#"><i class="icon-vimeo"></i></a></li><?php } ?>
-	<?php if ($params->get('instagram')) { ?><li><a href="#"><i class="icon-instagram"></i></a></li><?php } ?>
-	<?php if ($params->get('telegram')) { ?><li><a href="#"><i class="icon-telegram"></i></a></li><?php } ?>
-	<?php if ($params->get('lenzor')) { ?><li><a href="#"><i class="icon-lenzor"></i></a></li><?php } ?>
-	<?php if ($params->get('cloob')) { ?><li><a href="#"><i class="icon-cloob"></i></a></li><?php } ?>
+	<?php if ($params->get('facebook')) { ?><li><a target="_blank" href="<?php echo $params->get('facebook'); ?>"><i class="icon-facebook"></i></a></li><?php } ?>
+	<?php if ($params->get('twitter')) { ?><li><a target="_blank" href="<?php echo $params->get('twitter'); ?>"><i class="icon-twitter"></i></a></li><?php } ?>
+	<?php if ($params->get('gplus')) { ?><li><a target="_blank" href="<?php echo $params->get('gplus'); ?>"><i class="icon-gplus"></i></a></li><?php } ?>
+	<?php if ($params->get('youtube')) { ?><li><a target="_blank" href="<?php echo $params->get('youtube'); ?>"><i class="icon-youtube"></i></a></li><?php } ?>
+	<?php if ($params->get('vimeo')) { ?><li><a target="_blank" href="<?php echo $params->get('vimeo'); ?>"><i class="icon-vimeo"></i></a></li><?php } ?>
+	<?php if ($params->get('instagram')) { ?><li><a target="_blank" href="<?php echo $params->get('instagram'); ?>"><i class="icon-instagram"></i></a></li><?php } ?>
+	<?php if ($params->get('telegram')) { ?><li><a target="_blank" href="<?php echo $params->get('telegram'); ?>"><i class="icon-telegram"></i></a></li><?php } ?>
+	<?php if ($params->get('aparat')) { ?><li><a target="_blank" href="<?php echo $params->get('aparat'); ?>"><i class="icon-aparat"></i></a></li><?php } ?>
+	<?php if ($params->get('lenzor')) { ?><li><a target="_blank" href="<?php echo $params->get('lenzor'); ?>"><i class="icon-lenzor"></i></a></li><?php } ?>
+	<?php if ($params->get('cloob')) { ?><li><a target="_blank" href="<?php echo $params->get('cloob'); ?>"><i class="icon-cloob"></i></a></li><?php } ?>
 </ul>

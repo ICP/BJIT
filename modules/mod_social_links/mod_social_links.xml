@@ -33,6 +33,7 @@
 				<field name="vimeo" type="text" default="" label="Vimeo Page Link" description="" />
 				<field name="instagram" type="text" default="" label="Instagram Page Link" description="" />
 				<field name="telegram" type="text" default="" label="Telegram Page Link" description="" />
+				<field name="aparat" type="text" default="" label="Aparat Page Link" description="" />
 				<field name="lenzor" type="text" default="" label="Lenzor Page Link" description="" />
 				<field name="cloob" type="text" default="" label="Cloob Page Link" description="" />
 			</fieldset>
