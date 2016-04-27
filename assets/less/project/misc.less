@@ -1,6 +1,6 @@
 body { font-family: @font-family-base; text-align: right; }
 text-area, input, button, .form-control { direction: rtl; text-align: right; }
-.ltr { direction: ltr; display: inline-block; }
+.ltr { direction: ltr; }
 .tooltip { font-family: Tahoma, Arial; }
 a { transition: 0.2s all; }
 .clickable { cursor: pointer; display: inline-block; }
@@ -12,6 +12,18 @@ a { transition: 0.2s all; }
     .active img { filter: grayscale(0); -webkit-filter: grayscale(0); }
 }
 iframe { background: tomato; }
+.item-fields {
+    margin-top: @grid-gutter-width * 3;
+    table {
+        background: @gray-dark;
+        tr {
+            td {
+                border-color: @gray-light !important;
+                &:first-child { border-left-color: transparent !important; }
+            }
+        }
+    }
+}
 
 /* 
  *  Owl Carousel - Animate Plugin
