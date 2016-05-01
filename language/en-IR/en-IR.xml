@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metafile version="3.5" client="site">
+	<name>English (en-IR)</name>
+	<version>3.5.0</version>
+	<creationDate>November 2015</creationDate>
+	<author>Joomla! Project</author>
+	<authorEmail>admin@joomla.org</authorEmail>
+	<authorUrl>www.joomla.org</authorUrl>
+	<copyright>Copyright (C) 2005 - 2016 Open Source Matters. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<description>en-IR site language</description>
+	<metadata>
+		<name>English (en-IR)</name>
+		<tag>en-IR</tag>
+		<rtl>0</rtl>
+		<locale>en_IR.utf8, en_IR.UTF-8, en_IR, eng_IR, en_GB.utf8, en_GB.UTF-8, en_GB, eng_GB, en, english, english-uk, uk, gbr, britain, england, great britain, uk, united kingdom, united-kingdom</locale>
+		<firstDay>6</firstDay>
+		<weekEnd>0,6</weekEnd>
+	</metadata>
+	<params />
+</metafile>

@@ -1,0 +1,5 @@
+== Code Hacks ==
+=== K2 ===
+
+29 April 2016 - components/com_k2/models/item.php:527 (bypassed php notice with @)
+29 April 2016 - components/com_k2/views/itemlist/view.json.php:444 (added item time)
