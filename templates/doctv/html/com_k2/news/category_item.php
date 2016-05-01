@@ -31,6 +31,12 @@ K2HelperUtilities::setDefaultImage($this->item, 'itemlist', $this->params);
 			<h3 class="item-title">
 				<?php if ($this->item->params->get('catItemTitleLinked')) { ?>
 					<a href="<?php echo $this->item->link; ?>">
+						<?php
+						$extra_fields = json_decode($this->item->extra_fields);
+						if (count($extra_fields)) {
+							?>
+							<small><?php echo $extra_fields[0]->value; ?></small>
+						<?php } ?>
 						<?php echo $this->item->title; ?>
 					</a>
 				<?php } else { ?>
