@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.1" type="plugin" group="system" method="upgrade">
+	<name>User Activity Log</name>
+	<author>AdminPraise</author>
+	<creationDate>2012-01-07</creationDate>
+	<copyright>Copyright (C) 2009-2012 Pixel Prais LLC. All rights reserved.</copyright>
+	<license>GNU/GPL</license>
+	<authorEmail>support@pixelpraise.com</authorEmail>
+	<authorUrl>www.adminpraise.com</authorUrl>
+	<version>3.0.0</version>
+	<description>Administrator Activity Log</description>
+	<files>
+		<filename plugin="activitylog_pro">activitylog_pro.php</filename>
+	</files>
+	<languages folder="language/">
+		<language tag="en-GB">en-GB/en-GB.plg_activitylog_pro.ini</language>
+		<language tag="en-GB">en-GB/en-GB.plg_activitylog_pro.sys.ini</language>
+	</languages>
+	<config>
+	</config>
+</extension>
