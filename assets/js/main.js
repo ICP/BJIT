@@ -54,6 +54,18 @@ $(function () {
             aspectratio: "16:9"
         });
     });
+    $(".page-tools").on('click', ".clickable", function(e) {
+        if (!$(this).parent().hasClass('active')) {
+            var type = $(this).attr('data-type');
+            if (type === "grid")
+                $(".box.episodes").addClass("grid");
+            else
+                $(".box.episodes").removeClass("grid");
+            $(".page-tools").find("li").removeClass("active");
+            $(this).parent().addClass("active");
+        }
+        e.preventDefault();
+    });
     
     $(".nano").nanoScroller({
         alwaysVisible: true

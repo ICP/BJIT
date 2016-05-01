@@ -287,7 +287,7 @@
                     margin: 0 100px 0 0; display: block; font-size: 15px; line-height: 1.3; padding: 0;
                     a { padding: 0 (@grid-gutter-width / 2) 0 0; color: @text-color; }
                 }
-                .desc { margin: (@grid-gutter-width / 2) 0 0 0; color: @gray-lightest; font-size: 13px; }
+                .desc { margin: (@grid-gutter-width / 2) 0 0 0; color: @gray-lightest; font-size: 13px; clear: both;}
             }
         }
     }
@@ -351,6 +351,7 @@
     &.articles {
         .clearfix();
         margin: @grid-gutter-width 0;
+        small { display: block; }
         .item:hover {
             a { color: @link-hover-light; }
         }
@@ -502,6 +503,7 @@
             ul {
                 margin: 0 -@grid-gutter-width; list-style: none; padding: 0;
                 li {
+                    clear: both;
                     width: 25%; float: right; padding: 0 @grid-gutter-width @grid-gutter-width;
                     figure { max-height: 143px; overflow: hidden; }
                     .item-title {
@@ -534,12 +536,12 @@
                     .desc { margin-right: 25%; padding-right: @grid-gutter-width; }
                 }
                 &.grid ul li {
-                    width: 25%; height: 270px;
+                    width: 25%; height: 270px; clear: none;
                     &:last-child { border-bottom: 1px solid @gray-light; }
                     figure { width: 100%; float: none; max-height: 143px; }
                     .desc {
                         margin: 0; padding: 0;
-                        .introtext { max-height: 42px; overflow: hidden; }
+                        .introtext { max-height: 60px; overflow: hidden; }
                         .item-title { max-height: 60px; overflow: hidden; }
                     }
                 }
@@ -579,6 +581,7 @@
     }
     &.episodes {
         ul {
+            .clearfix();
             margin: 0 -(@grid-gutter-width / 2);
             li {
                 padding: 0 (@grid-gutter-width / 2) @grid-gutter-width; transition: 0.2s all; border-bottom: 1px dotted @gray-light; margin-bottom: @grid-gutter-width;
@@ -590,7 +593,7 @@
 
                         a { color: white; font-size: 18px; }
                     }
-                    p { color: lighten(@gray-lightest, 0%); }
+                    p { color: lighten(@gray-lightest, 0%); margin-bottom: 0; }
                 }
             }
         }
