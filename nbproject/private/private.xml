@@ -5,29 +5,29 @@
         <group>
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/project/buttons.less</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/project/header.less</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/templates/doctv/html/mod_content/Showcase/default.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/templates/doctv/html/com_k2/programs/item.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/modules/mod_social_links/tmpl/default.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/project/variables.less</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/modules/mod_social_links/mod_social_links.xml</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/administrator/components/com_schedules/controller.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/js/main.js</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/templates/doctv/html/com_k2/special/category.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/templates/doctv/blocks/mainbody.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/components/com_k2/views/itemlist/view.json.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/plugins/content/jw_sigpro/jw_sigpro/tmpl/Clean/default.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/plugins/system/k2/k2.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/api/classes/convert.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/libraries/joomla/filter/output.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/doctv/html/com_k2/news/item.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/templates/doctv/html/com_k2/programs/category.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/templates/doctv/html/mod_content/FeaturesSlider/default.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/api/index.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/project/colors.less</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/project/footer.less</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/templates/doctv/html/mod_content/FirstFeatured2/default.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/administrator/components/com_k2/models/model.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/components/com_k2/templates/default/category.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/modules/mod_social_links/mod_social_links.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/fframework/icons.less</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/project/misc.less</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/project/box.less</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/templates/doctv/html/mod_content/Speicals/default.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/doctv/html/com_k2/programs2/category.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/doctv/html/com_k2/news/category_item.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/project/item.less</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/project/project.less</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/project/main.less</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/doctv/html/com_k2/misc/item.php</file>
         </group>
     </open-files>
 </project-private>
