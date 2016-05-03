@@ -82,7 +82,7 @@ class fa_IRDate extends JDate {
 
 		// Format the date.
 		$return = parent::calendar($format, $local);
-
+//echo $this->month;
 		$jd = gregoriantojd($this->month, $this->day, $this->year);
 		$jalaliDate = self::jd_to_persian($jd);
 		$m = $jalaliDate['mon'];
@@ -103,7 +103,7 @@ class fa_IRDate extends JDate {
 			$return = str_replace(self::MONTH_ABBR, self::$month_names[$m-1] , $return);
 		}
 		if (strpos($return, self::MONTH_NAME) !== false) {
-			$return = str_replace(self::MONTH_NAME, self::$month_names[$m-1] , $return);
+			@$return = str_replace(self::MONTH_NAME, self::$month_names[$m-1] , $return);
 		}
 		if (strpos($return, self::MONTH_NUMBER) !== false) {
 			$return = str_replace(self::MONTH_NUMBER, $m , $return);
