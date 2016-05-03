@@ -56,11 +56,11 @@ $(function () {
     });
     $(".page-tools").on('click', ".clickable", function(e) {
         if (!$(this).parent().hasClass('active')) {
-            var type = $(this).attr('data-type');
+            var type = $(this).attr('data-style');
             if (type === "grid")
-                $(".box.episodes").addClass("grid");
+                $(".box.episodes, .box.subcategories").addClass("grid");
             else
-                $(".box.episodes").removeClass("grid");
+                $(".box.episodes, .box.subcategories").removeClass("grid");
             $(".page-tools").find("li").removeClass("active");
             $(this).parent().addClass("active");
         }
