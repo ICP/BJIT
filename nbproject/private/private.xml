@@ -10,6 +10,7 @@
             <file>file:/C:/xampp/htdocs/irib/doctv/modules/mod_social_links/mod_social_links.xml</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/administrator/components/com_schedules/controller.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/js/main.js</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/libraries/joomla/database/query.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/templates/doctv/blocks/mainbody.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/api/classes/convert.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/libraries/joomla/filter/output.php</file>
@@ -23,9 +24,9 @@
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/project/misc.less</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/project/box.less</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/templates/doctv/html/com_k2/programs2/category.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/templates/doctv/html/com_k2/news/category_item.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/project/item.less</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/project/project.less</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/libraries/joomla/database/query/element.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/project/main.less</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/templates/doctv/html/com_k2/misc/item.php</file>
         </group>
