@@ -82,7 +82,6 @@ class fa_IRDate extends JDate {
 
 		// Format the date.
 		$return = parent::calendar($format, $local);
-//echo $this->month;
 		$jd = gregoriantojd($this->month, $this->day, $this->year);
 		$jalaliDate = self::jd_to_persian($jd);
 		$m = $jalaliDate['mon'];
