@@ -1,5 +1,7 @@
 <?php
 
+jimport('joomla.filesystem.file');
+
 class Convert {
 
 	public $params = '{"catItemTitle":"","catItemTitleLinked":"","catItemFeaturedNotice":"","catItemAuthor":"","catItemDateCreated":"","catItemRating":"","catItemImage":"","catItemIntroText":"","catItemExtraFields":"","catItemHits":"","catItemCategory":"","catItemTags":"","catItemAttachments":"","catItemAttachmentsCounter":"","catItemVideo":"","catItemVideoWidth":"","catItemVideoHeight":"","catItemAudioWidth":"","catItemAudioHeight":"","catItemVideoAutoPlay":"","catItemImageGallery":"","catItemImageGalleryWidth":"","catItemImageGalleryHeight":"","catItemDateModified":"","catItemReadMore":"","catItemCommentsAnchor":"","catItemK2Plugins":"","itemDateCreated":"","itemTitle":"","itemFeaturedNotice":"","itemAuthor":"","itemFontResizer":"","itemPrintButton":"","itemEmailButton":"","itemSocialButton":"","itemVideoAnchor":"","itemImageGalleryAnchor":"","itemCommentsAnchor":"","itemRating":"","itemImage":"","itemImgSize":"","itemImageMainCaption":"","itemImageMainCredits":"","itemIntroText":"","itemFullText":"","itemExtraFields":"","itemDateModified":"","itemHits":"","itemCategory":"","itemTags":"","itemAttachments":"","itemAttachmentsCounter":"","itemVideo":"","itemVideoWidth":"","itemVideoHeight":"","itemAudioWidth":"","itemAudioHeight":"","itemVideoAutoPlay":"","itemVideoCaption":"","itemVideoCredits":"","itemImageGallery":"","itemImageGalleryWidth":"","itemImageGalleryHeight":"","itemNavigation":"","itemComments":"","itemTwitterButton":"","itemFacebookButton":"","itemGooglePlusOneButton":"","itemAuthorBlock":"","itemAuthorImage":"","itemAuthorDescription":"","itemAuthorURL":"","itemAuthorEmail":"","itemAuthorLatest":"","itemAuthorLatestLimit":"","itemRelated":"","itemRelatedLimit":"","itemRelatedTitle":"","itemRelatedCategory":"","itemRelatedImageSize":"","itemRelatedIntrotext":"","itemRelatedFulltext":"","itemRelatedAuthor":"","itemRelatedMedia":"","itemRelatedImageGallery":"","itemK2Plugins":""}';
@@ -144,12 +146,56 @@ class Convert {
 
 			$items[] = $results;
 		}
-
 		$app->render(200, array('items ' => $items,));
 	}
 
 	function programs($app, $type) {
-		
+		$query = $app->_db->getQuery(true);
+		$query->select('*')
+				->from($app->_db->quoteName('lookup'))
+				->where($app->_db->quoteName('disabled') . ' != ' . $app->_db->quote('1'), ' AND')
+				->where($app->_db->quoteName('id') . ' < ' . $app->_db->quote('150'));
+		$app->_db->setQuery($query);
+		$app->_db->execute();
+		$oldItems = $app->_db->loadObjectList();
+		$items = [];
+
+		$order = 1;
+		foreach ($oldItems as $item) {
+			$items[] = $item;
+			$o = new stdClass();
+			$o->name = $item->name;
+			$o->alias = self::createItemAlias($item->name);
+			$o->description = $item->description;
+			$o->parent = 2;
+			$o->extraFieldsGroup = 4;
+			$o->published = 1;
+			$o->access = 1;
+			$o->ordering = $order;
+			$o->image = $item->image;
+			$o->params = $this->categoryParams;
+			$o->trash = 0;
+			$o->plugins = 0;
+			$o->language = "*";
+
+			$results = new stdClass();
+			$results->db = $app->_db->insertObject('#__k2_categories', $o);
+			$catid = $results->id = $app->_db->insertid();
+			$results->title = $item->name;
+
+			$catImage = $results->imgOriginal = self::handleCatImagePath($item->id, $o->image);
+			$catImageUploaded = self::saveCatImage($catImage, $catid);
+
+			$updateCat = $app->_db->getQuery(true);
+			$updateCat = 'UPDATE #__k2_categories SET image = ' . $app->_db->quote($catImageUploaded) . ' WHERE id = ' . $app->_db->quote($catid);
+			$app->_db->setQuery($updateCat);
+			$results->updateCatImg = $app->_db->execute();
+
+			$results->children = $this->programItems($app, $catid, $item->id);
+			$output[] = $results;
+			$order++;
+		}
+		$app->render(200, array('items ' => $output,));
 	}
 
 	// Common Movies
@@ -215,6 +261,67 @@ class Convert {
 	 * Helper static classes
 	 */
 
+	function programItems($app, $catid, $itemCatid) {
+		$query = $app->_db->getQuery(true);
+		$query->select('*')
+				->from($app->_db->quoteName('programs'))
+				->where($app->_db->quoteName('category') . ' = ' . $app->_db->quote($itemCatid));
+		$app->_db->setQuery($query);
+		$app->_db->execute();
+		$oldPrograms = $app->_db->loadObjectList();
+		$itemOrder = 1;
+		foreach ($oldPrograms as $item) {
+			$o = new stdClass();
+			$o->title = $item->title;
+			$o->alias = self::createItemAlias($item->title);
+			$o->catid = $catid;
+			$o->published = $item->published;
+			$o->introtext = $item->summary;
+			$o->fulltext = $item->body;
+			$o->video = ($item->fileaddress) ? '{mp4}$old|' . $item->fileaddress . '{/mp4}' : null;
+			$o->extra_fields = '[{"id":"8","value":"' . $item->duration . '"},{"id":"9","value":"' . $item->production_date . '"},{"id":"10","value":"' . $item->scheduled_on . '"},{"id":"11","value":"' . $item->first_run . '"}]';
+			$o->extra_fields_search = '"' . $item->duration . ' ' . $item->production_date . ' ' . $item->scheduled_on . ' ' . $item->first_run;
+			$o->created = $item->submitted_at;
+			$o->created_by = 576;
+			$o->created_by_alias = "";
+			$o->checked_out = 0;
+			$o->checked_out_time = "0000-00-00 00:00:00";
+			$o->modified = "0000-00-00 00:00:00";
+			$o->modified_by = 576;
+			$o->publish_up = $item->startPublishing;
+			$o->publish_down = "0000-00-00 00:00:00";
+			$o->trash = 0;
+			$o->access = 1;
+			$o->ordering = $itemOrder;
+			$o->featured = 0;
+			$o->featured_ordering = 0;
+			$o->image_caption = "";
+			$o->image_credits = "";
+			$o->video_caption = "";
+			$o->video_credits = "";
+			$o->hits = 0;
+			$o->params = $this->params;
+			$o->metadesc = "";
+			$o->metadata = "";
+			$o->metakey = "";
+			$o->plugins = "";
+			$o->language = "*";
+
+			$imagePath = self::handleImagePath($item->id, $item->thumb, 'programs', true);
+			$results = new stdClass();
+			$results->db = $app->_db->insertObject('#__k2_items', $o);
+			$id = $results->id = $app->_db->insertid();
+			$results->img = self::convertImage($imagePath, $id);
+
+			$results->imgPath = $imagePath;
+			$results->imgOriginal = $item->thumb;
+
+			$items[] = $results;
+			$itemOrder++;
+		}
+		return $items;
+	}
+
 	static function handleImagePath($id, $img, $type, $isThumb = false) {
 		$type = ($type == "latest") ? "commonmovies" : $type;
 		$path = 'http://ftp4.presstv.ir/mostanad/' . $type;
@@ -225,12 +332,17 @@ class Convert {
 		return $path;
 	}
 
-	static function createItemAlias($string) {
-		return JFilterOutput::stringURLUnicodeSlug($string);
+	static function handleCatImagePath($id, $img) {
+		$path = 'http://ftp4.presstv.ir/mostanad/cat';
+		$idLen = strlen($id);
+		for ($i = 0; $i < $idLen; $i++)
+			$path .= '/' . substr($id, $i, 1);
+		$path .= '/thumb/' . $img;
+		return $path;
 	}
 
 	static function convertImage($img, $id) {
-		jimport('joomla.filesystem.file');
+
 		if (!class_exists('upload'))
 			require_once (dirname(__FILE__) . '/class.upload.php');
 		$destination = self::saveImage($img, $id);
@@ -339,6 +451,26 @@ class Convert {
 		fclose($file);
 
 		return $destination;
+	}
+
+	static function saveCatImage($img, $id) {
+		$ch = curl_init();
+		$source = $img;
+		curl_setopt($ch, CURLOPT_URL, $source);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		$data = curl_exec($ch);
+		curl_close($ch);
+
+		$destination = JPATH_BASE . '/media/k2/categories/' . $id . '.jpg';
+		$file = fopen($destination, "w+");
+		fputs($file, $data);
+		fclose($file);
+
+		return $id . '.jpg';
+	}
+
+	static function createItemAlias($string) {
+		return JFilterOutput::stringURLUnicodeSlug($string);
 	}
 
 }
