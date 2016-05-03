@@ -131,7 +131,7 @@ if ($limitstart && $limitstart > 0) {
 		<?php } ?>
 	</div>
 	<?php if (isset($this->secondary) && count($this->secondary)) { ?>
-		<section class="box episodes tiles highlights grid">
+		<section class="box episodes tiles highlights grid latest">
 			<div>
 				<ul>
 					<?php
