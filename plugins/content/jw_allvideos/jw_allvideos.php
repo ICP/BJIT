@@ -19,8 +19,8 @@ class plgContentJw_allvideos extends JPlugin {
 
 	// JoomlaWorks reference parameters
 	var $plg_name					= "jw_allvideos";
-	var $plg_copyrights_start		= "\n\n<!-- JoomlaWorks \"AllVideos\" Plugin (v4.7.0) starts here -->\n";
-	var $plg_copyrights_end			= "\n<!-- JoomlaWorks \"AllVideos\" Plugin (v4.7.0) ends here -->\n\n";
+	var $plg_copyrights_start		= "";
+	var $plg_copyrights_end			= "";
 
 	function plgContentJw_allvideos( &$subject, $params ) {
 		parent::__construct( $subject, $params );
@@ -181,8 +181,9 @@ class plgContentJw_allvideos extends JPlugin {
 
 					$tagcontent 	= preg_replace("/{.+?}/", "", $match);
 					$tagcontent		= str_replace(array('"','\'','`'), array('&quot;','&apos;','&#x60;'), $tagcontent); // Address potential XSS attacks
-					$tagparams 		= explode('|',$tagcontent);
-					$tagsource 		= trim(strip_tags($tagparams[0]));
+//					$tagparams 		= explode('|',$tagcontent);
+//					$tagsource 		= trim(strip_tags($tagparams[0]));
+					$tagsource = $tagcontent;
 
 					// Prepare the HTML
 					$output = new JObject;
@@ -377,6 +378,7 @@ class plgContentJw_allvideos extends JPlugin {
 					}
 
 					// Poster frame
+					
 					$posterFramePath = $sitePath.DS.str_replace('/',DS,$vfolder);
 					if (JFile::exists($posterFramePath.DS.$tagsource.'.jpg')) {
 						$output->posterFrame = $siteUrl.'/'.$vfolder.'/'.$tagsource.'.jpg';
@@ -387,7 +389,6 @@ class plgContentJw_allvideos extends JPlugin {
 					} else {
 						$output->posterFrame = '';
 					}
-
 					// Poster frame (remote)
 					$output->posterFrameRemote = substr($tagsource,0,-3).'jpg';
 
@@ -443,7 +444,15 @@ class plgContentJw_allvideos extends JPlugin {
 					);
 
 					// Do the element replace
-					$output->player = JFilterOutput::ampReplace(str_replace($findAVparams, $replaceAVparams, $tagReplace[$cloned_plg_tag]));
+//					print_r($replaceAVparams); die();
+					$subject = "{SITEURL}/{FOLDER}/{SOURCE}.{FILE_EXT}";
+					if (stristr($replaceAVparams[0], '$old|')) {
+						$replaceAVparams[0] = str_replace('$old|', '', $replaceAVparams[0]);
+						$subject = VIDEO_BASE . "/{SOURCE}";
+					}
+					
+//					$output->player = JFilterOutput::ampReplace(str_replace($findAVparams, $replaceAVparams, $tagReplace[$cloned_plg_tag]));
+					$output->player = JFilterOutput::ampReplace(str_replace($findAVparams, $replaceAVparams, $subject));
 
 					// Fetch the template
 					ob_start();

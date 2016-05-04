@@ -16,5 +16,6 @@ if ($app->isAdmin()) {
 	</video>
 	<?php
 } else {
+//	var_dump($output); die();
 	echo $output->player;
 }
