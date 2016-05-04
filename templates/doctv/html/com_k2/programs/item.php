@@ -21,7 +21,7 @@ JFactory::getDocument()->setTitle($this->item->category->name . ': ' . $this->it
 <article id="item" class="item episode<?php echo ($this->item->featured) ? ' featured' : ''; ?><?php if ($this->item->params->get('pageclass_sfx')) echo ' ' . $this->item->params->get('pageclass_sfx'); ?>" data-hits="<?php echo $this->item->hits; ?>" data-hits="<?php if ($this->item->params->get('itemDateModified') && intval($this->item->modified) != 0) { ?><?php echo JHTML::_('date', $this->item->modified, JText::_('K2_DATE_FORMAT_LC2')); ?><?php } ?>">
 	<?php echo $this->item->event->BeforeDisplay; ?>
 	<?php echo $this->item->event->K2BeforeDisplay; ?>
-	<div class="item-fields">
+	<div class="item-inner">
 		<header class="item-header">
 			<div class="row">
 				<div class="col-xs-6  col-md-3 item-tools">
@@ -49,7 +49,7 @@ JFactory::getDocument()->setTitle($this->item->category->name . ': ' . $this->it
 		<?php if ($this->item->params->get('itemImage') && !empty($this->item->image)) { ?>
 			<?php $video = ($this->item->params->get('itemVideo') && !empty($this->item->video)) ? $this->item->video : null; ?>
 			<div class="media-container">
-				<figure id="item-media" class="item-image"<?php echo ($video) ? ' data-video=' . $video : '' ?>>
+				<figure id="item-media" class="item-image"<?php echo ($video) ? ' data-video="' . $video . '"' : '""'; ?>>
 					<a href="<?php echo $this->item->imageXLarge; ?>" title="<?php echo JText::_('K2_CLICK_TO_PREVIEW_IMAGE'); ?>">
 						<img src="<?php echo $this->item->image; ?>" alt="<?php
 						if (!empty($this->item->image_caption))
@@ -114,7 +114,7 @@ JFactory::getDocument()->setTitle($this->item->category->name . ': ' . $this->it
 						<?php echo $this->item->introtext; ?>
 					</div>
 				<?php } ?>
-				<?php if ($this->item->params->get('itemExtraFields') && count($this->item->extra_fields)) { ?>
+				<?php /* if ($this->item->params->get('itemExtraFields') && count($this->item->extra_fields)) { ?>
 					<div class="item-fields">
 						<h3><?php echo JText::_('K2_ADDITIONAL_INFO'); ?></h3>
 						<dl class="dl-horizontal">
@@ -132,7 +132,7 @@ JFactory::getDocument()->setTitle($this->item->category->name . ': ' . $this->it
 							<?php } ?>
 						</dl>
 					</div>
-				<?php } ?>
+				<?php } */ ?>
 				<?php echo $this->item->event->AfterDisplayContent; ?>
 				<?php echo $this->item->event->K2AfterDisplayContent; ?>
 			</div>
@@ -141,12 +141,12 @@ JFactory::getDocument()->setTitle($this->item->category->name . ': ' . $this->it
 
 	<div class="item-boxes">
 		<?php if (isset($this->item->previousLink) || isset($this->item->previousLink)) { ?>
-		<section class="box tiles highlights grayscale color-on-hover more header_bg-black" data-catlink="<?php echo urldecode(JRoute::_(K2HelperRoute::getCategoryRoute($this->item->category->id.':'.urlencode($this->item->category->alias)))); ?>">
-			<header><h2>سایر قسمت‌ها</h2></header>
-			<div>
-				<ul></ul>
-			</div>
-		</section>
+			<section class="box tiles highlights latest grid grayscale color-on-hover more header_bg-black" data-catlink="<?php echo urldecode(JRoute::_(K2HelperRoute::getCategoryRoute($this->item->category->id . ':' . urlencode($this->item->category->alias)))); ?>">
+				<header><h2>سایر قسمت‌ها</h2></header>
+				<div>
+					<ul></ul>
+				</div>
+			</section>
 		<?php } ?>
 		<?php if ($this->item->params->get('itemRelated') && isset($this->relatedItems)) { ?>
 			<section class="box list">
