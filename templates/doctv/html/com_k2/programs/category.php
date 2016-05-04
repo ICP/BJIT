@@ -32,6 +32,10 @@ if ($limitstart && $limitstart > 0) {
 		$this->secondary = $itemlist;
 	}
 }
+if (count($this->secondary) === 1) {
+	header('Location: ' . $this->secondary[0]->link, true, 303);
+	exit();
+}
 ?>
 <div class="box-wrapper programs">
 	<div id="category" class="itemlist<?php if ($this->params->get('pageclass_sfx')) echo ' ' . $this->params->get('pageclass_sfx'); ?>">
