@@ -6,7 +6,7 @@
 				<div class="row">
 					<div class="col-xs-12">
 						<div class="header-schedule">
-							<a class="schedule-toggle" href="<?php JURI::base() . 'schedule'; ?>" data-toggle="toggle" data-target="#schedule"><i class="icon-play"></i><span>جدول پخش</span></a>
+							<a class="schedule-toggle" href="<?php echo JURI::base() . 'schedule'; ?>" data-toggle="toggle" data-target="#schedule"><i class="icon-play"></i><span>جدول پخش</span></a>
 						</div>
 						<div class="logo">
 							<a href="<?php echo JURI::base(); ?>" title="<?php echo $sitename; ?>"><?php echo $sitename; ?></a>
@@ -16,11 +16,11 @@
 						<?php } ?>
 						<div class="menu-toggle hidden-md hidden-lg"><a href="#" data-toggle="menuslide" data-target=".menu"><i class="icon-menu"></i></a></div>
 						<div class="search hidden-sm hidden-xs">
-							<a class="search-toggle" href="<?php JURI::base() . 'search'; ?>" data-toggle="toggle" data-target="#search" data-focus="#search input[type='text']"><i class="icon-search"></i></a>
+							<a class="search-toggle" href="<?php echo JURI::base() . 'search'; ?>" data-toggle="toggle" data-target="#search" data-focus="#search input[type='text']"><i class="icon-search"></i></a>
 						</div>
 						<ul class="header-anchors list-inline list-unstyled">
 							<li class="lang-anchor">
-								<a href="#"><span>English</span></a>
+								<a href="<?php echo JURI::base() . 'english'; ?>"><span>English</span></a>
 							</li>
 							<li class="live-anchor">
 								<a href="<?php echo JURI::base() . 'live'; ?>"><i class="icon-live"></i><span>پخش زنده</span></a>
@@ -29,7 +29,7 @@
 								<a href="#"><i class="icon-download"></i><span>کاتالوگ</span></a>
 							</li>
 							<li class="search hidden-md hidden-lg">
-								<a class="search-toggle" href="<?php JURI::base() . 'search'; ?>" data-toggle="toggle" data-target="#search" data-focus="#search input[type='text']"><i class="icon-search"></i><span>جستجو</span></a>
+								<a class="search-toggle" href="<?php echo JURI::base() . 'search'; ?>" data-toggle="toggle" data-target="#search" data-focus="#search input[type='text']"><i class="icon-search"></i><span>جستجو</span></a>
 							</li>
 						</ul>
 					</div>
