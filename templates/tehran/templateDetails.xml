@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE install PUBLIC "-//Joomla! 2.5//DTD template 1.0//EN" "http://www.joomla.org/xml/dtd/1.6/template-install.dtd">
+<extension version="3.1" type="template" client="site">
+    <name>Tehran</name>
+    <creationDate>March 2016</creationDate>
+    <author>Farid Roshan</author>
+    <authorEmail>faridv@gmail.com</authorEmail>
+    <authorUrl>http://www.faridr.ir</authorUrl>
+    <copyright>Copyright (C) 2016 IRIB DocTV. All rights reserved.</copyright>
+    <license>GNU General Public License version 2 or later</license>
+    <version>1.0.0</version>
+    <description>IRIB Tehran TV: website template</description>
+    <files>
+        <folder>html</folder>
+        <folder>libs</folder>
+        <folder>sources</folder>
+        <filename>index.html</filename>
+        <filename>index.php</filename>
+        <filename>templateDetails.xml</filename>
+        <filename>helper.php</filename>
+        <filename>error.php</filename>
+    </files>
+    <positions>
+        <position>debug</position>
+        <position>breadcrumbs</position>
+        <position>search</position>
+        <position>schedule</position>
+        <position>menu</position>
+        <position>header-left</position>
+        <position>header-right</position>
+        <position>showcase</position>
+        <position>special</position>
+        <position>content</position>
+        <position>content-left</position>
+        <position>content-center</position>
+        <position>content-right</position>
+        <position>main-top-left</position>
+        <position>main-top-right</position>
+        <position>main-left</position>
+        <position>main-right</position>
+        <position>main-bot</position>
+        <position>sidebar</position>
+        <position>footer</position>
+        <position>copyright</position>
+        <position>footer-about</position>
+        <position>multimedia_carousels</position>
+    </positions>
+    <config>
+        <fields name="params">
+            <fieldset name="advanced">
+                
+            </fieldset>
+        </fields>
+    </config>
+</extension>
