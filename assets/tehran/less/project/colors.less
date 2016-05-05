@@ -1,0 +1,39 @@
+body {
+    &.dark {
+        background: @gray;
+        p, .introtext { color: @gray-lightest; }
+        #item {
+            .page-title h2 { color: white; }
+            .item-body { color: white; font-size: @font-size-base + 2; line-height: 1.5; }
+        }
+    }
+    &.light {
+        background: white; color: @gray-lighter;
+        .wrapper.content { background: white; }
+        a {
+            color: @link-color-light;
+            &:hover { color: @link-hover-light; }
+        }
+        .box {
+            &.bg-gray {
+                background: #efefef; padding: (@grid-gutter-width / 2);
+            }
+            &.sidebar {
+                header {
+                    padding: (@grid-gutter-width / 2) 0;
+                    h2 { color: black; }
+                }
+            }
+        }
+    }
+    &.yellow {
+        background: @yellow-light;
+        .wrapper.content { background: @yellow-light; }
+        #item {
+            padding-bottom: @grid-gutter-width;
+            .item-tools a { color: @link-color-light; }
+            .item-date { color: @gray; }
+            .page-title { border-top-color: @gray-light; }
+        }
+    }
+}

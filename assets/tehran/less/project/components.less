@@ -1,0 +1,19 @@
+ul.pagination {
+    padding: 0; background: #f2f2f2; width: 100%; direction: rtl; text-align: right;
+    li, a, span { background-color: transparent; border: 0 none; z-index: 1; }
+    li {
+        &:last-child {
+            float: right;
+        }
+        span, a { color: @gray-lighter; }
+        &:first-child, &:last-child {
+            span { padding: 10px 10px; }
+            a { padding-left: 0; padding-right: 0; }
+        }
+        &.disabled {
+            > span { background-color: transparent; }
+            &:hover span { background-color: transparent; z-index: 0; }
+        }
+        &:hover a, &.active span, &.active:hover span { background: @yellow-dark; color: black; }
+    }
+}
