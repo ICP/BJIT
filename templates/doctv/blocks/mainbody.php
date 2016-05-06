@@ -156,9 +156,9 @@
 </footer>
 <script src="<?php echo JURI::base(); ?>assets/js/jquery-1.11.1.min.js"></script>
 <script src="<?php echo JURI::base(); ?>assets/js/bootstrap.min.js"></script>
-<script src="<?php echo JURI::base(); ?>assets/js/owl.carousel.js"></script>
+<script src="<?php echo JURI::base(); ?>assets/js/owl.carousel.min.js"></script>
 <script src="<?php echo JURI::base(); ?>assets/js/jquery.nanoscroller.min.js"></script>
-<script src="<?php echo JURI::base(); ?>assets/js/main.js?_=20160326"></script>
+<script src="<?php echo JURI::base(); ?>assets/js/doctv.min.js?_=20160326"></script>
 <script type="text/javascript">
     // Piwik code
 </script>
