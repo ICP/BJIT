@@ -3,6 +3,7 @@ text-area, input, button, .form-control { direction: rtl; text-align: right; }
 .ltr { direction: ltr; }
 .tooltip { font-family: Tahoma, Arial; }
 a { transition: 0.2s all; }
+p:empty { display: none; }
 .clickable { cursor: pointer; display: inline-block; }
 .grayscale.color-on-hover figure {
     &:hover img { filter: grayscale(0); -webkit-filter: grayscale(0); }
@@ -11,7 +12,7 @@ a { transition: 0.2s all; }
     img { filter: grayscale(1); -webkit-filter: grayscale(1); transition: 0.25s all; }
     .active img { filter: grayscale(0); -webkit-filter: grayscale(0); }
 }
-iframe { background: tomato; }
+._relative { position: relative; }
 .item-fields {
     margin-top: @grid-gutter-width * 3;
     table {

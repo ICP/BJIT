@@ -1,9 +1,12 @@
 #footer {
+    padding-top: (@grid-gutter-width * 2); background: @gray-dark;
     & > .wrapper { padding: (@grid-gutter-width / 2) 0; color: @gray-lightest; }
     a {
         color: @footer-link-color;
         &:hover { color: @footer-link-hover; }
     }
+    .row._relative > div { position: static; }
+    .footer-logo { display: block; position: absolute; bottom: 0; left: 0; }
     .footer-about {
         padding-top: 30px; border-left: 1px solid @gray-light;
         a { display: block; text-align: center; }
@@ -14,7 +17,7 @@
             }
         }
     }
-    .copyright-text { font-family: @headings-font-family; font-size: @copyright-font-size; text-align: center; }
+    .copyright-text { font-family: @headings-font-family; font-size: @copyright-font-size - 2; text-align: center; }
     .menu {
         font-family: @headings-font-family; font-size: @footer-menu-font-size; margin-top: 90px; font-size: 0;
         li {
@@ -30,5 +33,8 @@
                 &:hover { color: white; }
             }
         }
+    }
+    #sitemap {
+        padding: (@grid-gutter-width * 2) 0 @grid-gutter-width;
     }
 }

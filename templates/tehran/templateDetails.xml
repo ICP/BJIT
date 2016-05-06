@@ -34,10 +34,10 @@
         <position>content-left</position>
         <position>content-center</position>
         <position>content-right</position>
-        <position>main-top-left</position>
-        <position>main-top-right</position>
+        <position>main-top</position>
         <position>main-left</position>
         <position>main-right</position>
+        <position>main</position>
         <position>main-bot</position>
         <position>sidebar</position>
         <position>footer</position>

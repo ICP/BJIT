@@ -13,42 +13,46 @@ defined('_JEXEC') or die('Restricted access');
 	<ul>
 		<?php foreach ($items as $key => $item) { ?>
 			<li>
-				<?php if ($key == 0) { ?>
-					<?php if ($params->get('itemImage') || $params->get('itemIntroText')) { ?>
-						<?php if ($params->get('itemImage') && isset($item->image)) { ?>
-							<figure>
-								<a href="<?php echo $item->link; ?>">
-									<img src="<?php echo $item->image; ?>" alt="<?php echo K2HelperUtilities::cleanHtml($item->title); ?>"/>
-								</a>
-							</figure>
+				<div class="inner">
+					<?php if ($key == 0) { ?>
+						<?php if ($params->get('itemImage') || $params->get('itemIntroText')) { ?>
+							<?php if ($params->get('itemImage') && isset($item->image)) { ?>
+								<figure>
+									<a href="<?php echo $item->link; ?>">
+										<img src="<?php echo $item->image; ?>" alt="<?php echo K2HelperUtilities::cleanHtml($item->title); ?>"/>
+									</a>
+								</figure>
+							<?php } ?>
+							<div class="desc">
+								<?php if ($params->get('itemTitle')) { ?>
+									<h3><a href="<?php echo $item->link; ?>"><?php echo $item->title; ?></a></h3>
+								<?php } ?>
+								<?php if ($params->get('itemIntroText')) { ?>
+									<div class="introtext">
+										<p><?php echo $item->introtext; ?></p>
+									</div>
+								<?php } ?>
+							</div>
 						<?php } ?>
+					<?php } else { ?>
+						<figure>
+							<a href="<?php echo $item->link; ?>">
+								<img src="<?php echo $item->image; ?>" alt="<?php echo K2HelperUtilities::cleanHtml($item->title); ?>"/>
+							</a>
+						</figure>
 						<div class="desc">
 							<?php if ($params->get('itemTitle')) { ?>
 								<h3><a href="<?php echo $item->link; ?>"><?php echo $item->title; ?></a></h3>
 							<?php } ?>
-							<?php if ($params->get('itemIntroText')) { ?>
-								<div class="introtext">
-									<p><?php echo $item->introtext; ?></p>
-								</div>
-							<?php } ?>
 						</div>
 					<?php } ?>
-				<?php } else { ?>
-					<figure>
-						<a href="<?php echo $item->link; ?>">
-							<img src="<?php echo $item->image; ?>" alt="<?php echo K2HelperUtilities::cleanHtml($item->title); ?>"/>
-						</a>
-					</figure>
-					<div class="desc">
-						<?php if ($params->get('itemTitle')) { ?>
-							<h3><a href="<?php echo $item->link; ?>"><?php echo $item->title; ?></a></h3>
-						<?php } ?>
-					</div>
-				<?php } ?>
+				</div>
 			</li>
 		<?php } ?>
 	</ul>
-	<?php if ($params->get('category_link') && $params->get('mymenu_id')) { ?>
-		<a href="<?php echo JRoute::_('index.php?option=com_k2&Itemid=' . $params->get('mymenu_id')); ?>" class="btn btn-default category-link _bottom"><i class="icon-left-circle"></i> بیشتر</a>
+	<?php if ($params->get('itemReadMore')) { ?>
+		<?php if ($params->get('category_link') && $params->get('mymenu_id')) { ?>
+			<a href="<?php echo JRoute::_('index.php?option=com_k2&Itemid=' . $params->get('mymenu_id')); ?>" class="btn btn-default category-link _bottom"><i class="icon-left-circle"></i> بیشتر</a>
+		<?php } ?>
 	<?php } ?>
 <?php } ?>

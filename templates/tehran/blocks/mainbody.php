@@ -1,4 +1,4 @@
-<body id="bd" class="<?php echo $theme . ' ' . strtolower($helper->device); ?>" data-spy="scroll" data-target="#menu">
+<body id="bd" class="dark <?php echo strtolower($helper->device); ?>" data-spy="scroll" data-target="#menu">
 	<header id="header">
 		<?php if ($isFrontpage) { ?><h1 class="hide"><?php echo $sitename; ?></h1><?php } ?>
 		<div id="masthead" class="wrapper purple-light">
@@ -41,7 +41,7 @@
 <?php if ($helper->countModules('search')) { ?><jdoc:include type="modules" name="search" /><?php } ?>
 <?php if ($helper->countModules('showcase')) { ?>
 	<section id="showcase">
-		<div class="wrapper gray-dark">
+		<div class="wrapper">
 			<jdoc:include type="modules" name="showcase" style="basic" />
 		</div>
 	</section>
@@ -87,6 +87,10 @@
 						</div>
 					</div>
 				<?php } ?>
+			</div>
+		</div>
+		<div class="wrapper content gray-darkest">
+			<div class="container">
 				<?php if ($helper->countModules('main')) { ?>
 					<div id="main" class="row">
 						<div class="col-xs-12">
@@ -94,6 +98,10 @@
 						</div>
 					</div>
 				<?php } ?>
+			</div>
+		</div>
+		<div class="wrapper content gray-darker">
+			<div class="container">
 				<?php if ($helper->countModules('main-bot')) { ?>
 					<div id="main-bot" class="row">
 						<div class="col-xs-12">
@@ -106,26 +114,65 @@
 	</div>
 </main>
 <footer id="footer">
-	<?php if ($helper->countModules('newsletter')) { ?>
-		<div id="newsletter" class="wrapper gray-darker">
+	<?php // if ($helper->countModules('newsletter')) { ?>
+		<div id="newsletter" class="wrapper gray-darkest">
 			<div class="container">
 				<div class="row">
 					<div class="col-xs-12">
 						<jdoc:include type="modules" name="newsletter" />
+						<section class="box newsletter inline">
+							<header>
+								<h2>عضویت در خبرنامه</h2>
+							</header>
+							<div>
+								<form action="#" role="form" class="form-inline">
+									<div class="form-group">
+										<input class="form-control ltr" name="email" type="email" placeholder="ایمیل خود را وارد کنید" />
+										<button type="submit" class="btn btn-default">عضویت</button>
+									</div>
+								</form>
+							</div>
+						</section>
 					</div>
 				</div>
 			</div>
 		</div>
-	<?php } ?>
-	<?php if ($helper->countModules('sitemap')) { ?>
+	<?php // } ?>
+	<?php if ($helper->countModules('footer')) { ?>
 		<div id="sitemap" class="wrapper gray-dark">
 			<div class="container">
-				<div class="row">
+				<div class="row _relative">
 					<div class="col-xs-12 col-sm-10 col-md-9">
-						<jdoc:include type="modules" name="footer" />
+						<div class="row">
+							<div class="col-xs-12 col-md-4">
+								<ul>
+									<li><a href="#">صفحه اصلی</a></li>
+									<li><a href="#">درباره ما</a></li>
+									<li><a href="#">تماس با ما</a></li>
+									<li><a href="#">خبرنامه</a></li>
+								</ul>
+							</div>
+							<div class="col-xs-12 col-md-4">
+								<ul>
+									<li><a href="#">صفحه اصلی</a></li>
+									<li><a href="#">درباره ما</a></li>
+									<li><a href="#">تماس با ما</a></li>
+									<li><a href="#">خبرنامه</a></li>
+								</ul>
+							</div>
+							<div class="col-xs-12 col-md-4">
+								<ul>
+									<li><a href="#">صفحه اصلی</a></li>
+									<li><a href="#">درباره ما</a></li>
+									<li><a href="#">تماس با ما</a></li>
+									<li><a href="#">خبرنامه</a></li>
+								</ul>
+							</div>
+						</div>
+						<jdoc:include type="modules" name="sitemap" />
 					</div>
 					<div class="col-xs-12 col-sm-2 col-md-3">
-						<a href="<?php echo JURI::base(); ?>"><img src="<?php echo JURI::base() ?>assets/img/logo_footer.png" /></a>
+						<a href="<?php echo JURI::base(); ?>" class="footer-logo"><img src="<?php echo JURI::base() ?>assets/img/logo_footer_tehran.png" /></a>
 					</div>
 				</div>
 			</div>
