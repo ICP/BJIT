@@ -44,6 +44,11 @@ defined('_JEXEC') or die('Restricted access');
 							<?php if ($params->get('itemTitle')) { ?>
 								<h3><a href="<?php echo $item->link; ?>"><?php echo $item->title; ?></a></h3>
 							<?php } ?>
+								<?php if ($params->get('itemIntroText')) { ?>
+									<div class="introtext">
+										<p><?php echo $item->introtext; ?></p>
+									</div>
+								<?php } ?>
 						</div>
 					<?php } ?>
 				</div>

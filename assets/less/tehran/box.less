@@ -127,7 +127,7 @@
         color: @cyan; padding: @grid-gutter-width 0;
         h2 {
             margin: 0; font-size: 24px;
-            span { color: @beige; display: inline-block; font-size: 20px; padding-right: (@grid-gutter-width / 2); }
+            span { color: @beige; display: inline-block; font-size: 20px; padding-right: (@grid-gutter-width / 2);display: none; }
         }
     }
     & > div  { position: relative; }
@@ -248,7 +248,7 @@
                     margin: 0 -(@grid-gutter-width / 2);
                     li {
                         padding: 0 (@grid-gutter-width / 2); width: 50%; float: right;
-                        .inner { background: @gray; transition: 0.2s all;  .clearfix();}
+                        .inner { background: #343737; transition: 0.2s all;  .clearfix();}
                         &:first-child {
                             figure { float: none; width: 100%; }
                             .desc {
@@ -259,7 +259,8 @@
                                 }
                                 .introtext {
                                     height: 30px; overflow: hidden;
-                                    p {color: @gray-lighter; font-size: 13px; }
+                                    p {color: @gray-lighter; font-size: 13px; max-height: 20px; overflow: hidden; }
+                                    
                                 }
                             }
                         }
@@ -273,9 +274,9 @@
                                     &:hover { color: @yellow; }
                                 }
                             }
-                            p { max-height: 20px; overflow: hidden; }
+                            p { margin: 0; max-height: 100px; overflow: hidden; }
                         }
-                        &:hover .inner { background: @beige; }
+                        &:hover .inner { background: @gray; }
                     }
                 }
                 &.bordered {
@@ -624,7 +625,7 @@
             li {
                 figure {  }
                 .desc {
-                    background: @gray; padding: 0 (@grid-gutter-width / 2) (@grid-gutter-width/2); max-height: 112px; transition: 0.2s all;
+                    background: #343737; padding: 0 (@grid-gutter-width / 2) (@grid-gutter-width/2); max-height: 112px; transition: 0.2s all;
                     h3 {
                         margin: 0; font-size: 20px;
                         a { display: block; padding: @grid-gutter-width 0 (@grid-gutter-width/2); color: white; }
@@ -637,27 +638,30 @@
                     }
                 }
                 &:hover {
-                    .desc { background: @beige; }
+                    .desc { background: @gray; }
                 }
             }
         }
         &.blog {
             ul li {
                 .desc {
-                    height: 200px; max-height: none; background: @cyan;
-                    h3 a { color: white; }
+                    height: 200px; max-height: none; background: #343737;
+                    h3 {
+                        a { color: white; }
+                        line-height: 1.5;
+                    }
                 }
                 &:hover {
-                    .desc {  }
+                    .desc { background: @gray; }
                 }
             }
         }
     }
     &.newsletter {
-        & > div { float: left; }
+        & > div { float: left;  }
         form {
             * { display: inline-block; vertical-align: top; }
-            input { padding: 6px 18px; border: 1px solid @gray; background: @gray-dark; color: white }
+            input { padding: 6px 18px; border: 1px solid @gray; background: @gray-dark; color: white; min-width: 300px }
         }
     }
 

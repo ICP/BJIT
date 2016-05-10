@@ -14,5 +14,5 @@ $date = new JDate('now');
 ?>
 <div class="copyright-text">
 &copy;&nbsp;<?php echo JHTML::_('date', $date, JText::_('Y')); ?>.&nbsp;
-کلیه حقوق این وب‌سایت  متعلق به&nbsp;<a href="<?php echo JURI::base(); ?>">شبکه مستند سیما</a>&nbsp;می‌باشد.
+کلیه حقوق این وب‌سایت  متعلق به&nbsp;<a href="<?php echo JURI::base(); ?>">شبکه تهران</a>&nbsp;می‌باشد.
 </div>
