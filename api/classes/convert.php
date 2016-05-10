@@ -516,7 +516,7 @@ class Convert {
 	static function convertImage($img, $id) {
 
 		if (!class_exists('upload'))
-			require_once (dirname(__FILE__) . '/class.upload.php');
+			require_once (dirname(__FILE__) . '/../libraries/class.upload.php');
 		$destination = self::saveImage($img, $id);
 		$handle = new Upload($destination);
 		$handle->forbidden = array('image/tiff');
