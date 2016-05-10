@@ -38,6 +38,7 @@
 		</div>
 	</header>
 <?php if ($helper->countModules('search')) { ?><jdoc:include type="modules" name="search" /><?php } ?>
+<?php if ($helper->countModules('schedule')) { ?><jdoc:include type="modules" name="schedule" /><?php } ?>
 <?php if ($helper->countModules('showcase')) { ?>
 	<section id="showcase">
 		<div class="wrapper gray-dark">
@@ -158,6 +159,8 @@
 <script src="<?php echo JURI::base(); ?>assets/js/bootstrap.min.js"></script>
 <script src="<?php echo JURI::base(); ?>assets/js/owl.carousel.min.js"></script>
 <script src="<?php echo JURI::base(); ?>assets/js/jquery.nanoscroller.min.js"></script>
+<script src="<?php echo JURI::base(); ?>assets/js/persian-date-0.1.8.min.js"></script>
+<script src="<?php echo JURI::base(); ?>assets/js/persian-datepicker-0.4.5.min.js"></script>
 <script src="<?php echo JURI::base(); ?>assets/js/doctv.min.js?_=20160326"></script>
 <script type="text/javascript">
     // Piwik code
