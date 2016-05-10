@@ -1,0 +1,20 @@
+body { overflow-x: hidden; }
+.btn-wrapper { display: block !important; }
+.load-btn { margin-right: 10px; }
+#schedule-table { direction: rtl; text-align: right; font-family: tahoma; }
+#schedule-table div { direction: ltr; text-align: left; font-family:tahoma; }
+#schedule-table input { direction: rtl; text-align: right; font-family:tahoma; }
+#schedule-table select { direction: rtl; text-align: right; font-family:tahoma; }
+#schedule-table .title { direction: rtl; text-align: right; }
+#schedule-table .subtitle { direction: rtl; text-align: right; }
+#schedule-table .start { text-align: center; }
+#schedule-table .duration { text-align: center; }
+#schedule-table .program { text-align: center; }
+#schedule-table .created { text-align: center; }
+#schedule-table .state { text-align: center; }
+.select2 { direction: rtl; text-align: right; }
+.select-holder { margin-bottom: 10px; }
+.text-center { direction: ltr !important; text-align: center !important; }
+
+.mask { direction: ltr; text-align: right; }
+.select2-container { width: 100% !important; }

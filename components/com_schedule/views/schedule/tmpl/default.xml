@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Schedule Table" option="View">
+        <message>Single schedule table view with calendar sidebar</message>
+	</layout>
+</metadata>
