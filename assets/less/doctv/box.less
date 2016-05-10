@@ -348,6 +348,77 @@
             .btn { display: none; }
         }
     }
+    &.schedule {
+        position: absolute; z-index: 10000; left: 0; top: @header-height; margin: 0; width: 100%; height: 300px; background: @yellow; display: none;
+        ul {
+            list-style: none; margin: 0; padding: 0; margin: 0 -(@grid-gutter-width / 2);
+            li {
+                float: right; width: @container-lg / 5; padding: 40px 0; position: relative;
+                figure, .link-inner {
+                    position: absolute; top: 75px; width: 100%;
+                    & > a { max-height: 130px; overflow: hidden; }
+                    img { display: block; width: 100%; height: auto; }
+                    figcaption {
+                        font-size: 16px; font-weight: bold; line-height: 36px; text-overflow: ellipsis; word-wrap: nowrap;
+                        small { font-size: 13px; font-weight: normal; padding-right: 10px; }
+                        a { color: @gray-darkest; }
+                    }
+                }
+                .link-inner {
+                    background: @gray-dark; top: 113px; height: 130px;
+                    a {
+                        display: block; height: 100%; color: white; font-size: 20px; padding: 30px (@grid-gutter-width / 2); position: relative;
+                        &:after { display: block; content: '\E82C'; font-family: @font-family-icons; font-size: 40px; color: @yellow; position: absolute; top: 0; left: @grid-gutter-width; height: 130px; line-height: 130px; }
+                        small { color: @gray-lighter; font-size: 14px; font-weight: bold; display: block; margin-top: 8px; }
+                    }
+                }
+                a { display: block; width: 100%; height: auto; }
+                i { color: white; font-size: 16px; margin-left: 8px; }
+                .type { font-size: 13px; line-height: 32px; }
+            }
+        }
+    }
+    &.schedule-table {
+        .program-table {
+            list-style: none; padding: 0; margin: 0; border-radius: 5px; background: @text-color; overflow: hidden;
+            li {
+                .clearfix();
+                height: 150px; background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAACCAYAAAB/qH1jAAAAFElEQVQIW2NkYGD4zwABjDACRQAAK0UCAzGfJi8AAAAASUVORK5CYII=") repeat-x 0 bottom transparent; transition: 0.2s all;
+                .inner {
+                    margin-left: 150px; padding: @grid-gutter-width;
+                    figure {
+                        float: right; width: 180px;
+                        a, img { display: block; width: 100%; height: auto; background: black; }
+                    }
+                    .desc {
+                        margin-right: 200px;
+                        h3 {
+                            color: @yellow; margin-top: 0; font-size: 18px;
+                            a { color: @yellow; }
+                        }
+                        p {
+                            margin: 0;
+                            &:empty { display: none; }
+                        }
+                    }
+                }
+                &:hover, &.active {
+                    background: @yellow-light;
+                    .inner {
+                        .desc {
+                            h3 {
+                                color: black;
+                                a { color: black; }
+                            }
+                            p { color: @text-color; }
+                        }
+                    }
+                    .time { background: @yellow-light; color: black; }
+                }
+                .time { width: 150px; float: left; height: 100%; background: @yellow; text-align: center; line-height: 150px; font-size: 32px; }
+            }
+        }
+    }
     &.articles {
         .clearfix();
         margin: @grid-gutter-width 0;
@@ -594,6 +665,49 @@
                         a { color: white; font-size: 18px; }
                     }
                     p { color: lighten(@gray-lightest, 0%); margin-bottom: 0; }
+                }
+            }
+        }
+    }
+    &.tourism {
+        background: url('../data/panorama_gs.jpg') no-repeat center top transparent; height: 400px; margin: 0; padding-top: 100px;
+        .container {
+            position: relative;
+            > div { margin-right: 350px; }
+        }
+        header {
+            margin: 0; padding: 0; position: absolute; top: 0; right: 0; width: 240px; background: @yellow;
+            h2 {
+                margin: 0; color: black; line-height: 70px; padding-right: @grid-gutter-width;
+                a { display: block; color: black;  }
+            }
+        }
+        .items {
+            ul {
+                list-style: none; margin: 0 - (@grid-gutter-width/2); padding: 0;
+                li {
+                    width: 250px; float: right; padding: 0 (@grid-gutter-width / 2);
+                    figure {
+                        height: 129px; overflow: hidden;
+                        img, a { display: block; width: 100%; height: auto; }
+                    }
+                    .desc {
+                        background: black; padding: (@grid-gutter-width / 2);
+                        h3 {
+                            margin: 0;
+                            a { color: white; font-size: 13px; }
+                        }
+                    }
+                }
+            }
+            .owl-nav {
+                opacity: 1;
+                & > * {
+                    &:before { background: transparent; color: #fff; }
+                    &.owl-prev { margin-left: -20px; background: transparent; }
+                    &.owl-next {
+                        &:before { margin-right: -30px; }
+                    }
                 }
             }
         }

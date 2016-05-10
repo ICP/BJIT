@@ -116,7 +116,7 @@ $(function () {
                 , alt: img.attr('alt')
             };
             var $img = $showcaseItems.parents(".box-wrapper:first").find(".active-img img");
-            $img.parent().append('<img src="' + o.src + '" alt="' + o.alt + '" />').promise().done(function() {
+            $img.parent().append('<img src="' + o.src + '" alt="' + o.alt + '" />').promise().done(function () {
                 $img.fadeOut('slow').remove();
             });
         }
@@ -168,10 +168,92 @@ $(function () {
         , itemClass: 'item'
     });
 
-    var fullHeightHeught = 0;
-    $(".full-height").each(function () {
-        fullHeightHeught = ($(this).height() > fullHeightHeught) ? $(this).height() : fullHeightHeught;
+    equalHeights();
+
+    if ($(".feed-holder").length) {
+        $(".feed-holder").each(function () {
+            var conf = JSON.parse($(this).attr("data-conf"));
+            var $box = $(this);
+            $.ajax({
+                url: conf.url
+                , success: function (d) {
+                    loadExternalFeed(conf, d, $box);
+                }
+            });
+        });
+    }
+
+    $("#datepicker").pDatepicker({
+        enabled: true
+        , navigator: {
+            text: {
+                btnNextText: '<span>ماه بعد</span><i class="icon-left-open"></i>'
+                , btnPrevText: '<i class="icon-right-open"></i><span>ماه قبل</span>'
+            }
+            , enabled: false
+        }
+        , toolbox: false
+//        , minDate: Math.floor(Date.now() + (3600000 * (24)))
+        , maxDate: Math.floor(Date.now() - (3600000 * (24)))
+        , onSelect: function (d) {
+            date = new Date(d);
+            $("#date-input").val(date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate());
+            $("#load-schedule").submit();
+        }
     });
-    $(".full-height").height(fullHeightHeught);
+//            $("#datepicker").pDatepicker("setDate", JSON.parse($("#datepicker").attr('data-current')));
+    console.log(JSON.parse($("#datepicker").attr('data-current')));
+//    $("#datepicker").pDatepicker("setDate", );
+
+    if ($(".schedule-header-date").length) {
+        $(".schedule-header-date").appendTo('h1');
+    }
 
 });
+
+function feedCarousels($items) {
+    $items.owlCarousel({
+        margin: 0
+        , loop: true
+//        , center: true
+        , items: 3
+        , autoWidth: false
+        , rtl: true
+        , themeClass: 'carousel-theme'
+        , baseClass: 'items-carousel'
+        , itemClass: 'item'
+        , animateOut: ''
+        , nav: true
+        , navText: ["", ""]
+    });
+}
+
+function equalHeights() {
+    var fullHeightHeight = 450;
+    $(".full-height").each(function () {
+        fullHeightHeight = ($(this).height() > fullHeightHeight) ? $(this).height() : fullHeightHeight;
+    });
+    $(".full-height").height(fullHeightHeight);
+    return fullHeightHeight;
+}
+
+function loadExternalFeed(conf, data, $box) {
+    var items_tmpl = window["items_" + conf.tmpl];
+    var box_tmpl = window["box_" + conf.tmpl];
+    var items = '';
+    var count = (conf.count == '-1') ? data.items.length : conf.count;
+    for (var i = 0; i < count; i++) {
+        items += items_tmpl.replace(/{site.url}/g, data.site.url)
+                .replace(/{category.link}/g, data.category.link)
+                .replace(/{item.link}/g, data.items[i].link)
+                .replace(/{item.imageSmall}/g, data.items[i].imageSmall)
+                .replace(/{item.title}/g, data.items[i].title);
+    }
+    var box = box_tmpl.replace(/{site.url}/g, data.site.url)
+            .replace(/{site.name}/g, data.site.name)
+            .replace(/{items}/g, items);
+    $box.parent().append(box);
+    equalHeights();
+    if (typeof conf.carousel !== "undefined" && conf.carousel === true)
+        feedCarousels($box.parent().find("ul"));
+}
