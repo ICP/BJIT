@@ -31,6 +31,20 @@ html, body {
         }
     }
 }
+// Search page
+.page.search .page-tools { top: -54px; }
+.search-options {
+    position: absolute; top: -80px; right: 0; width: 60%; height: 80px; background: black;
+    .input-container {
+        padding-top: 20px; position: relative;
+        .form-group {
+            margin-left: 200px; position: relative;
+            input { background: black; border-color: @text-color; color: white; height: 36px; }
+            button { position: absolute; top: 1px; left: 0; background: @yellow; color: black; }
+        }
+        .total-count { position: absolute; top: 20px; left: 0; width: 180px; color: @gray-lightest; line-height: 36px; }
+    }
+}
 
 #showcase {  }
 #mainbody {

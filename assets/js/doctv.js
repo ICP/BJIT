@@ -201,13 +201,39 @@ $(function () {
             $("#load-schedule").submit();
         }
     });
-//            $("#datepicker").pDatepicker("setDate", JSON.parse($("#datepicker").attr('data-current')));
-    console.log(JSON.parse($("#datepicker").attr('data-current')));
-//    $("#datepicker").pDatepicker("setDate", );
 
     if ($(".schedule-header-date").length) {
         $(".schedule-header-date").appendTo('h1');
     }
+
+    var searchItemsTemplate = '<li><figure class="img"><a href="{item.link}"><img src="{item.imageSmall}" alt="{item.title}" /></a></figure><div class="desc"><h3><a href="{item.link}">{item.title}</a></h3></div></li>';
+    $(".search-form input[name=searchword]").keypress(function (e) {
+        $form = $(this).parents("form:first");
+        $results = $form.parent().find(".box");
+//        $('input[name=t]').val($.now());
+        if ($(this).val().length > 2 && e.key !== 'enter' && e.which !== 0 && !e.ctrlKey && !e.metaKey && !e.altKey) {
+            $.ajax({
+                url: base + '?task=search&format=json&limit=8'
+                , data: $form.serialize()
+                , success: function (d) {
+                    if (d.items.length > 0) {
+                        var output = '<div><ul>';
+                        $.each(d.items, function () {
+                            output += searchItemsTemplate.replace(/{item.link}/g, this.link)
+                                    .replace(/{item.imageSmall}/g, this.imageSmall)
+                                    .replace(/{item.title}/g, this.title);
+                        });
+                        output += '</ul></div>';
+                        $results.html(output);
+                        if ($results.is(":hidden"))
+                            $results.slideDown();
+                    } else {
+                        $results.slideUp();
+                    }
+                }
+            });
+        }
+    });
 
 });
 
