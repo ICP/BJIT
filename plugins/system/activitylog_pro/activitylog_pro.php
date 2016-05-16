@@ -79,8 +79,8 @@ function ualog_save( $alink, $atitle, $item )
 	}
 }
 
-$user = &JFactory::getUser();
-$db   = &JFactory::getDBO();
+$user = JFactory::getUser();
+$db   = JFactory::getDBO();
 /*
 // create log table if not exists
 $query = "CREATE TABLE IF NOT EXISTS `#__ualog` (
