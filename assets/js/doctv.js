@@ -252,7 +252,7 @@ function feedCarousels($items) {
         , nav: true
         , navText: ["", ""]
         , responsive: {
-            0: { items: 1 } 
+            0: { items: 2 } 
             , 480: { items: 2 } 
             , 980: { items: 3 } 
         }
