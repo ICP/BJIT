@@ -1,3 +1,10 @@
+.alert {
+    .close { float: left; }
+    &.alert-message {
+        .alert-variant(@alert-success-bg; @alert-success-border; @alert-success-text);
+    }
+}
+
 div.pagination { display: block; }
 ul.pagination {
     padding: 0; background: #f2f2f2; width: 100%; direction: rtl; text-align: right;
