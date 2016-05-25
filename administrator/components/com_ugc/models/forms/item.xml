@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset>
+
+        <field name="id"
+			type="text"
+			default="0"
+			label="COM_UGC_FORM_LBL_ITEM_ID"
+			readonly="true"
+			class="readonly"
+			description="JGLOBAL_FIELD_ID_DESC"
+		/> 
+
+ <field name="created"
+			type="calendar"
+			class="inputbox"
+			required="true"  default="0000-00-00 00:00:00" 
+			label="COM_UGC_FORM_LBL_ITEM_CREATED"
+			description="COM_UGC_FORM_DESC_ITEM_CREATED" 
+			hint="COM_UGC_FORM_LBL_ITEM_CREATED"
+			format=" %Y-%m-%d %H:%M:%S"
+			filter="safehtml"
+		/> 
+
+ 
+		<field name="created_by"
+			type="createdby"
+			default=""
+			label="COM_UGC_FORM_LBL_ITEM_CREATED_BY"
+			description="COM_UGC_FORM_DESC_ITEM_CREATED_BY" 
+			hint="COM_UGC_FORM_LBL_ITEM_CREATED_BY"
+		/> 
+
+ <field name="title"
+			type="text"
+			size="40"
+			class="inputbox"
+			label="COM_UGC_FORM_LBL_ITEM_TITLE"
+			description="COM_UGC_FORM_DESC_ITEM_TITLE" 
+			hint="COM_UGC_FORM_LBL_ITEM_TITLE"
+			required="true" 
+			filter="safehtml"
+		/> 
+
+ <field name="type"
+			type="text"
+			size="40"
+			class="inputbox"
+			label="COM_UGC_FORM_LBL_ITEM_TYPE"
+			description="COM_UGC_FORM_DESC_ITEM_TYPE" 
+			hint="COM_UGC_FORM_LBL_ITEM_TYPE"
+			filter="safehtml"
+		/> 
+
+ 
+		<field name="description"
+			type="textarea"
+			label="COM_UGC_FORM_LBL_ITEM_DESCRIPTION"
+			description="COM_UGC_FORM_DESC_ITEM_DESCRIPTION" 
+			hint="COM_UGC_FORM_LBL_ITEM_DESCRIPTION"
+			class="desc"
+			rows="5"
+			filter="safehtml"
+		/> 
+
+ 
+		<field name="file"
+			type="FileMultiple"
+			label="COM_UGC_FORM_LBL_ITEM_FILE"
+			description="COM_UGC_FORM_DESC_ITEM_FILE" 
+			hint="COM_UGC_FORM_LBL_ITEM_FILE"
+			upload_directory="media/ugc/uploads"
+		/> 
+
+ <field name="params"
+			type="text"
+			size="40"
+			class="inputbox"
+			label="COM_UGC_FORM_LBL_ITEM_PARAMS"
+			description="COM_UGC_FORM_DESC_ITEM_PARAMS" 
+			hint="COM_UGC_FORM_LBL_ITEM_PARAMS"
+			filter="safehtml"
+		/> 
+
+ 
+		<field name="version_note"
+			type="text"
+			label="JGLOBAL_FIELD_VERSION_NOTE_LABEL"
+			description="JGLOBAL_FIELD_VERSION_NOTE_DESC"
+			class="inputbox"
+			size="45"
+			labelclass="control-label"
+		/> 
+
+ 
+		<field name="state"
+			type="list"
+			label="JSTATUS"
+			description="JFIELD_PUBLISHED_DESC"
+			class="inputbox"
+			size="1"
+			default="0"
+		>
+			<option value="1">JPUBLISHED</option>
+			<option value="0">JUNPUBLISHED</option>
+			<option value="2">JARCHIVED</option>
+			<option value="-2">JTRASHED</option>
+		</field>
+
+	</fieldset>
+
+</form>
