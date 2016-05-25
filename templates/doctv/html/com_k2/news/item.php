@@ -23,8 +23,8 @@ defined('_JEXEC') or die;
 				<ul class="list-inline list-unstyled">
 					<?php if ($this->item->params->get('itemPrintButton') && !JRequest::getInt('print')) { ?>
 						<li>
-						   <a rel="nofollow" href="<?php echo $this->item->printLink; ?>" onclick="window.open(this.href, 'printWindow', 'width=900,height=600,location=no,menubar=no,resizable=yes,scrollbars=yes');
-	                                   return false;">
+							<a rel="nofollow" href="<?php echo $this->item->printLink; ?>" onclick="window.open(this.href, 'printWindow', 'width=900,height=600,location=no,menubar=no,resizable=yes,scrollbars=yes');
+	                                return false;">
 								<i class="icon-print"></i>
 							</a>
 						</li>
@@ -142,21 +142,53 @@ defined('_JEXEC') or die;
 	</div>
 	<?php echo $this->item->event->AfterDisplay; ?>
 	<?php echo $this->item->event->K2AfterDisplay; ?>
-	<div id="hypercomments_widget"></div>
-	<script type="text/javascript">
-        _hcwp = window._hcwp || [];
-        _hcwp.push({widget: "Stream", widget_id: <?php echo $this->item->id; ?>, hc_disable: 1, quote_disable: 1, social: "google, email, openid, yahoo", comments_level: 2});
-        (function () {
-            if ("HC_LOAD_INIT" in window)
-                return;
-            HC_LOAD_INIT = true;
-            var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "fa").substr(0, 2).toLowerCase();
-            var hcc = document.createElement("script");
-            hcc.type = "text/javascript";
-            hcc.async = true;
-            hcc.src = ("https:" == document.location.protocol ? "https" : "http") + "://w.hypercomments.com/widget/hc/74355/" + lang + "/widget.js";
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(hcc, s.nextSibling);
-        })();
-	</script>
+
+	<?php echo $this->item->event->K2CommentsBlock; ?>
+	<?php if ($this->item->params->get('itemComments') && ($this->item->params->get('comments') == '1' || ($this->item->params->get('comments') == '2')) && empty($this->item->event->K2CommentsBlock)) { ?>
+		<div class="item-comments">
+			<?php if ($this->item->params->get('commentsFormPosition') == 'above' && $this->item->params->get('itemComments') && !JRequest::getInt('print') && ($this->item->params->get('comments') == '1' || ($this->item->params->get('comments') == '2' && K2HelperPermissions::canAddComment($this->item->catid)))) { ?>
+				<?php echo $this->loadTemplate('comments_form'); ?>
+			<?php } ?>
+
+			<?php if ($this->item->numOfComments > 0 && $this->item->params->get('itemComments') && ($this->item->params->get('comments') == '1' || ($this->item->params->get('comments') == '2'))) { ?>
+				<section class="box comments comments-list">
+					<header>
+						<h2><span><?php echo $this->item->numOfComments; ?></span> <?php echo ($this->item->numOfComments > 1) ? JText::_('K2_COMMENTS') : JText::_('K2_COMMENT'); ?></h2>
+					</header>
+					<div>
+						<ul>
+							<?php foreach ($this->item->comments as $key => $comment) { ?>
+								<li class="<?php
+								echo (!$this->item->created_by_alias && $comment->userID == $this->item->created_by) ? "response" : "";
+								echo ($comment->published) ? '' : ' unpublished';
+								?>">
+										<?php if ($comment->userImage) { ?>
+										<div class="avatar">
+											<img src="<?php echo $comment->userImage; ?>" alt="<?php echo JFilterOutput::cleanText($comment->userName); ?>" />
+										</div>
+									<?php } ?>
+									<div class="comment-body">
+										<div class="info">
+											<div class="username">
+												<?php if (!empty($comment->userLink)) { ?>
+													<a href="<?php echo JFilterOutput::cleanText($comment->userLink); ?>" title="<?php echo JFilterOutput::cleanText($comment->userName); ?>" target="_blank" rel="nofollow"><?php echo $comment->userName; ?></a>
+												<?php } else { ?>
+													<?php echo $comment->userName; ?>
+												<?php } ?>
+											</div>
+											<time><?php echo JHTML::_('date', $comment->commentDate, JText::_('K2_DATE_FORMAT_LC2')); ?></time>
+										</div>
+										<p><?php echo $comment->commentText; ?></p>
+									</div>
+								</li>
+							<?php } ?>
+						</ul>
+					</div>
+					<footer>
+						<?php echo $this->pagination->getPagesLinks(); ?>
+					</footer>
+				</section>
+			<?php } ?>
+		</div>
+	<?php } ?>
 </article>
