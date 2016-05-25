@@ -1,0 +1,28 @@
+.page {
+    &.user {
+        margin-bottom: @grid-gutter-width * 3; color: white;
+        form {
+            margin-top: 60px;
+            label { color: white; }
+            input[type=text], input[type=email], input[type=password] {
+                .form-control
+            }
+            input[type=checkbox], input[type=radio] { margin-right: 0; position: static; margin-left: 8px; }
+        }
+        ul { color: @gray-lightest; }
+        .page-tools { top: -58px; }
+
+        &.login {
+            .user-links { margin-top: @grid-gutter-width * 2; }
+        }
+        
+        &.registration {
+            form .form-group {
+                &:first-child label { font-weight: normal; color: @gray-lightest; }
+                &:nth-child(n+3) {
+                    input[type=text], input[type=email], input[type=password] { direction: ltr; text-align: left; }
+                }
+            }
+        }
+    }
+}
