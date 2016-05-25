@@ -352,30 +352,27 @@ class K2HelperUtilities
 	}
 
 	public static function verifyRecaptcha() {
-
+		// Farid: Skip captcha checking
+		return true;
 		$params = JComponentHelper::getParams('com_k2');
-		$vars = array();
-		$vars['secret'] = $params->get('recaptcha_private_key');
-		$vars['response'] = $_POST['g-recaptcha-response'];
-		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, 'https://www.google.com/recaptcha/api/siteverify');
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-		curl_setopt($ch, CURLOPT_POST, true);
-		curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($vars, '', '&'));
-		$result = curl_exec($ch);
-		$info = curl_getinfo($ch);
-		curl_close($ch);
-		$response = json_decode($result);
-		if($result && $info['http_code'] == 200 && is_object($response) && isset($response->success) && $response->success == true)
-		{
-			return true;
+		try {
+			$url = 'https://www.google.com/recaptcha/api/siteverify';
+			$data = ['secret' => $params->get('recaptcha_private_key'),
+				'response' => $_POST['g-recaptcha-response'],
+				'remoteip' => $_SERVER['REMOTE_ADDR']];
+			$options = [
+				'http' => [
+					'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+					'method' => 'POST',
+					'content' => http_build_query($data)
+				]
+			];
+			$context = stream_context_create($options);
+			$result = file_get_contents($url, false, $context);
+			return json_decode($result)->success;
+		} catch (Exception $e) {
+			return null;
 		}
-		else
-		{
-			return false;
-		}
-
 	}
 
 } // End Class
