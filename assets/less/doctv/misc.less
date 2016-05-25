@@ -8,11 +8,13 @@ a { transition: 0.2s all; }
 .grayscale.color-on-hover figure {
     &:hover img { filter: grayscale(0); -webkit-filter: grayscale(0); }
 }
+.red { color: @red; }
 .grayscale {
     img { filter: grayscale(1); -webkit-filter: grayscale(1); transition: 0.25s all; }
     .active img { filter: grayscale(0); -webkit-filter: grayscale(0); }
 }
-iframe { background: tomato; }
+#system-message { margin-top: @grid-gutter-width; }
+#system-message-container:blank { display: none; } // not supported yet!
 .item-fields {
     margin-top: @grid-gutter-width * 3;
     table {
