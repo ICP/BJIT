@@ -33,8 +33,11 @@ $theme = (isset($pageSuffix) && $pageSuffix !== null) ? $pageSuffix : 'dark';
 		// Adding stylesheets and scripts to joomla head to prevent core to face an empty array
 		$this->_styleSheets[JURI::base() . 'assets/css/doctv.css'] = array('mime' => "text/css", 'media' => 'all', 'attribs' => array(), 'defer' => '', 'async' => '');
 		$this->_scripts[JURI::base() . 'assets/js/modernizr-2.6.2.min.js'] = array('mime' => "text/javascript", 'media' => 'all', 'attribs' => array(), 'defer' => '', 'async' => '');
-//		$this->_scripts[JURI::base() . 'assets/js/jquery-1.11.1.min.js'] = array('mime' => "text/javascript", 'media' => 'all', 'attribs' => array(), 'defer' => '', 'async' => '');
-		$this->_scripts[JURI::base() . 'assets/js/jwplayer.js'] = array('mime' => "text/javascript", 'media' => 'all', 'attribs' => array(), 'defer' => '', 'async' => '');
+		if (!$isFrontpage) {
+			$this->_scripts[JURI::base() . 'assets/js/jquery-1.11.1.min.js'] = array('mime' => "text/javascript", 'media' => 'all', 'attribs' => array(), 'defer' => '', 'async' => '');
+			$this->_scripts[JURI::base() . 'assets/js/jwplayer.js'] = array('mime' => "text/javascript", 'media' => 'all', 'attribs' => array(), 'defer' => '', 'async' => '');
+			$this->_scripts['https://www.google.com/recaptcha/api.js?hl=fa'] = array('mime' => "text/javascript", 'media' => 'all', 'attribs' => array(), 'defer' => '', 'async' => '');
+		}
 		JFactory::getDocument()->addScriptDeclaration('var base = "' . JURI::base() . '";');
 		?><jdoc:include type="head" />
 </head>

@@ -74,6 +74,8 @@
 								<div class="col-xs-12">
 								<?php } ?>
 								<section class="page-conntent">
+									<jdoc:include type="message" />
+									<?php /* if ($helper->countMessages($app->getMessageQueue())) { ?><jdoc:include type="message" /><?php } */ ?>
 									<jdoc:include type="component" />
 								</section>
 							</div>
@@ -155,12 +157,15 @@
 	</div>
 	<?php if ($helper->countMessages($app->getMessageQueue())) { ?><jdoc:include type="message" /><?php } ?>
 </footer>
-<script src="<?php echo JURI::base(); ?>assets/js/jquery-1.11.1.min.js"></script>
+<?php if ($isFrontpage) { ?>
+	<script src="<?php echo JURI::base(); ?>assets/js/jquery-1.11.1.min.js"></script>
+<?php } else { ?>
+	<script src="<?php echo JURI::base(); ?>assets/js/jquery.nanoscroller.min.js"></script>
+	<script src="<?php echo JURI::base(); ?>assets/js/persian-date-0.1.8.min.js"></script>
+	<script src="<?php echo JURI::base(); ?>assets/js/persian-datepicker-0.4.5.min.js"></script>
+<?php } ?>
 <script src="<?php echo JURI::base(); ?>assets/js/bootstrap.min.js"></script>
 <script src="<?php echo JURI::base(); ?>assets/js/owl.carousel.min.js"></script>
-<script src="<?php echo JURI::base(); ?>assets/js/jquery.nanoscroller.min.js"></script>
-<script src="<?php echo JURI::base(); ?>assets/js/persian-date-0.1.8.min.js"></script>
-<script src="<?php echo JURI::base(); ?>assets/js/persian-datepicker-0.4.5.min.js"></script>
 <script src="<?php echo JURI::base(); ?>assets/js/doctv.min.js?_=20160326"></script>
 <script type="text/javascript">
     // Piwik code
