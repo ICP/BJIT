@@ -67,9 +67,11 @@ $(function () {
         e.preventDefault();
     });
 
-    $(".nano").nanoScroller({
-        alwaysVisible: true
-    });
+    if ($(".nano").length) {
+        $(".nano").nanoScroller({
+            alwaysVisible: true
+        });
+    }
 
     var $tilesTmpl = '<li><figure class="img"><a href="{link}"><img src="{img}" alt="{title}" /></a></figure><div class="desc"><div class="item-header"><h3 class="item-title"><a href="{link}">{title}</a></h3></div><time class="created">{created}</time></div></li>';
     if ($(".item-boxes .box.more").length) {
@@ -104,38 +106,40 @@ $(function () {
 
     $itemWidth = $(".box.showcase > div ul").find("li:first").width();
     $showcaseItems = $(".box.showcase > div ul");
-    $showcaseItems.find("li").each(function () {
-        $(this).width($itemWidth);
-    });
-    $showcaseItems.on('changed.owl.carousel', function (property) {
-        var current = property.item.index;
-        if (current !== null) {
-            var img = $(property.target).find(".item").eq(current + 1).find("img");
-            var o = {
-                src: img.attr('src')
-                , alt: img.attr('alt')
-            };
-            var $img = $showcaseItems.parents(".box-wrapper:first").find(".active-img img");
-            $img.parent().append('<img src="' + o.src + '" alt="' + o.alt + '" />').promise().done(function () {
-                $img.fadeOut('slow').remove();
-            });
-        }
-    });
-    var sc = $showcaseItems.owlCarousel({
-        margin: 0
-        , loop: true
-        , center: true
-        , items: 1
-        , autoWidth: true
-        , rtl: true
-        , themeClass: 'carousel-theme'
-        , baseClass: 'items-carousel'
-        , startPosition: 5
-        , itemClass: 'item'
-        , animateOut: ''
-        , nav: true
-        , navText: ["", ""]
-    });
+    if ($showcaseItems.find("li").length > 1) {
+        $showcaseItems.find("li").each(function () {
+            $(this).width($itemWidth);
+        });
+        $showcaseItems.on('changed.owl.carousel', function (property) {
+            var current = property.item.index;
+            if (current !== null) {
+                var img = $(property.target).find(".item").eq(current + 1).find("img");
+                var o = {
+                    src: img.attr('src')
+                    , alt: img.attr('alt')
+                };
+                var $img = $showcaseItems.parents(".box-wrapper:first").find(".active-img img");
+                $img.parent().append('<img src="' + o.src + '" alt="' + o.alt + '" />').promise().done(function () {
+                    $img.fadeOut('slow').remove();
+                });
+            }
+        });
+        var sc = $showcaseItems.owlCarousel({
+            margin: 0
+            , loop: true
+            , center: true
+            , items: 1
+            , autoWidth: true
+            , rtl: true
+            , themeClass: 'carousel-theme'
+            , baseClass: 'items-carousel'
+            , startPosition: 5
+            , itemClass: 'item'
+            , animateOut: ''
+            , nav: true
+            , navText: ["", ""]
+        });
+    }
 
     $(".box.thumbs.carousel > div ul").owlCarousel({
         margin: 0
@@ -183,24 +187,26 @@ $(function () {
         });
     }
 
-    $("#datepicker").pDatepicker({
-        enabled: true
-        , navigator: {
-            text: {
-                btnNextText: '<span>ماه بعد</span><i class="icon-left-open"></i>'
-                , btnPrevText: '<i class="icon-right-open"></i><span>ماه قبل</span>'
+    if ($("#datepicker").length) {
+        $("#datepicker").pDatepicker({
+            enabled: true
+            , navigator: {
+                text: {
+                    btnNextText: '<span>ماه بعد</span><i class="icon-left-open"></i>'
+                    , btnPrevText: '<i class="icon-right-open"></i><span>ماه قبل</span>'
+                }
+                , enabled: false
             }
-            , enabled: false
-        }
-        , toolbox: false
+            , toolbox: false
 //        , minDate: Math.floor(Date.now() + (3600000 * (24)))
-        , maxDate: Math.floor(Date.now() - (3600000 * (24)))
-        , onSelect: function (d) {
-            date = new Date(d);
-            $("#date-input").val(date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate());
-            $("#load-schedule").submit();
-        }
-    });
+            , maxDate: Math.floor(Date.now() - (3600000 * (24)))
+            , onSelect: function (d) {
+                date = new Date(d);
+                $("#date-input").val(date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate());
+                $("#load-schedule").submit();
+            }
+        });
+    }
 
     if ($(".schedule-header-date").length) {
         $(".schedule-header-date").appendTo('h1');
@@ -235,6 +241,10 @@ $(function () {
         }
     });
 
+
+    if ($(".box.comments.comment-form").length) {
+        new CommentForm();
+    }
 });
 
 function feedCarousels($items) {
@@ -252,9 +262,9 @@ function feedCarousels($items) {
         , nav: true
         , navText: ["", ""]
         , responsive: {
-            0: { items: 2 } 
-            , 480: { items: 2 } 
-            , 980: { items: 3 } 
+            0: {items: 2}
+            , 480: {items: 2}
+            , 980: {items: 3}
         }
     });
 }
@@ -287,4 +297,18 @@ function loadExternalFeed(conf, data, $box) {
     equalHeights();
     if (typeof conf.carousel !== "undefined" && conf.carousel === true)
         feedCarousels($box.parent().find("ul"));
+}
+
+function CommentForm() {
+    this.form = $(".box.comments.comment-form form");
+    this.note = $(".box.comments.comment-form .comment-notes");
+    var __construct = function (that) {
+        $form = that.form;
+        $msg = that.note;
+        $form.find("input, textarea").on('focusin', function () {
+            if ($msg.is(":hidden"))
+                $msg.slideDown();
+//            $msg.html("").removeClass('alert-success').removeClass('alert-danger');
+        });
+    }(this);
 }
