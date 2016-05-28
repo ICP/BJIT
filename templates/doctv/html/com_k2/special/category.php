@@ -124,7 +124,7 @@ $limitstart = $request->getInt('limitstart', null);
 		</div>
 	<?php } ?>
 	<?php if (isset($this->secondary) && count($this->secondary)) { ?>
-		<div class="box tiles highlights">
+		<div class="box tiles highlights grid">
 			<div>
 				<ul>
 					<?php
