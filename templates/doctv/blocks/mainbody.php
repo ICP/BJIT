@@ -87,23 +87,23 @@
 						</div>
 					</div>
 				</div>
-			<?php } ?>
-			<?php if ($helper->countModules('content-left') || $helper->countModules('content-center') || $helper->countModules('content-right')) { ?>
-				<div class="container">
-					<div id="contents" class="row">
-						<?php if ($helper->countModules('content-right')) { ?>
-							<div id="content-right" class="col-xs-12 col-md-4"><jdoc:include type="modules" name="content-right" style="default" /></div>
-						<?php } ?>
-						<?php if ($helper->countModules('content-center')) { ?>
-							<div id="content-center" class="col-xs-12 col-md-4"><jdoc:include type="modules" name="content-center" style="default" /></div>
-						<?php } ?>
-						<?php if ($helper->countModules('content-left')) { ?>
-							<div id="content-left" class="col-xs-12 col-md-4"><jdoc:include type="modules" name="content-left" style="default" /></div>
-						<?php } ?>
-					</div>
+			</div>
+		<?php } ?>
+		<?php if ($helper->countModules('content-left') || $helper->countModules('content-center') || $helper->countModules('content-right')) { ?>
+			<div class="container">
+				<div id="contents" class="row">
+					<?php if ($helper->countModules('content-right')) { ?>
+						<div id="content-right" class="col-xs-12 col-md-4"><jdoc:include type="modules" name="content-right" style="default" /></div>
+					<?php } ?>
+					<?php if ($helper->countModules('content-center')) { ?>
+						<div id="content-center" class="col-xs-12 col-md-4"><jdoc:include type="modules" name="content-center" style="default" /></div>
+					<?php } ?>
+					<?php if ($helper->countModules('content-left')) { ?>
+						<div id="content-left" class="col-xs-12 col-md-4"><jdoc:include type="modules" name="content-left" style="default" /></div>
+					<?php } ?>
 				</div>
-			<?php } ?>
-		</div>
+			</div>
+		<?php } ?>
 		<?php if ($helper->countModules('main-top-left') || $helper->countModules('main-top-right')) { ?>
 			<div class="wrapper main-top gray-darker">
 				<div class="container">
@@ -137,6 +137,7 @@
 				<jdoc:include type="modules" name="main-bot" />
 			</div>
 		<?php } ?>
+	</div>
 </main>
 <footer id="footer">
 	<div class="wrapper gray-darker">
