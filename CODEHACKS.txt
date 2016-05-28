@@ -5,3 +5,4 @@
 29 April 2016 - components/com_k2/views/itemlist/view.json.php:444 (added item time)
 21 May 2016   - plugins/user/k2/k2.php:241 (fixed register page redirect url)
 21 May 2016   - components/com_k2/helpers/utilities.php:355 (changed recaptcha verification method - temp)
+28 May 2016   - components/com_k2/helpers/utilities.php:26 (changed user placeholder image path)

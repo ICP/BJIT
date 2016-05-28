@@ -23,9 +23,9 @@ class K2HelperUtilities
 		$params = K2HelperUtilities::getParams('com_k2');
 
 		// Check for placeholder overrides
-		if (JFile::exists(JPATH_SITE.DS.'templates'.DS.$mainframe->getTemplate().DS.'images'.DS.'placeholder'.DS.'user.png'))
+		if (JFile::exists(JPATH_SITE.DS.'assets'.DS.'img'.DS.'placeholder.png'))
 		{
-			$avatarPath = 'templates/'.$mainframe->getTemplate().'/images/placeholder/user.png';
+			$avatarPath = 'assets/img/placeholder.png';
 		}
 		else
 		{
