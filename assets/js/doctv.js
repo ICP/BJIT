@@ -302,13 +302,53 @@ function loadExternalFeed(conf, data, $box) {
 function CommentForm() {
     this.form = $(".box.comments.comment-form form");
     this.note = $(".box.comments.comment-form .comment-notes");
+    this.result = $(".box.comments.comment-form .comment-result");
+
+    this.clearForm = function($form) {
+        $form.find("input[type=text], input[type=email], textarea").val('');
+        if (typeof grecaptcha == "object")
+            grecaptcha.reset();
+        return true;
+    };
+    
     var __construct = function (that) {
         $form = that.form;
         $msg = that.note;
+        $result = that.result;
         $form.find("input, textarea").on('focusin', function () {
             if ($msg.is(":hidden"))
                 $msg.slideDown();
-//            $msg.html("").removeClass('alert-success').removeClass('alert-danger');
+        });
+        $form.on('submit', function (e) {
+            var $this = $(this);
+            
+            if ($(".g-recaptcha-response").length)
+                if ($(".g-recaptcha-response").val() === "")
+                    return false;
+            
+            var data = $this.serialize();
+            $.ajax({
+                url: $this.attr('action')
+                , data: data
+                , type: $this.attr('method')
+                , success: function(d) {
+                    var msg = JSON.parse(d);
+                    $result.html(msg.message);
+                    switch(msg.cssClass) {
+                        case 'k2FormLogSuccess':
+                            $result.removeClass('alert-danger').addClass('alert-success');
+                            break;
+                        case 'k2FormLogError':
+                            $result.addClass('alert-danger').removeClass('alert-success');
+                            break;
+                    }
+                    if ($result.is(":hidden"))
+                        $result.slideDown();
+                    that.clearForm($this);
+                }
+            });
+            e.preventDefault();
+            return false;
         });
     }(this);
 }
