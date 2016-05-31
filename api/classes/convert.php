@@ -40,7 +40,8 @@ class Convert {
 		$query = $app->_db->getQuery(true);
 		$query->select('*')
 				->from($app->_db->quoteName('products'))
-				->where($app->_db->quoteName('published') . ' != ' . $app->_db->quote('0'));
+				->where($app->_db->quoteName('published') . ' != ' . $app->_db->quote('0'), ' AND')
+				->where('id > 162');
 		$app->_db->setQuery($query);
 		$app->_db->execute();
 		$oldItems = $app->_db->loadObjectList();
@@ -97,7 +98,7 @@ class Convert {
 		$query = $app->_db->getQuery(true);
 		$query->select('*')
 				->from($app->_db->quoteName('news'))
-				->where($app->_db->quoteName('id') . ' > ' . $app->_db->quote('726'));
+				->where($app->_db->quoteName('id') . ' > ' . $app->_db->quote('749'));
 //				->where($app->_db->quoteName('published') . ' != ' . $app->_db->quote('0'));
 		$app->_db->setQuery($query);
 		$app->_db->execute();
@@ -160,7 +161,7 @@ class Convert {
 		$query->select('*')
 				->from($app->_db->quoteName('lookup'))
 				->where($app->_db->quoteName('disabled') . ' != ' . $app->_db->quote('1'), ' AND')
-				->where($app->_db->quoteName('id') . ' > ' . $app->_db->quote('163'));
+				->where($app->_db->quoteName('id') . ' > ' . $app->_db->quote('298'));
 		$app->_db->setQuery($query);
 		$app->_db->execute();
 		$oldItems = $app->_db->loadObjectList();
@@ -208,7 +209,8 @@ class Convert {
 		$query = $app->_db->getQuery(true);
 		$query->select('*')
 				->from($app->_db->quoteName('programs'))
-				->where($app->_db->quoteName('category') . ' = ' . $app->_db->quote($itemCatid));
+				->where($app->_db->quoteName('category') . ' = ' . $app->_db->quote($itemCatid), ' AND')
+				->where('id > 3443');
 		$app->_db->setQuery($query);
 		$app->_db->execute();
 		$oldPrograms = $app->_db->loadObjectList();
@@ -277,7 +279,8 @@ class Convert {
 				->where($app->_db->quoteName('category') . ' = ' . $app->_db->quote('0'), ' AND')
 				->where($app->_db->quoteName('published') . ' != ' . $app->_db->quote('0'), ' AND')
 				->where($app->_db->quoteName('episode') . ' IS NULL ', ' AND')
-				->where($app->_db->quoteName('title') . ' NOT LIKE ' . $app->_db->quote('%\_%'));
+				->where($app->_db->quoteName('title') . ' NOT LIKE ' . $app->_db->quote('%\_%'), ' AND')
+				->where('id > 3443');
 		$app->_db->setQuery($query);
 		$app->_db->execute();
 		$oldItems = $app->_db->loadObjectList();
@@ -374,7 +377,8 @@ class Convert {
 	function schedule($app) {
 		$query = $app->_db->getQuery(true);
 		$query->select('*')
-				->from($app->_db->quoteName('timetable'));
+				->from($app->_db->quoteName('timetable'))
+				->where('id > 5451');
 		$app->_db->setQuery($query);
 		$app->_db->execute();
 		$oldItems = $app->_db->loadObjectList();
@@ -435,7 +439,8 @@ class Convert {
 	function latest($app, $type) {
 		$query = $app->_db->getQuery(true);
 		$query->select('*')
-				->from($app->_db->quoteName('common_movies'));
+				->from($app->_db->quoteName('common_movies'))
+				->where('id > 408');
 //				->where($app->_db->quoteName('published') . ' != ' . $app->_db->quote('0'));
 		$app->_db->setQuery($query);
 		$app->_db->execute();
