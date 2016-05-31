@@ -449,6 +449,9 @@ class plgContentJw_allvideos extends JPlugin {
 					if (stristr($replaceAVparams[0], '$old|')) {
 						$replaceAVparams[0] = str_replace('$old|', '', $replaceAVparams[0]);
 						$subject = VIDEO_BASE . "/{SOURCE}";
+					} else {
+						$replaceAVparams[0] = str_replace(JURI::root(), '', $replaceAVparams[0]);
+						$subject = VIDEO_BASE . "{SOURCE}";
 					}
 					
 //					$output->player = JFilterOutput::ampReplace(str_replace($findAVparams, $replaceAVparams, $tagReplace[$cloned_plg_tag]));
