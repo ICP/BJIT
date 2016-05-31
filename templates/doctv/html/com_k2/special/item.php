@@ -23,15 +23,15 @@ defined('_JEXEC') or die;
 				<ul class="list-inline list-unstyled">
 					<?php if ($this->item->params->get('itemPrintButton') && !JRequest::getInt('print')) { ?>
 						<li>
-						   <a rel="nofollow" href="<?php echo $this->item->printLink; ?>" onclick="window.open(this.href, 'printWindow', 'width=900,height=600,location=no,menubar=no,resizable=yes,scrollbars=yes');
-	                                   return false;">
+							<a rel="nofollow" href="<?php echo $this->item->printLink; ?>" onclick="window.open(this.href, 'printWindow', 'width=900,height=600,location=no,menubar=no,resizable=yes,scrollbars=yes');
+	                                return false;">
 								<i class="icon-print"></i>
 							</a>
 						</li>
 					<?php } ?>
-					<li><a href="#"><i class="icon-facebook"></i></a></li>
-					<li><a href="#"><i class="icon-twitter"></i></a></li>
-					<li><a href="#"><i class="icon-gplus"></i></a></li>
+					<li><a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo JUri::current(); ?>" target="_blank"><i class="icon-facebook"></i></a></li>
+					<li><a href="https://twitter.com/home?status=<?php echo $this->item->title; ?> - <?php JUri::current(); ?>" target="_blank"><i class="icon-twitter"></i></a></li>
+					<li><a href="https://plus.google.com/share?url=<?php echo JUri::current(); ?>" target="_blank"><i class="icon-gplus"></i></a></li>
 				</ul>
 			</div>
 			<?php if ($this->item->params->get('itemDateCreated')) { ?>
@@ -194,7 +194,7 @@ defined('_JEXEC') or die;
 	</div>
 	<?php echo $this->item->event->AfterDisplay; ?>
 	<?php echo $this->item->event->K2AfterDisplay; ?>
-	
+
 	<?php echo $this->item->event->K2CommentsBlock; ?>
 	<?php if ($this->item->params->get('itemComments') && ($this->item->params->get('comments') == '1' || ($this->item->params->get('comments') == '2')) && empty($this->item->event->K2CommentsBlock)) { ?>
 		<div class="item-comments">

@@ -34,9 +34,9 @@ JFactory::getDocument()->setTitle($this->item->category->name . ': ' . $this->it
 								</a>
 							</li>
 						<?php } ?>
-						<li><a href="#"><i class="icon-facebook"></i></a></li>
-						<li><a href="#"><i class="icon-twitter"></i></a></li>
-						<li><a href="#"><i class="icon-gplus"></i></a></li>
+						<li><a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo JUri::current(); ?>" target="_blank"><i class="icon-facebook"></i></a></li>
+						<li><a href="https://twitter.com/home?status=<?php echo $this->item->title; ?> - <?php JUri::current(); ?>" target="_blank"><i class="icon-twitter"></i></a></li>
+						<li><a href="https://plus.google.com/share?url=<?php echo JUri::current(); ?>" target="_blank"><i class="icon-gplus"></i></a></li>
 					</ul>
 				</div>
 				<?php if ($this->item->params->get('itemDateCreated')) { ?>
@@ -115,24 +115,24 @@ JFactory::getDocument()->setTitle($this->item->category->name . ': ' . $this->it
 					</div>
 				<?php } ?>
 				<?php /* if ($this->item->params->get('itemExtraFields') && count($this->item->extra_fields)) { ?>
-					<div class="item-fields">
-						<h3><?php echo JText::_('K2_ADDITIONAL_INFO'); ?></h3>
-						<dl class="dl-horizontal">
-							<?php foreach ($this->item->extra_fields as $key => $extraField) { ?>
-								<?php if ($extraField->value != '') { ?>
-									<dt class="field-label type<?php echo $extraField->type; ?> group<?php echo $extraField->group; ?>">
-									<?php if ($extraField->type == 'header') { ?>
-										<h4 class="field-title"><?php echo $extraField->name; ?></h4>
-									<?php } else { ?>
-										<?php echo $extraField->name; ?>
-									<?php } ?>
-									</dt>
-									<dd class="field-value"><?php echo $extraField->value; ?></dd>
-								<?php } ?>
-							<?php } ?>
-						</dl>
-					</div>
-				<?php } */ ?>
+				  <div class="item-fields">
+				  <h3><?php echo JText::_('K2_ADDITIONAL_INFO'); ?></h3>
+				  <dl class="dl-horizontal">
+				  <?php foreach ($this->item->extra_fields as $key => $extraField) { ?>
+				  <?php if ($extraField->value != '') { ?>
+				  <dt class="field-label type<?php echo $extraField->type; ?> group<?php echo $extraField->group; ?>">
+				  <?php if ($extraField->type == 'header') { ?>
+				  <h4 class="field-title"><?php echo $extraField->name; ?></h4>
+				  <?php } else { ?>
+				  <?php echo $extraField->name; ?>
+				  <?php } ?>
+				  </dt>
+				  <dd class="field-value"><?php echo $extraField->value; ?></dd>
+				  <?php } ?>
+				  <?php } ?>
+				  </dl>
+				  </div>
+				  <?php } */ ?>
 				<?php echo $this->item->event->AfterDisplayContent; ?>
 				<?php echo $this->item->event->K2AfterDisplayContent; ?>
 			</div>
@@ -173,7 +173,7 @@ JFactory::getDocument()->setTitle($this->item->category->name . ': ' . $this->it
 	</div>
 	<?php echo $this->item->event->AfterDisplay; ?>
 	<?php echo $this->item->event->K2AfterDisplay; ?>
-	
+
 	<?php echo $this->item->event->K2CommentsBlock; ?>
 	<?php if ($this->item->params->get('itemComments') && ($this->item->params->get('comments') == '1' || ($this->item->params->get('comments') == '2')) && empty($this->item->event->K2CommentsBlock)) { ?>
 		<div class="item-comments">
