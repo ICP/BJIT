@@ -21,7 +21,7 @@ $app->map('/programepisodes(/)(:catid(/))', function ($catid) use ($app) {
 	if ($catid) {
 		Items::getEpisodesList($app, $catid);
 	} else {
-		$app->render(404, array('msg' => 'No items found for category with id =' . ' ' . $catid));
+		$app->render(404, array('msg' => 'No items found for category with id =' . ' ' . $catid, 'error' => true));
 	}
 })->via('GET');
 
@@ -48,16 +48,24 @@ $app->map('/schedules(/)(:date(/))', function ($date = null) use ($app) {
 		$date = (!$date) ? date('Y-m-d', time()) : $date;
 		Schedule::add($app, $date);
 	}
-	$app->render(403, array('msg' => 'Not authorized', 'user' => $user));
+	$app->render(403, array('msg' => 'Not authorized', 'error' => true));
 })->via('POST');
-$app->map('/schedules(/)', function ($id = null) use ($app) {
+$app->map('/schedules(/)(:id(/))', function ($id = null) use ($app) {
 	if (!$id) {
-		$app->render(404, array('msg' => 'Item not found id =' . ' ' . $id));
+		$app->render(404, array('msg' => 'Item not found id =' . ' ' . $id, 'error' => true));
 	}
-//	include 'classes/schedule.php';
-//	$date = (!$date) ? date('Y-m-d', time()) : $date;
-//	Schedule::getItems($app, $date);
 })->via('PUT');
+$app->map('/schedules(/)(:id(/))', function ($id = null) use ($app) {
+	if (!$id) {
+		$app->render(404, array('msg' => 'Item not found id =' . ' ' . $id, 'error' => true));
+	} else {
+		$user = JFactory::getUser();
+		if ($user->authorise('core.edit', 'com_content')) {
+			Schedule::delete($app, $id);
+		}
+	}
+	$app->render(403, array('msg' => 'Not authorized', 'error' => true));
+})->via('DELETE');
 
 // Users
 $app->map('/user(/)', function () use ($app) {
@@ -75,7 +83,7 @@ $app->map('/user(/)', function () use ($app) {
 		echo "Access denied"; // for testing purposes
 	}
 
-	$app->render(403, array('msg' => 'Not authorized', 'user' => $user, 'session' => $session, 'table' => $table));
+	$app->render(403, array('msg' => 'Not authorized', 'error' => true));
 })->via('GET');
 $app->map('/ugc(/)(:type(/))', function ($type = null) use ($app) {
 	include 'classes/ugc.php';

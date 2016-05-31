@@ -23,15 +23,25 @@ class Schedule {
 		self::render($app, $items, 200, 'items');
 	}
 
-	function getItem($app, $id) {
-		
+	public static function getItem($app, $id) {
+		$query = $app->_db->getQuery(true);
+		$query->select('s.id, s.state, s.revision, s.title, s.subtitle, s.program_id, s.episode, s.start, s.created, s.duration, u.name as created_by, u.id as owner_id, p.alias as program_alias, p.image as program_image, IF (s.episode <> 0, e.title, "") as episode_title, IF (s.episode <> 0, e.alias, "") as episode_alias, IF (s.episode <> 0, e.introtext, "") as introtext')
+				->from($app->_db->quoteName('#__schedules') . ' s')
+				->join('LEFT', $app->_db->quoteName('#__k2_categories') . 'AS p ON s.program_id = p.id')
+				->join('LEFT', $app->_db->quoteName('#__k2_items') . 'AS e on s.episode = e.id')
+				->join('LEFT', $app->_db->quoteName('#__users') . 'AS u on s.created_by = u.id')
+				->where('s.id = ' . $app->_db->quote($id));
+		$app->_db->setQuery($query);
+		$app->_db->execute();
+		return $app->_db->loadObject();
+//		$items = self::findCurrent(self::checkAccess($app->_db->loadObjectList()));
 	}
 
 	public static function findCurrent($items) {
 		$time = time();
 		foreach ($items as $item) {
 			$item->start_time = $start = strtotime($item->start);
-			
+
 			sscanf($item->duration, "%d:%d:%d", $hours, $minutes, $seconds);
 			$time_seconds = isset($seconds) ? $hours * 3600 + $minutes * 60 + $seconds : $hours * 60 + $minutes;
 
@@ -84,8 +94,42 @@ class Schedule {
 		$app->render(200, array('db' => $results, 'item' => $o, 'msg' => 'Record inserted!', 'backup' => $backup));
 	}
 
+	function delete($app, $id) {
+		// Select item
+		$item = self::getItem($app, $id);
+		if (!$item) {
+			$app->render(404, array('msg' => 'Record not found', 'error' => true));
+		}
+		// Get a backup width new state (-1)
+		$item->state = '-1';
+		$item->revision = $item->revision + 1;
+		$item->modified = date('Y-m-d H:i:s', time());
+		$item->modified_by = JFactory::getUser()->id;
+		
+		$item->uid = '';
+		$item->subtitle = $item->episode_title;
+		$item->created_by = $item->owner_id;
+		unset($item->owner_id);
+		unset($item->episode_title);
+		unset($item->episode_alias);
+		unset($item->introtext);
+		unset($item->program_alias);
+		unset($item->program_image);
+		
+//		var_dump($item); die();
+		$backup = self::getBackUp($app, $id, $item);
+		// Delete item
+		$query = $app->_db->getQuery(true);
+		$query->delete($app->_db->quoteName('#__schedules'))
+				->where('id = ' . $id);
+		$app->_db->setQuery($query);
+		$result = $app->_db->execute();
+		$app->render(200, array('db' => $result, 'msg' => 'Record deleted!', 'backup' => $backup, 'item' => $item));
+	}
+
 	static function getBackUp($app, $id, $data) {
-		$data->id = $id;
+		unset($data->id);
+		$data->sid = $id;
 		$results = $app->_db->insertObject('#__schedules_versions', $data);
 		return $results;
 	}

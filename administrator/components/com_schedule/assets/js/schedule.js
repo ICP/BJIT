@@ -51,6 +51,14 @@ jQuery(function ($) {
                                 $("#episode-list").append('<option value="' + this.id + '">' + this.title + '</option>');
                             });
                             $("#episode-list").removeClass('disabled');
+                            $("#episode-list").on('change', function (e) {
+                                eSelected = $("#episode-list").find("option:selected").val();
+                                if (eSelected == 0) {
+                                    $("input[name=subtitle]").removeClass('disabled');
+                                } else {
+                                    $("input[name=subtitle]").addClass('disabled').val($("#episode-list").find("option:selected").text());
+                                }
+                            });
                         }
                     });
                 }
@@ -76,6 +84,19 @@ jQuery(function ($) {
                 var date = $("input[name=calendar]").val();
                 load(date);
                 break;
+        }
+        e.preventDefault();
+    });
+    $(document).on('click', "a.delete", function (e) {
+        var id = $(this).attr('data-id');
+        if (confirm('Are you sure you want to permanently delete this item?')) {
+            $.ajax({
+                url: base + 'api/schedules/' + id
+                , type: 'delete'
+                , success: function (d) {
+                    load();
+                }
+            })
         }
         e.preventDefault();
     });
@@ -142,7 +163,7 @@ jQuery(function ($) {
                                 .replace(/{start}/, this.start.split(" ")[1])
                                 .replace(/{duration}/, this.duration)
                                 .replace(/{state}/, (this.state == 1) ? 'Published' : 'Unpublished')
-                                .replace(/{program}/, '<a href="' + base + 'programs/' + this.episode + '" target="_blank">Link</a>')
+                                .replace(/{program}/, '<a href="' + base + 'programs/' + this.episode + '" target="_blank"><i class="icon-link"></i></a>&nbsp;&nbsp;<a class="delete" data-id="' + this.id + '" href="#"><i class="icon-trash"></i></a>')
                                 .replace(/{created}/, this.created);
                         $table.append($item);
                     });
