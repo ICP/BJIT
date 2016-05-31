@@ -137,6 +137,17 @@
 				<jdoc:include type="modules" name="main-bot" />
 			</div>
 		<?php } ?>
+		<?php if ($helper->countModules('main-bot2')) { ?>
+			<div class="wrapper main-bot gray">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+							<jdoc:include type="modules" name="main-bot2" style="default" />
+						</div>
+					</div>
+				</div>
+			</div>
+		<?php } ?>
 	</div>
 </main>
 <footer id="footer">
@@ -161,9 +172,10 @@
 <?php if ($isFrontpage) { ?>
 	<script src="<?php echo JURI::base(); ?>assets/js/jquery-1.11.1.min.js"></script>
 <?php } else { ?>
-	<script src="<?php echo JURI::base(); ?>assets/js/jquery.nanoscroller.min.js"></script>
+	<script src="<?php echo JURI::base(); ?>assets/js/select2.full.min.js"></script>
 	<script src="<?php echo JURI::base(); ?>assets/js/persian-date-0.1.8.min.js"></script>
 	<script src="<?php echo JURI::base(); ?>assets/js/persian-datepicker-0.4.5.min.js"></script>
+	<script src="<?php echo JURI::base(); ?>assets/js/jquery.nanoscroller.min.js"></script>
 <?php } ?>
 <script src="<?php echo JURI::base(); ?>assets/js/bootstrap.min.js"></script>
 <script src="<?php echo JURI::base(); ?>assets/js/owl.carousel.min.js"></script>
