@@ -13,7 +13,7 @@ defined('_JEXEC') or die;
 				echo (!$this->item->created_by_alias && $comment->userID == $this->item->created_by) ? "response" : "";
 				echo ($comment->published) ? '' : ' unpublished';
 				?>">
-						<?php if ($comment->userImage) { ?>
+					<?php if ($comment->userImage) { ?>
 						<div class="avatar">
 							<img src="<?php echo $comment->userImage; ?>" alt="<?php echo JFilterOutput::cleanText($comment->userName); ?>" />
 						</div>
