@@ -86,7 +86,7 @@ class JConfig {
 	public $session_memcache_server_port = '11211';
 	public $session_memcached_server_host = 'localhost';
 	public $session_memcached_server_port = '11211';
-	public $frontediting = '1';
+	public $frontediting = '0';
 	public $cookie_domain = '';
 	public $cookie_path = '';
 	public $asset_id = '1';
