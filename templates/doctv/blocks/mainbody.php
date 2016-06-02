@@ -26,7 +26,7 @@
 								<a href="<?php echo JURI::base() . 'live'; ?>"><i class="icon-live"></i><span>پخش زنده</span></a>
 							</li>
 							<li class="catalog-anchor">
-								<a href="#"><i class="icon-download"></i><span>کاتالوگ</span></a>
+								<a href="<?php echo JURI::base() . 'catalog'; ?>"><i class="icon-download"></i><span>کاتالوگ</span></a>
 							</li>
 							<li class="search hidden-md hidden-lg">
 								<a class="search-toggle" href="<?php echo JURI::base() . 'search'; ?>" data-toggle="toggle" data-target="#search" data-focus="#search input[type='text']"><i class="icon-search"></i><span>جستجو</span></a>
