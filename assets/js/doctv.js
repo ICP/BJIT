@@ -104,7 +104,7 @@ $(function () {
         e.preventDefault();
         return false;
     });
-    $(".upload-form form").on('focusin', "input, textarea", function(e) {
+    $(".upload-form form").on('focusin', "input, textarea", function (e) {
         if ($(this).parents("form").attr("data-eligibility") === "false")
             $(this).parents("form").find(".alert.alert-danger").fadeIn();
     });
@@ -171,11 +171,11 @@ $(function () {
                 sizeLimit: 20971520 // 20M
             }
             , debug: true
-        }).on('complete', function(event, id, filename, responseJSON) {
+        }).on('complete', function (event, id, filename, responseJSON) {
             if (responseJSON.success) {
                 console.log(event, id, filename, responseJSON);
                 $("input[name=file]").val(responseJSON.uuid + '/' + responseJSON.uploadName);
-                $(".qq-upload-button-selector").fadeOut(function() {
+                $(".qq-upload-button-selector").fadeOut(function () {
                     $(this).remove();
                 });
             }
@@ -338,6 +338,10 @@ var BoxHelper = {
                 , animateOut: ''
                 , nav: true
                 , navText: ["", ""]
+                , autoplay: true
+                , autoplayTimeout: 7000
+                , autoplayHoverPause: true
+
             });
         }
         $(".box.showcase > .carousel ul").find("li").each(function () {
@@ -488,3 +492,102 @@ function Feeds($obj) {
         });
     }(this);
 }
+
+
+/*!
+ * TrplClick - real Triple Click event plugin for jQuery
+ * Version: 1.1.0
+ * Author: @deliaz https://github.com/Deliaz
+ * Licensed under the MIT license
+ */
+
+"use strict";
+(function ($) {
+    $.event.special.trplclick = {
+        setup: function () {
+            $(this).bind('click', clickHandler);
+        },
+        teardown: function () {
+            $(this).unbind('click', clickHandler);
+        },
+        add: function (obj) {
+            var oldHandler = obj.handler;
+
+            // Default settings
+            var defaults = {
+                minClickInterval: 100,
+                maxClickInterval: 500,
+                minPercentThird: 85.0,
+                maxPercentThird: 130.0
+            };
+
+            // Runtime
+            var hasOne = false,
+                    hasTwo = false,
+                    time = [0, 0, 0],
+                    diff = [0, 0];
+
+            obj.handler = function (event, data) {
+                var now = Date.now(),
+                        conf = $.extend({}, defaults, event.data);
+
+                // Clear runtime after timeout fot the 2nd click
+                if (time[1] && now - time[1] >= conf.maxClickInterval) {
+                    obj.clearRuntime();
+                }
+                // Clear runtime after timeout fot the 3rd click
+                if (time[0] && time[1] && now - time[0] >= conf.maxClickInterval) {
+                    obj.clearRuntime();
+                }
+
+                // Catch the third click
+                if (hasTwo) {
+                    time[2] = Date.now();
+                    diff[1] = time[2] - time[1];
+
+                    var deltaPercent = 100.0 * (diff[1] / diff[0]);
+
+                    if (deltaPercent >= conf.minPercentThird && deltaPercent <= conf.maxPercentThird) {
+                        oldHandler.apply(this, arguments);
+                    }
+                    obj.clearRuntime();
+                }
+
+                // Catch the first click
+                else if (!hasOne) {
+                    hasOne = true;
+                    time[0] = Date.now();
+                }
+
+                // Catch the second click
+                else if (hasOne) {
+                    time[1] = Date.now();
+                    diff[0] = time[1] - time[0];
+
+                    (diff[0] >= conf.minClickInterval && diff[0] <= conf.maxClickInterval) ?
+                            hasTwo = true : obj.clearRuntime();
+                }
+
+            };
+
+            /**
+             * Clear runtime
+             */
+            obj.clearRuntime = function () {
+                hasOne = false;
+                hasTwo = false;
+                time[0] = 0;
+                time[1] = 0;
+                time[2] = 0;
+                diff[0] = 0;
+                diff[1] = 0;
+                //cuz i'm thug
+            };
+        }
+    };
+
+    function clickHandler(event) {
+        $(this).triggerHandler('trplclick', [event.data]);
+    }
+
+})(jQuery);
