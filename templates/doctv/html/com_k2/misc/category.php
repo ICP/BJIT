@@ -32,6 +32,11 @@ if ($limitstart && $limitstart > 0) {
 		$this->secondary = $itemlist;
 	}
 }
+if ($this->category->alias == "catalog" || $this->category->alias == "کاتالوگ") {
+	if (count($this->primary[0])) {
+		header('Location: ' . $this->primary[0]->attachments[0]->link, true, 303);
+	}
+}
 ?>
 <div id="category" class="itemlist<?php if ($this->params->get('pageclass_sfx')) echo ' ' . $this->params->get('pageclass_sfx'); ?>">
 	<?php if ((isset($this->leading) || isset($this->primary) || isset($this->secondary) || isset($this->links)) && (count($this->leading) || count($this->primary) || count($this->secondary) || count($this->links))) { ?>
