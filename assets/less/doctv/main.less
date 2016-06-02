@@ -18,7 +18,13 @@ html, body {
 .header-products {
     .page-header {
         height: 200px; background: url('../img/header_products.png') no-repeat center top @yellow;
-        h1 { line-height: 200px; color: black; }
+        h1 {
+            line-height: 200px; color: black;
+            .page-slogan {
+                font-size: @font-size-base; line-height: @line-height-base; float: righ; margin: 0; position: relative; top: -70px; height: 0; overflow: visible;
+                p { margin: 0; font-weight: bold; color: black; }
+            }
+        }
     }
     .page-tools {
         top: -124px;
