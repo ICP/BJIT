@@ -32,6 +32,11 @@ if ($limitstart && $limitstart > 0) {
 		$this->secondary = $itemlist;
 	}
 }
+if (stristr($this->category->alias, "product")) {
+	if (isset($this->category->description) && strip_tags($this->category->description) !== "") {
+		echo '<div class="hide page-slogan">' . $this->category->description . '</div>';
+	}
+}
 ?>
 <div class="box-wrapper programs">
 		<div class="page-tools">
