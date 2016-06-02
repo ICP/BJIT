@@ -23,6 +23,8 @@ $theme = (isset($pageSuffix) && $pageSuffix !== null) ? $pageSuffix : 'dark';
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<meta name="viewport" content="width=device-width">
 		<meta name="google-site-verification" content="hNVmYmqorsHWellD3gmvYGlezOzxor8dcs2JHUDMdnY" />
+		<?php if ($isFrontpage) { ?><meta property="og:image" content="<?php echo JURI::base() . 'assets/data/placeholder_doctv.jpg'; ?>"><?php } ?>
+
 		<?php
 		$JHeader = $this->getHeadData(); // Get Joomla Native Head tags
 		$this->setHeadData($helper->cleanHead($JHeader)); // Removing unwanted tags from Joomla native head
