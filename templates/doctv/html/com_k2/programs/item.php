@@ -34,9 +34,9 @@ JFactory::getDocument()->setTitle($this->item->category->name . ': ' . $this->it
 								</a>
 							</li>
 						<?php } ?>
-						<li><a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo JUri::current(); ?>" target="_blank"><i class="icon-facebook"></i></a></li>
-						<li><a href="https://twitter.com/home?status=<?php echo $this->item->title; ?> - <?php JUri::current(); ?>" target="_blank"><i class="icon-twitter"></i></a></li>
-						<li><a href="https://plus.google.com/share?url=<?php echo JUri::current(); ?>" target="_blank"><i class="icon-gplus"></i></a></li>
+						<li class="fb"><a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo JUri::current(); ?>" target="_blank"><i class="icon-facebook"></i></a></li>
+						<li class="tw"><a href="https://twitter.com/home?status=<?php echo $this->item->title; ?> - <?php echo JUri::current(); ?>" target="_blank"><i class="icon-twitter"></i></a></li>
+						<li class="gp"><a href="https://plus.google.com/share?url=<?php echo JUri::current(); ?>" target="_blank"><i class="icon-gplus"></i></a></li>
 					</ul>
 				</div>
 				<?php if ($this->item->params->get('itemDateCreated')) { ?>
