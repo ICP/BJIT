@@ -493,6 +493,24 @@
       "css": "user",
       "code": 59451,
       "src": "entypo"
+    },
+    {
+      "uid": "c833c98d78cfebed5780cfaaa302a12b",
+      "css": "calendar",
+      "code": 59452,
+      "src": "iconic"
+    },
+    {
+      "uid": "531bc468eecbb8867d822f1c11f1e039",
+      "css": "calendar2",
+      "code": 59453,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "e2d4382fb8eb0e89e8990f4c44753342",
+      "css": "calendar-dark",
+      "code": 59454,
+      "src": "iconic"
     }
   ]
 }

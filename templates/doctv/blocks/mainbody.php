@@ -6,7 +6,7 @@
 				<div class="row">
 					<div class="col-xs-12">
 						<div class="header-schedule">
-							<a class="schedule-toggle" href="<?php echo JURI::base() . 'schedule'; ?>" data-toggle="toggle" data-target="#schedule"><i class="icon-play"></i><span>جدول پخش</span></a>
+							<a class="schedule-toggle" href="<?php echo JURI::base() . 'schedule'; ?>" data-toggle="toggle" data-target="#schedule"><i class="icon-calendar-dark"></i><span>جدول پخش</span></a>
 						</div>
 						<div class="logo">
 							<a href="<?php echo JURI::base(); ?>" title="<?php echo $sitename; ?>"><?php echo $sitename; ?></a>
