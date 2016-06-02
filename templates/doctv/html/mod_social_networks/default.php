@@ -18,7 +18,7 @@ $direction = ' ' . $params->get('direction', 'vertical');
 <?php
 for($i = 0; $i < $count; $i++){
 ?>
-	<li class="social-item<?php echo $direction; ?>">
+	<li class="social-item<?php echo $direction; ?> <?php echo $links[$i]['type']; ?>">
 		<a class="social-icon icon-<?php echo $links[$i]['type']; ?>" href="<?php echo $links[$i]['link']; ?>" title="<?php echo $links[$i]['title']; ?>">
 			<span></span><?php echo $links[$i]['title']; ?>
 		</a>
