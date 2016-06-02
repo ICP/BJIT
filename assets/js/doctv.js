@@ -181,6 +181,9 @@ $(function () {
             }
         });
     }
+    if ($(".page-slogan").length) {
+        $(".page-slogan").appendTo("h1:first").removeClass("hide");
+    }
 
     // Dynamic Item Loadings
     if ($(".item-boxes .box.more").length) {
@@ -493,15 +496,13 @@ function Feeds($obj) {
     }(this);
 }
 
-
+// Plugins
 /*!
  * TrplClick - real Triple Click event plugin for jQuery
  * Version: 1.1.0
  * Author: @deliaz https://github.com/Deliaz
  * Licensed under the MIT license
  */
-
-"use strict";
 (function ($) {
     $.event.special.trplclick = {
         setup: function () {
