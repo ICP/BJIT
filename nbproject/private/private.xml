@@ -3,16 +3,27 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/irib/doctv/plugins/content/jw_allvideos/jw_allvideos.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/templates/doctv/html/mod_content/FeaturesSlider/default.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/doctv/html/com_k2/multimedia/item.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/doctv/html/mod_social_networks/default.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/doctv/footer.less</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/doctv/html/com_k2/programs2/item.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/doctv/item.less</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/doctv/html/com_k2/programs/item.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/modules/mod_social_links/tmpl/default.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/fframework/icons.less</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/administrator/modules/mod_login/tmpl/default.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/templates/doctv/blocks/mainbody.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/modules/mod_content/mod_content.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/api/routes.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/api/classes/schedule.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/index.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/administrator/components/com_schedule/assets/js/schedule.js</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/administrator/index.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/modules/mod_k2_content/helper.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/js/doctv.js</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/doctv/blocks/header.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/fframework/variables.less</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/doctv/box.less</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/doctv/variables.less</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/doctv/html/com_k2/special/item.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/doctv/html/com_k2/news/item.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/administrator/templates/isis/login.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/administrator/templates/isis/index.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/doctv/html/com_k2/misc/item.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/doctv/misc.less</file>
         </group>
     </open-files>
 </project-private>
