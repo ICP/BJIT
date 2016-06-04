@@ -181,20 +181,16 @@
 <script src="<?php echo JURI::base(); ?>assets/js/owl.carousel.min.js"></script>
 <script src="<?php echo JURI::base(); ?>assets/js/doctv.min.js?_=20160326"></script>
 <script type="text/javascript">
-    var _paq = _paq || [];
-    _paq.push(["trackPageView"]);
-    _paq.push(["enableLinkTracking"]);
+  var _paq = _paq || [];
+  _paq.push(["trackPageView"]);
+  _paq.push(["enableLinkTracking"]);
 
-    (function () {
-        var u = (("https:" == document.location.protocol) ? "https" : "http") + "://93.190.24.112/piwik/";
-        _paq.push(["setTrackerUrl", u + "piwik.php"]);
-        _paq.push(["setSiteId", "1"]);
-        var d = document, g = d.createElement("script"), s = d.getElementsByTagName("script")[0];
-        g.type = "text/javascript";
-        g.defer = true;
-        g.async = true;
-        g.src = u + "piwik.js";
-        s.parentNode.insertBefore(g, s);
-    })();
+  (function() {
+    var u=(("https:" == document.location.protocol) ? "https" : "http") + "://93.190.24.112/piwik/";
+    _paq.push(["setTrackerUrl", u+"piwik.php"]);
+    _paq.push(["setSiteId", "8"]);
+    var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
+    g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
+  })();
 </script>
 </body>
