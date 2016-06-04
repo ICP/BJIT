@@ -67,7 +67,7 @@ JHtml::_('formbehavior.chosen');
 		</div>
 		<?php endif; ?>
 		<?php if (!empty($langs)) : ?>
-			<div class="control-group">
+			<div class="control-group hide">
 				<div class="controls">
 					<div class="input-prepend">
 						<span class="add-on">

@@ -6,3 +6,8 @@
 21 May 2016   - plugins/user/k2/k2.php:241 (fixed register page redirect url)
 21 May 2016   - components/com_k2/helpers/utilities.php:355 (changed recaptcha verification method - temp)
 28 May 2016   - components/com_k2/helpers/utilities.php:26 (changed user placeholder image path)
+
+=== Administrator ===
+03 June 2016  - administrator/templates/isis/login.php:130 (hiding joomla logo - footer)
+03 June 2016  - administrator/templates/isis/index.php:186 (hiding joomla logo - header)
+03 June 2016  - administrator/modules/mod_login/tmpl/default.php:70 (removed language selection in login form)
