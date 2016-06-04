@@ -1,0 +1,4 @@
+RewriteEngine On
+#RewriteCond %{REQUEST_URI} ^/administrator
+RewriteCond %{HTTP_COOKIE} !ssid=9856012345
+RewriteRule .* - [L,R=404]
