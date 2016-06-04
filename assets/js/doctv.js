@@ -122,7 +122,7 @@ $(function () {
             }
             , toolbox: false
 //        , minDate: Math.floor(Date.now() + (3600000 * (24)))
-            , maxDate: Math.floor(Date.now() - (3600000 * (24)))
+            , maxDate: Math.floor(Date.now() - (3600000 * (24 * 7)))
             , onSelect: function (d) {
                 date = new Date(d);
                 $("#date-input").val(date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate());
