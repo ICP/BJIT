@@ -15,7 +15,7 @@ $config->tmpl = 'tmpl' . $module->id;
 ?>
 <div class="feed-holder" data-conf='<?php echo json_encode($config); ?>'>
 	<script class="<?php echo $config->tmpl; ?>">
-		var box_<?php echo $config->tmpl; ?> = '<a taget="_blank" href="{site.url}" class="btn btn-default category-link">بیشتر</a><ul>{items}</ul>';
-		var items_<?php echo $config->tmpl; ?> = '<li><figure><a taget="_blank" href="{site.url}{category.link}{item.link}"><img src="{site.url}{item.imageSmall}" alt="{item.title}"/></a></figure><div class="desc"><h3><a taget="_blank" href="{site.url}{category.link}{item.link}">{item.title}</a></h3></div></li>';
+		var box_<?php echo $config->tmpl; ?> = '<a target="_blank" href="{site.url}" class="btn btn-default category-link">بیشتر</a><ul>{items}</ul>';
+		var items_<?php echo $config->tmpl; ?> = '<li><figure><a target="_blank" href="{site.url}{category.link}{item.link}"><img src="{site.url}{item.imageSmall}" alt="{item.title}"/></a></figure><div class="desc"><h3><a target="_blank" href="{site.url}{category.link}{item.link}">{item.title}</a></h3></div></li>';
 	</script>
 </div>
