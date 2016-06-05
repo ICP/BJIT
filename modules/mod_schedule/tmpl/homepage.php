@@ -18,14 +18,22 @@ $items = array_values($items);
 				<?php
 				foreach ($items as $key => $item) {
 					$key++;
+//					$item->link = ($item->link) ? $item->link : JUri::base();
+					$item->thumb = ($item->thumb) ? $item->thumb : JUri::root() . 'assets/img/placeholder.png';
 					if ($key < $params->get('count')) {
 						?>
 						<li>
 							<?php if ($key == 1) { ?><div class="type">در حال پخش<i class="icon-play"></i></div><?php } ?>
 							<?php if ($key == 2) { ?><div class="type">برنامه‌های بعدی<i class="icon-placeholder"></i></div><?php } ?>
 							<figure<?php if ($key > 1) { ?> class="grayscale"<?php } ?>>
-								<figcaption><a href="<?php echo $item->link; ?>"><?php echo $item->title; ?><small><?php echo $item->start_small; ?></small></a></figcaption>
-								<a href="<?php echo $item->link; ?>"><img src="<?php echo $item->thumb; ?>" alt="<?php echo $item->title; ?>"></a>
+								<figcaption>
+									<?php if ($item->link) { ?><a href="<?php echo $item->link; ?>"><?php } ?>
+										<?php echo $item->title; ?><small><?php echo $item->start_small; ?></small>
+									<?php if ($item->link) { ?></a><?php } ?>
+								</figcaption>
+								<?php if ($item->link) { ?><a href="<?php echo $item->link; ?>"><?php } ?>
+									<img src="<?php echo $item->thumb; ?>" alt="<?php echo $item->title; ?>">
+								<?php if ($item->link) { ?></a><?php } ?>
 							</figure>
 						</li>
 						<?php

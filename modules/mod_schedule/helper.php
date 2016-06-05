@@ -28,17 +28,18 @@ class ModScheduleHelper {
 				->order('s.start ASC');
 		$db->setQuery($query);
 		$db->execute();
-		$items = self::findCurrent(self::prepareItems($db->loadObjectList()));
+		$items = self::findCurrent(self::prepareItems($db->loadObjectList(), $params));
 		return $items;
 	}
 
-	public static function prepareItems($items) {
+	public static function prepareItems($items, $params) {
 		if (!count($items))
 			return [];
-		foreach ($items as $item) {
+		foreach ($items as $key => $item) {
 			$item->link = '';
 			$item->image = '';
 			$item->thumb = '';
+			$item->start_small = date('H:i', strtotime($item->start));
 			if ($item->episode != 0 || $item->program_id) {
 				if ($item->program_id) {
 					$item->link = Route::category($item->program_id, $item->program_alias);
@@ -50,10 +51,49 @@ class ModScheduleHelper {
 					$item->image = Route::image($item->episode);
 					$item->thumb = Route::image($item->episode, true);
 				}
+			} else {
+				if ($params->get('width_data_only', 0) == 1) {
+					unset($items[$key]);
+				}
 			}
-			$item->start_small = date('H:i', strtotime($item->start));
 		}
 		return $items;
+	}
+
+	public static function fillItems($items, $params) {
+		$items_count = count($items);
+		$items = array_values($items);
+
+		$requested_count = $params->get('count');
+		$bias = (int) $requested_count - $items_count;
+		for ($i = 0; $i < count($items); $i++) {
+			$ids[] = $items[$i]->id;
+		}
+
+		$db = JFactory::getDbo();
+		$query = $db->getQuery(true);
+		$query->select('i.id as episode, i.published, i.catid as program_id, i.created, i.alias as episode_alias, c.alias as program_alias, i.title as title, i.title as episode_title, i.introtext')
+				->from($db->quoteName('#__k2_items') . ' i')
+				->where('i.catid in (select cc.id from #__k2_categories cc where cc.parent = 2)', ' AND')
+				->where('i.published = 1 AND c.published = 1', ' AND');
+		if (count($ids)) {
+			$query->where('i.id not in (' . rtrim(implode(',', $ids), ',') . ')');
+		}
+		$query->join('LEFT', $db->quoteName('#__k2_categories') . 'AS c ON i.catid = c.id')
+				->join('LEFT', $db->quoteName('#__users') . 'AS u on i.created_by = u.id')
+				->order('i.created DESC');
+		$db->setQuery($query, 0, $bias);
+		$db->execute();
+		$new_items = $db->loadObjectList();
+		if (count($new_items)) {
+			foreach ($new_items as $item) {
+				$item->link = Route::item($item->episode, $item->episode_alias, $item->program_id, $item->program_alias);
+				$item->image = Route::image($item->episode);
+				$item->thumb = Route::image($item->episode, true);
+			}
+		}
+
+		return array_merge($items, $new_items);
 	}
 
 	public static function findCurrent($items) {

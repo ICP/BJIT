@@ -1,51 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="module" version="3.1" client="site" method="upgrade">
-	<name>Schedule</name>
-	<author>Farid Roshan</author>
-	<creationDate>May 2006</creationDate>
-	<copyright>Copyright (C) 2005 - 2016 Open Source Matters. All rights reserved.</copyright>
-	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
-	<authorEmail>faridv@gmail.com</authorEmail>
-	<authorUrl>www.faridr.ir</authorUrl>
-	<version>3.0.0</version>
-	<description>Schedule showing module</description>
-	<files>
-		<filename module="mod_schedule">mod_schedule.php</filename>
-		<folder>tmpl</folder>
-		<filename>helper.php</filename>
-	</files>
-	<config>
-		<fields name="params">
-			<fieldset name="basic">
-				<field
-					name="count"
-					type="text"
-					label="Visible items count"
-					default="-1"
-					description="using -1 means all items of today" />
-			</fieldset>
-			<fieldset
-				name="advanced">
-				<field
-					name="layout"
-					type="modulelayout"
-					label="JFIELD_ALT_LAYOUT_LABEL"
-					description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
-				<field
-					name="moduleclass_sfx"
-					type="textarea" rows="3"
-					label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
-					description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
-				<field
-					name="cache"
-					type="list"
-					default="0"
-					label="COM_MODULES_FIELD_CACHING_LABEL"
-					description="COM_MODULES_FIELD_CACHING_DESC">
-					<option
-						value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
-				</field>
-			</fieldset>
-		</fields>
-	</config>
+    <name>Schedule</name>
+    <author>Farid Roshan</author>
+    <creationDate>May 2006</creationDate>
+    <copyright>Copyright (C) 2005 - 2016 Open Source Matters. All rights reserved.</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <authorEmail>faridv@gmail.com</authorEmail>
+    <authorUrl>www.faridr.ir</authorUrl>
+    <version>3.0.0</version>
+    <description>Schedule showing module</description>
+    <files>
+        <filename module="mod_schedule">mod_schedule.php</filename>
+        <folder>tmpl</folder>
+        <filename>helper.php</filename>
+    </files>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field
+                    name="moduleclass_sfx"
+                    type="textarea" rows="3"
+                    label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+                    description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+                <field
+                    name="count"
+                    type="text"
+                    label="Visible items count"
+                    default="-1"
+                    description="using -1 means all items of today" />
+                <field
+                    name="width_data_only"
+                    type="list"
+                    default="0"
+                    label="Only items with data" >
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>
+                <field
+                    name="fill"
+                    type="list"
+                    default="0"
+                    label="Fill list with other items" >
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>
+            </fieldset>
+            <fieldset
+                name="advanced">
+                <field
+                    name="layout"
+                    type="modulelayout"
+                    label="JFIELD_ALT_LAYOUT_LABEL"
+                    description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
+                <field
+                    name="cache"
+                    type="list"
+                    default="0"
+                    label="COM_MODULES_FIELD_CACHING_LABEL"
+                    description="COM_MODULES_FIELD_CACHING_DESC">
+                    <option
+                        value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
 </extension>

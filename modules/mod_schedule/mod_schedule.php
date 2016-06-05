@@ -14,8 +14,13 @@ require_once __DIR__ . '/helper.php';
 
 $items = ModScheduleHelper::getItems($params);
 
-if (is_null($items))
-	return;
+if (is_null($items) || ($params->get('fill', 0) == 1 && count($items) < $params->get('count'))) {
+	if ($params->get('fill', 0) == 1 && count($items) < $params->get('count')) {
+		$items = ModScheduleHelper::fillItems($items, $params);
+	} else {
+		return null;
+	}
+}
 
 $moduleclass_sfx = htmlspecialchars($params->get('moduleclass_sfx'));
 if (!class_exists('jDateTime'))
