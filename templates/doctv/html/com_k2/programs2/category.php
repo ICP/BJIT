@@ -66,5 +66,9 @@ if (stristr($this->category->alias, "product")) {
 				</ul>
 			</div>
 		</section>
+		<?php if ($this->pagination->getPagesLinks()) { ?>
+			<div class="text-center"><?php if ($this->params->get('catPaginationResults')) echo $this->pagination->getPagesCounter(); ?></div>
+			<nav><?php if ($this->params->get('catPagination')) echo $this->pagination->getPagesLinks(); ?></nav>
+		<?php } ?>
 	<?php } ?>
 </div>
