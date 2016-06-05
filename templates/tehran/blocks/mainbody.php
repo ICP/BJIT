@@ -1,4 +1,4 @@
-<body id="bd" class="dark <?php echo strtolower($helper->device); ?>" data-spy="scroll" data-target="#menu">
+<body id="bd" class="dark <?php echo strtolower($helper->device) . ($isFrontpage ? ' home' : ''); ?>" data-spy="scroll" data-target="#menu">
 	<header id="header">
 		<?php if ($isFrontpage) { ?><h1 class="hide"><?php echo $sitename; ?></h1><?php } ?>
 		<div id="masthead" class="wrapper purple-light">
@@ -41,13 +41,13 @@
 <?php if ($helper->countModules('search')) { ?><jdoc:include type="modules" name="search" /><?php } ?>
 <?php if ($helper->countModules('showcase')) { ?>
 	<section id="showcase">
-		<div class="wrapper">
+		<div data-identifier="showcase" class="wrapper">
 			<jdoc:include type="modules" name="showcase" style="basic" />
 		</div>
 	</section>
 <?php } ?>
 <main id="mainbody">
-	<div class="wrapper content gray-dark">
+	<div data-identifier="main-top" class="wrapper content gray-lighter">
 		<?php if (!$isFrontpage) { ?>
 			<div class="page">
 				<header class="page-header">
@@ -61,85 +61,87 @@
 				</header>
 				<div class="container">
 					<div class="row">
-						<?php if (JFactory::getApplication()->getMenu()->getActive()->note === 'cols-9-3') { ?>
-							<div class="col-xs-12 col-md-9">
-							<?php } else { ?>
-								<div class="col-xs-12">
-								<?php } ?>
-								<section class="page-conntent">
-									<jdoc:include type="component" />
-								</section>
-							</div>
-							<?php if (JFactory::getApplication()->getMenu()->getActive()->note === 'cols-9-3') { ?>
-								<div id="sidebar" class="col-xs-12 col-md-3">
-									<jdoc:include type="modules" name="sidebar" style="default" />
-								</div>
-							<?php } ?>
+						<div class="<?php echo (JFactory::getApplication()->getMenu()->getActive()->note === 'cols-9-3') ? "col-xs-12 col-md-9" : "col-xs-12"; ?>">
+							<section class="page-conntent">
+								<jdoc:include type="component" />
+							</section>
 						</div>
+						<?php if (JFactory::getApplication()->getMenu()->getActive()->note === 'cols-9-3') { ?>
+							<div id="sidebar" class="col-xs-12 col-md-3">
+								<jdoc:include type="modules" name="sidebar" style="default" />
+							</div>
+						<?php } ?>
+					</div>
+				</div>
+			</div>
+		<?php } ?>
+		<div class="container">
+			<?php if ($helper->countModules('main-top')) { ?>
+				<div id="main-top" class="row">
+					<div class="col-xs-12">
+						<jdoc:include type="modules" name="main-top" style="default" />
 					</div>
 				</div>
 			<?php } ?>
-			<div class="container">
-				<?php if ($helper->countModules('main-top')) { ?>
-					<div id="main-top" class="row">
-						<div class="col-xs-12">
-							<jdoc:include type="modules" name="main-top" style="default" />
-						</div>
-					</div>
-				<?php } ?>
-			</div>
 		</div>
-		<div class="wrapper content gray-darkest">
-			<div class="container">
-				<?php if ($helper->countModules('main')) { ?>
-					<div id="main" class="row">
-						<div class="col-xs-12">
-							<jdoc:include type="modules" name="main" style="default" />
-						</div>
+	</div>
+	<div data-identifier="main" class="wrapper content gray-light">
+		<div class="container">
+			<?php if ($helper->countModules('main')) { ?>
+				<div id="main" class="row">
+					<div class="col-xs-12">
+						<jdoc:include type="modules" name="main" style="default" />
 					</div>
-				<?php } ?>
-			</div>
+				</div>
+			<?php } ?>
 		</div>
-		<div class="wrapper content gray-darker">
-			<div class="container">
-				<?php if ($helper->countModules('main-bot')) { ?>
-					<div id="main-bot" class="row">
-						<div class="col-xs-12">
-							<jdoc:include type="modules" name="main-bot" style="default" />
-						</div>
-					</div>
-				<?php } ?>
+	</div>
+	<?php if ($helper->countModules('special')) { ?>
+		<aside id="showcase">
+			<div class="wrapper purple">
+				<jdoc:include type="modules" name="special" style="basic" />
 			</div>
+		</aside>
+	<?php } ?>
+	<div data-identifier="main-bot" class="wrapper content gray-lighter">
+		<div class="container">
+			<?php if ($helper->countModules('main-bot')) { ?>
+				<div id="main-bot" class="row">
+					<div class="col-xs-12">
+						<jdoc:include type="modules" name="main-bot" style="default" />
+					</div>
+				</div>
+			<?php } ?>
 		</div>
 	</div>
 </main>
 <footer id="footer">
 	<?php // if ($helper->countModules('newsletter')) { ?>
-		<div id="newsletter" class="wrapper gray-darkest">
-			<div class="container">
-				<div class="row">
-					<div class="col-xs-12">
-						<jdoc:include type="modules" name="newsletter" />
-						<section class="box newsletter inline">
-							<header>
-								<h2>عضویت در خبرنامه</h2>
-							</header>
-							<div>
-								<form action="#" role="form" class="form-inline">
-									<div class="form-group">
-										<input class="form-control ltr" name="email" type="email" placeholder="ایمیل خود را وارد کنید" />
-										<button type="submit" class="btn btn-default">عضویت</button>
-									</div>
-								</form>
-							</div>
-						</section>
-					</div>
+	<div id="newsletter" class="wrapper gray">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					<jdoc:include type="modules" name="newsletter" />
+					<section class="box newsletter inline">
+						<header>
+							<h2>عضویت در خبرنامه</h2>
+						</header>
+						<div>
+							<form action="#" role="form" class="form-inline">
+								<div class="form-group">
+									<input class="form-control ltr" name="email" type="email" placeholder="ایمیل خود را وارد کنید" />
+									<button type="submit" class="btn btn-default">عضویت</button>
+								</div>
+							</form>
+						</div>
+					</section>
 				</div>
 			</div>
 		</div>
+	</div>
 	<?php // } ?>
 	<?php if ($helper->countModules('footer')) { ?>
-		<div id="sitemap" class="wrapper gray-dark">
+		<div id="sitemap" class="wrapper gray-lightest">
 			<div class="container">
 				<div class="row _relative">
 					<div class="col-xs-12 col-sm-10 col-md-9">

@@ -13,19 +13,19 @@ if (count($items)) {
 	$catimg = JURI::base() . 'media/k2/categories/' . $items[0]->categoryimg;
 	?>
 	<div class="box-wrapper special">
-		<div class="cat-img grayscale">
+		<div class="cat-img">
 			<img src="<?php echo $catimg; ?>" alt="<?php echo K2HelperUtilities::cleanHtml($items[0]->categoryname); ?>" />
 		</div>
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-12">
 					<section class="box special<?php if ($params->get('moduleclass_sfx')) echo ' ' . $params->get('moduleclass_sfx'); ?>">
-						<header><h2><span class="icon-holder"><i class="icon-click"></i></span><?php echo $module->title; ?></h2></header>
+						<!--<header><h2><span class="icon-holder"><i class="icon-click"></i></span><?php echo $module->title; ?></h2></header>-->
 						<div class="row">
 							<div class="cat-desc col-sm-6 col-md-4">
 								<h3><a href="<?php echo $items[0]->categoryLink ?>"><?php echo $items[0]->categoryname; ?></a></h3>
 								<div class="introtext"><?php echo $items[0]->categorydesc; ?></div>
-								<a class="more" href="<?php echo $items[0]->categoryLink ?>"><i class="icon-left-circle"></i> بیشتر</a>
+								<!--<a class="more" href="<?php echo $items[0]->categoryLink ?>"><i class="icon-left-circle"></i> بیشتر</a>-->
 							</div>
 							<div class="cat-thumb col-sm-6 col-md-4">
 								<figure>
