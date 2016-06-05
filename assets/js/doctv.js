@@ -446,7 +446,7 @@ function Feeds($obj) {
         var count = (conf.count == '-1') ? data.items.length : conf.count;
         for (var i = 0; i < count; i++) {
             items += items_tmpl.replace(/{site.url}/g, data.site.url)
-                    .replace(/{category.link}/g, data.category.link)
+                    .replace(/{category.link}/g, 'features' + data.category.link)
                     .replace(/{item.link}/g, data.items[i].link)
                     .replace(/{item.imageSmall}/g, data.items[i].imageSmall)
                     .replace(/{item.title}/g, data.items[i].title);
