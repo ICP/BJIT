@@ -1,9 +1,17 @@
 #header {
     height: @header-height + 5; overflow-y: hidden; overflow-x: visible; border-top: 5px solid @purple;
     position: relative; z-index: 100;
+    background: transparent;
+    position: absolute; top: 0; left: 0; width: 100%;
     .wrapper { overflow-x: hidden; }
-    #masthead { height: @masthead-height; overflow: visible; }
-    #navbar { height: @navbar-height; }
+    #masthead {
+        height: @masthead-height; overflow: visible;
+        /*&.wrapper.purple { background: fade(@purple, 95%) }*/
+    }
+    #navbar {
+        height: @navbar-height;
+        &.wrapper.purple { background: fadeout(@purple, 20%) }
+    }
     .menu {
         font-family: @menu-font-family; font-size: 0; float: right; height: @navbar-height; font-weight: bold; margin-right: @logo-width;
         li {

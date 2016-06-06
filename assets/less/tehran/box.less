@@ -244,14 +244,14 @@
                     margin: 0 -(@grid-gutter-width / 2);
                     li {
                         padding: 0 (@grid-gutter-width / 2); width: 50%; float: right;
-                        .inner { background: #343737; transition: 0.2s all;  .clearfix();}
+                        .inner { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); border-radius: 2px; overflow: hidden; transition: 0.2s all; background: @gray-lighter; .clearfix();}
                         &:first-child {
                             figure { float: none; width: 100%; }
                             .desc {
                                 margin-right: 0;
                                 h3 {
                                     margin: 0; font-size: 24px; max-height: 70px; overflow: hidden;
-                                    a { padding-top: (@grid-gutter-width / 2); color: white; }
+                                    a { padding-top: (@grid-gutter-width / 2); }
                                 }
                                 .introtext {
                                     height: 30px; overflow: hidden;
@@ -266,13 +266,13 @@
                             h3 {
                                 margin: 0; font-size: 20px;
                                 a {
-                                    padding-top: (@grid-gutter-width / 2); color: lighten(@gray-lightest, 15%);
+                                    padding-top: (@grid-gutter-width / 2); color: @gray-darker;
                                     &:hover { color: @yellow; }
                                 }
                             }
                             p { margin: 0; max-height: 100px; overflow: hidden; }
                         }
-                        &:hover .inner { background: @gray; }
+                        &:hover .inner { background: @gray-light; }
                     }
                 }
                 &.bordered {
@@ -422,7 +422,8 @@
     &.showcase {
         margin: 0; position: absolute; height: 100vh; width: 100%;
         ul {
-            list-style: none; padding: 0; margin: 0; margin-top: -@header-height - 5;
+            list-style: none; padding: 0; margin: 0;
+            /*margin-top: -@header-height - 5;*/
             li {
                 width: 100vw; margin: 0 ; opacity: 0; transition: 0.2s all; position: relative; height: 100vh;
                 ~ li  { display: hidden; }
@@ -660,7 +661,9 @@
         }
     }
     &.newsletter {
-        & > div { float: left;  }
+        margin-bottom: @grid-gutter-width;
+        header h2 { color: @purple; }
+        & > div { float: left; }
         form {
             * { display: inline-block; vertical-align: top; }
             input { padding: 6px 18px; border: 1px solid @gray; background: @gray-dark; color: white; min-width: 300px }

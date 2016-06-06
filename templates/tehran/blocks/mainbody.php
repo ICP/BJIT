@@ -1,7 +1,7 @@
 <body id="bd" class="dark <?php echo strtolower($helper->device) . ($isFrontpage ? ' home' : ''); ?>" data-spy="scroll" data-target="#menu">
 	<header id="header">
 		<?php if ($isFrontpage) { ?><h1 class="hide"><?php echo $sitename; ?></h1><?php } ?>
-		<div id="masthead" class="wrapper purple-light">
+		<div id="masthead" class="wrapper purple">
 			<div class="container">
 				<div class="row">
 					<div class="col-xs-12">
