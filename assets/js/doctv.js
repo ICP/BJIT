@@ -148,6 +148,7 @@ $(function () {
                 width: "100%",
                 aspectratio: "16:9"
             });
+            $(".media-container").append('<a class="btn btn-default btn-xs pull-left" href="' + file + '" target="_blank"><i class="icon-download"></i> بارگیری ویدیو</a>')
         });
     }
     if ($(".box.comments.comment-form").length) {
