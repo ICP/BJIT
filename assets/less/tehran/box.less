@@ -623,12 +623,14 @@
     &.cards {
         ul {
             li {
+                
+                .inner { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); border-radius: 2px; overflow: hidden; }
                 figure {  }
                 .desc {
-                    background: #343737; padding: 0 (@grid-gutter-width / 2) (@grid-gutter-width/2); max-height: 112px; transition: 0.2s all;
+                    background: @gray-light; padding: 0 (@grid-gutter-width / 2) (@grid-gutter-width/2); max-height: 112px; transition: 0.2s all;
                     h3 {
                         margin: 0; font-size: 20px;
-                        a { display: block; padding: @grid-gutter-width 0 (@grid-gutter-width/2); color: white; }
+                        a { display: block; padding: @grid-gutter-width 0 (@grid-gutter-width/2); color: @gray-darker; }
                     }
                     p { color: @gray-lightest; max-height: 40px; overflow: hidden; }
                     .item-author {
@@ -638,7 +640,7 @@
                     }
                 }
                 &:hover {
-                    .desc { background: @gray; }
+                    .desc { background: #d8d8d8; }
                 }
             }
         }

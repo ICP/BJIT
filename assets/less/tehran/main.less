@@ -7,7 +7,16 @@ body {
     &.home {
         #mainbody {
             position: relative; z-index: 102; margin-top:  -@header-height - 105;
-            & > .wrapper:first-child { width: @container-lg + 140; margin: 0 auto; }
+            & > .wrapper:first-child {
+                width: @container-lg + 40; margin: 0 auto;
+                .box {
+                    margin-top: 0;
+                    header {
+                        margin: 0;
+                        h2 { margin: 0; }
+                    }
+                }
+            }
         }
     }
 }
