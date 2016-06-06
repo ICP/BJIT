@@ -419,7 +419,7 @@ if($user->id != 0) {
 					foreach($cid AS $id)
 					{
 						$atitle = $db->quote( 'USER_DELETED_A_MENU_ITEM_LINK' );
-						$item   = $db->quote( ualog_get_title($id, '#__menu', 'name') );
+						$item   = $db->quote( ualog_get_title($id, '#__menu', 'title') );
 						ualog_save( $alink, $atitle, $item );
 					}
 					break;
@@ -436,7 +436,7 @@ if($user->id != 0) {
 						}
 							
 						$alink  = $db->quote( "index.php?option=com_menus&task=item.edit&id=$cid" );
-						$item   = $db->quote( ualog_get_title($id, '#__menu', 'name') );
+						$item   = $db->quote( ualog_get_title($id, '#__menu', 'title') );
 						ualog_save( $alink, $atitle, $item );
 					}
 					break;
@@ -446,7 +446,7 @@ if($user->id != 0) {
 
 					$atitle = $db->quote( 'USER_SET_THE_DEFAULT_MENU_ITEM_LINK' );
 					$alink  = $db->quote( "index.php?option=com_menus&task=item.edit&id=$cid" );
-					$item   = $db->quote( ualog_get_title($cid[0], '#__menu', 'name') );
+					$item   = $db->quote( ualog_get_title($cid[0], '#__menu', 'title') );
 
 					ualog_save( $alink, $atitle, $item );
 					break;
