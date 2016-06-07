@@ -3,6 +3,7 @@
   Author: reza babakhani 
  http://babakhani.github.io/PersianWebToolkit/datepicker 
  */
+var selfSelect = false;
 ( function () {(function ($) {
     $.fn.persianDatepicker = $.fn.pDatepicker = function (options) {
         var args = Array.prototype.slice.call(arguments), output = this;
@@ -2008,10 +2009,11 @@ var ClassDatepicker = {
                 break
         }
         self._updateInputElement();
-        self.onSelect(unixDate, this);
+        self.onSelect(unixDate, this, selfSelect);
         if (self.autoClose) {
             self.element.main.hide();
         }
+        selfSelect = false;
         return this;
     },
 
@@ -2236,7 +2238,8 @@ var ClassDatepicker = {
     setDate: function (p) {
         var date = new persianDate(p);
         this.selectDateTime(date.valueOf())
-        this.setTime();
+        selfSelect = true;
+//        this.setTime();
         return this;
     },
 
