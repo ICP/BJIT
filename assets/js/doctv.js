@@ -108,9 +108,14 @@ $(function () {
         if ($(this).parents("form").attr("data-eligibility") === "false")
             $(this).parents("form").find(".alert.alert-danger").fadeIn();
     });
+    $(document).on('click', ".btn-switch", function (e) {
+        e.preventDefault();
+        return false;
+    });
 
     // Plugin Attachments & Object Initiations
     if ($("#datepicker").length) {
+        current = JSON.parse($("#datepicker").attr('data-current'));
         $("#datepicker").pDatepicker({
             enabled: true
             , navigator: {
@@ -118,17 +123,25 @@ $(function () {
                     btnNextText: '<span>ماه بعد</span><i class="icon-left-open"></i>'
                     , btnPrevText: '<i class="icon-right-open"></i><span>ماه قبل</span>'
                 }
-                , enabled: false
+                , enabled: true
             }
             , toolbox: false
 //        , minDate: Math.floor(Date.now() + (3600000 * (24)))
             , maxDate: Math.floor(Date.now() - (3600000 * (24 * 7)))
-            , onSelect: function (d) {
+            , onSelect: function (d, e, f) {
                 date = new Date(d);
                 $("#date-input").val(date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate());
-                $("#load-schedule").submit();
+                if (typeof f === "undefined")
+                    $("#load-schedule").submit();
+            }
+            , monthPicker: {
+                enabled: false
+            }
+            , yearPicker: {
+                enabled: false
             }
         });
+        $("#datepicker").pDatepicker("setDate", current);
     }
     if ($(".nano").length) {
         $(".nano").nanoScroller({
