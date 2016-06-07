@@ -36,6 +36,13 @@ $app->map('/items(/)(:id(/))', function ($id = null) use ($app) {
 		Items::getItem($app, $id);
 	}
 })->via('GET');
+$app->map('/categories(/)(:id(/))', function ($id = null) use ($app) {
+	Items::getCategoriesByParent($app, $id);
+})->via('GET');
+$app->map('/categoryitems(/)(:id(/))', function ($id = null) use ($app) {
+	if (isset($id))
+		Items::getItems($app, 'bycategory', $id);
+})->via('GET');
 
 // Schedules
 $app->map('/schedules(/)(:date(/))', function ($date = null) use ($app) {
