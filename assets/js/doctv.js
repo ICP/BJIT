@@ -143,11 +143,6 @@ $(function () {
         });
         $("#datepicker").pDatepicker("setDate", current);
     }
-    if ($(".nano").length) {
-        $(".nano").nanoScroller({
-            alwaysVisible: true
-        });
-    }
     if ($(".feed-holder").length) {
         new Feeds($(".feed-holder"));
     }
@@ -294,6 +289,11 @@ var Helper = {
             fullHeightHeight = ($(this).height() > fullHeightHeight) ? $(this).height() : fullHeightHeight;
         });
         $(".full-height").height(fullHeightHeight);
+        if ($(".nano").length) {
+            $(".nano").nanoScroller({
+                alwaysVisible: true
+            });
+        }
         return fullHeightHeight;
     }
 };

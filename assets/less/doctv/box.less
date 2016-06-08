@@ -766,7 +766,7 @@
     }
     &.comments {
         &.comments-list {
-            & > div > ul {
+            ul {
                 padding: 0; margin: 0; list-style: none;
                 li {
                     .clearfix();
@@ -793,7 +793,7 @@
                     }
                 }
             }
-            &.inner > div > ul {
+            &.inner ul {
                 margin-top: @grid-gutter-width;
                 li {
                     padding-bottom: @grid-gutter-width / 2;
@@ -821,6 +821,13 @@
                         &:last-child { border-radius: 4px 0 0 4px; }
                     }
                 }
+            }
+            &.has-scroll {
+                position: relative;
+                & > div { height: 100%; position: absolute; top: 66px; height: 304px; right: 0; width: 100%; }
+            }
+            &._hidden-date {
+                time { display: none !important; }
             }
         }
     }
@@ -853,6 +860,7 @@
             .ajax-upload { margin-left: 70px; }
         }
     }
+
     .social-links {
         font-size: 0;
         li {

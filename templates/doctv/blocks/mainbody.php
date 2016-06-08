@@ -109,10 +109,10 @@
 				<div class="container">
 					<div class="row">
 						<?php if ($helper->countModules('main-top-right')) { ?>
-							<div id="main-top-right" class="col-xs-12 col-sm-6"><jdoc:include type="modules" name="main-top-right" style="default" /></div>
+							<div id="main-top-right" class="col-xs-12 col-sm-6 full-height"><jdoc:include type="modules" name="main-top-right" style="default" /></div>
 						<?php } ?>
 						<?php if ($helper->countModules('main-top-left')) { ?>
-							<div id="main-top-left" class="col-xs-12 col-sm-6"><jdoc:include type="modules" name="main-top-left" style="default" /></div>
+							<div id="main-top-left" class="col-xs-12 col-sm-6 full-height"><jdoc:include type="modules" name="main-top-left" style="default" /></div>
 						<?php } ?>
 					</div>
 				</div>
@@ -179,7 +179,7 @@
 <?php } ?>
 <script src="<?php echo JURI::base(); ?>assets/js/bootstrap.min.js"></script>
 <script src="<?php echo JURI::base(); ?>assets/js/owl.carousel.min.js"></script>
-<script src="<?php echo JURI::base(); ?>assets/js/doctv.min.js?_=20160608"></script>
+<script src="<?php echo JURI::base(); ?>assets/js/doctv.min.js?_=201606081"></script>
 <script type="text/javascript">
   var _paq = _paq || [];
   _paq.push(["trackPageView"]);

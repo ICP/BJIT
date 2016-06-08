@@ -12,7 +12,7 @@ defined('_JEXEC') or die;
 				<li class="<?php
 				echo (!$this->item->created_by_alias && $comment->userID == $this->item->created_by) ? "response" : "";
 				echo ($comment->published) ? '' : ' unpublished';
-				?>">
+				?>" id="comment<?php echo $comment->id; ?>">
 					<?php if ($comment->userImage) { ?>
 						<div class="avatar">
 							<img src="<?php echo $comment->userImage; ?>" alt="<?php echo JFilterOutput::cleanText($comment->userName); ?>" />
