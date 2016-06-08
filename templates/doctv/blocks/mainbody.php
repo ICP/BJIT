@@ -174,12 +174,12 @@
 <?php } else { ?>
 	<script src="<?php echo JURI::base(); ?>assets/js/select2.full.min.js"></script>
 	<script src="<?php echo JURI::base(); ?>assets/js/persian-date-0.1.8.min.js"></script>
-	<script src="<?php echo JURI::base(); ?>assets/js/persian-datepicker-0.4.5.min.js"></script>
+	<script src="<?php echo JURI::base(); ?>assets/js/persian-datepicker-0.4.5.min.js?_=20160608"></script>
 	<script src="<?php echo JURI::base(); ?>assets/js/jquery.nanoscroller.min.js"></script>
 <?php } ?>
 <script src="<?php echo JURI::base(); ?>assets/js/bootstrap.min.js"></script>
 <script src="<?php echo JURI::base(); ?>assets/js/owl.carousel.min.js"></script>
-<script src="<?php echo JURI::base(); ?>assets/js/doctv.min.js?_=20160326"></script>
+<script src="<?php echo JURI::base(); ?>assets/js/doctv.min.js?_=20160608"></script>
 <script type="text/javascript">
   var _paq = _paq || [];
   _paq.push(["trackPageView"]);
