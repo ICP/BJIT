@@ -31,7 +31,7 @@ $current_date = [(int)jDateTime::date('Y', $time), (int)jDateTime::date('m', $ti
 							</figure>
 							<div class="desc">
 								<h3>
-									<?php if ($item->link) { ?><a href="#"><?php } ?>
+									<?php if ($item->link) { ?><a href="<?php echo $item->link; ?>"><?php } ?>
 										<?php echo $item->title; ?>
 									<?php if ($item->link) { ?></a><?php } ?>
 								</h3>
