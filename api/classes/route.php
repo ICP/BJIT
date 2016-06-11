@@ -4,7 +4,7 @@ abstract class Route {
 
 	public static function video($path) {
 		$base = 'http://ftp4.presstv.ir/mostanad/videos';
-		$url = str_replace('$old|', '', str_replace('{/mp4}', '', str_replace('{mp4}', '', $path)));
+		$url = str_replace('$old|', '', str_replace('{/mp4}', '', str_replace('{mp4}', '', str_replace('{/mp4remote}', '', str_replace('{mp4remote}', '', $path)))));
 		return $base . $url;
 	}
 
