@@ -29,6 +29,15 @@ abstract class Items {
 						->order('i.id DESC');
 				$app->_db->setQuery($query, $o, $l);
 				break;
+			case 'byparentcategory':
+				$query->select('i.*, c.id AS catid, c.name, c.alias AS categoryalias, c.image')
+						->from($app->_db->quoteName('#__k2_items') . ' AS i')
+						->join('LEFT', $app->_db->quoteName('#__k2_categories') . ' AS c ON i.catid = c.id')
+						->where('i.catid in (select cc.id from #__k2_categories cc where cc.parent = ' . $app->_db->quote($catid) . ')', ' AND')
+						->where('i.published = 1 AND i.trash = 0 AND i.access = 1')
+						->order('i.id DESC');
+				$app->_db->setQuery($query, $o, $l);
+				break;
 			case 'bycategory':
 				$query->select('i.*, c.id AS catid, c.name, c.alias AS categoryalias, c.image')
 						->from($app->_db->quoteName('#__k2_items') . ' AS i')

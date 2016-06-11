@@ -43,6 +43,10 @@ $app->map('/categoryitems(/)(:id(/))', function ($id = null) use ($app) {
 	if (isset($id))
 		Items::getItems($app, 'bycategory', $id);
 })->via('GET');
+$app->map('/parentcategoryitems(/)(:id(/))', function ($id = null) use ($app) {
+	if (isset($id))
+		Items::getItems($app, 'byparentcategory', $id);
+})->via('GET');
 
 // Schedules
 $app->map('/schedules(/)(:date(/))', function ($date = null) use ($app) {
