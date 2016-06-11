@@ -3,6 +3,12 @@
 abstract class Items {
 
 	public static function getItems($app, $type, $catid = null) {
+		$o = 0;
+		$l = 50;
+		$offset = $app->request->get('offset', null);
+		if (!empty($offset)) {
+			list($o, $l) = explode(',', $offset);
+		}
 		$query = $app->_db->getQuery(true);
 		switch ($type) {
 			default:
@@ -19,15 +25,18 @@ abstract class Items {
 			case 'items':
 				$query->select('i.*, c.id AS catid, c.name, c.alias AS categoryalias, c.image')
 						->from($app->_db->quoteName('#__k2_items') . ' AS i')
-						->join('LEFT', $app->_db->quoteName('#__k2_categories') . 'AS c ON i.catid = c.id');
-				$app->_db->setQuery($query, 0, 20);
+						->join('LEFT', $app->_db->quoteName('#__k2_categories') . 'AS c ON i.catid = c.id')
+						->order('i.id DESC');
+				$app->_db->setQuery($query, $o, $l);
 				break;
 			case 'bycategory':
 				$query->select('i.*, c.id AS catid, c.name, c.alias AS categoryalias, c.image')
 						->from($app->_db->quoteName('#__k2_items') . ' AS i')
 						->join('LEFT', $app->_db->quoteName('#__k2_categories') . 'AS c ON i.catid = c.id')
-						->where($app->_db->quoteName('i.catid') . ' = ' . $app->_db->quote($catid));
-				$app->_db->setQuery($query, 0, 20);
+						->where($app->_db->quoteName('i.catid') . ' = ' . $app->_db->quote($catid), 'AND')
+						->where('i.published = 1 AND i.trash = 0 and i.access = 1')
+						->order('i.id DESC');
+				$app->_db->setQuery($query, $o, $l);
 				break;
 		}
 		$app->_db->execute();
@@ -114,13 +123,20 @@ abstract class Items {
 	}
 
 	public static function getCategoriesByParent($app, $parent = null) {
+		$o = 0;
+		$l = 50;
+		$offset = $app->request->get('offset', null);
+		if (!empty($offset)) {
+			list($o, $l) = explode(',', $offset);
+		}
 		$query = $app->_db->getQuery(true);
 		$query->select('c.id, c.name, c.description, c.parent, c.image')
 				->from($app->_db->quoteName('#__k2_categories') . ' AS c');
 		if (isset($parent))
-			$query->where($app->_db->quoteName('c.parent') . ' = ' . $app->_db->quote($parent));
+			$query->where($app->_db->quoteName('c.parent') . ' = ' . $app->_db->quote($parent), ' AND');
 		$query->where('c.published = 1 AND c.trash = 0 AND c.access = 1');
-		$app->_db->setQuery($query);
+		$query->order('c.id DESC');
+		$app->_db->setQuery($query, $o, $l);
 		$app->_db->execute();
 		$item = self::assignCatRef($app->_db->loadObjectList(), true);
 		self::render($app, $item);
