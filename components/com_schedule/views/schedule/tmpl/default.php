@@ -46,7 +46,7 @@ $current_date = [(int)jDateTime::date('Y', $time), (int)jDateTime::date('m', $ti
 			<?php } ?>
 		</div>
 		<div class="col-xs-12 col-sm-4 col-md-3">
-			<form id="load-schedule" action="<?php echo JUri::current(); ?>" method="post">
+			<form id="load-schedule" action="<?php echo JUri::current(); ?>" method="get">
 				<input id="date-input" type="hidden" name="date" value="" />
 			</form>
 			<aside id="datepicker" data-current='<?php echo json_encode($current_date); ?>'></aside>
