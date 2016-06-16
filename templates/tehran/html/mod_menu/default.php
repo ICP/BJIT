@@ -9,6 +9,7 @@
 defined('_JEXEC') or die;
 
 // Note. It is important to remove spaces between elements.
+jimport('joomla.application.module.helper');
 ?>
 <ul class="list-unstyled list-inline menu" role="tablist">
 	<?php
@@ -23,6 +24,9 @@ defined('_JEXEC') or die;
 			}
 			if ($item->parent) {
 				$class .= ' parent';
+			}
+			if (!empty($item->params->get('pageclass_sfx'))) {
+				$class .= ' has-module';
 			}
 
 			$attrib = ' data-pageid="' . $item->id . '" role="presentation" class="' . trim($class) . '"';
@@ -42,6 +46,13 @@ defined('_JEXEC') or die;
 					break;
 			endswitch;
 
+			
+			if (!empty($item->params->get('pageclass_sfx'))) {
+				$modules = JModuleHelper::getModules($item->params->get('pageclass_sfx'));
+				foreach ($modules as $module) {
+					echo JModuleHelper::renderModule($module, array('style' => 'default'));
+				}
+			}
 			// The next item is deeper.
 			if ($item->deeper) {
 				echo '<ul class="child">';

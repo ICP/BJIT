@@ -1,24 +1,40 @@
+body.home {
+    #header {
+        position: absolute; top: 0; left: 0;
+    }
+}
 #header {
-    height: @header-height + 5; overflow-y: hidden; overflow-x: visible; border-top: 5px solid @purple;
-    position: relative; z-index: 100;
-    background: transparent;
-    position: absolute; top: 0; left: 0; width: 100%;
-    .wrapper { overflow-x: hidden; }
+    height: @header-height + 5; border-top: 5px solid @purple;
+    z-index: 100; background: transparent; width: 100%;
+    position: static;
+    /*overflow-y: hidden; overflow-x: visible;*/
+    /*.wrapper { overflow-x: hidden; }*/
     #masthead {
         height: @masthead-height; overflow: visible;
         /*&.wrapper.purple { background: fade(@purple, 95%) }*/
     }
     #navbar {
-        height: @navbar-height;
+        height: @navbar-height; overflow-y: visible;
+        position: relative;
         &.wrapper.purple { background: fadeout(@purple, 20%) }
+        [class*="col-"] { position: static; }
     }
     .menu {
         font-family: @menu-font-family; font-size: 0; float: right; height: @navbar-height; font-weight: bold; margin-right: @logo-width;
+        position: static;
         li {
-            padding: 0; font-size: @menu-font-size;
+            padding: 0; font-size: @menu-font-size; position: static;
             a {
                 display: block; color: white; line-height: @navbar-height; padding: 0 25px;
                 &:hover { color: @cyan; }
+            }
+            &.has-module {
+                & > section {
+                    position: absolute; top: @navbar-height; z-index: 1049; background: @blue-dark; margin: 0; right: 0; width: 100%; visibility: hidden; opacity: 0; transition: 0.2s all;
+                }
+                &:hover {
+                    & > section { opacity: 1; visibility: visible; }
+                }
             }
         }
     }
@@ -52,7 +68,7 @@
     a { display: block; width: 100%; height: 100%; overflow: hidden; line-height: 999999px; background: url(../img/logo_tehran.png) no-repeat center top transparent; position: absolute; height: @header-height; }
 }
 .page-header {
-    margin: 0; padding: 0; border: 0 none; background: black; height: 80px;
+    margin: 0; padding: 0; border: 0 none; background: @cyan; height: 80px;
     h1 {
         margin: 0; padding: 0; border: 0 none; color: @yellow-light; line-height: 80px; font-size: 30px; font-weight: bold;
     }

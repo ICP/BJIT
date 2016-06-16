@@ -160,7 +160,7 @@ $(function () {
         margin: 0
         , loop: true
         , center: false
-        , items: 2
+        , items: 3
         , autoWidth: false
         , rtl: true
         , themeClass: 'carousel-theme'
@@ -173,5 +173,10 @@ $(function () {
         fullHeightHeught = ($(this).height() > fullHeightHeught) ? $(this).height() : fullHeightHeught;
     });
     $(".full-height").height(fullHeightHeught);
+    
+    $(".box.newsletter").on('submit', "form", function (e) {
+        e.preventDefault();
+        return false;
+    });
 
 });

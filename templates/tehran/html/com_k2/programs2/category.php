@@ -32,6 +32,11 @@ if ($limitstart && $limitstart > 0) {
 		$this->secondary = $itemlist;
 	}
 }
+if (stristr($this->category->alias, "product")) {
+	if (isset($this->category->description) && strip_tags($this->category->description) !== "") {
+		echo '<div class="hide page-slogan">' . $this->category->description . '</div>';
+	}
+}
 ?>
 <div class="box-wrapper programs">
 		<div class="page-tools">
@@ -61,5 +66,9 @@ if ($limitstart && $limitstart > 0) {
 				</ul>
 			</div>
 		</section>
+		<?php if ($this->pagination->getPagesLinks()) { ?>
+			<div class="text-center"><?php if ($this->params->get('catPaginationResults')) echo $this->pagination->getPagesCounter(); ?></div>
+			<nav><?php if ($this->params->get('catPagination')) echo $this->pagination->getPagesLinks(); ?></nav>
+		<?php } ?>
 	<?php } ?>
 </div>

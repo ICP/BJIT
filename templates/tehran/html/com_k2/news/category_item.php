@@ -63,6 +63,7 @@ K2HelperUtilities::setDefaultImage($this->item, 'itemlist', $this->params);
 		<div class="introtext">
 			<?php echo $this->item->introtext; ?>
 		</div>
+		<?php if (isset($this->item->showMoreLink) && $this->item->showMoreLink === true) { ?><a href="<?php echo $this->item->link; ?>"><?php echo JText::_('K2_READ_MORE'); ?></a><?php } ?>
 	<?php } ?>
 	<?php echo $this->item->event->AfterDisplayContent; ?>
 	<?php echo $this->item->event->K2AfterDisplayContent; ?>

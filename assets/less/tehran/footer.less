@@ -36,7 +36,13 @@
         }
     }
     #sitemap {
+        background: @gray-darkest;
         padding: (@grid-gutter-width * 2) 0 @grid-gutter-width;
-        li { color: @purple; }
+        li {
+            color: @gray-darker;
+            a {
+                color: @gray-lightest;
+            }
+        }
     }
 }

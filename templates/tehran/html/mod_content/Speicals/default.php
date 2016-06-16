@@ -20,12 +20,12 @@ if (count($items)) {
 			<div class="row">
 				<div class="col-xs-12">
 					<section class="box special<?php if ($params->get('moduleclass_sfx')) echo ' ' . $params->get('moduleclass_sfx'); ?>">
-						<header><h2><span class="icon-holder"><i class="icon-click"></i></span><?php echo $module->title; ?></h2></header>
+						<header><h2><a href="<?php echo $items[0]->categoryLink ?>"><?php echo $items[0]->categoryname; ?></a></h2></header>
 						<div class="row">
 							<div class="cat-desc col-xs-4">
-								<h3><a href="<?php echo $items[0]->categoryLink ?>"><?php echo $items[0]->categoryname; ?></a></h3>
+								<!--<h3><a href="<?php echo $items[0]->categoryLink ?>"><?php echo $items[0]->categoryname; ?></a></h3>-->
 								<div class="introtext"><?php echo $items[0]->categorydesc; ?></div>
-								<a class="more" href="<?php echo $items[0]->categoryLink ?>"><i class="icon-left-circle"></i> بیشتر</a>
+								<a class="more hide" href="<?php echo $items[0]->categoryLink ?>"><i class="icon-left-circle"></i> بیشتر</a>
 							</div>
 							<div class="cat-items col-xs-8">
 								<div class="carousel">

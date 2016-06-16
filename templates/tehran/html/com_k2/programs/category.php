@@ -9,7 +9,8 @@
 // no direct access
 defined('_JEXEC') or die;
 
-$request = JFactory::getApplication()->input;
+$app = JFactory::getApplication();
+$request = $app->input;
 $limitstart = $request->getInt('limitstart', null);
 if ($limitstart && $limitstart > 0) {
 	$itemlist = array();
@@ -36,8 +37,21 @@ if (count($this->secondary) === 1) {
 	header('Location: ' . $this->secondary[0]->link, true, 303);
 	exit();
 }
+
+// Categories slicing and pagination
+jimport('joomla.html.pagination');
+$program_count = isset($this->subCategories) ? count($this->subCategories) : null;
+if ($program_count) {
+	$this->subCategories = array_reverse($this->subCategories);
+	$start = ($limitstart && $limitstart > 0) ? $limitstart : 0;
+	$offset = ($start == 0) ? 31 : 30;
+	$pageNav = new JPagination(count($this->subCategories), $start, $offset);
+	$start_key = ($start == 0) ? 0 : -1;
+	$this->subCategories = array_slice($this->subCategories, $start, $offset);
+}
 ?>
 <div class="box-wrapper programs">
+	<!-- Categories -->
 	<div id="category" class="itemlist<?php if ($this->params->get('pageclass_sfx')) echo ' ' . $this->params->get('pageclass_sfx'); ?>">
 		<div class="page-tools">
 			<ul class="list-unstyled list-inline order-style">
@@ -76,7 +90,7 @@ if (count($this->secondary) === 1) {
 				<section class="box subcategories grid">
 					<div>
 						<?php foreach ($this->subCategories as $key => $subCategory) { ?>
-							<?php if ($key === 0) { ?>
+							<?php if ($start == 0 && $key == 0) { ?>
 								<article data-count="<?php echo $subCategory->numOfItems; ?>">
 									<?php if ($this->params->get('subCatImage') && $subCategory->image) { ?>
 										<figure class="img cat-img">
@@ -104,7 +118,7 @@ if (count($this->secondary) === 1) {
 						<?php } ?>
 						<ul>
 							<?php foreach ($this->subCategories as $key => $subCategory) { ?>
-								<?php if ($key > 0) { ?>
+								<?php if ($key > $start_key) { ?>
 									<li data-count="<?php echo $subCategory->numOfItems; ?>">
 										<?php if ($this->params->get('subCatImage') && $subCategory->image) { ?>
 											<figure class="img cat-img">
@@ -131,9 +145,11 @@ if (count($this->secondary) === 1) {
 						</ul>
 					</div>
 				</section>
+				<nav><?php echo $pageNav->getListFooter(); ?></nav>
 			<?php } ?>
 		<?php } ?>
 	</div>
+	<!-- Items -->
 	<?php if (isset($this->secondary) && count($this->secondary)) { ?>
 		<section class="box episodes tiles highlights grid latest">
 			<div>
@@ -154,5 +170,9 @@ if (count($this->secondary) === 1) {
 				</ul>
 			</div>
 		</section>
+		<?php if ($this->pagination->getPagesLinks()) { ?>
+			<div class="text-center"><?php if ($this->params->get('catPaginationResults')) echo $this->pagination->getPagesCounter(); ?></div>
+			<nav><?php if ($this->params->get('catPagination')) echo $this->pagination->getPagesLinks(); ?></nav>
+		<?php } ?>
 	<?php } ?>
 </div>

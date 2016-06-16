@@ -3,33 +3,19 @@
     &.special {
         height: 400px;
         .cat-img {
-            position: absolute; left: 0; width: 100%; height: 100%; color: @gray-lightest;
+            position: absolute; right: 0; width: 100%; height: 100%; color: @gray-lightest;
             &:after {
-                display: block; content: ''; position: absolute; right: 0; top: 0; height: 100%; width: 90%; 
-                background: linear-gradient(to left, @purple 75%, transparent 100%);
+                display: block; content: ''; position: absolute; left: 0; top: 0; height: 100%; width: 90%; 
+                background: linear-gradient(to right, @purple 75%, transparent 100%);
             }
             img {
-                display: block; height: 100%; width: auto; opacity: 0.6 !important;
+                display: block; height: 100%; width: auto; opacity: 0.6 !important; float: right;
                 &.original { display: none; }
             }
             & > div { width: 100% !important; height: 100% !important; opacity: 0.6; }
         }
         .box {
-            color: @gray-darkest;
-            header h2 { color: @gray-darkest; font-size: @font-size-base + 2; }
 
-            .cat-desc {
-                a, p { color: @gray-lightest; display: block; }
-                h3 {
-                    font-weight: bold; margin: 0; display: inline-block;
-                    a { padding: (@grid-gutter-width / 2) 0;}
-                }
-                .more { font-weight: bold; margin-top: @grid-gutter-width; }
-            }
-            .cat-thumb {
-                margin-top: @grid-gutter-width;
-                img { display: block; width: 100%; height: auto; }
-            }
         }
     }
     &.showcase {
@@ -41,7 +27,7 @@
         .box {
             padding: @grid-gutter-width 0;
             .box { padding-top: 0; margin-top: 0; }
-            & > header h2 { color: white; }
+            & > header h2 {  }
         }
     }
     &.programs {
@@ -52,7 +38,7 @@
                 figure { width: 45%; }
                 .desc {
                     margin-left: 45%;
-                    .cat-title { color: white; }
+                    .cat-title {  }
                     .cat-text {
                         margin-bottom: @grid-gutter-width;
                         p { color: lighten(@gray-lightest, 20%); }
@@ -72,7 +58,7 @@
                             a { color: @yellow }
                         }
                         .cat-text { padding-top: @grid-gutter-width / 2; }
-                        p { color: lighten(@gray-lightest, 10%); }
+                        p { color: lighten(@gray-darkest, 10%); }
                     }
                 }
                 ul {
@@ -84,17 +70,16 @@
                         .desc {
                             margin: 0 25% 0 0; padding: 0 @grid-gutter-width 0 0;
                             h2 {
-
-                                a { color: white; font-size: 18px; }
+                                a {  font-size: 18px; }
                             }
-                            p { color: lighten(@gray-lightest, 0%); }
+                            p { color: lighten(@gray-darkest, 30%); }
                         }
                     }
                 }
             }
             &.grid {
                 ul li {
-                    width: 25%; float: right; border: 0 none; height: 270px; clear: none;
+                    width: 33.333333%; float: right; border: 0 none; height: 330px; clear: none;
                     figure { width: 100%; float: none; }
                     .desc {
                         padding:0; margin: 0;
@@ -111,7 +96,7 @@
     .box.category-desc {
         .items-count {
             .clearfix();
-            color: white; line-height: 30px; height: 30px;
+            line-height: 30px; height: 30px;
             span { display: inline-block; color: @text-color; background: @yellow; min-height: 30px; min-width: 30px; border-radius: 30px; text-align: center; line-height: 30px; font-size: 16px; font-weight: bold; padding: 0 10px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; max-width: 95%; float: right; text-indent: 0; margin-left: 15px; }
         }
     }
@@ -153,7 +138,7 @@
         &:hover { background: @yellow; color: @gray-darker; }
         &._bottom {
             position: static; background: transparent;
-            &:hover { background: transparent; color: white; }
+            &:hover { background: transparent; }
         }
     }
 
@@ -180,7 +165,7 @@
                         h3 {
                             font-size: 22px; line-height: 1.5; padding: 0;
                             a {
-                                display: block; padding: (@grid-gutter-width / 2) 0; color: white;
+                                display: block; padding: (@grid-gutter-width / 2) 0;
                                 &:hover { color: @yellow-dark; }
                             }
                         }
@@ -329,13 +314,31 @@
         }
     }
     &.special {
+        color: @gray-darkest;
+        header h2 { color: @gray-darkest; }
+        .cat-desc {
+            a, p { color: @gray-lightest; display: block; }
+            h3 {
+                font-weight: bold; margin: 0; display: inline-block;
+                a { padding: (@grid-gutter-width / 2) 0;}
+            }
+            .more { font-weight: bold; margin-top: @grid-gutter-width; }
+        }
+        .cat-thumb {
+            margin-top: @grid-gutter-width;
+            img { display: block; width: 100%; height: auto; }
+        }
+        .cat-items {
+            margin-top: -30px;
+        }
         .carousel {
             .clearfix();
-            background: rgba(0, 0, 0, 0.5); height: 206px; margin: @grid-gutter-width -@grid-gutter-width 0 -@grid-gutter-width; overflow-y: hidden;
+            background: rgba(0, 0, 0, 0.5); height: 246px; margin: @grid-gutter-width -@grid-gutter-width 0 -@grid-gutter-width; overflow-y: hidden;
             ul {
-                list-style: none; padding: 0 0 0 40px;
+                .clearfix();
+                list-style: none; padding: 0 @grid-gutter-width;
                 li {
-                    float: right; padding: (@grid-gutter-width * 2) @grid-gutter-width 0; width:33.333333%;
+                    float: right; padding: (@grid-gutter-width * 2) @grid-gutter-width; width:33.333333%;
                     figure {
                         a, img { display: block; width: 100%; height: auto; }
                     }
@@ -344,7 +347,7 @@
                     }
                 }
                 .item li {
-                    /*width: 100%;*/
+                    width: 100%;
                 }
             }
         }
@@ -358,7 +361,7 @@
                 &:after { content: '\e827'; font-family: @font-family-icons; display: block; position: absolute; top: 0; right: 0; color: white; font-size: 40px; right: 20px; top: 4px; }
                 .btn-link { display: block; color: black; font-size: 48px; position: absolute; top: 0; left: -40px; width: 40px; height: 40px; line-height: 40px; }
             }
-            input[type="text"] { border: 0 none; color: #000; background: @purple; line-height: 40px; height: 60px; border-radius: 0; font-size: 32px; padding-right: 100px; }
+            input[type="text"] { border: 0 none; color: #fff; background: @purple; line-height: 40px; height: 60px; border-radius: 0; font-size: 32px; padding-right: 100px; }
             .btn { display: none; }
         }
     }
@@ -444,9 +447,9 @@
                         margin: 0; line-height: 1.5; padding: 40px 180px 0 0; font-size: 48px; text-align: center;
                         a { display: block; padding-bottom: @grid-gutter-width / 2; }
                     }
-                    p { color: white; line-height: 1.5; font-size: 13px; display: none; }
+                    p { line-height: 1.5; font-size: 13px; display: none; }
                     .more {
-                        color: white; float: left; background: @beige; padding: 5px 20px; position: absolute; left: @grid-gutter-width; bottom: @grid-gutter-width;
+                        float: left; background: @beige; padding: 5px 20px; position: absolute; left: @grid-gutter-width; bottom: @grid-gutter-width;
                         &:hover { color: @yellow-dark; }
                     }
                 }
@@ -613,8 +616,7 @@
                 .desc {
                     margin: 0 25% 0 0; padding: 0 @grid-gutter-width 0 0;
                     h2 {
-
-                        a { color: white; font-size: 18px; }
+                        a { font-size: 18px; }
                     }
                     p { color: lighten(@gray-lightest, 0%); margin-bottom: 0; }
                 }
@@ -624,7 +626,7 @@
     &.cards {
         ul {
             li {
-                
+
                 .inner { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); border-radius: 2px; overflow: hidden; }
                 figure {  }
                 .desc {
@@ -666,14 +668,14 @@
         & > div { float: left; }
         form {
             * { display: inline-block; vertical-align: top; }
-            input { padding: 6px 18px; border: 1px solid @gray; background: @gray-dark; color: white; min-width: 300px }
+            input { padding: 6px 18px; border: 1px solid @gray; background: @gray-dark; color: white; min-width: 300px; text-align: left; direction: ltr; }
         }
     }
 
     article.video, li.video {
         figure {
             position: relative;
-            & > a:after { display: block; content: '\e80f'; font-family: @font-family-icons; position: absolute; top: 50%; left: 50%; color: white; border: 3px solid white; border-radius: 100%; width: 50px; height: 50px; text-align: center; line-height: 44px; margin-left: -25px; margin-top: -25px; text-indent: -3px; font-size: 18px; }
+            & > a:after { display: block; content: '\e80f'; font-family: @font-family-icons; position: absolute; top: 50%; left: 50%; border: 3px solid white; border-radius: 100%; width: 50px; height: 50px; text-align: center; line-height: 44px; margin-left: -25px; margin-top: -25px; text-indent: -3px; font-size: 18px; }
         }
     }
     li.video figure > a:after { width: 36px; height: 36px; margin-left: -18px; margin-top: -18px; font-size: 14px; line-height: 30px; }

@@ -46,6 +46,7 @@ if ($limitstart && $limitstart > 0) {
 					<article class="item group-<?php echo $item->itemGroup . $media; ?><?php echo ($item->featured) ? ' featured' : ''; ?><?php if ($item->params->get('pageclass_sfx')) echo ' ' . $item->params->get('pageclass_sfx'); ?>" data-hits="<?php echo $item->hits; ?>">
 						<?php
 						$this->item = $item;
+						$this->item->showMoreLink = true;
 						echo $this->loadTemplate('item');
 						?>
 					</article>
