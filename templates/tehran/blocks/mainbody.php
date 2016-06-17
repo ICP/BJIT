@@ -145,36 +145,16 @@
 			<div class="container">
 				<div class="row _relative">
 					<div class="col-xs-12 col-sm-10 col-md-9">
-						<div class="row">
-							<div class="col-xs-12 col-md-4">
-								<ul>
-									<li><a href="#">صفحه اصلی</a></li>
-									<li><a href="#">درباره ما</a></li>
-									<li><a href="#">تماس با ما</a></li>
-									<li><a href="#">خبرنامه</a></li>
-								</ul>
-							</div>
-							<div class="col-xs-12 col-md-4">
-								<ul>
-									<li><a href="#">صفحه اصلی</a></li>
-									<li><a href="#">درباره ما</a></li>
-									<li><a href="#">تماس با ما</a></li>
-									<li><a href="#">خبرنامه</a></li>
-								</ul>
-							</div>
-							<div class="col-xs-12 col-md-4">
-								<ul>
-									<li><a href="#">صفحه اصلی</a></li>
-									<li><a href="#">درباره ما</a></li>
-									<li><a href="#">تماس با ما</a></li>
-									<li><a href="#">خبرنامه</a></li>
-								</ul>
-							</div>
-						</div>
+						<ul class="list-inline">
+							<li><a href="#">صفحه اصلی</a></li>
+							<li><a href="#">درباره ما</a></li>
+							<li><a href="#">تماس با ما</a></li>
+							<li><a href="#">خبرنامه</a></li>
+						</ul>
 						<jdoc:include type="modules" name="sitemap" />
 					</div>
 					<div class="col-xs-12 col-sm-2 col-md-3">
-						<a href="<?php echo JURI::base(); ?>" class="footer-logo"><img src="<?php echo JURI::base() ?>assets/img/logo_footer_tehran.png" /></a>
+						<a href="<?php echo JURI::base(); ?>" class="footer-logo"><img src="<?php echo JURI::base() ?>assets/img/logo_tehran.png" /></a>
 					</div>
 				</div>
 			</div>

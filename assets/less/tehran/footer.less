@@ -7,7 +7,7 @@
         &:hover { color: @footer-link-hover; }
     }
     .row._relative > div { position: static; }
-    .footer-logo { display: block; position: absolute; bottom: 0; left: 0; }
+    .footer-logo { display: block; position: absolute; bottom: -45px; left: 0; }
     .footer-about {
         padding-top: 30px; border-left: 1px solid @gray-light;
         a { display: block; text-align: center; }
@@ -26,11 +26,11 @@
         }
     }
     .social-links {
-        font-size: 0; padding: 24px 0 50px;
+        font-size: 0; padding: @grid-gutter-width 0 (@grid-gutter-width / 2);
         li {
             font-size: 24px;
             a {
-                color: @gray-lighter;
+                color: @beige;
                 &:hover { color: white; }
             }
         }
@@ -41,7 +41,8 @@
         li {
             color: @gray-darker;
             a {
-                color: @gray-lightest;
+                /*color: @gray-lightest;*/
+                &:hover { color: white; }
             }
         }
     }
