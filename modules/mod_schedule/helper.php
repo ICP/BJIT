@@ -76,7 +76,7 @@ class ModScheduleHelper {
 				->from($db->quoteName('#__k2_items') . ' i')
 				->where('i.catid in (select cc.id from #__k2_categories cc where cc.parent = 2)', ' AND')
 				->where('i.published = 1 AND c.published = 1', ' AND');
-		if (count($ids)) {
+		if (isset($ids) && count($ids)) {
 			$query->where('i.id not in (' . rtrim(implode(',', $ids), ',') . ')');
 		}
 		$query->join('LEFT', $db->quoteName('#__k2_categories') . 'AS c ON i.catid = c.id')
