@@ -126,6 +126,7 @@ abstract class Items {
 			$o->description = $item->description;
 			$o->parent = $item->parent;
 			$o->image = ($item->image) ? str_replace('/api', '', JUri::base()) . 'media/k2/categories/' . $item->image : '';
+			$o->itemsCount = $item->items_count;
 			$output[] = $o;
 		}
 		return $output;
@@ -139,11 +140,13 @@ abstract class Items {
 			list($o, $l) = explode(',', $offset);
 		}
 		$query = $app->_db->getQuery(true);
-		$query->select('c.id, c.name, c.description, c.parent, c.image')
-				->from($app->_db->quoteName('#__k2_categories') . ' AS c');
+		$query->select('c.id, c.name, c.description, c.parent, c.image, count(i.id) AS items_count')
+				->from($app->_db->quoteName('#__k2_categories') . ' AS c')
+				->join('LEFT', $app->_db->quoteName('#__k2_items') . ' AS i ON c.id = i.catid');
 		if (isset($parent))
 			$query->where($app->_db->quoteName('c.parent') . ' = ' . $app->_db->quote($parent), ' AND');
 		$query->where('c.published = 1 AND c.trash = 0 AND c.access = 1');
+		$query->group($app->_db->quoteName('c.id'));
 		$query->order('c.id DESC');
 		$app->_db->setQuery($query, $o, $l);
 		$app->_db->execute();
