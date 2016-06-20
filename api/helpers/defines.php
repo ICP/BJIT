@@ -39,3 +39,4 @@ require_once (JPATH_ADMINISTRATOR . DS . 'components' . DS . 'com_k2' . DS . 'mo
 include 'classes/route.php';
 include 'classes/items.php';
 include 'classes/schedule.php';
+include 'classes/comments.php';

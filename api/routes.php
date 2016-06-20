@@ -48,6 +48,18 @@ $app->map('/parentcategoryitems(/)(:id(/))', function ($id = null) use ($app) {
 		Items::getItems($app, 'byparentcategory', $id);
 })->via('GET');
 
+// Comments
+$app->map('/comments(/)(:id(/))', function ($id = null) use ($app) {
+	if (isset($id)) {
+		Comments::getItemComments($app, $id);
+	}
+})->via('GET');
+$app->map('/comments(/)(:id(/))', function ($id = null) use ($app) {
+	if (isset($id)) {
+		Comments::addComment($app, $id);
+	}
+})->via('POST');
+
 // Schedules
 $app->map('/schedules(/)(:date(/))', function ($date = null) use ($app) {
 	$date = (!$date) ? date('Y-m-d', time()) : $date;
