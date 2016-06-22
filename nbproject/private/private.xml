@@ -6,7 +6,9 @@
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/tehran/item.less</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/doctv/pages.less</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/templates/tehran/html/com_search/search/default_form.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/api/classes/items.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/modules/mod_schedule/helper.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/api/classes/schedule.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/templates/tehran/blocks/mainbody.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/tehran/pages.less</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/templates/tehran/html/mod_content/Speicals/default.php</file>
@@ -14,11 +16,15 @@
             <file>file:/C:/xampp/htdocs/irib/doctv/templates/tehran/html/mod_menu/default.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/js/tehran.js</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/tehran/colors.less</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/api/helpers/defines.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/api/routes.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/api/classes/comments.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/templates/tehran/html/mod_search/default.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/tehran/footer.less</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/templates/tehran/html/com_search/search/default.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/tehran.less</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/templates/tehran/html/mod_schedule/thumbs.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/api/index.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/tehran/components.less</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/templates/tehran/html/com_k2/programs/category.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/templates/tehran/html/com_search/search/default_error.php</file>
