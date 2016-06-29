@@ -22,6 +22,10 @@
                 <field name="getTemplate" type="moduletemplate" modulename="mod_content" default="Default" label="K2_SELECT_SUBTEMPLATE" description="K2_THIS_MODULE_UTILIZES_ONTHEFLY_MVC_TEMPLATE_OVERRIDES_WHAT_THIS_MEANS_IS_THAT_YOU_CAN_CREATE_A_NEW_SUBTEMPLATE_FOLDER_FOR_THIS_MODULE_WITHIN_YOUR_JOOMLA_TEMPLATES_HTMLMOD_K2_CONTENT_FOLDER_THE_MODULE_WILL_THEN_PICKUP_THE_NEW_SUBTEMPLATE_AUTOMAGICALLY_WITHOUT_YOU_EDITING_ANY_XML_FILE_OR_DOING_ANY_OTHER_NONDESIGNER_WORK"/>
                 <field name="category_link" type="categories" default="" label="Read more category" description="Category to use as module read more link"/>
                 <field name="mymenu_id" type="menuitem" default="0" label="Select a menu item" description="Select a menu item" />
+                <field name="type" type="list" default="items" label="Type" description="">
+                    <option value="items">Items</option>
+                    <option value="categories">Categories</option>
+                </field>
                 <field name="source" type="list" default="filter" label="K2_SOURCE" description="">
                     <option value="filter">K2_RETRIEVE_ITEMS_FROM_CATEGORIES</option>
                     <option value="specific">K2_SELECT_SPECIFIC_ITEMS</option>

@@ -33,6 +33,34 @@ class modK2ContentHelper {
 		$now = K2_JVERSION == '15' ? $jnow->toMySQL() : $jnow->toSql();
 		$nullDate = $db->getNullDate();
 
+		if ($params->get('type', 'items') == "categories") {
+			$query = $db->getQuery(true);
+			$query->select('c.id AS categoryid, c.name AS categoryname, c.alias AS categoryalias, c.params AS categoryparams, c.description, c.parent, c.image')
+					->from($db->quoteName('#__k2_categories') . ' AS c')
+					->where('c.published = 1 AND c.trash = 0 AND c.access = 1', 'AND');
+
+			if ($params->get('catfilter')) {
+				if (is_array($cid)) {
+					JArrayHelper::toInteger($cid);
+					$query->where("c.parent IN(" . implode(',', $cid) . ")");
+				} else {
+					$query->where("c.parent=" . (int) $cid);
+				}
+			}
+			
+			$query->order('c.id DESC');
+			$db->setQuery($query, 0, $limit);
+			$items = $db->loadObjectList();
+			if (count($items)) {
+				foreach ($items as $item) {
+					$item->link = urldecode(JRoute::_(K2HelperRoute::getCategoryRoute($item->categoryid . ':' . urlencode($item->categoryalias))));
+				}
+			}
+			
+//			var_dump($items); die;
+			return $items;
+		}
+
 		if ($params->get('source') == 'specific') {
 
 			$value = $params->get('items');
@@ -325,7 +353,6 @@ class modK2ContentHelper {
 //				if ($params->get('itemCategory'))
 				$item->categoryLink = urldecode(JRoute::_(K2HelperRoute::getCategoryRoute($item->catid . ':' . urlencode($item->categoryalias))));
 //				$item->categoryLink = urldecode(JRoute::_(K2HelperRoute::getCategoryRoute($params->get('itemCategory') . ':' . urlencode($item->categoryalias))));
-
 				//Extra fields
 				if ($params->get('itemExtraFields')) {
 					$item->extra_fields = $model->getItemExtraFields($item->extra_fields, $item);
