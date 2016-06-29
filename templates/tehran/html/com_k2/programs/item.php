@@ -22,30 +22,6 @@ JFactory::getDocument()->setTitle($this->item->category->name . ': ' . $this->it
 	<?php echo $this->item->event->BeforeDisplay; ?>
 	<?php echo $this->item->event->K2BeforeDisplay; ?>
 	<div class="item-inner">
-		<header class="item-header">
-			<div class="row">
-				<div class="col-xs-6  col-md-3 item-tools">
-					<ul class="list-inline list-unstyled">
-						<?php if ($this->item->params->get('itemPrintButton') && !JRequest::getInt('print')) { ?>
-							<li>
-								<a rel="nofollow" href="<?php echo $this->item->printLink; ?>" onclick="window.open(this.href, 'printWindow', 'width=900,height=600,location=no,menubar=no,resizable=yes,scrollbars=yes');
-	                                    return false;">
-									<i class="icon-print"></i>
-								</a>
-							</li>
-						<?php } ?>
-						<li class="fb"><a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo JUri::current(); ?>" target="_blank"><i class="icon-facebook"></i></a></li>
-						<li class="tw"><a href="https://twitter.com/home?status=<?php echo $this->item->title; ?> - <?php echo JUri::current(); ?>" target="_blank"><i class="icon-twitter"></i></a></li>
-						<li class="gp"><a href="https://plus.google.com/share?url=<?php echo JUri::current(); ?>" target="_blank"><i class="icon-gplus"></i></a></li>
-					</ul>
-				</div>
-				<?php if ($this->item->params->get('itemDateCreated')) { ?>
-					<div class="col-xs-6 col-md-9 item-date">
-						<time><?php echo JHTML::_('date', $this->item->created, JText::_('K2_DATE_FORMAT_LC2')); ?></time>
-					</div>
-				<?php } ?>
-			</div>
-		</header>
 		<?php if ($this->item->params->get('itemImage') && !empty($this->item->image)) { ?>
 			<?php $video = ($this->item->params->get('itemVideo') && !empty($this->item->video)) ? $this->item->video : null; ?>
 			<div class="media-container">
@@ -137,11 +113,36 @@ JFactory::getDocument()->setTitle($this->item->category->name . ': ' . $this->it
 				<?php echo $this->item->event->K2AfterDisplayContent; ?>
 			</div>
 		</div>
+		<div class="clearfix"></div>
+		<header class="item-header">
+			<div class="row">
+				<div class="col-xs-6  col-md-3 item-tools">
+					<ul class="list-inline list-unstyled">
+						<?php if ($this->item->params->get('itemPrintButton') && !JRequest::getInt('print')) { ?>
+							<li>
+								<a rel="nofollow" href="<?php echo $this->item->printLink; ?>" onclick="window.open(this.href, 'printWindow', 'width=900,height=600,location=no,menubar=no,resizable=yes,scrollbars=yes');
+	                                    return false;">
+									<i class="icon-print"></i>
+								</a>
+							</li>
+						<?php } ?>
+						<li class="fb"><a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo JUri::current(); ?>" target="_blank"><i class="icon-facebook"></i></a></li>
+						<li class="tw"><a href="https://twitter.com/home?status=<?php echo $this->item->title; ?> - <?php echo JUri::current(); ?>" target="_blank"><i class="icon-twitter"></i></a></li>
+						<li class="gp"><a href="https://plus.google.com/share?url=<?php echo JUri::current(); ?>" target="_blank"><i class="icon-gplus"></i></a></li>
+					</ul>
+				</div>
+				<?php if ($this->item->params->get('itemDateCreated')) { ?>
+					<div class="col-xs-6 col-md-9 item-date">
+						<time><?php echo JHTML::_('date', $this->item->created, JText::_('K2_DATE_FORMAT_LC2')); ?></time>
+					</div>
+				<?php } ?>
+			</div>
+		</header>
 	</div>
 
 	<div class="item-boxes">
 		<?php if (isset($this->item->previousLink) || isset($this->item->previousLink)) { ?>
-			<section class="box tiles highlights latest grid grayscale color-on-hover more header_bg-black" data-catlink="<?php echo urldecode(JRoute::_(K2HelperRoute::getCategoryRoute($this->item->category->id . ':' . urlencode($this->item->category->alias)))); ?>">
+			<section class="box tiles highlights latest grid more header_bg-black" data-catlink="<?php echo urldecode(JRoute::_(K2HelperRoute::getCategoryRoute($this->item->category->id . ':' . urlencode($this->item->category->alias)))); ?>">
 				<header><h2>سایر قسمت‌ها</h2></header>
 				<div>
 					<ul></ul>

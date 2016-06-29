@@ -19,14 +19,16 @@ $user = JFactory::getUser();
 		<form action="<?php echo JURI::root(true); ?>/index.php" method="post" id="comment-form" class="form-validate form-horizontal">
 			<div class="form-group">
 				<?php if ($user->guest) { ?>
-					<div class="col-xs-12 col-sm-6">
+					<div class="col-xs-12">
 						<input class="form-control" type="text" name="userName" id="userName" placeholder="<?php echo JText::_('K2_NAME'); ?>" required="required" />
 					</div>
 				<?php } else { ?>
 					<input type="hidden" name="userName" value="<?php echo $user->name; ?>" />
 				<?php } ?>
+			</div>
+			<div class="form-group">
 				<?php if ($user->guest) { ?>
-					<div class="col-xs-12 col-sm-6">
+					<div class="col-xs-12">
 						<input class="form-control ltr" type="email" name="commentEmail" id="commentEmail" placeholder="<?php echo JText::_('K2_EMAIL'); ?>" required="required" />
 					</div>
 				<?php } else { ?>

@@ -18,7 +18,7 @@ defined('_JEXEC') or die;
 	<?php echo $this->item->event->BeforeDisplay; ?>
 	<?php echo $this->item->event->K2BeforeDisplay; ?>
 	<header class="item-header">
-		<div class="row">
+		<div class="row hide">
 			<div class="col-xs-6  col-md-3 item-tools">
 				<ul class="list-inline list-unstyled">
 					<?php if ($this->item->params->get('itemPrintButton') && !JRequest::getInt('print')) { ?>
@@ -58,16 +58,6 @@ defined('_JEXEC') or die;
 				</h2>
 			</div>
 		<?php } ?>
-		<?php if ($this->item->params->get('itemAuthor')) { ?>
-			<div class="item-author">
-				<?php echo K2HelperUtilities::writtenBy($this->item->author->profile->gender); ?>
-				<?php if (empty($this->item->created_by_alias)) { ?>
-					<a rel="author" href="<?php echo $this->item->author->link; ?>"><?php echo $this->item->author->name; ?></a>
-				<?php } else { ?>
-					<?php echo $this->item->author->name; ?>
-				<?php } ?>
-			</div>
-		<?php } ?>
 	</header>
 	<?php echo $this->item->event->AfterDisplayTitle; ?>
 	<?php echo $this->item->event->K2AfterDisplayTitle; ?>
@@ -97,6 +87,16 @@ defined('_JEXEC') or die;
 				<?php } ?>
 			</figure>
 		<?php } ?>
+		<?php if ($this->item->params->get('itemAuthor')) { ?>
+			<div class="item-author">
+				<?php echo K2HelperUtilities::writtenBy($this->item->author->profile->gender); ?>
+				<?php if (empty($this->item->created_by_alias)) { ?>
+					<a rel="author" href="<?php echo $this->item->author->link; ?>"><?php echo $this->item->author->name; ?></a>
+				<?php } else { ?>
+					<?php echo $this->item->author->name; ?>
+				<?php } ?>
+			</div>
+		<?php } ?>
 		<?php if (!empty($this->item->fulltext)) { ?>
 			<?php if ($this->item->params->get('itemIntroText')) { ?>
 				<div class="summary">
@@ -115,6 +115,30 @@ defined('_JEXEC') or die;
 		<?php } ?>
 		<?php echo $this->item->event->AfterDisplayContent; ?>
 		<?php echo $this->item->event->K2AfterDisplayContent; ?>
+		<div class="item-header">
+			<div class="row">
+				<div class="col-xs-6  col-md-3 item-tools">
+					<ul class="list-inline list-unstyled">
+						<?php if ($this->item->params->get('itemPrintButton') && !JRequest::getInt('print')) { ?>
+							<li>
+								<a rel="nofollow" href="<?php echo $this->item->printLink; ?>" onclick="window.open(this.href, 'printWindow', 'width=900,height=600,location=no,menubar=no,resizable=yes,scrollbars=yes');
+										return false;">
+									<i class="icon-print"></i>
+								</a>
+							</li>
+						<?php } ?>
+						<li class="fb"><a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo JUri::current(); ?>" target="_blank"><i class="icon-facebook"></i></a></li>
+						<li class="tw"><a href="https://twitter.com/home?status=<?php echo $this->item->title; ?> - <?php echo JUri::current(); ?>" target="_blank"><i class="icon-twitter"></i></a></li>
+						<li class="gp"><a href="https://plus.google.com/share?url=<?php echo JUri::current(); ?>" target="_blank"><i class="icon-gplus"></i></a></li>
+					</ul>
+				</div>
+				<?php if ($this->item->params->get('itemDateCreated')) { ?>
+					<div class="col-xs-6 col-md-9 item-date">
+						<time><?php echo JHTML::_('date', $this->item->created, JText::_('K2_DATE_FORMAT_LC2')); ?></time>
+					</div>
+				<?php } ?>
+			</div>
+		</div>
 	</div>
 	<div class="item-boxes">
 		<?php if ($this->item->params->get('itemRelated') && isset($this->relatedItems)) { ?>
