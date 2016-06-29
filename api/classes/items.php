@@ -5,6 +5,7 @@ abstract class Items {
 	public static function getItems($app, $type, $catid = null) {
 		$o = 0;
 		$l = 50;
+		$r = false;
 		$offset = $app->request->get('offset', null);
 		if (!empty($offset)) {
 			list($o, $l) = explode(',', $offset);
@@ -21,6 +22,7 @@ abstract class Items {
 						->join('LEFT', $app->_db->quoteName('#__k2_categories') . 'AS c ON i.catid = c.id')
 						->where($app->_db->quoteName('featured') . ' = ' . $app->_db->quote('1'));
 				$app->_db->setQuery($query);
+//				$r = true;
 				break;
 			case 'items':
 				$query->select('i.*, c.id AS catid, c.name, c.alias AS categoryalias, c.image')
@@ -49,7 +51,7 @@ abstract class Items {
 				break;
 		}
 		$app->_db->execute();
-		$items = self::assignRef($app->_db->loadObjectList());
+		$items = self::assignRef($app->_db->loadObjectList(), false, $r);
 		self::render($app, $items);
 	}
 
@@ -94,7 +96,7 @@ abstract class Items {
 		return true;
 	}
 
-	public static function assignRef($items, $full = false) {
+	public static function assignRef($items, $full = false, $reverse = false) {
 		$output = [];
 		foreach ($items as $item) {
 			$o = new stdClass();
@@ -104,16 +106,19 @@ abstract class Items {
 			$o->category = $item->name;
 			$o->categoryLink = Route::category($item->catid, $item->categoryalias);
 			$o->state = $item->published;
-			$o->introtext = $item->introtext;
+			$o->introtext = strip_tags($item->introtext);
 			$o->video = ($item->video) ? Route::video($item->video) : '';
 			$o->created = $item->created;
 			$o->img = Route::image($item->id);
 			$o->thumb = Route::image($item->id, true);
 			if ($full) {
 				$o->fulltext = $item->fulltext;
+//				$o->fulltext = strip_tags($item->fulltext);
 			}
 			$output[] = $o;
 		}
+		if ($reverse)
+			$output = array_reverse($output);
 		return $output;
 	}
 
@@ -123,7 +128,7 @@ abstract class Items {
 			$o = new stdClass();
 			$o->id = $item->id;
 			$o->title = $item->name;
-			$o->description = $item->description;
+			$o->description = strip_tags($item->description);
 			$o->parent = $item->parent;
 			$o->image = ($item->image) ? str_replace('/api', '', JUri::base()) . 'media/k2/categories/' . $item->image : '';
 			$o->itemsCount = $item->items_count;
