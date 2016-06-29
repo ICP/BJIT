@@ -71,7 +71,7 @@ $(function () {
         alwaysVisible: true
     });
 
-    var $tilesTmpl = '<li><figure class="img"><a href="{link}"><img src="{img}" alt="{title}" /></a></figure><div class="desc"><div class="item-header"><h3 class="item-title"><a href="{link}">{title}</a></h3></div><time class="created">{created}</time></div></li>';
+    var $tilesTmpl = '<li><figure class="img"><a href="{link}"><img src="{img}" alt="{title}" /></a></figure><div class="desc"><div class="item-header"><h3 class="item-title"><a href="{link}">{title}</a></h3></div><time class="created hide">{created}</time></div></li>';
     if ($(".item-boxes .box.more").length) {
         var moreItems = $(".item-boxes .box.more");
         var itemsContainer = moreItems.find("ul");

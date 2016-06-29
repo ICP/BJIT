@@ -1,5 +1,5 @@
 #item {
-    .item-inner { .clearfix(); }
+    .item-inner { .clearfix(); padding-top: @grid-gutter-width; }
     .item-tools {
         ul {
             font-size: 0;
@@ -50,7 +50,8 @@
                 border: 0 none;
                 /*.cat-title { color: white; }*/
                 .item-title {
-                    display: inline-block; color: @text-color; background: @yellow; min-height: 30px; min-width: 30px; border-radius: 30px; text-align: center; line-height: 30px; font-size: 16px; font-weight: bold; padding: 0 10px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; max-width: 95%; text-indent: 0; margin-left: 15px; 
+                    display: inline-block; color: @text-color; min-height: 30px; min-width: 30px; border-radius: 30px; text-align: center; line-height: 30px; font-size: 16px; font-weight: bold; padding: 0 10px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; max-width: 95%; text-indent: 0; margin-left: 15px; 
+                    /*background: @yellow;*/ 
                 }
             }
         }

@@ -1,6 +1,6 @@
 body.home {
     #header {
-        position: absolute; top: 0; left: 0;
+        position: fixed; top: 0; left: 0; z-index: 9999;
     }
 }
 #header {
@@ -26,14 +26,22 @@ body.home {
             padding: 0; font-size: @menu-font-size; position: static;
             a {
                 display: block; color: white; line-height: @navbar-height; padding: 0 25px;
-                &:hover { color: @cyan; }
             }
+            &:hover a { color: white; background: @blue-dark; }
             &.has-module {
                 & > section {
                     position: absolute; top: @navbar-height; z-index: 1049; background: @blue-dark; margin: 0; right: 0; width: 100%; visibility: hidden; opacity: 0; transition: 0.2s all;
                 }
                 &:hover {
                     & > section { opacity: 1; visibility: visible; }
+                }
+                .box {
+                    margin-bottom: 0;
+                    .box { margin-bottom: @grid-gutter-width ; }
+                }
+                & > a {
+                    position: relative;
+                    &:after { display: inlnie-block; content: '\e816'; font-family: 'doctv'; font-size: 12px; margin-right: 8px; } //e82b
                 }
             }
         }

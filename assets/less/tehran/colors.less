@@ -1,11 +1,13 @@
 body {
-    background: @gray-lighter;
+    background: @gray-lighter; color: @text-color;
+    a { color: @purple }
     &.dark {
         /*background: @gray;*/
         p, .introtext { color: @text-color; }
         #item {
-            .page-title h2 { color: white; }
-            .item-body { color: white; font-size: @font-size-base + 2; line-height: 1.5; }
+            .page-title h2 { color: @text-color; }
+            .item-body { color: @text-color; font-size: @font-size-base + 2; line-height: 1.5; }
+            .item-author { margin-bottom: @grid-gutter-width; }
         }
     }
     &.light {
