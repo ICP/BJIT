@@ -10,6 +10,19 @@ defined('_JEXEC') or die;
 $time = time();
 $items = array_values($items);
 //echo date('H:i:s', time());
+
+if (!function_exists('limit_text')) {
+	function limit_text($string, $length = 10) {
+		$words = explode(' ', $string);
+		if (count($words) <= $length)
+			return $string;
+		$output = '';
+		for ($i = 0; $i < $length; $i++) {
+			$output .= $words[$i] . ' ';
+		}
+		return trim($output) . '&hellip;';
+	}
+}
 ?>
 <aside id="schedule" class="box schedule">
 	<div class="container">
@@ -28,7 +41,7 @@ $items = array_values($items);
 							<figure<?php if ($key > 1) { ?> class="grayscale"<?php } ?>>
 								<figcaption>
 									<?php if ($item->link) { ?><a href="<?php echo $item->link; ?>"><?php } ?>
-										<?php echo $item->title; ?><small><?php echo $item->start_small; ?></small>
+										<?php echo limit_text($item->title, 3); ?><small><?php echo $item->start_small; ?></small>
 									<?php if ($item->link) { ?></a><?php } ?>
 								</figcaption>
 								<?php if ($item->link) { ?><a href="<?php echo $item->link; ?>"><?php } ?>
