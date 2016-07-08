@@ -39,54 +39,56 @@ new jDateTime(false);
 			</thead>
 			<tbody>
 				<tr class="edit">
-					<td></td>
-					<td></td>
-					<td width="30%">
-						<div class="form-group select-holder">
-							<select id="program-list" name="program_id" class="form-control input-block-level programs has-suggest" required>
-								<option value="0" selected>ناموجود</option>
-							</select>
-						</div>
-						<div class="form-group has-feedback">
-							<input type="text" name="title" placeholder="Program Title" class="form-control input-block-level input-sm" required />
-						</div>
-					</td>
-					<td width="25%">
-						<div class="form-group select-holder">
-							<select id="episode-list" name="episode"  class="form-control input-block-level has-suggest disabled" required>
-								<option value="0" selected>ناموجود</option>
-							</select>
-						</div>
-						<div class="form-group">
-							<input type="text" name="subtitle" placeholder="Episode Title" class="form-control input-block-level input-sm" />
-						</div>
-					</td>
-					<td>
-						<div class="form-group has-feedback">
-							<input type="text" name="start" placeholder="00:00" class="form-control input-block-level text-center mask required" required />
-						</div>
-					</td>
-					<td>
-						<div class="form-group has-feedback">
-							<input type="text" name="duration" placeholder="00:00" class="form-control input-block-level text-center mask required" required />
-						</div>
-					</td>
-					<td>
-						<div class="form-group">
-							<select name="state" class="form-control input-block-level">
-								<option value="1" selected>Published</option>
-								<option value="0">Unpublished</option>
-							</select>
-						</div>
-					</td>
-					<td>
-					</td>
-					<td>
-						<input type="hidden" name="created" value="<?php echo jDateTime::date('Y-m-d H:i:s', time()); ?>" />
-						<?php echo JHtml::_('form.token'); ?>
-						<button type="submit" class="btn btn-success" data-task="add">Add <span class="icon-new icon-white"></span></button>
-					</td>
-				</tr>
+			<form class="add-schedule">
+				<td></td>
+				<td></td>
+				<td width="30%">
+					<div class="form-group select-holder">
+						<select id="program-list" name="program_id" class="form-control input-block-level programs has-suggest" required>
+							<option value="0" selected>ناموجود</option>
+						</select>
+					</div>
+					<div class="form-group has-feedback">
+						<input type="text" name="title" placeholder="Program Title" class="form-control input-block-level input-sm" required />
+					</div>
+				</td>
+				<td width="25%">
+					<div class="form-group select-holder">
+						<select id="episode-list" name="episode"  class="form-control input-block-level has-suggest disabled" required>
+							<option value="0" selected>ناموجود</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<input type="text" name="subtitle" placeholder="Episode Title" class="form-control input-block-level input-sm" />
+					</div>
+				</td>
+				<td>
+					<div class="form-group has-feedback">
+						<input type="text" name="start" placeholder="00:00" class="form-control input-block-level text-center mask required" required />
+					</div>
+				</td>
+				<td>
+					<div class="form-group has-feedback">
+						<input type="text" name="duration" placeholder="00:00" class="form-control input-block-level text-center mask required" required />
+					</div>
+				</td>
+				<td>
+					<div class="form-group">
+						<select name="state" class="form-control input-block-level">
+							<option value="1" selected>Published</option>
+							<option value="0">Unpublished</option>
+						</select>
+					</div>
+				</td>
+				<td>
+				</td>
+				<td>
+					<input type="hidden" name="created" value="<?php echo jDateTime::date('Y-m-d H:i:s', time()); ?>" />
+					<?php echo JHtml::_('form.token'); ?>
+					<button type="submit" class="btn btn-success" data-task="add">Add <span class="icon-new icon-white"></span></button>
+				</td>
+			</form>
+			</tr>
 			</tbody>
 		</table>
 	</div>
@@ -98,12 +100,12 @@ new jDateTime(false);
 					<h4 class="modal-title" id="myModalLabel">Add Item</h4>
 				</div>
 				<div class="modal-body">
-				...
-			</div>
+					...
+				</div>
 				<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-primary" data-task="add">Save changes</button>
-			</div>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary" data-task="add">Save changes</button>
+				</div>
 			</div>
 		</div>
 	</div>

@@ -8,6 +8,19 @@
  */
 // no direct access
 defined('_JEXEC') or die('Restricted access');
+
+if (!function_exists('limit_text')) {
+	function limit_text($string, $length = 10) {
+		$words = explode(' ', $string);
+		if (count($words) <= $length)
+			return $string;
+		$output = '';
+		for ($i = 0; $i < $length; $i++) {
+			$output .= $words[$i] . ' ';
+		}
+		return trim($output) . '&hellip;';
+	}
+}
 ?>
 <?php if (count($items)) { ?>
 	<?php if ($params->get('category_link') && $params->get('mymenu_id')) { ?>
@@ -27,7 +40,7 @@ defined('_JEXEC') or die('Restricted access');
 						<?php } ?>
 						<div class="desc">
 							<?php if ($params->get('itemTitle')) { ?>
-								<h3><a href="<?php echo $item->link; ?>"><?php echo $item->title; ?></a></h3>
+								<h3><a href="<?php echo $item->link; ?>"><?php echo limit_text($item->title); ?></a></h3>
 							<?php } ?>
 							<?php if ($params->get('itemIntroText')) { ?>
 								<p><?php echo $item->introtext; ?></p>
@@ -35,7 +48,7 @@ defined('_JEXEC') or die('Restricted access');
 						</div>
 					<?php } ?>
 				<?php } else { ?>
-					<h3><a href="<?php echo $item->link; ?>"><?php echo $item->title; ?></a></h3>
+					<h3><a href="<?php echo $item->link; ?>"><?php echo limit_text($item->title); ?></a></h3>
 				<?php } ?>
 			</li>
 		<?php } ?>

@@ -87,6 +87,13 @@ jQuery(function ($) {
         }
         e.preventDefault();
     });
+    $(document).on('submit', "form.add-schedule", function(e) {
+        var d = $("tr.edit").find("input, select").serialize();
+        var dobj = $("tr.edit").find("input, select").serializeObject();
+        addItem(d, dobj);
+        e.preventDefault();
+        return false;
+    });
     $(document).on('click', "a.delete", function (e) {
         var id = $(this).attr('data-id');
         if (confirm('Are you sure you want to permanently delete this item?')) {
@@ -94,7 +101,8 @@ jQuery(function ($) {
                 url: base + 'api/schedules/' + id
                 , type: 'delete'
                 , success: function (d) {
-                    load();
+                    var date = $("input[name=calendar]").val();
+                    load(date);
                 }
             })
         }
