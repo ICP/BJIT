@@ -31,7 +31,12 @@ $app->map('/homepage(/)', function () use ($app) {
 })->via('GET');
 $app->map('/items(/)(:id(/))', function ($id = null) use ($app) {
 	if (!$id) {
-		Items::getItems($app, 'items');
+		$query = $app->request->get('q', null);
+		if ($query) {
+			Items::getItems($app, 'search', null, $query);
+		} else {
+			Items::getItems($app, 'items');
+		}
 	} else {
 		Items::getItem($app, $id);
 	}

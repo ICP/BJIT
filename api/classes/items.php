@@ -2,7 +2,7 @@
 
 abstract class Items {
 
-	public static function getItems($app, $type, $catid = null) {
+	public static function getItems($app, $type, $catid = null, $searchQuery = null) {
 		$o = 0;
 		$l = 50;
 		$r = false;
@@ -46,6 +46,15 @@ abstract class Items {
 						->join('LEFT', $app->_db->quoteName('#__k2_categories') . 'AS c ON i.catid = c.id')
 						->where($app->_db->quoteName('i.catid') . ' = ' . $app->_db->quote($catid), 'AND')
 						->where('i.published = 1 AND i.trash = 0 and i.access = 1')
+						->order('i.id DESC');
+				$app->_db->setQuery($query, $o, $l);
+				break;
+			case 'search':
+				$query->select('i.*, c.id AS catid, c.name, c.alias AS categoryalias, c.image')
+						->from($app->_db->quoteName('#__k2_items') . ' AS i')
+						->join('LEFT', $app->_db->quoteName('#__k2_categories') . ' AS c ON i.catid = c.id')
+						->where('i.published = 1 AND i.trash = 0 AND i.access = 1', 'AND')
+						->where('(i.title LIKE ' . $app->_db->quote('%' . $searchQuery . '%') . 'OR i.introtext LIKE ' . $app->_db->quote('%' . $searchQuery . '%') . ')')
 						->order('i.id DESC');
 				$app->_db->setQuery($query, $o, $l);
 				break;
