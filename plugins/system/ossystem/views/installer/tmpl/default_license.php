@@ -9,10 +9,10 @@
 defined('_JEXEC') or die();
 ?>
 
-<?php if ($isLicensesManagerInstalled) : ?>
+<?php if ($this->isLicensesManagerInstalled) : ?>
 
     <div class="alledia-license-form">
-        <?php if (!empty($licenseKey)) : ?>
+        <?php if (!empty($this->licenseKey)) : ?>
 
             <a href="javascript:void(0);" class="alledia-installer-change-license-button alledia-button">
                 <?php echo JText::_('LIB_ALLEDIAINSTALLER_CHANGE_LICENSE_KEY'); ?>
@@ -20,12 +20,12 @@ defined('_JEXEC') or die();
 
         <?php endif; ?>
 
-        <div id="alledia-installer-license-panel" style="display: <?php echo empty($licenseKey)? '' : 'none'; ?>;">
+        <div id="alledia-installer-license-panel" style="display: <?php echo empty($this->licenseKey)? '' : 'none'; ?>;">
             <input
                 type="text"
                 name="alledia-license-keys"
                 id="alledia-license-keys"
-                value="<?php echo $licenseKey; ?>"
+                value="<?php echo $this->licenseKey; ?>"
                 placeholder="<?php echo JText::_('LIB_ALLEDIAINSTALLER_LICENSE_KEYS_PLACEHOLDER'); ?>" />
 
             <p class="alledia-empty-key-msg">

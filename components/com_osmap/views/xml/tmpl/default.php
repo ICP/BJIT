@@ -1,40 +1,38 @@
 <?php
 /**
- * @version             $Id$
- * @copyright			Copyright (C) 2005 - 2009 Joomla! Vargas. All rights reserved.
- * @license             GNU General Public License version 2 or later; see LICENSE.txt
- * @author              Guillermo Vargas (guille@vargas.co.cr)
+ * @package   OSMap
+ * @copyright 2007-2014 XMap - Joomla! Vargas - Guillermo Vargas. All rights reserved.
+ * @copyright 2016 Open Source Training, LLC. All rights reserved.
+ * @contact   www.alledia.com, support@alledia.com
+ * @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
  */
 
-// no direct access
-defined('_JEXEC') or die('Restricted access');
+defined('_JEXEC') or die();
 
-// Create shortcut to parameters.
-$params = $this->item->params;
-
-$live_site = substr_replace(JURI::root(), "", -1, 1);
-
-if ($this->item->params->get('debug_osmap', "0") == "0") {
-    @ini_set('display_errors', 0);
+// If debug is enabled, use text content type
+if (isset($this->params) && $this->params->get('debug', 0)) {
+    header('Content-type: text/plain; charset=utf-8');
+} else {
     header('Content-type: text/xml; charset=utf-8');
 }
-else {
-    @error_reporting(E_ALL);
-    @ini_set('display_errors', 1);
-    @ini_set('display_startup_errors', 1); 
-    header('Content-type: text/txt; charset=utf-8');
+
+// Check if we have parameters from a menu, acknowledging we have a menu
+if (!is_null($this->params->get('menu_text'))) {
+    // We have a menu, so let's use its params to display the heading
+    $this->pageHeading = $this->params->get('page_heading', $this->params->get('page_title'));
+} else {
+    // We don't have a menu, so lets use the sitemap name
+    $this->pageHeading = $this->sitemap->name;
 }
 
-echo '<?xml version="1.0" encoding="UTF-8"?>',"\n";
-if (($this->item->params->get('beautify_xml', 1) == 1) && !$this->displayer->isNews) {
-    $params  = '&amp;filter_showtitle='.JRequest::getBool('filter_showtitle',0);
-    $params .= '&amp;filter_showexcluded='.JRequest::getBool('filter_showexcluded',0);
-    $params .= (JRequest::getCmd('lang')?'&amp;lang='.JRequest::getCmd('lang'):'');
-    echo '<?xml-stylesheet type="text/xsl" href="'. $live_site.'/index.php?option=com_osmap&amp;view=xml&amp;layout=xsl&amp;tmpl=component&amp;id='.$this->item->id.($this->isImages?'&amp;images=1':'').$params.'"?>'."\n";
+echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
+
+// Only display the message in the XML
+if (!empty($this->message)) {
+    echo $this->loadTemplate('message');
 }
-?>
-<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"<?php echo ($this->displayer->isImages? ' xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"':''); ?><?php echo ($this->displayer->isNews? ' xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"':''); ?>>
 
-<?php echo $this->loadTemplate('items'); ?>
-
-</urlset>
+// Load the template of sitemap according to the requested type
+if (empty($this->message)) {
+    echo $this->loadTemplate($this->type);
+}

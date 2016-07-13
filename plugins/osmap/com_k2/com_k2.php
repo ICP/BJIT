@@ -290,6 +290,7 @@ class osmap_com_k2
             $node->newsItem = 0;
             $node->keywords = "";
         }
+
         if (!isset($osmap->IDS))
             $osmap->IDS = "";
 

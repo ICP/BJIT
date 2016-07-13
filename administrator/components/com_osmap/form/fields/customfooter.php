@@ -40,7 +40,7 @@ class JFormFieldCustomFooter extends JFormFieldBase
             // Go Pro ad
             $html .= "<div class=\"gopro-ad\">";
             $html .= "<a href=\"https://www.alledia.com/plans/\" class=\"gopto-btn\" target=\"_blank\">";
-            $html .= "<i class=\"icon-publish\"></i> Go Pro to access more features</a>";
+            $html .= "<i class=\"icon-publish\"></i> " . JText::_('ALLEDIA_FOOTER_GO_PRO_MORE_FEATURES') . "</a>";
             $html .= "</div>";
         }
 
@@ -49,8 +49,8 @@ class JFormFieldCustomFooter extends JFormFieldBase
 
         if (!empty($jedUrl)) {
             $html .= "<div class=\"alledia-jedlink\">";
-            $html .= "Like this extension? ";
-            $html .= "<a href=\"{$jedUrl}\" target=\"_blank\">Leave a review on the JED</a>&nbsp;";
+            $html .= JText::_('ALLEDIA_FOOTER_LIKE_THIS_EXTENSION') . "&nbsp;";
+            $html .= "<a href=\"{$jedUrl}\" target=\"_blank\">" . JText::_('ALLEDIA_FOOTER_LEAVE_A_REVIEW_ON_JED') .  "</a>&nbsp;";
             $html .= str_repeat("<i class=\"icon-star\"></i>", 5);
             $html .= "</div>";
         }

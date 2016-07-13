@@ -86,7 +86,7 @@ $app->enqueueMessage(JText::sprintf('COM_OSMAP_INSTALLER_GOTOPLUGINS', $link), '
                 if (goAhead) {
                     button.text('<?php echo JText::_("COM_OSMAP_INSTALLER_IMPORTING"); ?>').off('click', this).css('cursor', 'default');
 
-                    $.post('<?php echo JURI::root(); ?>/administrator/index.php?option=com_osmap&task=migrate-xmap&format=json',
+                    $.post('<?php echo JURI::root(); ?>/administrator/index.php?option=com_osmap&task=sitemaps.migrateXMapData&format=json',
                         {},
                         function(data) {
                             message.hide();

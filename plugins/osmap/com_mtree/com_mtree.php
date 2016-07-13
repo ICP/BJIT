@@ -30,8 +30,10 @@ class osmap_com_mtree
 {
     static function getTree( $osmap, $parent, &$params )
     {
-        if ($osmap->isNews) // This component does not provide news content. don't waste time/resources
+        // This component does not provide news content. don't waste time/resources
+        if ($osmap->isNews) {
             return false;
+        }
 
         $db = JFactory::getDbo();
 
@@ -110,7 +112,7 @@ class osmap_com_mtree
     /* Returns URLs of all Categories and links in of one category using recursion */
     static function getMtreeCategory ($osmap, $parent, &$params, $catid )
     {
-        $database =& JFactory::getDbo();
+        $database = JFactory::getDbo();
 
         $query = "SELECT cat_name, cat_id ".
              "FROM #__mt_cats WHERE cat_published='1' AND cat_approved='1' AND cat_parent = $catid " .

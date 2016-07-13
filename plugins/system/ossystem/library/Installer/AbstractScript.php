@@ -74,6 +74,12 @@ abstract class AbstractScript
     protected $tables;
 
     /**
+     * Flag to cancel the installation
+     * @var bool
+     */
+    protected $cancelInstallation = false;
+
+    /**
      * Feedback of the install by related extension
      *
      * @var array
@@ -95,9 +101,9 @@ abstract class AbstractScript
             $this->mediaFolder = JPATH_SITE . '/' . $media['folder'] . '/' . $media['destination'];
         }
 
-        $attributes  = (array) $this->manifest->attributes();
-        $attributes  = $attributes['@attributes'];
-        $this->type  = $attributes['type'];
+        $attributes = (array) $this->manifest->attributes();
+        $attributes = $attributes['@attributes'];
+        $this->type = $attributes['type'];
 
         if ($this->type === 'plugin') {
             $this->group = $attributes['group'];
@@ -110,10 +116,6 @@ abstract class AbstractScript
             $previousManifest      = JInstaller::parseXMLInstallFile($path);
             $this->previousVersion = (string)$previousManifest['version'] ? : '0.0.0';
         }
-
-        // Load the installer default language
-        $language = JFactory::getLanguage();
-        $language->load('lib_allediainstaller.sys', __DIR__ . '/../../');
     }
 
     /**
@@ -144,6 +146,11 @@ abstract class AbstractScript
     public function uninstall($parent)
     {
         $this->initProperties($parent);
+
+        // Load the installer default language
+        $language = JFactory::getLanguage();
+        $language->load('lib_allediainstaller.sys', JPATH_ADMINISTRATOR);
+
         $this->uninstallRelated();
         $this->showMessages();
     }
@@ -168,8 +175,30 @@ abstract class AbstractScript
     {
         $this->initProperties($parent);
 
+        // Load the installer default language
+        $language = JFactory::getLanguage();
+        $language->load('lib_allediainstaller.sys', __DIR__ . '/../../');
+
         if ($type === 'update') {
             $this->clearUpdateServers();
+        }
+
+        if (in_array($type, array('install', 'update'))) {
+            // Check minimum target platform
+            if (isset($this->manifest->alledia->targetplatform)) {
+                $targetPlatform = (string) $this->manifest->alledia->targetplatform;
+
+                if (!$this->validateTargetPlatform($targetPlatform)) {
+                    // Platform version is invalid. Displays a warning and cancel the install
+                    $targetPlatform = str_replace('*', 'x', $targetPlatform);
+                    $msg = JText::sprintf('LIB_ALLEDIAINSTALLER_WRONG_PLATFORM', $targetPlatform);
+                    JFactory::getApplication()->enqueueMessage($msg, 'warning');
+
+                    $this->cancelInstallation = true;
+
+                    return false;
+                }
+            }
         }
 
         return true;
@@ -183,13 +212,20 @@ abstract class AbstractScript
      */
     public function postFlight($type, $parent)
     {
+        if ($this->cancelInstallation) {
+            JFactory::getApplication()
+                ->enqueueMessage('LIB_ALLEDIAINSTALLER_INSTALL_CANCELLED', 'warning');
+
+            return false;
+        }
+
         $this->clearObsolete();
         $this->installRelated();
         $this->addAllediaAuthorshipToExtension();
 
         // @TODO: Stop the script here if this is a related extension (but still remove pro folder, if needed)
 
-        $element = (string) $this->manifest->alledia->element;
+        $this->element = (string) $this->manifest->alledia->element;
 
         // Check and publish/reorder the plugin, if required
         $published = false;
@@ -215,7 +251,7 @@ abstract class AbstractScript
         }
 
         // Get the footer content
-        $footer        = '';
+        $this->footer        = '';
         $footerElement = null;
 
         // Check if we have a dedicated config.xml file
@@ -237,9 +273,9 @@ abstract class AbstractScript
 
             $field = new JFormFieldCustomFooter();
             $field->fromInstaller = true;
-            $footer = $field->getInputUsingCustomElement($footerElement[0]);
+            $this->footer = $field->getInputUsingCustomElement($footerElement[0]);
 
-            unset($field);
+            unset($field, $footerElement);
         }
 
         // Show additional installation messages
@@ -252,18 +288,26 @@ abstract class AbstractScript
         if ($extension->isPro()) {
             // Get the OSMyLicensesManager extension to handle the license key
             $licensesManagerExtension = new Extension\Generic('osmylicensesmanager', 'plugin', 'system');
-            $isLicensesManagerInstalled = false;
+            $this->isLicensesManagerInstalled = false;
 
             if (!empty($licensesManagerExtension)) {
                 if (isset($licensesManagerExtension->params)) {
-                    $licenseKey = $licensesManagerExtension->params->get('license-keys', '');
+                    $this->licenseKey = $licensesManagerExtension->params->get('license-keys', '');
                 } else {
-                    $licenseKey = '';
+                    $this->licenseKey = '';
                 }
 
-                $isLicensesManagerInstalled = true;
+                $this->isLicensesManagerInstalled = true;
             }
         }
+
+        // Get the extension name. If no custom name is set, uses the namespace
+        if (isset($this->manifest->alledia->name)) {
+            $name = $this->manifest->alledia->name;
+        } else {
+            $name = $this->manifest->alledia->namespace;
+        }
+        $name .= ($extension->isPro() ? ' Pro' : '');
 
         // Welcome message
         if ($type === 'install') {
@@ -271,14 +315,10 @@ abstract class AbstractScript
         } else {
             $string = 'LIB_ALLEDIAINSTALLER_THANKS_UPDATE';
         }
-        $welcomeMessage = JText::sprintf(
-            $string,
-            $this->manifest->alledia->namespace . ($extension->isPro() ? ' Pro' : '')
-        );
 
-        // Variables for the template
-        $name     = $this->manifest->alledia->namespace . ($extension->isPro() ? ' Pro' : '');
-        $mediaURL = JURI::root() . 'media/' . $extension->getFullElement();
+        // Variables for the included template
+        $this->welcomeMessage = JText::sprintf($string, $name);
+        $this->mediaURL = JURI::root() . 'media/' . $extension->getFullElement();
 
         $this->addStyle($this->mediaFolder . '/css/installer.css');
 
@@ -286,6 +326,8 @@ abstract class AbstractScript
         include $extensionPath . '/views/installer/tmpl/default.php';
 
         $this->showMessages();
+
+        return true;
     }
 
     /**
@@ -296,7 +338,10 @@ abstract class AbstractScript
     protected function installRelated()
     {
         if ($this->manifest->alledia->relatedExtensions) {
-            $installer      = new JInstaller();
+            // Directly unused var, but this resets the JInstaller instance
+            $installer      = new JInstaller;
+            unset($installer);
+
             $source         = $this->installer->getPath('source');
             $extensionsPath = $source . '/extensions';
 
@@ -323,7 +368,7 @@ abstract class AbstractScript
                     $typeName = ucfirst(trim(($group ? : '') . ' ' . $type));
 
                     // Get data from the manifest
-                    $tmpInstaller = new JInstaller();
+                    $tmpInstaller = new JInstaller;
                     $tmpInstaller->setPath('source', $path);
                     $newManifest = $tmpInstaller->getManifest();
                     $newVersion = (string)$newManifest->version;
@@ -374,7 +419,7 @@ abstract class AbstractScript
 
                             if (is_object($current)) {
                                 if ($type === 'plugin') {
-                                    if (isset($attributes['publish']) && $this->parseConditionalExpression($attributes['publish']) ) {
+                                    if (isset($attributes['publish']) && $this->parseConditionalExpression($attributes['publish'])) {
                                         $current->publish();
 
                                         $this->storeFeedbackForRelatedExtension(
@@ -430,8 +475,7 @@ abstract class AbstractScript
     protected function uninstallRelated()
     {
         if ($this->manifest->alledia->relatedExtensions) {
-            $installer = new JInstaller();
-            $source    = $this->installer->getPath('source');
+            $installer = new JInstaller;
 
             foreach ($this->manifest->alledia->relatedExtensions->extension as $extension) {
                 $attributes = (array) $extension->attributes();
@@ -462,7 +506,11 @@ abstract class AbstractScript
                     }
                 } else {
                     $this->setMessage(
-                        JText::sprintf('LIB_ALLEDIAINSTALLER_RELATED_NOT_UNINSTALLED', ucfirst($type), $element),
+                        JText::sprintf(
+                            'LIB_ALLEDIAINSTALLER_RELATED_NOT_UNINSTALLED',
+                            ucfirst($type),
+                            $element
+                        ),
                         'warning'
                     );
                 }
@@ -652,7 +700,7 @@ abstract class AbstractScript
                     $current = $this->findExtension($type, $element, $group);
                     if (!empty($current)) {
                         // Try to uninstall
-                        $tmpInstaller = new JInstaller();
+                        $tmpInstaller = new JInstaller;
                         $uninstalled = $tmpInstaller->uninstall($type, $current->extension_id);
 
                         $typeName = ucfirst(trim(($group ? : '') . ' ' . $type));
@@ -898,7 +946,7 @@ abstract class AbstractScript
      */
     protected function getManifestPath($type, $element, $group = '')
     {
-        $installer = new JInstaller();
+        $installer = new JInstaller;
 
         if ($type !== 'library') {
             $basePath = $this->getExtensionPath($type, $element, $group);
@@ -1139,7 +1187,7 @@ abstract class AbstractScript
     protected function tableExists($name)
     {
         $config = JFactory::getConfig();
-        $tables = $this->getTables();
+        $tables = $this->getTables(true);
 
         // Replace the table prefix
         $name = str_replace('#__', $config->get('dbprefix'), $name);
@@ -1156,7 +1204,7 @@ abstract class AbstractScript
     protected function getTables($force = false)
     {
         if (empty($this->tables) || $force) {
-            $normalizeTableArray = function($item) {
+            $normalizeTableArray = function ($item) {
                 return $item[0];
             };
 
@@ -1186,8 +1234,6 @@ abstract class AbstractScript
         if (count($terms) === 1) {
             return ! (empty($terms[0]) || $terms[0] === 'null');
         } else {
-            $term1 = trim($terms[1]);
-
             // Is the first term a name of extension?
             if (preg_match('/^(com_|plg_|mod_|lib_|tpl_|cli_)/', $term0)) {
                 $info = $this->getExtensionInfoFromElement($term0);
@@ -1249,12 +1295,32 @@ abstract class AbstractScript
 
         $result['namespace'] = preg_replace_callback(
             '/^(os[a-z])(.*)/i',
-            function($matches) {
+            function ($matches) {
                 return strtoupper($matches[1]) . $matches[2];
             },
             $result['name']
         );
 
         return $result;
+    }
+
+    /**
+     * Check if the target platform is valid, comparing to Joomla! version.
+     *
+     * @param  string $targetPlatform  The required target platform
+     *
+     * @return bool                    True, if the platform is valid
+     */
+    protected function validateTargetPlatform($targetPlatform)
+    {
+        // If is universal, any Joomla! version is valid
+        if ($targetPlatform === '.*') {
+            return true;
+        }
+
+        $targetPlatform = str_replace('*', '0', $targetPlatform);
+
+        // Compare with the Joomla! version
+        return version_compare(JVERSION, $targetPlatform, 'ge');
     }
 }

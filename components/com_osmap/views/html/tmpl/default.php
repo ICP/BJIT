@@ -1,97 +1,60 @@
 <?php
 /**
- * @version         $Id$
- * @copyright       Copyright (C) 2005 - 2009 Joomla! Vargas. All rights reserved.
- * @license         GNU General Public License version 2 or later; see LICENSE.txt
- * @author          Guillermo Vargas (guille@vargas.co.cr)
+ * @package   OSMap
+ * @copyright 2007-2014 XMap - Joomla! Vargas - Guillermo Vargas. All rights reserved.
+ * @copyright 2016 Open Source Training, LLC. All rights reserved.
+ * @contact   www.alledia.com, support@alledia.com
+ * @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
  */
 
-// no direct access
-defined('_JEXEC') or die('Restricted access');
+use Alledia\OSMap;
 
-JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
+defined('_JEXEC') or die();
 
-// Create shortcut to parameters.
-$params = $this->item->params;
+// Check if we need to inject the CSS
+if ($this->params->get('use_css', 1)) {
+    JHtml::stylesheet('media/com_osmap/css/sitemap_html.min.css');
+}
 
-if ($this->displayer->canEdit) {
-    $live_site = JURI::root();
-    JHTML::_('behavior.framework', true);
-    $ajaxurl = "{$live_site}index.php?option=com_osmap&format=json&task=ajax.editElement&action=toggleElement&".JSession::getFormToken().'=1';
+// If debug is enabled, use text content type
+if ($this->debug) {
+    OSMap\Factory::getApplication()->input->set('tmpl', 'component');
+    JHtml::stylesheet('media/com_osmap/css/sitemap_html_debug.min.css');
+}
 
-    $css = '.osmapexcl img{ border:0px; }'."\n";
-    $css .= '.osmapexcloff { text-decoration:line-through; }';
-
-    $js = "
-        window.addEvent('domready',function (){
-            $$('.osmapexcl').each(function(el){
-                el.onclick = function(){
-                    if (this && this.rel) {
-                        options = JSON.decode(this.rel);
-                        this.onComplete = checkExcludeResult;
-                        var myAjax = new Request.JSON({
-                            url:'{$ajaxurl}',
-                            onSuccess: checkExcludeResult.bind(this)
-                        }).get({id:{$this->item->id},uid:options.uid,itemid:options.itemid});
-                    }
-                    return false;
-                };
-
-            });
-        });
-        checkExcludeResult = function (response) {
-            //this.set('class','osmapexcl osmapexcloff');
-            var imgs = this.getElementsByTagName('img');
-            if (response.result == 'OK') {
-                var state = response.state;
-                if (state==0) {
-                    imgs[0].src='{$live_site}/components/com_osmap/assets/images/unpublished.png';
-                } else {
-                    imgs[0].src='{$live_site}/components/com_osmap/assets/images/tick.png';
-                }
-            } else {
-                alert('The element couldn\\'t be published or upublished!');
-            }
-        }";
-
-    $doc = JFactory::getDocument();
-    $doc->addStyleDeclaration ($css);
-    $doc->addScriptDeclaration ($js);
+// Check if we have parameters from a menu, acknowledging we have a menu
+if (!is_null($this->params->get('menu_text'))) {
+    // We have a menu, so let's use its params to display the heading
+    $pageHeading = $this->params->get('page_heading', $this->params->get('page_title'));
+} else {
+    // We don't have a menu, so lets use the sitemap name
+    $pageHeading = $this->sitemap->name;
 }
 ?>
-<div id="osmap">
-<?php if ($params->get('show_page_heading', 1) && $params->get('page_heading') != '') : ?>
-    <h2><?php echo $this->escape($params->get('page_heading')); ?></h2>
-<?php endif; ?>
 
-<?php if ($params->get('access-edit') || $params->get('show_title') ||  $params->get('show_print_icon') || $params->get('show_email_icon')) : ?>
-    <ul>
-    <?php if (!$this->print) : ?>
-        <?php if ($params->get('show_print_icon')) : ?>
-        <li>
-            <?php echo JHtml::_('icon.print_popup',  $this->item, $params); ?>
-        </li>
-        <?php endif; ?>
+<div id="osmap" class="osmap-sitemap <?php echo $this->debug ? 'osmap-debug' : ''; ?> <?php echo $this->params->get('pageclass_sfx', ''); ?>">
+    <!-- Heading -->
 
-        <?php if ($params->get('show_email_icon')) : ?>
-        <li>
-            <?php echo JHtml::_('icon.email',  $this->item, $params); ?>
-        </li>
-        <?php endif; ?>
-    <?php else : ?>
-        <li>
-            <?php echo JHtml::_('icon.print_screen',  $this->item, $params); ?>
-        </li>
+    <?php if ($this->params->get('show_page_heading', 1)) : ?>
+        <h1><?php echo $this->escape($pageHeading); ?></h1>
     <?php endif; ?>
-    </ul>
-<?php endif; ?>
 
-<?php if ($params->get('showintro', 1) )  : ?>
-    <?php echo $this->item->introtext; ?>
-<?php endif; ?>
+    <!-- Description -->
+    <?php if ($this->params->get('show_sitemap_description', 1)) :   ?>
+        <div class="osmap-sitemap-description">
+            <?php echo $this->params->get('sitemap_description', ''); ?>
+        </div>
+    <?php endif; ?>
 
-    <?php echo $this->loadTemplate('items'); ?>
+    <!-- Error message, if exists -->
+    <?php if (!empty($this->message)) : ?>
+        <div class="alert alert-warning">
+            <?php echo $this->message; ?>
+        </div>
+    <?php endif; ?>
 
-    <span class="article_separator">&nbsp;</span>
+    <!-- Items -->
+    <?php if (empty($this->message)) : ?>
+        <?php echo $this->loadTemplate('items'); ?>
+    <?php endif; ?>
 </div>
-<div class="clearfix"></div>

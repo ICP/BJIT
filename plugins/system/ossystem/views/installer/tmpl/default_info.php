@@ -16,7 +16,7 @@ defined('_JEXEC') or die();
 
     <div id="alledia-installer-footer" style="display: none;">
         <div class="alledia-license">
-            Release: v<?php echo $this->manifest->version; ?>
+            <?php echo JText::sprintf('LIB_ALLEDIAINSTALLER_RELEASE_V', (string)$this->manifest->version); ?>
         </div>
         <br>
         <?php if (!empty($this->manifest->alledia->relatedExtensions)) : ?>
@@ -54,7 +54,7 @@ defined('_JEXEC') or die();
         <?php endif; ?>
 
         <div class="alledia-license">
-            <?php echo (string) $this->manifest->alledia->namespace; ?> and all related extensions are licensed as <a href="http://www.gnu.org/licenses/gpl-3.0.html">GNU/GPL v3.0</a>.
+            <?php echo JText::sprintf('LIB_ALLEDIAINSTALLER_LICENSED_AS', (string) $this->manifest->alledia->namespace, '<a href="http://www.gnu.org/licenses/gpl-3.0.html">GNU/GPL v3.0</a>'); ?>.
         </div>
     </div>
 

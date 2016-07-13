@@ -9,7 +9,7 @@
 defined('_JEXEC') or die();
 ?>
 <?php if (version_compare(JVERSION, '3.0', '<')) : ?>
-    <script src="<?php echo $mediaURL . '/js/jquery.js'; ?>"></script>
+    <script src="<?php echo $this->mediaURL . '/js/jquery.js'; ?>"></script>
 <?php else : ?>
     <script>
         var jQueryAlledia = jQuery;
@@ -19,7 +19,7 @@ defined('_JEXEC') or die();
 <div class="alledia-wrapper">
 
     <div class="alledia-content">
-        <h2><?php echo $welcomeMessage; ?></h2>
+        <h2><?php echo $this->welcomeMessage; ?></h2>
 
         <?php
 
@@ -35,7 +35,7 @@ defined('_JEXEC') or die();
 
         ?>
 
-        <?php echo $footer; ?>
+        <?php echo $this->footer; ?>
     </div>
 
 </div>

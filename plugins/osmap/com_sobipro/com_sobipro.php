@@ -53,8 +53,10 @@ class osmap_com_sobipro {
     /** Get the content tree for this kind of content */
     function getTree( $osmap, $parent, &$params ) {
 
-        if ($osmap->isNews) // This component does not provide news content. don't waste time/resources
+        // This component does not provide news content. don't waste time/resources
+        if ($osmap->isNews) {
             return false;
+        }
 
         if (!self::loadSobi()){
             return;
@@ -147,7 +149,7 @@ class osmap_com_sobipro {
 
     /** SobiPro support */
     function getCategoryTree( $osmap, $parent, $sid, &$params ) {
-        $database =& JFactory::getDBO();
+        $database = JFactory::getDBO();
 
         $query  =
              "SELECT a.id,a.nid, a.name, b.pid as pid "

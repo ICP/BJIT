@@ -29,7 +29,9 @@ if (!class_exists('PlgSystemOSSystemInstallerScript')) {
          */
         public function preFlight($type, $parent)
         {
-            parent::preFlight($type, $parent);
+            if (!parent::preFlight($type, $parent)) {
+                return false;
+            }
 
             /* Uninstall the depracated plugin OSCARootCertificates.
              * The parent method can't be used because the old plugin

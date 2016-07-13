@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <metadata>
-    <view title="Sitemap">
+    <view title="COM_OSMAP_HTML_SITEMAP_LABEL">
         <message>
-            <![CDATA[COM_OSMAP_SITEMAP_HTML_VIEW_DEFAULT_DESC]]>
+            <![CDATA[COM_OSMAP_HTML_SITEMAP_DESC]]>
         </message>
     </view>
 </metadata>

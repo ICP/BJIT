@@ -1,40 +1,18 @@
 <?php
 /**
  * @package   OSMap
- * @copyright 2007-2014 XMap - Joomla! Vargas. All rights reserved.
- * @copyright 2016 Open Source Training, LLC. All rights reserved..
- * @author    Guillermo Vargas <guille@vargas.co.cr>
- * @author    Alledia <support@alledia.com>
- * @license   GNU General Public License version 2 or later; see LICENSE.txt
- *
- * This file is part of OSMap.
- *
- * OSMap is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 2 of the License, or
- * any later version.
- *
- * OSMap is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with OSMap. If not, see <http://www.gnu.org/licenses/>.
+ * @copyright 2007-2014 XMap - Joomla! Vargas - Guillermo Vargas. All rights reserved.
+ * @copyright 2016 Open Source Training, LLC. All rights reserved.
+ * @contact   www.alledia.com, support@alledia.com
+ * @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
  */
 
-// No direct access
-defined('_JEXEC') or die('Restricted access');
+use Alledia\OSMap;
 
-jimport('joomla.application.component.controllerform');
+defined('_JEXEC') or die();
 
 
-/**
- * @package     OSMap
- * @subpackage  com_osmap
- * @since       2.0
- */
-class OSMapControllerSitemap extends JControllerForm
+class OSMapControllerSitemap extends OSMap\Controller\Form
 {
     /**
      * Method override to check if the user can edit an existing record.
@@ -50,6 +28,37 @@ class OSMapControllerSitemap extends JControllerForm
         $recordId = (int) isset($data[$key]) ? $data[$key] : 0;
 
         // Assets are being tracked, so no need to look into the category.
-        return JFactory::getUser()->authorise('core.edit', 'com_osmap.sitemap.' . $recordId);
+        return \JFactory::getUser()->authorise('core.edit', 'com_osmap.sitemap.' . $recordId);
+    }
+
+    /**
+     * Mark the sitemap as default
+     */
+    public function setAsDefault()
+    {
+        $cid = OSMap\Factory::getApplication()->input->get('cid', array(), 'array');
+
+        if (isset($cid[0])) {
+            // Cleanup the is_default field
+            $db = OSMap\Factory::getDbo();
+
+            $query = $db->getQuery(true)
+                ->set('is_default = 0')
+                ->update('#__osmap_sitemaps');
+            $db->setQuery($query)->execute();
+
+            // Set the sitemap as default
+            $model = $this->getModel();
+            $row   = $model->getTable();
+
+            $row->load($cid[0]);
+            $row->save(
+                array(
+                    'is_default' => true
+                )
+            );
+        }
+
+        $this->setRedirect('index.php?option=com_osmap&view=sitemaps');
     }
 }

@@ -1,33 +1,38 @@
 <?php
 /**
  * @package   OSMap
- * @copyright 2007-2014 XMap - Joomla! Vargas. All rights reserved.
- * @copyright 2016 Open Source Training, LLC. All rights reserved..
- * @author    Guillermo Vargas <guille@vargas.co.cr>
- * @author    Alledia <support@alledia.com>
- * @license   GNU General Public License version 2 or later; see LICENSE.txt
- *
- * This file is part of OSMap.
- *
- * OSMap is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 2 of the License, or
- * any later version.
- *
- * OSMap is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with OSMap. If not, see <http://www.gnu.org/licenses/>.
+ * @copyright 2007-2014 XMap - Joomla! Vargas - Guillermo Vargas. All rights reserved.
+ * @copyright 2016 Open Source Training, LLC. All rights reserved.
+ * @contact   www.alledia.com, support@alledia.com
+ * @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
  */
 
-// no direct access
-defined('_JEXEC') or die('Restricted access');
+defined('_JEXEC') or die();
+?>
 
-// Create shortcut to parameters.
-$params = $this->state->get('params');
+<?php if ($this->debug) : ?>
+    <div class="osmap-debug-sitemap">
+        <h1><?php echo JText::_('COM_OSMAP_DEBUG_ALERT_TITLE'); ?></h1>
+        <p><?php echo JText::_('COM_OSMAP_DEBUG_ALERT'); ?></p>
+        <?php echo JText::_('COM_OSMAP_SITEMAP_ID'); ?>: <?php echo $this->sitemap->id; ?>
+    </div>
+<?php endif; ?>
 
-// Use the class defined in default_class.php to print the sitemap
-$this->displayer->printSitemap();
+<div class="osmap-items">
+    <?php $this->sitemap->traverse(array($this, 'printNodeCallback')); ?>
+
+    <?php if ($this->shouldCloseMenu) : ?>
+        <?php $this->closeMenu(); ?>
+    <?php endif; ?>
+</div>
+
+<?php // Make sure we close the stack of levels ?>
+<?php if ($this->lastLevel > 0) : ?>
+    <?php $this->closeLevels($this->lastLevel); ?>
+<?php endif; ?>
+
+<?php if ($this->debug) : ?>
+    <div class="osmap-debug-items-count">
+        <?php echo JText::_('COM_OSMAP_SITEMAP_ITEMS_COUNT'); ?>: <?php echo $this->count; ?>
+    </div>
+<?php endif; ?>

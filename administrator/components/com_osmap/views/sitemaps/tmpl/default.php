@@ -1,201 +1,208 @@
 <?php
 /**
  * @package   OSMap
- * @copyright 2007-2014 XMap - Joomla! Vargas. All rights reserved.
- * @copyright 2016 Open Source Training, LLC. All rights reserved..
- * @author    Guillermo Vargas <guille@vargas.co.cr>
- * @author    Alledia <support@alledia.com>
- * @license   GNU General Public License version 2 or later; see LICENSE.txt
- *
- * This file is part of OSMap.
- *
- * OSMap is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 2 of the License, or
- * any later version.
- *
- * OSMap is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with OSMap. If not, see <http://www.gnu.org/licenses/>.
+ * @copyright 2007-2014 XMap - Joomla! Vargas - Guillermo Vargas. All rights reserved.
+ * @copyright 2016 Open Source Training, LLC. All rights reserved.
+ * @contact   www.alledia.com, support@alledia.com
+ * @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
  */
 
-// no direct access
-defined('_JEXEC') or die('Restricted access');
+use Alledia\OSMap;
 
-JHtml::addIncludePath(JPATH_COMPONENT.'/helpers/html');
+defined('_JEXEC') or die();
+
+JHtml::addIncludePath(OSMAP_ADMIN_PATH . '/helpers/html');
+
 JHtml::_('bootstrap.tooltip');
-if(version_compare(JVERSION,'3.0.0','ge')) {
-    JHtml::_('formbehavior.chosen', 'select');
-}
+JHtml::_('formbehavior.chosen', 'select');
 
-$n = count($this->items);
+JHtml::stylesheet('media/com_osmap/css/admin.min.css');
 
-$baseUrl = JUri::root();
-
-$version = new JVersion;
-
+$baseUrl   = OSmap\Router::sanitizeURL(JUri::root());
+$listOrder = $this->escape($this->state->get('list.ordering'));
+$listDir   = $this->escape($this->state->get('list.direction'));
 ?>
-<form action="<?php echo JRoute::_('index.php?option=com_osmap&view=sitemaps');?>" method="post" name="adminForm" id="adminForm">
-<?php if (!empty( $this->sidebar)): ?>
-    <div id="j-sidebar-container" class="span2">
-        <?php echo $this->sidebar; ?>
+<form
+    action="<?php echo JRoute::_('index.php?option=com_osmap&view=sitemaps');?>"
+    method="post"
+    name="adminForm"
+    id="adminForm">
+
+<?php echo JLayoutHelper::render('joomla.searchtools.default', array('view' => $this)); ?>
+
+<?php if (empty($this->items)) : ?>
+    <div class="alert alert-no-items">
+        <?php echo JText::_('COM_OSMAP_NO_MATCHING_RESULTS'); ?>
     </div>
-    <div id="j-main-container" class="span10">
 <?php else : ?>
     <div id="j-main-container">
-<?php endif;?>
-        <div id="filter-bar" class="btn-toolbar">
-            <div class="filter-search btn-group pull-left">
-                <input type="text" name="filter_search" id="filter_search" value="<?php echo $this->state->get('filter.search'); ?>" size="60" title="<?php echo JText::_('OSMAP_FILTER_SEARCH_DESC'); ?>" />
-            </div>
-
-            <div class="btn-group pull-left hidden-phone">
-                <button class="btn tip hasTooltip" type="submit" title="<?php echo JText::_('JSEARCH_FILTER_SUBMIT'); ?>"><i class="icon-search"></i></button>
-                <button class="btn tip hasTooltip" type="button" onclick="document.id('filter_search').value='';this.form.submit();" title="<?php echo JText::_('JSEARCH_FILTER_CLEAR'); ?>"><i class="icon-remove"></i></button>
-            </div>
-        </div>
-
-        <table class="adminlist table table-striped">
+        <table class="adminlist table table-striped" id="sitemapList">
             <thead>
                 <tr>
-                    <th width="20">
-                        <input type="checkbox" name="checkall-toggle" value="" title="<?php echo JText::_('JGLOBAL_CHECK_ALL'); ?>" onclick="if (typeof Joomla != 'undefined'){Joomla.checkAll(this)} else {checkAll(this)}" />
+                    <th width="1%">
+                        <?php echo JHtml::_('grid.checkall'); ?>
                     </th>
+
+                    <th width="1%" style="min-width:55px" class="nowrap center">
+                        <?php
+                        echo JHtml::_(
+                            'grid.sort',
+                            'COM_OSMAP_HEADING_STATUS',
+                            'sitemap.published',
+                            $listDir,
+                            $listOrder
+                        );
+                        ?>
+                    </th>
+
                     <th class="title">
-                        <?php echo JHtml::_('grid.sort', 'OSMAP_HEADING_TITLE', 'a.title', $this->state->get('list.direction'), $this->state->get('list.ordering')); ?>
+                        <?php
+                        echo JHtml::_(
+                            'grid.sort',
+                            'COM_OSMAP_HEADING_NAME',
+                            'sitemap.name',
+                            $listDir,
+                            $listOrder
+                        ); ?>
                     </th>
-                    <th width="5%" class="center">
-                        <?php echo JHtml::_('grid.sort', 'OSMAP_HEADING_DEFAULT', 'a.is_default', $this->state->get('list.direction'), $this->state->get('list.ordering')); ?>
+
+                    <?php
+                    $editLinksWidth = empty($this->languages) ? '63' : '130';
+                    $editLinksClass = empty($this->languages) ? 'center' : '';
+                    ?>
+                    <th width="8%" style="min-width: <?php echo $editLinksWidth; ?>px" class="<?php echo $editLinksClass; ?>">
+                        <?php echo JText::_('COM_OSMAP_HEADING_SITEMAP_EDIT_LINKS'); ?>
                     </th>
-                    <th width="5%" class="center">
-                        <?php echo JHtml::_('grid.sort', 'OSMAP_HEADING_PUBLISHED', 'a.state', $this->state->get('list.direction'), $this->state->get('list.ordering')); ?>
+
+                    <th width="260" class="center">
+                        <?php echo JText::_('COM_OSMAP_HEADING_SITEMAP_LINKS'); ?>
                     </th>
-                    <th width="10%">
-                        <?php echo JHtml::_('grid.sort',  'OSMAP_HEADING_ACCESS', 'access_level', $this->state->get('list.direction'), $this->state->get('list.ordering')); ?>
+
+                    <th width="8%" class="nowrap center">
+                        <?php echo JText::_('COM_OSMAP_HEADING_NUM_LINKS'); ?>
                     </th>
-                    <th width="10%" class="center">
-                        <?php echo JText::_('OSMAP_HEADING_XML_DEBUG_STATUS'); ?>
-                    </th>
-                    <th width="190" class="center">
-                        <?php echo JText::_('OSMAP_HEADING_SITEMAP_LINKS'); ?>
-                    </th>
-                    <?php if ($this->displayLegacyStats) : ?>
-                        <th width="10%" class="nowrap center">
-                            <?php echo JText::_('OSMAP_HEADING_HTML_STATS'); ?><br />
-                            <?php echo JText::_('OSMAP_HEADING_NUM_LINKS') . ' / '. JText::_('OSMAP_HEADING_NUM_HITS') . ' / ' . JText::_('OSMAP_HEADING_LAST_VISIT'); ?>
-                        </th>
-                        <th width="10%" class="nowrap center">
-                            <?php echo JText::_('OSMAP_HEADING_XML_STATS'); ?><br />
-                            <?php echo JText::_('OSMAP_HEADING_NUM_LINKS') . ' / '. JText::_('OSMAP_HEADING_NUM_HITS') . ' / ' . JText::_('OSMAP_HEADING_LAST_VISIT'); ?>
-                        </th>
-                    <?php else : ?>
-                        <th width="8%" class="nowrap center">
-                            <?php echo JText::_('OSMAP_HEADING_NUM_LINKS'); ?>
-                        </th>
-                    <?php endif; ?>
+
                     <th width="1%" class="nowrap">
-                        <?php echo JHtml::_('grid.sort', 'OSMAP_HEADING_ID', 'a.id', $this->state->get('list.direction'), $this->state->get('list.ordering')); ?>
+                        <?php
+                        echo JHtml::_(
+                            'grid.sort',
+                            'COM_OSMAP_HEADING_ID',
+                            'sitemap.id',
+                            $listDir,
+                            $listOrder
+                        ); ?>
                     </th>
                 </tr>
             </thead>
-            <tfoot>
-                <tr>
-                    <?php $colspan = $this->displayLegacyStats ? 10 : 9; ?>
-                    <td colspan="<?php echo $colspan; ?>">
-                        <?php echo $this->pagination->getListFooter(); ?>
-                    </td>
-                </tr>
-            </tfoot>
+
             <tbody>
-            <?php foreach ($this->items as $i => $item) :
-
-                //converting attribs to json object
-                $itemObject = json_decode($item->attribs);
-
-                if ($this->displayLegacyStats) {
-                    $now = JFactory::getDate()->toUnix();
-                    if ( !$item->lastvisit_html ) {
-                        $htmlDate = JText::_('DATE_NEVER');
-                    }elseif ( $item->lastvisit_html > ($now-3600)) { // Less than one hour
-                        $htmlDate = JText::sprintf('Date_Minutes_Ago',intval(($now-$item->lastvisit_html)/60));
-                    } elseif ( $item->lastvisit_html > ($now-86400)) { // Less than one day
-                        $hours = intval (($now-$item->lastvisit_html)/3600 );
-                        $htmlDate = JText::sprintf('Date_Hours_Minutes_Ago',$hours,($now-($hours*3600)-$item->lastvisit_html)/60);
-                    } elseif ( $item->lastvisit_html > ($now-259200)) { // Less than three days
-                        $days = intval(($now-$item->lastvisit_html)/86400);
-                        $htmlDate = JText::sprintf('Date_Days_Hours_Ago',$days,intval(($now-($days*86400)-$item->lastvisit_html)/3600));
-                    } else {
-                        $date = new JDate($item->lastvisit_html);
-                        $htmlDate = $date->format('Y-m-d H:i');
-                    }
-
-                    if ( !$item->lastvisit_xml ) {
-                        $xmlDate = JText::_('DATE_NEVER');
-                    } elseif ( $item->lastvisit_xml > ($now-3600)) { // Less than one hour
-                        $xmlDate = JText::sprintf('Date_Minutes_Ago',intval(($now-$item->lastvisit_xml)/60));
-                    } elseif ( $item->lastvisit_xml > ($now-86400)) { // Less than one day
-                        $hours = intval (($now-$item->lastvisit_xml)/3600 );
-                        $xmlDate = JText::sprintf('Date_Hours_Minutes_Ago',$hours,($now-($hours*3600)-$item->lastvisit_xml)/60);
-                    } elseif ( $item->lastvisit_xml > ($now-259200)) { // Less than three days
-                        $days = intval(($now-$item->lastvisit_xml)/86400);
-                        $xmlDate = JText::sprintf('Date_Days_Hours_Ago',$days,intval(($now-($days*86400)-$item->lastvisit_xml)/3600));
-                    } else {
-                        $date = new JDate($item->lastvisit_xml);
-                        $xmlDate = $date->format('Y-m-d H:i');
-                    }
-                }
-
-                ?>
-                <tr class="row<?php echo $i % 2; ?>">
+            <?php foreach ($this->items as $i => $item) : ?>
+                <tr class="<?php echo 'row' . ($i % 2); ?>">
                     <td class="center">
                         <?php echo JHtml::_('grid.id', $i, $item->id); ?>
                     </td>
-                    <td>
-                        <a href="<?php echo JRoute::_('index.php?option=com_osmap&task=sitemap.edit&id='.$item->id);?>">
-                            <?php echo $this->escape($item->title); ?></a>
-                            <small>(<?php echo JText::_('OSMAP_ALIAS'); ?>: <?php echo $this->escape($item->alias); ?>)</small>
-                    </td>
+
                     <td class="center">
-                        <?php if ($item->is_default == 1) : ?>
-                            <?php if (version_compare($version->getShortVersion(), '3.0.0', '>=')): ?>
-                                <span class="icon-featured"></span>
-                            <?php else: ?>
-                                <img src="templates/bluestork/images/menu/icon-16-default.png" alt="<?php echo JText::_('DEFAULT'); ?>" />
-                            <?php endif; ?>
+                        <div class="btn-group">
+                            <?php
+                            echo JHtml::_(
+                                'jgrid.published',
+                                $item->published,
+                                $i,
+                                'sitemaps.'
+                            );
+                            ?>
+                            <a href="#" onclick="return listItemTask('cb<?php echo $i; ?>','sitemap.setAsDefault')" class="btn btn-micro hasTooltip" title="" data-original-title="Toggle default status.">
+                                <span class="icon-<?php echo $item->is_default ? 'featured' : 'unfeatured'; ?>"></span>
+                            </a>
+                        </div>
+                    </td>
+
+                    <td>
+                        <a href="<?php echo JRoute::_('index.php?option=com_osmap&view=sitemap&layout=edit&id=' . $item->id);?>">
+                            <?php echo $this->escape($item->name); ?>
+                        </a>
+                    </td>
+
+                    <td class="<?php echo $editLinksClass; ?>">
+                        <?php if (empty($this->languages)) : ?>
+                            <a href="<?php echo JRoute::_('index.php?option=com_osmap&view=sitemapitems&id=' . $item->id);?>">
+                                <span class="icon-edit"></span>
+                            </a>
+                        <?php else : ?>
+                            <?php foreach ($this->languages as $language) : ?>
+                                <a href="<?php echo JRoute::_('index.php?option=com_osmap&view=sitemapitems&id=' . $item->id . '&lang=' . $language->sef);?>">
+                                    <span class="icon-edit"></span>
+                                    <img src="/media/mod_languages/images/<?php echo $language->image; ?>.gif" />
+                                    <?php echo $language->title; ?>
+                                </a><br />
+                            <?php endforeach; ?>
                         <?php endif; ?>
                     </td>
+
+                    <td class="center osmap-links">
+                        <span class="osmap-link">
+                            <?php $link = isset($item->menuIdList['xml'])
+                                ? OSMap\Router::routeURL('index.php?Itemid=' . $item->menuIdList['xml'])
+                                : '/index.php?option=com_osmap&amp;view=xml&id=' . $item->id;
+                            ?>
+                            <a
+                                href="<?php echo $baseUrl . $link; ?>"
+                                target="_blank"
+                                title="<?php echo JText::_('COM_OSMAP_XML_LINK_TOOLTIP', true); ?>">
+
+                                <?php echo JText::_('COM_OSMAP_XML_LINK'); ?>
+                            </a>
+                            <span class="icon-new-tab"></span>
+                        </span>
+                        <span class="osmap-link">
+                            <?php $link = isset($item->menuIdList['html'])
+                                ? OSMap\Router::routeURL('index.php?Itemid=' . $item->menuIdList['html'])
+                                : '/index.php?option=com_osmap&amp;view=html&id=' . $item->id;
+                            ?>
+                            <a
+                                href="<?php echo $baseUrl . $link; ?>"
+                                target="_blank"
+                                title="<?php echo JText::_('COM_OSMAP_HTML_LINK_TOOLTIP', true); ?>">
+
+                                <?php echo JText::_('COM_OSMAP_HTML_LINK'); ?>
+                            </a>
+                            <span class="icon-new-tab"></span>
+                        </span>
+                        <span class="osmap-link">
+                            <?php $link = isset($item->menuIdList['xml'])
+                                ? OSMap\Router::routeURL('index.php?Itemid=' . $item->menuIdList['xml'] . '&news=1&id=' . $item->id)
+                                : '/index.php?option=com_osmap&amp;view=xml&news=1&id=' . $item->id;
+                            ?>
+                            <a
+                                href="<?php echo $baseUrl . $link; ?>"
+                                target="_blank"
+                                title="<?php echo JText::_('COM_OSMAP_NEWS_LINK_TOOLTIP', true); ?>">
+
+                                <?php echo JText::_('COM_OSMAP_NEWS_LINK'); ?>
+                            </a>
+                            <span class="icon-new-tab"></span>
+                        </span>
+                        <span class="osmap-link">
+                            <?php $link = isset($item->menuIdList['xml'])
+                                ? OSMap\Router::routeURL('index.php?Itemid=' . $item->menuIdList['xml'] . '&images=1&id=' . $item->id)
+                                : '/index.php?option=com_osmap&amp;view=xml&images=1&id=' . $item->id;
+                            ?>
+                            <a
+                                href="<?php echo $baseUrl . $link; ?>"
+                                target="_blank"
+                                title="<?php echo JText::_('COM_OSMAP_IMAGES_LINK_TOOLTIP', true); ?>">
+
+                                <?php echo JText::_('COM_OSMAP_IMAGES_LINK'); ?>
+                            </a>
+                            <span class="icon-new-tab"></span>
+                        </span>
+                    </td>
+
                     <td class="center">
-                        <?php echo JHtml::_('jgrid.published', $item->state, $i, 'sitemaps.'); ?>
+                        <?php echo (int) $item->links_count; ?>
                     </td>
-                    <td>
-                        <?php echo $this->escape($item->access_level); ?>
-                    </td>
-                    <td class="center">
-                        <?php echo JHtml::_('osmap.grid.enabled', $itemObject->debug_osmap, $i, 'debug_osmap_disable', 'debug_osmap_enable'); ?>
-                    </td>
-                    <td class="center small">
-                        <a href="<?php echo $baseUrl. 'index.php?option=com_osmap&amp;view=xml&tmpl=component&id='.$item->id; ?>" target="_blank" title="<?php echo JText::_('OSMAP_XML_LINK_TOOLTIP', true); ?>"><?php echo JText::_('OSMAP_XML_LINK'); ?><span class="icon-out-2"></span></a>
-                        &nbsp;&nbsp;
-                        <a href="<?php echo $baseUrl. 'index.php?option=com_osmap&amp;view=xml&tmpl=component&news=1&id='.$item->id; ?>" target="_blank" title="<?php echo JText::_('OSMAP_NEWS_LINK_TOOLTIP', true); ?>"><?php echo JText::_('OSMAP_NEWS_LINK'); ?><span class="icon-out-2"></span></a>
-                        &nbsp;&nbsp;
-                        <a href="<?php echo $baseUrl. 'index.php?option=com_osmap&amp;view=xml&tmpl=component&images=1&id='.$item->id; ?>" target="_blank" title="<?php echo JText::_('OSMAP_IMAGES_LINK_TOOLTIP', true); ?>"><?php echo JText::_('OSMAP_IMAGES_LINK'); ?><span class="icon-out-2"></span></a>
-                    </td>
-                    <?php if ($this->displayLegacyStats) : ?>
-                        <td class="center">
-                            <?php echo $item->count_html .' / '.$item->views_html. ' / ' . $htmlDate; ?>
-                        </td>
-                        <td class="center">
-                            <?php echo $item->count_xml .' / '.$item->views_xml. ' / ' . $xmlDate; ?>
-                        </td>
-                    <?php else : ?>
-                        <td class="center">
-                            <?php echo $item->count_xml; ?>
-                        </td>
-                    <?php endif; ?>
+
                     <td class="center">
                         <?php echo (int) $item->id; ?>
                     </td>
@@ -203,13 +210,11 @@ $version = new JVersion;
             <?php endforeach; ?>
             </tbody>
         </table>
-
-        <input type="hidden" name="task" value="" />
-        <input type="hidden" name="boxchecked" value="0" />
-        <input type="hidden" name="filter_order" value="<?php echo $this->state->get('list.ordering'); ?>" />
-        <input type="hidden" name="filter_order_Dir" value="<?php echo $this->state->get('list.direction'); ?>" />
-        <?php echo JHtml::_('form.token'); ?>
     </div>
+<?php endif; ?>
+    <input type="hidden" name="task" value="" />
+    <input type="hidden" name="boxchecked" value="0" />
+    <input type="hidden" name="filter_order" value="<?php echo $this->state->get('list.ordering'); ?>" />
+    <input type="hidden" name="filter_order_Dir" value="<?php echo $this->state->get('list.direction'); ?>" />
+    <?php echo JHtml::_('form.token'); ?>
 </form>
-
-<?php echo $this->extension->getFooterMarkup(); ?>
