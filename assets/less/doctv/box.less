@@ -773,14 +773,14 @@
                     padding-bottom: @grid-gutter-width; margin-bottom: @grid-gutter-width; position: relative; border-bottom: 1px dotted @gray-lightest;
                     .avatar {
                         float: right; border-radius: 50%; overflow: hidden; width: 50px; height: 50px; background: @gray-lightest;
-                        img { display: block; width: auto; height: auto; min-width: 50px; min-height: 50px; }
+                        img { display: inline-block; width: 100%; height: auto; max-width: 100%; vertical-align: middle; }
                     }
                     .comment-body {
                         margin-right: 60px;
                         .info {
                             .clearfix();
                             height: 20px; margin-bottom: @grid-gutter-width /2; line-height: 20px;
-                            .username { float: right; font-size: 15px; font-weight: bold; }
+                            .username { float: right; font-size: 15px; font-weight: bold; color: lighten(@gray-lightest, 15%); }
                             time { float: left; font-size: 10px; color: lighten(@gray-lightest, 15%); display: none; }
                         }
                     }
