@@ -12,7 +12,8 @@ defined('_JEXEC') or die('Restricted access');
 <?php if (count($items)) { ?>
 	<div class="box-wrapper showcase">
 		<div class="active-img grayscale">
-			<img src="<?php echo $items[0]->image; ?>" alt="<?php echo K2HelperUtilities::cleanHtml($items[0]->title); ?>"/>
+			<img src="" alt=""/>
+			<?php /* <img src="<?php echo $items[0]->image; ?>" alt="<?php echo K2HelperUtilities::cleanHtml($items[0]->title); ?>"/> */ ?>
 		</div>
 <!--		<div class="container">
 			<div class="row">
