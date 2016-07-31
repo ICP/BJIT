@@ -6,6 +6,8 @@
 21 May 2016   - plugins/user/k2/k2.php:241 (fixed register page redirect url)
 21 May 2016   - components/com_k2/helpers/utilities.php:355 (changed recaptcha verification method - temp)
 28 May 2016   - components/com_k2/helpers/utilities.php:26 (changed user placeholder image path)
+25 July 2016  - modules/mod_k2_tools/helper.php:83,376 (changed tag and author links - for blog)T
+31 July 2016  - plugins/system/k2/k2.php:151 (removed reCaptcha script declaration) 
 
 === Administrator ===
 03 June 2016  - administrator/templates/isis/login.php:130 (hiding joomla logo - footer)
