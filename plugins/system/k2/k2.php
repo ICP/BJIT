@@ -148,9 +148,9 @@ class plgSystemK2 extends JPlugin
 			{
 				$document = JFactory::getDocument();
 				if($params->get('recaptchaV2')) {
-					$document->addScript('https://www.google.com/recaptcha/api.js?onload=onK2RecaptchaLoaded&render=explicit');
-					$js = 'function onK2RecaptchaLoaded(){grecaptcha.render("recaptcha", {"sitekey" : "'.$params->get('recaptcha_public_key').'"});}';
-					$document->addScriptDeclaration($js);
+//					$document->addScript('https://www.google.com/recaptcha/api.js?onload=onK2RecaptchaLoaded&render=explicit');
+//					$js = 'function onK2RecaptchaLoaded(){grecaptcha.render("recaptcha", {"sitekey" : "'.$params->get('recaptcha_public_key').'"});}';
+//					$document->addScriptDeclaration($js);
 					$recaptchaClass = 'k2-recaptcha-v2';
 				}
 				else
