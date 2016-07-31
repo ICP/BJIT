@@ -80,7 +80,7 @@ class modK2ToolsHelper
 			foreach ($rows as $row)
 			{
 				$author = JFactory::getUser($row->created_by);
-				$author->link = JRoute::_(K2HelperRoute::getUserRoute($author->id));
+				$author->link = str_replace('/author', '/blog/author', JRoute::_(K2HelperRoute::getUserRoute($author->id)));
 
 				$query = "SELECT id, gender, description, image, url, `group`, plugins FROM #__k2_users WHERE userID=".(int)$author->id;
 				$db->setQuery($query);
@@ -373,7 +373,7 @@ class modK2ToolsHelper
 				$tmp->tag = $key;
 				$tmp->count = $value;
 				$tmp->size = $size;
-				$tmp->link = urldecode(JRoute::_(K2HelperRoute::getTagRoute($key)));
+				$tmp->link = str_replace('/tag', '/blog/tag', urldecode(JRoute::_(K2HelperRoute::getTagRoute($key))));
 				$tags[$counter] = $tmp;
 				$counter++;
 			}
