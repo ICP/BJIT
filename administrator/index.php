@@ -8,7 +8,8 @@
 
 // Farid
 
-define('VIDEO_BASE', 'http://ftp4.presstv.ir/mostanad/videos');
+define('VIDEO_BASE', 'http://77.36.165.143/Mostanad/videos');
+//define('VIDEO_BASE', 'http://ftp4.presstv.ir/mostanad/videos');
 ////////
 
 /**
