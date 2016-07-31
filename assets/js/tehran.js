@@ -67,30 +67,6 @@ $(function () {
         e.preventDefault();
     });
 
-    $(".nano").nanoScroller({
-        alwaysVisible: true
-    });
-
-    var $tilesTmpl = '<li><figure class="img"><a href="{link}"><img src="{img}" alt="{title}" /></a></figure><div class="desc"><div class="item-header"><h3 class="item-title"><a href="{link}">{title}</a></h3></div><time class="created hide">{created}</time></div></li>';
-    if ($(".item-boxes .box.more").length) {
-        var moreItems = $(".item-boxes .box.more");
-        var itemsContainer = moreItems.find("ul");
-        var url = moreItems.attr("data-catlink");
-        $.ajax({
-            url: url
-            , data: 'format=json'
-            , success: function (d) {
-                if (typeof d === "object") {
-                    items = d.items;
-                    $.each(items, function () {
-                        item = $tilesTmpl.replace(/{link}/g, this.link).replace(/{img}/g, this.image).replace(/{title}/g, this.title).replace(/{created}/g, this.time);
-                        itemsContainer.append(item);
-                    });
-                }
-            }
-        });
-    }
-
     $(".box.gallery").on('click', ".thumbnail", function (e) {
         var imgPath = $(this).attr('href');
         $(".box.gallery .thumbs li").removeClass('active');
@@ -107,20 +83,7 @@ $(function () {
     $showcaseItems.find("li").each(function () {
         $(this).width($itemWidth);
     });
-//    $showcaseItems.on('changed.owl.carousel', function (property) {
-//        var current = property.item.index;
-//        if (current !== null) {
-//            var img = $(property.target).find(".item").eq(current + 1).find("img");
-//            var o = {
-//                src: img.attr('src')
-//                , alt: img.attr('alt')
-//            };
-//            var $img = $showcaseItems.parents(".box-wrapper:first").find(".active-img img");
-//            $img.parent().append('<img src="' + o.src + '" alt="' + o.alt + '" />').promise().done(function() {
-//                $img.fadeOut('slow').remove();
-//            });
-//        }
-//    });
+
     var sc = $showcaseItems.owlCarousel({
         margin: 0
         , loop: true
@@ -135,6 +98,68 @@ $(function () {
         , animateOut: ''
         , nav: true
         , navText: ["", ""]
+    });
+
+    $(".box.content ul.slider:not(.blog-posts)").owlCarousel({
+        margin: 0
+        , loop: true
+        , items: 1
+        , autoWidth: false
+        , rtl: true
+        , themeClass: 'carousel-theme'
+        , baseClass: 'items-carousel'
+        , itemClass: 'item'
+        , animateIn: 'fadeIn'
+        , animateOut: 'fadeOut'
+        , nav: true
+        , navText: ["", ""]
+    });
+    
+    $(".box.content ul.slider.blog-posts").owlCarousel({
+        margin: 0
+        , loop: true
+        , items: 1
+        , autoWidth: false
+        , rtl: true
+        , themeClass: 'carousel-theme'
+        , baseClass: 'items-carousel'
+        , itemClass: 'item'
+        , animateIn: 'fadeIn'
+        , animateOut: 'fadeOut'
+        , nav: true
+        , navText: ["", ""]
+        , dots: true
+    });
+    
+    $(".box.gallery ul.slider.galllery").owlCarousel({
+        margin: 0
+        , loop: true
+        , items: 1
+        , autoWidth: false
+        , rtl: true
+        , themeClass: 'carousel-theme'
+        , baseClass: 'items-carousel'
+        , itemClass: 'item'
+        , animateIn: 'fadeIn'
+        , animateOut: 'fadeOut'
+        , nav: true
+        , navText: ["", ""]
+        , dots: true
+    });
+
+    $(".box.tiles.has-carousel ul").owlCarousel({
+        margin: 20
+        , loop: true
+        , items: 4
+        , autoWidth: false
+        , rtl: true
+        , themeClass: 'carousel-theme'
+        , baseClass: 'items-carousel'
+        , itemClass: 'item'
+        , animateIn: 'fadeIn'
+        , animateOut: 'fadeOut'
+        , nav: true
+        , navText: ["", ""]
     });
 
     $(".box.thumbs.carousel > div ul").owlCarousel({
@@ -168,13 +193,8 @@ $(function () {
         , itemClass: 'item'
     });
 
-    var fullHeightHeught = 0;
-    $(".full-height").each(function () {
-        fullHeightHeught = ($(this).height() > fullHeightHeught) ? $(this).height() : fullHeightHeught;
-    });
-    $(".full-height").height(fullHeightHeught);
-    
     $(".box.newsletter").on('submit', "form", function (e) {
+        alert('Thanks!');
         e.preventDefault();
         return false;
     });
