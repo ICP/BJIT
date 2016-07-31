@@ -37,7 +37,7 @@ if ($limitstart && $limitstart > 0) {
 	<?php if ((isset($this->leading) || isset($this->primary) || isset($this->secondary) || isset($this->links)) && (count($this->leading) || count($this->primary) || count($this->secondary) || count($this->links))) { ?>
 		<?php if (isset($this->leading) && count($this->leading)) { ?>
 			<section class="box content blog">
-				<ul class="slider items-carousel blog-posts">
+				<ul class="slider items-carousel">
 				<?php
 				foreach ($this->leading as $key => $item) {
 					$media = !empty($item->video) ? ' video' : '';

@@ -85,6 +85,17 @@ class TemplateHelper {
 		return ($this->checkDefaultMenu($currentMenu)) ? true : false;
 	}
 	
+	/*
+	 * TEMP - TODO
+	 */
+	public function isProgram($currentMenu) {
+//		var_dump($currentMenu->getActive());
+//		print_r(JFactory::getApplication()->input);
+//		print_r($currentMenu->getActive()->query); die;
+		header('x-query: ' . json_encode($currentMenu->getActive()->query));
+		return (!empty($currentMenu->getActive()->query["id"]) && $currentMenu->getActive()->query["id"] == 2 && $currentMenu->getActive()->query["view"] == "itemlist") ? true : false;
+	}
+	
 	public function countMessages($messagesQueue) {
 		return (is_array($messagesQueue) && count($messagesQueue) > 1) ? true : false;
 	}

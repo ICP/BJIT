@@ -10,17 +10,19 @@ $url = JURI::base(); // Root URL
 $turl = rtrim($url, "/"); // Root URL without tailing slash
 
 $isFrontpage = $helper->isFrontpage($app->getMenu());
+$isProgram = $helper->isProgram($app->getMenu());
 
 $this->setGenerator(''); // Remove Joomla generator tag
 $sitename = $app->getCfg('sitename');
 
 $pageSuffix = JFactory::getApplication()->getMenu()->getActive()->params["pageclass_sfx"];
-//$theme = (isset($pageSuffix) && $pageSuffix !== null) ? $pageSuffix : 'dark';
+
 ?><html class="no-js<?php echo $helper->getBaseClasses($app->getMenu()); ?>">
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<meta name="viewport" content="width=device-width">
 		<meta name="google-site-verification" content="hNVmYmqorsHWellD3gmvYGlezOzxor8dcs2JHUDMdnY" />
+		<?php if ($isFrontpage) { ?><meta property="og:image" content="<?php echo JURI::base() . 'assets/data/placeholder_tehran.jpg'; ?>"><?php } ?>
 		<?php
 		$JHeader = $this->getHeadData(); // Get Joomla Native Head tags
 		$this->setHeadData($helper->cleanHead($JHeader)); // Removing unwanted tags from Joomla native head
@@ -31,8 +33,11 @@ $pageSuffix = JFactory::getApplication()->getMenu()->getActive()->params["pagecl
 		// Adding stylesheets and scripts to joomla head to prevent core to face an empty array
 		$this->_styleSheets[JURI::base() . 'assets/css/tehran.css'] = array('mime' => "text/css", 'media' => 'all', 'attribs' => array(), 'defer' => '', 'async' => '');
 		$this->_scripts[JURI::base() . 'assets/js/modernizr-2.6.2.min.js'] = array('mime' => "text/javascript", 'media' => 'all', 'attribs' => array(), 'defer' => '', 'async' => '');
-//		$this->_scripts[JURI::base() . 'assets/js/jquery-1.11.1.min.js'] = array('mime' => "text/javascript", 'media' => 'all', 'attribs' => array(), 'defer' => '', 'async' => '');
-		$this->_scripts[JURI::base() . 'assets/js/jwplayer.js'] = array('mime' => "text/javascript", 'media' => 'all', 'attribs' => array(), 'defer' => '', 'async' => '');
-		JFactory::getDocument()->addScriptDeclaration('var base = "' . JURI::base() . '";');
+		if (!$isFrontpage) {
+			$this->_scripts[JURI::base() . 'assets/js/jquery-1.11.1.min.js'] = array('mime' => "text/javascript", 'media' => 'all', 'attribs' => array(), 'defer' => '', 'async' => '');
+			$this->_scripts[JURI::base() . 'assets/js/jwplayer.js'] = array('mime' => "text/javascript", 'media' => 'all', 'attribs' => array(), 'defer' => '', 'async' => '');
+			$this->_scripts['https://www.google.com/recaptcha/api.js?hl=fa'] = array('mime' => "text/javascript", 'media' => 'all', 'attribs' => array(), 'defer' => '', 'async' => '');
+		}
+		JFactory::getDocument()->addScriptDeclaration(';var base = "' . JURI::base() . '";');
 		?><jdoc:include type="head" />
 </head>

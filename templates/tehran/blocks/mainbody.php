@@ -1,4 +1,4 @@
-<body id="bd" class="dark <?php echo strtolower($helper->device) . ($isFrontpage ? ' home' : ''); ?>" data-spy="scroll" data-target="#menu">
+<body id="bd" class="dark <?php echo strtolower($helper->device) . ($isFrontpage ? ' home' : '') . ($isProgram ? ' home program' : ''); ?>" data-spy="scroll" data-target="#menu">
 	<header id="header">
 		<?php if ($isFrontpage) { ?><h1 class="hide"><?php echo $sitename; ?></h1><?php } ?>
 		<div id="masthead" class="wrapper purple">
@@ -18,6 +18,7 @@
 							<li><a href="#"><i class="icon-aparat"></i></a></li>
 							<li><a href="#"><i class="icon-instagram"></i></a></li>
 							<li><a href="#"><i class="icon-telegram"></i></a></li>
+							<li><a href="<?php echo JUri::base(); ?>itemlist?format=feed&type=rss"><i class="icon-rss"></i></a></li>
 							<li class="search hidden-md hidden-lg">
 								<a class="search-toggle" href="<?php echo JURI::base() . 'search'; ?>" data-toggle="toggle" data-target="#search" data-focus="#search input[type='text']"><i class="icon-search"></i><span>جستجو</span></a>
 							</li>
@@ -39,16 +40,30 @@
 		</div>
 	</header>
 <?php if ($helper->countModules('search')) { ?><jdoc:include type="modules" name="search" /><?php } ?>
-<?php if ($helper->countModules('showcase')) { ?>
+<?php if ($helper->countModules('showcase') || $isProgram) { ?>
 	<section id="showcase">
 		<div data-identifier="showcase" class="wrapper">
 			<jdoc:include type="modules" name="showcase" style="basic" />
+			<?php if ($isProgram) { ?>
+				<div class="page">
+					<header class="page-header hide">
+						<div class="container">
+							<div class="row">
+								<div class="col-xs-12">
+									<h1><?php echo isset(JFactory::getApplication()->getMenu()->getActive()->title) ? JFactory::getApplication()->getMenu()->getActive()->title : $sitename; ?></h1>
+								</div>
+							</div>
+						</div>
+					</header>
+					<jdoc:include type="component" />
+				</div>
+			<?php } ?>
 		</div>
 	</section>
 <?php } ?>
 <main id="mainbody">
 	<div data-identifier="main-top" class="wrapper content gray-lighter">
-		<?php if (!$isFrontpage) { ?>
+		<?php if (!$isFrontpage && !$isProgram) { ?>
 			<div class="page">
 				<header class="page-header">
 					<div class="container">
@@ -59,20 +74,22 @@
 						</div>
 					</div>
 				</header>
-				<div class="container">
-					<div class="row">
-						<div class="<?php echo (JFactory::getApplication()->getMenu()->getActive()->note === 'cols-9-3') ? "col-xs-12 col-md-9" : "col-xs-12"; ?>">
-							<section class="page-conntent">
-								<jdoc:include type="component" />
-							</section>
-						</div>
-						<?php if (JFactory::getApplication()->getMenu()->getActive()->note === 'cols-9-3') { ?>
-							<div id="sidebar" class="col-xs-12 col-md-3">
-								<jdoc:include type="modules" name="sidebar" style="default" />
+				<?php if (!$isProgram) { ?>
+					<div class="container">
+						<div class="row">
+							<div class="<?php echo (JFactory::getApplication()->getMenu()->getActive()->note === 'cols-9-3') ? "col-xs-12 col-md-9" : "col-xs-12"; ?>">
+								<section class="page-conntent">
+									<jdoc:include type="component" />
+								</section>
 							</div>
-						<?php } ?>
+							<?php if (JFactory::getApplication()->getMenu()->getActive()->note === 'cols-9-3') { ?>
+								<div id="sidebar" class="col-xs-12 col-md-3">
+									<jdoc:include type="modules" name="sidebar" style="default" />
+								</div>
+							<?php } ?>
+						</div>
 					</div>
-				</div>
+				<?php } ?>
 			</div>
 		<?php } ?>
 		<div class="container">
@@ -146,9 +163,9 @@
 				<div class="row _relative">
 					<div class="col-xs-12 col-sm-10 col-md-9">
 						<ul class="list-inline">
-							<li><a href="#">صفحه اصلی</a></li>
-							<li><a href="#">درباره ما</a></li>
-							<li><a href="#">تماس با ما</a></li>
+							<li><a href="<?php echo JURI::base(); ?>">صفحه اصلی</a></li>
+							<li><a href="<?php echo JURI::base(); ?>about-us">درباره ما</a></li>
+							<li><a href="<?php echo JURI::base(); ?>contact-us">تماس با ما</a></li>
 							<li><a href="#">خبرنامه</a></li>
 						</ul>
 						<jdoc:include type="modules" name="sitemap" />
@@ -172,10 +189,16 @@
 		</div>
 	<?php } ?>
 </footer>
-<script src="<?php echo JURI::base(); ?>assets/js/jquery-1.11.1.min.js"></script>
+<?php if ($isFrontpage) { ?>
+	<script src="<?php echo JURI::base(); ?>assets/js/jquery-1.11.1.min.js"></script>
+<?php } else { ?>
+	<script src="<?php echo JURI::base(); ?>assets/js/select2.full.min.js"></script>
+	<script src="<?php echo JURI::base(); ?>assets/js/persian-date-0.1.8.min.js"></script>
+	<script src="<?php echo JURI::base(); ?>assets/js/persian-datepicker-0.4.5.min.js?_=20160608"></script>
+	<script src="<?php echo JURI::base(); ?>assets/js/jquery.nanoscroller.min.js"></script>
+<?php } ?>
 <script src="<?php echo JURI::base(); ?>assets/js/bootstrap.min.js"></script>
 <script src="<?php echo JURI::base(); ?>assets/js/owl.carousel.min.js"></script>
-<script src="<?php echo JURI::base(); ?>assets/js/jquery.nanoscroller.min.js"></script>
 <script src="<?php echo JURI::base(); ?>assets/js/tehran.min.js?_=20160326"></script>
 <script type="text/javascript">
     // Piwik code
