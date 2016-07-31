@@ -193,6 +193,21 @@ $(function () {
     if ($(".page-slogan").length) {
         $(".page-slogan").appendTo("h1:first").removeClass("hide");
     }
+    if ($(".schedule-sidebar").length) {
+        var sc_offset = $(".schedule-sidebar").offset();
+        var sc_width = $(".schedule-sidebar").width();
+        $(window).scroll(function(){
+            if($(window).scrollTop() > sc_offset.top)
+                $('.schedule-sidebar').addClass('fixed').css({'width': sc_width});
+            else
+                $('.schedule-sidebar').removeClass('fixed');
+        });
+    }
+    if ($(".box.schedule-table li.active").length) {
+        var timeOut = window.setTimeout(function() {
+            $("html, body").animate({'scrollTop': ($(".box.schedule-table li.active").offset().top - 200)}, 500);
+        }, 1000);
+    }
 
     // Dynamic Item Loadings
     if ($(".item-boxes .box.more").length) {
@@ -341,6 +356,20 @@ var BoxHelper = {
                     });
                 }
             });
+            $showcaseItems.on('initialized.owl.carousel', function (property) {
+                var current = property.item.index;
+                if (current !== null) {
+                    var img = $(property.target).find(".item").eq(current + 1).find("img");
+                    var o = {
+                        src: img.attr('src')
+                        , alt: img.attr('alt')
+                    };
+                    var $img = $showcaseItems.parents(".box-wrapper:first").find(".active-img img");
+                    $img.parent().append('<img src="' + o.src + '" alt="' + o.alt + '" />').promise().done(function () {
+                        $img.fadeOut('slow').remove();
+                    });
+                }
+            });
             var sc = $showcaseItems.owlCarousel({
                 margin: 0
                 , loop: true
@@ -358,7 +387,6 @@ var BoxHelper = {
                 , autoplay: true
                 , autoplayTimeout: 7000
                 , autoplayHoverPause: true
-
             });
         }
         $(".box.showcase > .carousel ul").find("li").each(function () {
