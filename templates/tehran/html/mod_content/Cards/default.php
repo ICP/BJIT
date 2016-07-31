@@ -10,6 +10,9 @@
 defined('_JEXEC') or die('Restricted access');
 ?>
 <?php if (count($items)) { ?>
+	<?php if ($params->get('category_link') && $params->get('mymenu_id')) { ?>
+		<a href="<?php echo JRoute::_('index.php?option=com_k2&Itemid=' . $params->get('mymenu_id')); ?>" class="btn btn-default category-link">بیشتر</a>
+	<?php } ?>
 	<ul>
 		<?php foreach ($items as $key => $item) { ?>
 			<li>
@@ -25,7 +28,7 @@ defined('_JEXEC') or die('Restricted access');
 						<?php if ($params->get('itemAuthor')): ?>
 							<div class="item-author">
 								<?php if (isset($item->authorLink)): ?>
-									<a rel="author" title="<?php echo K2HelperUtilities::cleanHtml($item->author); ?>" href="<?php echo $item->authorLink; ?>">
+								<a rel="author" title="<?php echo K2HelperUtilities::cleanHtml($item->author); ?>" href="<?php echo JRoute::_('index.php?Itemid=114') . '/author/' . $item->author_id . '-' . $item->author; ?>">
 										<span class="avatar"></span>
 										<?php echo $item->author; ?>
 									</a>
@@ -37,12 +40,14 @@ defined('_JEXEC') or die('Restricted access');
 						<?php if ($params->get('itemTitle')) { ?>
 							<h3><a href="<?php echo $item->link; ?>"><?php echo $item->title; ?></a></h3>
 						<?php } ?>
-						<?php if ($params->get('itemIntroText')) { ?>
-							<p><?php echo $item->introtext; ?></p>
-						<?php } ?>
-						<?php if ($params->get('itemReadMore')) { ?>
-							<a class="more" href="<?php echo $item->link; ?>">بیشتر...</a>
-						<?php } ?>
+						<div class="introtext">
+							<?php if ($params->get('itemIntroText') && trim(strip_tags($item->introtext))) { ?>
+								<p><?php echo $item->introtext; ?></p>
+							<?php } ?>
+							<?php if ($params->get('itemReadMore')) { ?>
+								<a class="more" href="<?php echo $item->link; ?>">بیشتر...</a>
+							<?php } ?>
+						</div>
 					</div>
 				</div>
 			</li>
