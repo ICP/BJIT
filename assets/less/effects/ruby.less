@@ -1,0 +1,11 @@
+.ruby {
+    .img {
+	background-color: #17819c; position: relative; overflow: hidden;text-align: center;
+        img { opacity: 0.9; -webkit-transition: -webkit-transform 0.35s; transition: opacity 0.35s, transform 0.35s; -webkit-transform: scale(1.15); transform: scale(1.15); }
+	.caption { position: absolute; top: 50%; width: 300px; margin-left: -150px; left: 50%; border: 1px solid white; padding: 20px; color: #fff;-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;transition: opacity 0.35s, transform 0.35s;-webkit-transform: translate3d(0,20px,0) scale(1.1);transform: translate3d(0,20px,0) scale(1.1); opacity: 0; }
+    }
+    &:hover {
+	img { opacity: 0.7;-webkit-transform: scale(1);transform: scale(1); }
+	.caption {opacity: 1;-webkit-transform: translate3d(0,0,0) scale(1);transform: translate3d(0,0,0) scale(1); }
+    }
+}

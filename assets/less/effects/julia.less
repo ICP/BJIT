@@ -1,0 +1,23 @@
+.julia {
+    .img {
+	position: relative; overflow: hidden; background: #2f3238; height: 167px;
+	img {max-width: none;-webkit-transition: opacity 1s, -webkit-transform 1s;transition: opacity 1s, transform 1s;-webkit-backface-visibility: hidden;backface-visibility: hidden;}
+	.caption {
+	    display: inline-block;margin: 0 0 0.25em;padding: 0.4em 1em;background: rgba(255,255,255,0.9);color: #2f3238;text-transform: none;font-weight: 500;font-size: 75%; position: absolute; margin-right: 30px;
+	    -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;transition: opacity 0.35s, transform 0.35s;-webkit-transform: translate3d(360px,0,0);transform: translate3d(360px,0,0);
+	    -webkit-transition-delay: 0.15s;transition-delay: 0.15s;top: 20px;
+	    &:first-child {}
+	    &:nth-of-type(2) {-webkit-transition-delay: 0.1s;transition-delay: 0.1s; top: 60px;}
+	    &:nth-of-type(3) {-webkit-transition-delay: 0.05s;transition-delay: 0.05s;top: 100px;}
+	}
+    }
+    &:hover {
+	img { opacity: 0.4;-webkit-transform: scale3d(1.1,1.1,1);transform: scale3d(1.1,1.1,1); }
+	.caption {
+	    opacity: 1;-webkit-transform: translate3d(0,0,0);transform: translate3d(0,0,0);-webkit-transition-delay: 0s;transition-delay: 0s;
+	    &:first-child {}
+	    &:nth-of-type(2) {-webkit-transition-delay: 0.05s;transition-delay: 0.05s;}
+	    &:nth-of-type(3) {-webkit-transition-delay: 0.1s;transition-delay: 0.1s;}
+	}
+    }
+}
