@@ -354,9 +354,9 @@ class modK2ContentHelper {
 				$item->categoryLink = urldecode(JRoute::_(K2HelperRoute::getCategoryRoute($item->catid . ':' . urlencode($item->categoryalias))));
 //				$item->categoryLink = urldecode(JRoute::_(K2HelperRoute::getCategoryRoute($params->get('itemCategory') . ':' . urlencode($item->categoryalias))));
 				//Extra fields
-				if ($params->get('itemExtraFields')) {
+//				if ($params->get('itemExtraFields')) {
 					$item->extra_fields = $model->getItemExtraFields($item->extra_fields, $item);
-				}
+//				}
 
 				//Comments counter
 				if ($params->get('itemCommentsCounter'))
@@ -498,7 +498,7 @@ class modK2ContentHelper {
 					else {
 						$author = JFactory::getUser($item->created_by);
 						$item->author = $author->name;
-
+						$item->author_id = $author->id;
 						$query = "SELECT `description`, `gender` FROM #__k2_users WHERE userID=" . (int) $author->id;
 						$db->setQuery($query, 0, 1);
 						$result = $db->loadObject();
@@ -547,6 +547,9 @@ class modK2ContentHelper {
 								$dispatcher->trigger('onK2PrepareContent', array(&$tmp, &$params, $limitstart));
 							}
 							$extraField->value = $tmp->text;
+						}
+						if ($extraField->alias == 'link' && $extraField->alias != '#' && $extraField->alias != '') {
+							$item->link = $extraField->value;
 						}
 					}
 				}

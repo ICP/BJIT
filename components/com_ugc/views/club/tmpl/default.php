@@ -33,4 +33,14 @@ $user = JFactory::getUser();
 			<?php } ?>
 		</ul>
 	</div>
+	<?php
+	jimport('joomla.application.module.helper');
+// this is where you want to load your module position
+	$modules = JModuleHelper::getModules('multimedia_carousels');
+	?>
+	<?php
+	foreach ($modules as $module) {
+		echo JModuleHelper::renderModule($module, array('style' => 'default'));
+	}
+	?>
 </div>

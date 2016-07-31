@@ -4,7 +4,7 @@ class JConfig {
 	public $offline_message = 'This site is down for maintenance.<br />Please check back again soon.';
 	public $display_offline_message = '1';
 	public $offline_image = '';
-	public $sitename = 'شبکه مستند';
+	public $sitename = 'شبکه تهران';
 	public $editor = 'tinymce';
 	public $captcha = '0';
 	public $list_limit = '50';
@@ -20,7 +20,7 @@ class JConfig {
 	public $live_site = '';
 	public $secret = 'f5C2O6Wv0TCMgNbG';
 	public $gzip = '0';
-	public $error_reporting = 'default';
+	public $error_reporting = 'maximum';
 	public $helpurl = 'https://help.joomla.org/proxy/index.php?option=com_help&keyref=Help{major}{minor}:{keyref}';
 	public $ftp_host = '';
 	public $ftp_port = '';
@@ -29,10 +29,10 @@ class JConfig {
 	public $ftp_root = '';
 	public $ftp_enable = '0';
 	public $offset = 'Asia/Tehran';
-	public $mailonline = '1';
+	public $mailonline = '0';
 	public $mailer = 'mail';
 	public $mailfrom = 'faridv@gmail.com';
-	public $fromname = 'شبکه مستند';
+	public $fromname = 'شبکه تهران';
 	public $sendmail = '/usr/sbin/sendmail';
 	public $smtpauth = '0';
 	public $smtpuser = '';

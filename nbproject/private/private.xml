@@ -3,33 +3,40 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/tehran/item.less</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/tehran/html/com_k2/default/tag.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/modules/mod_content/helper.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/tehran/item.less</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/plugins/content/jw_sigpro/jw_sigpro/tmpl/Galleria/default.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/components/com_schedule/views/schedule/tmpl/default.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/api/classes/items.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/templates/tehran/html/com_k2/_comments/form.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/administrator/components/com_schedule/views/schedule/tmpl/edit.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/administrator/components/com_schedule/assets/js/schedule.js</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/components/com_k2/models/item.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/tehran/helper.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/doctv/html/mod_content/Showcase/default.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/tehran/html/com_k2/news/category.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/tehran/blocks/mainbody.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/tehran/html/mod_content/Slider/default.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/templates/tehran/html/com_k2/news/item.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/tehran/html/com_k2/default/user.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/doctv/blocks/mainbody.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/tehran/variables.less</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/js/tehran.js</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/tehran/colors.less</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/api/routes.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/components/com_k2/helpers/utilities.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/templates/tehran/blocks/header.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/templates/doctv/html/mod_content/FirstFeatured/default.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/administrator/components/com_schedule/views/schedules/tmpl/default.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/tehran/components.less</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/templates/tehran/html/mod_content/Categories/default.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/plugins/content/jw_sigpro/jw_sigpro.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/plugins/content/jw_sigpro/jw_sigpro/tmpl/Slider/default.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/tehran/footer.less</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/tehran/html/com_k2/misc/item.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/tehran/html/com_k2/programs/category.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/tehran/html/com_k2/programs/category_item.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/tehran/html/mod_content/Cards/default.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/fframework/icons.less</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/modules/mod_schedule/tmpl/homepage.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/doctv/main.less</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/templates/tehran/html/com_k2/programs/item.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/tehran/main.less</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/tehran/box.less</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/tehran/misc.less</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/tehran/html/com_k2/news/category_item.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/js/doctv.js</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/modules/mod_content/mod_content.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/doctv/blocks/header.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/doctv/box.less</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/tehran/header.less</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/plugins/content/jw_sigpro/jw_sigpro/includes/js/jquery_fancybox/popup.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/plugins/content/jw_sigpro/jw_sigpro/tmpl/Galleria/css/template.css</file>
         </group>
     </open-files>
 </project-private>

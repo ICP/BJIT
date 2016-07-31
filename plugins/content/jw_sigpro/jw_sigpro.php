@@ -22,8 +22,8 @@ class plgContentJw_sigpro extends JPlugin
 	// JoomlaWorks reference parameters
 	var $plg_name = "jw_sigpro";
 	var $plg_tag = "gallery";
-	var $plg_copyrights_start = "\n\n<!-- JoomlaWorks \"Simple Image Gallery Pro\" Plugin (v3.0.8) starts here -->\n";
-	var $plg_copyrights_end = "\n<!-- JoomlaWorks \"Simple Image Gallery Pro\" Plugin (v3.0.8) ends here -->\n\n";
+	var $plg_copyrights_start = "";
+	var $plg_copyrights_end = "";
 
 	function plgContentJw_sigpro(&$subject, $params)
 	{
