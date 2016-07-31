@@ -1,6 +1,5 @@
 #footer {
-    /*border-top: (@grid-gutter-width * 2) solid @gray-darker;*/
-    /*background: @gray-dark;*/
+    position: relative; z-index: 200;
     & > .wrapper { padding: (@grid-gutter-width / 2) 0; color: @gray-lightest; }
     a {
         color: @footer-link-color;
@@ -18,7 +17,13 @@
             }
         }
     }
-    .copyright-text { /*font-family: 'Vazir'; */font-size: @copyright-font-size - 2; text-align: center; }
+    .copyright-text {
+        font-size: @copyright-font-size - 2; text-align: center;
+        a {
+            color: @brand-info;
+            &:hover { color: #fff; }
+        }
+    }
     .menu {
         font-family: @headings-font-family; font-size: @footer-menu-font-size; margin-top: 90px; font-size: 0;
         li {
