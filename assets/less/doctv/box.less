@@ -316,6 +316,9 @@
                     }
                 }
             }
+            &.cols-2 {
+                ul li figure { max-height: 129px; overflow: hidden; }
+            }
         }
         &.sidebar {
             h3 { font-size: 15px; }
@@ -830,6 +833,9 @@
             &._hidden-date {
                 time { display: none !important; }
             }
+        }
+        blockquote {
+            margin-bottom: 0; border-right: 5px solid @gray-lighter; border-left: 0 none;
         }
     }
     &.faq {
