@@ -44,6 +44,7 @@
             <file>file:/C:/xampp/htdocs/irib/doctv/templates/doctv/blocks/mainbody.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/js/tehran.js</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/components/com_ugc/views/club/tmpl/default.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/doctv/html/com_k2/_comments/list.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/templates/tehran/blocks/header.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/components/com_users/models/forms/registration.xml</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/templates/tehran/html/com_k2/programs/category_item.php</file>
@@ -53,6 +54,7 @@
             <file>file:/C:/xampp/htdocs/irib/doctv/templates/tehran/html/com_k2/news/category_item.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/js/doctv.js</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/templates/doctv/blocks/header.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/doctv/box.less</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/plugins/content/jw_sigpro/jw_sigpro/includes/js/jquery_fancybox/popup.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/components/com_users/models/registration.php</file>
         </group>

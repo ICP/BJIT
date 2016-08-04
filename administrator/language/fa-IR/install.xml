@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!-- $Id: install.xml 0506753738 2016-01-31 07:07:16 Joomla Farsi Team $ -->
-<extension version="3.5" client="administrator" type="language" method="upgrade">
+<extension version="3.6" client="administrator" type="language" method="upgrade">
     <name>Persian</name>
     <tag>fa-IR</tag>
-    <version>3.5.1.1</version>
-	<creationDate>April, 2016</creationDate>
+    <version>3.6.0.2</version>
+	<creationDate>July 2016</creationDate>
     <author>Persian Translation Team, Joomlafarsi.com</author>
     <authorEmail>info@joomlafarsi.com</authorEmail>
     <authorUrl>www.joomlafarsi.com</authorUrl>
 	<copyright>Copyright (C) 2005 - 2016 Joomlafarsi.com and Open Source Matters. All rights reserved.</copyright>
 	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
-    <description>Persian administrator language pack for Joomla 3.5.1</description>
+    <description>Persian administrator language pack for Joomla 3.6.0</description>
     <files>
         <filename>fa-IR.com_admin.ini</filename>
 		<filename>fa-IR.com_admin.sys.ini</filename>
@@ -36,6 +36,12 @@
 		<filename>fa-IR.com_cpanel.sys.ini</filename>
 		<filename>fa-IR.com_finder.ini</filename>
 		<filename>fa-IR.com_finder.sys.ini</filename>
+		<filename>fa-IR.plg_installer_folderinstaller.ini</filename>
+		<filename>fa-IR.plg_installer_folderinstaller.sys.ini</filename>
+		<filename>fa-IR.plg_installer_packageinstaller.ini</filename>
+		<filename>fa-IR.plg_installer_packageinstaller.sys.ini</filename>
+		<filename>fa-IR.plg_installer_urlinstaller.ini</filename>
+		<filename>fa-IR.plg_installer_urlinstaller.sys.ini</filename>
 		<filename>fa-IR.com_installer.ini</filename>
 		<filename>fa-IR.com_installer.sys.ini</filename>
 		<filename>fa-IR.com_joomlaupdate.ini</filename>
