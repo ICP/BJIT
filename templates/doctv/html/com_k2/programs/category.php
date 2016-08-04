@@ -40,13 +40,15 @@ if (count($this->secondary) === 1) {
 
 // Categories slicing and pagination
 jimport('joomla.html.pagination');
-$program_count = count($this->subCategories);
-$this->subCategories = array_reverse($this->subCategories);
-$start = ($limitstart && $limitstart > 0) ? $limitstart : 0;
-$offset = ($start == 0) ? 41 : 40;
-$pageNav = new JPagination(count($this->subCategories), $start, $offset);
-$start_key = ($start == 0) ? 0 : -1;
-$this->subCategories = array_slice($this->subCategories, $start, $offset);
+if (isset($this->subCategories)) {
+	$program_count = count($this->subCategories);
+	$this->subCategories = array_reverse($this->subCategories);
+	$start = ($limitstart && $limitstart > 0) ? $limitstart : 0;
+	$offset = ($start == 0) ? 41 : 40;
+	$pageNav = new JPagination(count($this->subCategories), $start, $offset);
+	$start_key = ($start == 0) ? 0 : -1;
+	$this->subCategories = array_slice($this->subCategories, $start, $offset);
+}
 ?>
 <div class="box-wrapper programs">
 	<!-- Categories -->
@@ -87,8 +89,7 @@ $this->subCategories = array_slice($this->subCategories, $start, $offset);
 			<?php if ($this->params->get('subCategories') && isset($this->subCategories) && count($this->subCategories)) { ?>
 				<section class="box subcategories grid">
 					<div>
-						<?php
-						foreach ($this->subCategories as $key => $subCategory) { ?>
+						<?php foreach ($this->subCategories as $key => $subCategory) { ?>
 							<?php if ($start == 0 && $key == 0) { ?>
 								<article data-count="<?php echo $subCategory->numOfItems; ?>">
 									<?php if ($this->params->get('subCatImage') && $subCategory->image) { ?>
