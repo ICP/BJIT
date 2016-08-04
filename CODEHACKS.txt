@@ -1,4 +1,10 @@
 == Code Hacks ==
+@ Some plugins like gallery and media which I won't update are not listed here
+
+=== Index ===
+-- --- ----   - index.php (added media server path)
+-- --- ----   - administrator/index.php (added media server path)
+
 === K2 ===
 
 29 April 2016 - components/com_k2/models/item.php:527 (bypassed php notice with @)
@@ -13,3 +19,6 @@
 03 June 2016  - administrator/templates/isis/login.php:130 (hiding joomla logo - footer)
 03 June 2016  - administrator/templates/isis/index.php:186 (hiding joomla logo - header)
 03 June 2016  - administrator/modules/mod_login/tmpl/default.php:70 (removed language selection in login form)
+
+=== Plugins ===
+04 Aug 2016   - plugins/osmap/com_k2/com_k2.php:159,324 (fixed k2 items routing)
