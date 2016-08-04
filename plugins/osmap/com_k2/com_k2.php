@@ -26,6 +26,9 @@
 
 defined('_JEXEC') or die('Restricted access');
 
+require_once (JPATH_SITE . DS . 'components' . DS . 'com_k2' . DS . 'helpers' . DS . 'route.php');
+require_once (JPATH_SITE . DS . 'components' . DS . 'com_k2' . DS . 'helpers' . DS . 'utilities.php');
+
 /** Adds support for K2  to OSMap */
 class osmap_com_k2
 {
@@ -153,9 +156,10 @@ class osmap_com_k2
 
     static function processTree($db, &$osmap, &$parent, &$params, $mode, $ids, $tag, $limit)
     {
-        $baseQuery = "select id,title,alias,UNIX_TIMESTAMP(created) as created, UNIX_TIMESTAMP(modified) as modified, metakey from  #__k2_items where "
-                    ."published = 1 and trash = 0 and (publish_down = \"0000-00-00\" OR publish_down > NOW()) and "
-                    ."access in (".self::$maxAccess.") and ";
+        $baseQuery = "select i.id,i.title,i.alias,UNIX_TIMESTAMP(i.created) as created, UNIX_TIMESTAMP(i.modified) as modified, i.catid, i.metakey, c.alias as category_alias, c.name as category_name from  #__k2_items i left join #__k2_categories c on c.id = i.catid where "
+                    ."i.published = 1 and i.trash = 0 and (i.publish_down = \"0000-00-00\" OR i.publish_down > NOW()) and "
+                    ."c.published = 1 and c.trash = 0 and "
+                    ."i.access in (".self::$maxAccess.") and ";
 
         switch($mode)
         {
@@ -317,7 +321,7 @@ class osmap_com_k2
         else
         {
             $osmap->IDS .= "|".$row->id;
-            $node->link = 'index.php?option=com_k2&view=item&id='.$row->id.':'.$row->alias.'&Itemid='.$parent->id;
+			$node->link = K2HelperRoute::getItemRoute($row->id . ':' . urlencode($row->alias), $row->catid . ':' . urlencode($row->category_alias));
             $node->expandible = false;
         }
         $node->tree = array ();
