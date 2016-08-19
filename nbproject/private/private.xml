@@ -4,13 +4,22 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/doctv/project.less</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/api/helpers/uploader/endpoint.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/modules/mod_comments_ugc/tmpl/comments.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/doctv/index.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/doctv.less</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/bootstrap/bootstrap.less</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/doctv/templateDetails.xml</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/fframework/components.less</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/doctv/box.less</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/doctv/html/mod_k2_comments/comments.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/api/routes.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/api/helpers/uploader/binary.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/templates/doctv/html/com_k2/_comments/list.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/doctv.less</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/doctv/variables.less</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/api/helpers/uploader/handler.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/fframework/framework.less</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/bootstrap/bootstrap.less</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/api/classes/ugc.php</file>
         </group>
     </open-files>
 </project-private>
