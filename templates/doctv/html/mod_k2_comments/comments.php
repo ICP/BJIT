@@ -22,6 +22,13 @@ defined('_JEXEC') or die;
 								</div>
 								<time><?php echo JHTML::_('date', $comment->commentDate, JText::_('K2_DATE_FORMAT_LC2')); ?></time>
 							</div>
+							<?php
+							$response = '';
+							if (stristr($comment->commentText, "&&&&")) {
+								list($user_comment, $response) = explode("&&&&", $comment->commentText);
+								$comment->commentText = $user_comment;
+							}
+							?>
 							<p><?php echo $comment->commentText; ?></p>
 						</div>
 					</li>
