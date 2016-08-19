@@ -10,17 +10,23 @@ Class UGC {
 					self::requestTitle($app);
 				break;
 			case 'upload':
+			case 'add':
 				if ($method == "post")
 					self::add($app);
 				break;
 			case 'file':
 				self::file($app);
+				break;
+			case 'binaryfile':
+				self::binaryFile($app);
+				break;
 		}
 	}
 
 	public static function add($app) {
 		$user = JFactory::getUser();
-		if ($user->guest) {
+		$mobile_app = $app->request->post('mobileapp', null);
+		if ($user->guest || !$mobile_app) {
 			$app->render(403, array('error' => true, 'msg' => 'Not authorized', 'status' => 403));
 		}
 		$o = new stdClass();
@@ -31,7 +37,7 @@ Class UGC {
 		$o->title = $app->request->post('title', "");
 		$o->description = $app->request->post('description', "");
 		$o->file = $app->request->post('file', "");
-		$o->params = "";
+		$o->params = ($mobile_app) ? "mobile" : "";
 		
 		$app->_db->getQuery(true);
 		try {
@@ -45,6 +51,11 @@ Class UGC {
 
 	public static function file($app) {
 		include dirname(dirname(__FILE__)) . DS . 'helpers' . DS . 'uploader' . DS . 'endpoint.php';
+		die();
+	}
+	
+	public static function binaryFile ($app) {
+		include dirname(dirname(__FILE__)) . DS . 'helpers' . DS . 'uploader' . DS . 'binary.php';
 		die();
 	}
 
