@@ -53,6 +53,10 @@
     <config>
         <fields name="params">
             <fieldset name="advanced">
+                <field name="style" type="list" default="default" label="Default Style" description="Default template style">
+                    <option value="default">Default</option>
+                    <option value="shams">Shams</option>
+                </field>
                 <field name="font-size" type="list" default="" label="Default font-size" description="Any values here will overwrite the default value of template">
                     <option value="10">10</option>
                     <option value="11">11</option>

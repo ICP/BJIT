@@ -117,3 +117,10 @@ $app->map('/ugc(/)(:type(/))', function ($type = null) use ($app) {
 	include 'classes/ugc.php';
 	new UGC($type, $app, 'post');
 })->via('POST');
+
+
+// External
+$app->map('/tourism(/)(:id(/))', function ($id = null) use ($app) {
+	include 'classes/tourism.php';
+	new Tourism($id, $app);
+})->via('GET');

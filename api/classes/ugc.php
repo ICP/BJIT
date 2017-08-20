@@ -26,7 +26,7 @@ Class UGC {
 	public static function add($app) {
 		$user = JFactory::getUser();
 		$mobile_app = $app->request->post('mobileapp', null);
-		if ($user->guest || !$mobile_app) {
+		if ($user->guest && !$mobile_app) {
 			$app->render(403, array('error' => true, 'msg' => 'Not authorized', 'status' => 403));
 		}
 		$o = new stdClass();
