@@ -2,15 +2,9 @@
 /**
  * @package    Joomla.Site
  *
- * @copyright  Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
+ * @copyright  Copyright (C) 2005 - 2017 Open Source Matters, Inc. All rights reserved.
  * @license    GNU General Public License version 2 or later; see LICENSE.txt
  */
-
-// Farid
-
-define('VIDEO_BASE', 'http://77.36.165.143/Mostanad/videos');
-//define('VIDEO_BASE', 'http://ftp4.presstv.ir/mostanad/videos');
-////////
 
 /**
  * Define the application's minimum supported PHP version as a constant so it can be referenced within the application.
@@ -46,7 +40,7 @@ if (!defined('_JDEFINES'))
 require_once JPATH_BASE . '/includes/framework.php';
 
 // Set profiler start time and memory usage and mark afterLoad in the profiler.
-JDEBUG ? $_PROFILER->setStart($startTime, $startMem)->mark('afterLoad') : null;
+JDEBUG ? JProfiler::getInstance('Application')->setStart($startTime, $startMem)->mark('afterLoad') : null;
 
 // Instantiate the application.
 $app = JFactory::getApplication('site');
