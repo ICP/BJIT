@@ -3,7 +3,7 @@
  * @package   OSMap
  * @copyright 2007-2014 XMap - Joomla! Vargas - Guillermo Vargas. All rights reserved.
  * @copyright 2016 Open Source Training, LLC. All rights reserved.
- * @contact   www.alledia.com, support@alledia.com
+ * @contact   www.joomlashack.com, help@joomlashack.com
  * @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
  */
 
@@ -11,6 +11,7 @@ namespace Alledia\OSMap\Helper;
 
 use Alledia\Framework;
 use Alledia\OSMap;
+use Joomla\Registry\Registry;
 
 defined('_JEXEC') or die();
 
@@ -170,7 +171,7 @@ abstract class General
                     $plugin->instance  = $instance;
                     $plugin->className = $className;
                     $plugin->isLegacy  = $isLegacy;
-                    $plugin->params    = new \JRegistry($plugin->params);
+                    $plugin->params    = new Registry($plugin->params);
                 }
             }
         }

@@ -13,7 +13,6 @@ defined('_JEXEC') or die();
 use Alledia\Framework\Factory;
 use JRegistry;
 use JModuleHelper;
-use JError;
 
 /**
  * @deprecated  1.4.1 Use AbstractFlexibleModule instead. This module doesn't

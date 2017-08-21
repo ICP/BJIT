@@ -1,9 +1,9 @@
 <?php
 /**
- * @version    2.7.x
+ * @version    2.8.x
  * @package    K2
  * @author     JoomlaWorks http://www.joomlaworks.net
- * @copyright  Copyright (c) 2006 - 2016 JoomlaWorks Ltd. All rights reserved.
+ * @copyright  Copyright (c) 2006 - 2017 JoomlaWorks Ltd. All rights reserved.
  * @license    GNU/GPL license: http://www.gnu.org/copyleft/gpl.html
  */
 
@@ -56,7 +56,7 @@ $user = JFactory::getUser();
 		<h2><?php echo $this->user->name; ?></h2>
 		<?php endif; ?>
 
-		<?php if ($this->params->get('userDescription') && trim($this->user->profile->description)): ?>
+		<?php if ($this->params->get('userDescription') && isset($this->user->profile->description) && trim($this->user->profile->description)!=''): ?>
 		<div class="userDescription"><?php echo $this->user->profile->description; ?></div>
 		<?php endif; ?>
 

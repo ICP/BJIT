@@ -3,7 +3,7 @@
  * @package   OSMap
  * @copyright 2007-2014 XMap - Joomla! Vargas - Guillermo Vargas. All rights reserved.
  * @copyright 2016 Open Source Training, LLC. All rights reserved.
- * @contact   www.alledia.com, support@alledia.com
+ * @contact   www.joomlashack.com, help@joomlashack.com
  * @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
  */
 
@@ -63,5 +63,5 @@ if (!defined('OSMAP_LOADED')) {
         // In this case, it's just the one category from our extension, still
         // we need to put it inside an array
         array('com_osmap')
-   );
+    );
 }

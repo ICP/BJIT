@@ -3,7 +3,7 @@
  * @package   OSMap
  * @copyright 2007-2014 XMap - Joomla! Vargas - Guillermo Vargas. All rights reserved.
  * @copyright 2016 Open Source Training, LLC. All rights reserved.
- * @contact   www.alledia.com, support@alledia.com
+ * @contact   www.joomlashack.com, help@joomlashack.com
  * @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
  */
 
@@ -12,6 +12,7 @@ namespace Alledia\OSMap\Services;
 use Pimple\Container as Pimple;
 use Pimple\ServiceProviderInterface;
 use Alledia\OSMap;
+use Alledia\Framework;
 
 defined('_JEXEC') or die();
 
@@ -65,6 +66,19 @@ class Free implements ServiceProviderInterface
         $pimple['language'] = function (OSMap\Container $c) {
             return OSMap\Factory::getLanguage();
         };
+
+        $pimple['profiler'] = function (OSMap\Container $c) {
+            return new Framework\Profiler;
+        };
+
+        $pimple['router'] = function (OSMap\Container $c) {
+            return new OSMap\Router;
+        };
+
+        $pimple['uri'] = function (OSMap\Container $c) {
+            return new OSMap\Joomla\Uri;
+        };
+
 
         $this->registerHelper($pimple);
     }

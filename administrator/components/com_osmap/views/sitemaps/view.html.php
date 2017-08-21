@@ -3,7 +3,7 @@
  * @package   OSMap
  * @copyright 2007-2014 XMap - Joomla! Vargas - Guillermo Vargas. All rights reserved.
  * @copyright 2016 Open Source Training, LLC. All rights reserved.
- * @contact   www.alledia.com, support@alledia.com
+ * @contact   www.joomlashack.com, help@joomlashack.com
  * @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
  */
 
@@ -15,18 +15,46 @@ defined('_JEXEC') or die();
 class OSMapViewSitemaps extends OSMap\View\Admin\Base
 {
     /**
+     * @var object[]
+     */
+    protected $items = null;
+
+    /**
+     * @var \Joomla\Registry\Registry
+     */
+    protected $state = null;
+
+    /**
+     * @var JForm
+     */
+    public $filterForm = null;
+
+    /**
      * @var array
      */
-    protected $items = array();
+    public $activeFilters = null;
+
+    /**
+     * @var array
+     */
+    protected $languages = null;
+
+    /**
+     * @var object
+     */
+    protected $item = null;
 
     public function display($tpl = null)
     {
-        $this->items         = $this->get('Items');
-        $this->state         = $this->get('State');
-        $this->filterForm    = $this->get('FilterForm');
-        $this->activeFilters = $this->get('ActiveFilters');
+        /** @var OSMapModelSitemaps $model */
+        $model = $this->getModel();
 
-        if (count($errors = $this->get('Errors'))) {
+        $this->items         = $model->getItems();
+        $this->state         = $model->getState();
+        $this->filterForm    = $model->getFilterForm();
+        $this->activeFilters = $model->getActiveFilters();
+
+        if (count($errors = $model->getErrors())) {
             throw new Exception(implode("\n", $errors));
         }
 
@@ -37,10 +65,11 @@ class OSMapViewSitemaps extends OSMap\View\Admin\Base
 
         // Get the active languages for multi-language sites
         $this->languages = null;
-        if (\JLanguageMultilang::isEnabled()) {
-            $this->languages = \JLanguageHelper::getLanguages();
+        if (JLanguageMultilang::isEnabled()) {
+            $this->languages = JLanguageHelper::getLanguages();
         }
 
+        $this->displayAlerts();
         parent::display($tpl);
     }
 
@@ -54,7 +83,13 @@ class OSMapViewSitemaps extends OSMap\View\Admin\Base
         JToolBarHelper::custom('sitemap.edit', 'edit.png', 'edit_f2.png', 'JTOOLBAR_EDIT', true);
         JToolBarHelper::custom('sitemaps.publish', 'publish.png', 'publish_f2.png', 'JTOOLBAR_Publish', true);
         JToolBarHelper::custom('sitemaps.unpublish', 'unpublish.png', 'unpublish_f2.png', 'JTOOLBAR_UNPUBLISH', true);
-        JToolBarHelper::custom('sitemap.setAsDefault', 'featured.png', 'featured_f2.png', 'COM_OSMAP_TOOLBAR_SET_DEFAULT', true);
+        JToolBarHelper::custom(
+            'sitemap.setAsDefault',
+            'featured.png',
+            'featured_f2.png',
+            'COM_OSMAP_TOOLBAR_SET_DEFAULT',
+            true
+        );
 
         if ($this->state->get('filter.published') == -2) {
             JToolBarHelper::deleteList('', 'sitemaps.delete', 'JTOOLBAR_DELETE');
@@ -64,4 +99,35 @@ class OSMapViewSitemaps extends OSMap\View\Admin\Base
 
         parent::setToolBar($addDivider);
     }
+
+    protected function displayAlerts()
+    {
+        $app = JFactory::getApplication();
+        if ($app->input->getInt('disablecache')) {
+            $db = JFactory::getDbo();
+            $db->setQuery(
+                $db->getQuery(true)
+                    ->update('#__extensions')
+                    ->set('enabled = 0')
+                    ->where(
+                        array(
+                            'type = ' . $db->quote('plugin'),
+                            'element = ' . $db->quote('cache'),
+                            'folder = ' . $db->quote('osmap')
+                        )
+                    )
+            )->execute();
+            $app->enqueueMessage(JText::_('COM_OSMAP_WARNING_CONFIRM_DISABLE_CACHE'));
+
+            $url = JUri::getInstance();
+            $url->delVar('disablecache');
+            $app->redirect($url);
+
+        } elseif (JLanguageMultilang::isEnabled() && JPluginHelper::getPlugin('osmap', 'cache')) {
+            $url = JUri::getInstance();
+            $url->setVar('disablecache', 1);
+            $app->enqueueMessage(JText::sprintf('COM_OSMAP_WARNING_MULITLANGUAGE_CACHE', $url), 'warning');
+        }
+    }
+
 }

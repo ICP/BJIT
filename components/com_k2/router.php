@@ -1,14 +1,14 @@
 <?php
 /**
- * @version    2.7.x
+ * @version    2.8.x
  * @package    K2
  * @author     JoomlaWorks http://www.joomlaworks.net
- * @copyright  Copyright (c) 2006 - 2016 JoomlaWorks Ltd. All rights reserved.
+ * @copyright  Copyright (c) 2006 - 2017 JoomlaWorks Ltd. All rights reserved.
  * @license    GNU/GPL license: http://www.gnu.org/copyleft/gpl.html
  */
 
 // no direct access
-defined('_JEXEC') or die ;
+defined('_JEXEC') or die;
 
 $params = JComponentHelper::getParams('com_k2');
 
@@ -148,7 +148,28 @@ if ($params->get('k2Sef'))
 				// Replace the item with the category slug
 				if ($params->get('k2SefLabelItem') == '1')
 				{
-					$segments[0] = getCategorySlug((int)$ItemId);
+
+					// Remove the id from the slug
+					if ($params->get('k2SefInsertCatId') == '0')
+					{
+
+						// Try to split the slug
+						$segments[0] = getCategorySlug((int)$ItemId);
+						$temp 	 	 = @explode('-', $segments[0]);
+
+						// If the slug contained an item id do not use it
+						if (count($temp) > 1)
+						{
+							@$segments[0] = $temp[1];
+						}
+
+					}
+					else
+					{
+						// Apply the link including the id
+						$segments[0] = getCategorySlug((int)$ItemId);
+					}
+
 				}
 				else
 				{
@@ -325,7 +346,6 @@ if ($params->get('k2Sef'))
 				{
 					array_splice($segments, 0, 0, 'item');
 				}
-
 				// Reinsert item id to the item alias
 				if (!$params->get('k2SefInsertItemId') && @$segments[1] != 'download' && @$segments[1] != 'edit')
 				{
@@ -444,11 +464,8 @@ if ($params->get('k2Sef'))
 	{
 		$slug = null;
 
-		$db = JFactory::getDBO();
-		$query = "SELECT items.id, categories.id AS catid, CASE WHEN CHAR_LENGTH(categories.alias) THEN CONCAT_WS('-', categories.id, categories.alias) ELSE categories.id END AS catslug 
-		FROM #__k2_items AS items 
-		INNER JOIN #__k2_categories AS categories ON items.catid = categories.id 
-		WHERE items.id = ".(int)$ItemId;
+		$db = JFactory::getDbo();
+		$query = "SELECT items.id, categories.id AS catid, CASE WHEN CHAR_LENGTH(categories.alias) THEN CONCAT_WS('-', categories.id, categories.alias) ELSE categories.id END AS catslug FROM #__k2_items AS items INNER JOIN #__k2_categories AS categories ON items.catid = categories.id WHERE items.id = ".(int)$ItemId;
 		$db->setQuery($query);
 
 		try
@@ -471,14 +488,14 @@ if ($params->get('k2Sef'))
 	/**
 	 * Get id K2.
 	 *
-	 * @param   string  $alias  The k2 item alias
+	 * @param   string  $alias  The K2 item alias
 	 *
 	 * @return  integer
 	 */
 	function getItemId($alias)
 	{
 		$id = null;
-		$db = JFactory::getDBO();
+		$db = JFactory::getDbo();
 		$query = "SELECT id FROM #__k2_items WHERE alias = ".$db->quote($alias);
 		$db->setQuery($query);
 		try
@@ -496,14 +513,14 @@ if ($params->get('k2Sef'))
 	/**
 	 * Get id K2.
 	 *
-	 * @param   string  $alias  The k2 category alias
+	 * @param   string  $alias  The K2 category alias
 	 *
 	 * @return  integer
 	 */
 	function getCatId($alias)
 	{
 		$id = null;
-		$db = JFactory::getDBO();
+		$db = JFactory::getDbo();
 		$query = "SELECT id FROM #__k2_categories WHERE alias = ".$db->quote($alias);
 		$db->setQuery($query);
 		try

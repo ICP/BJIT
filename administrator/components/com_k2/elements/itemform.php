@@ -1,26 +1,27 @@
 <?php
 /**
- * @version    2.7.x
+ * @version    2.8.x
  * @package    K2
  * @author     JoomlaWorks http://www.joomlaworks.net
- * @copyright  Copyright (c) 2006 - 2016 JoomlaWorks Ltd. All rights reserved.
+ * @copyright  Copyright (c) 2006 - 2017 JoomlaWorks Ltd. All rights reserved.
  * @license    GNU/GPL license: http://www.gnu.org/copyleft/gpl.html
  */
 
 // no direct access
-defined('_JEXEC') or die ;
+defined('_JEXEC') or die;
 
-require_once (JPATH_ADMINISTRATOR.'/components/com_k2/elements/base.php');
+require_once(JPATH_ADMINISTRATOR.'/components/com_k2/elements/base.php');
 
 class K2ElementItemForm extends K2Element
 {
-    function fetchElement($name, $value, &$node, $control_name)
+    function fetchElementValue($name, $value, &$node, $control_name)
     {
       if(version_compare(JVERSION, '3.5', 'ge')) {
         JHtml::_('behavior.framework');
       }
         $document = JFactory::getDocument();
         $document->addScriptDeclaration("
+        	/* Mootools Snippet */
 			window.addEvent('domready', function() {
 				if($('request-options')) {
 					$$('.panel')[0].setStyle('display', 'none');
@@ -41,11 +42,10 @@ class K2ElementItemForm extends K2Element
         return '';
     }
 
-    function fetchTooltip($label, $description, &$node, $control_name, $name)
+    function fetchElementName($label, $description, &$node, $control_name, $name)
     {
         return '';
     }
-
 }
 
 class JFormFielditemform extends K2ElementItemForm

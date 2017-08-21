@@ -1,8 +1,8 @@
 /**
- * @version    2.7.x
+ * @version    2.8.x
  * @package    K2
  * @author     JoomlaWorks http://www.joomlaworks.net
- * @copyright  Copyright (c) 2006 - 2016 JoomlaWorks Ltd. All rights reserved.
+ * @copyright  Copyright (c) 2006 - 2017 JoomlaWorks Ltd. All rights reserved.
  * @license    GNU/GPL license:http://www.gnu.org/copyleft/gpl.html
  */
 
@@ -47,10 +47,10 @@ div.k2FeedIcon a:hover span {display:none;}
 /* --- Rating --- */
 .itemRatingForm {display:block;vertical-align:middle;line-height:25px;float:left;}
 .itemRatingLog {font-size:11px;margin:0;padding:0 0 0 4px;float:left;}
-div.itemRatingForm .formLogLoading {background:url(../images/system/loading.gif) no-repeat left center;height:25px;padding:0 0 0 20px;}
+div.itemRatingForm .formLogLoading {background:url(../images/loaders/generic.gif) no-repeat left center;height:25px;padding:0 0 0 20px;}
 .itemRatingList,
 .itemRatingList a:hover,
-.itemRatingList .itemCurrentRating {background:transparent url(../images/system/transparent_star.gif) left -1000px repeat-x;}
+.itemRatingList .itemCurrentRating {background:transparent url(../images/ratingstars.gif) left -1000px repeat-x;}
 .itemRatingList {position:relative;float:left;width:125px;height:25px;overflow:hidden;list-style:none;margin:0;padding:0;background-position:left top;}
 .itemRatingList li {display:inline;background:none;padding:0;}
 .itemRatingList a,
@@ -121,8 +121,6 @@ div.k2LatestCommentsBlock ul li,
 div.k2TopCommentersBlock ul li,
 div.k2ItemsBlock ul li,
 div.k2LoginBlock ul li,
-div.k2UserBlock ul.k2UserBlockActions li,
-div.k2UserBlock ul.k2UserBlockRenderedMenu li,
 div.k2ArchivesBlock ul li,
 div.k2AuthorsListBlock ul li,
 div.k2CategoriesListBlock ul li,
@@ -166,13 +164,16 @@ div.userItemIsFeatured:before {position:absolute;top:10px;right:10px;color:#CF19
 /* --- Edit Buttons --- */
 span.itemEditLink,
 span.catItemEditLink,
-span.userItemEditLink {float:right;display:block;padding:0;margin:0;width:120px;text-align:right;}
+span.userItemEditLink,
+span.userItemAddLink {float:right;display:block;padding:0;margin:0;width:120px;text-align:right;}
 	span.itemEditLink a,
 	span.catItemEditLink a,
-	span.userItemEditLink a {display:inline-block;padding:4px 8px;margin:0;background:#2d96dd;color:#fff;border:0;border-radius:4px;font-size:11px;line-height:100%;font-weight:bold;text-align:center;text-decoration:none;}
+	span.userItemEditLink a,
+	span.userItemAddLink a {display:inline-block;padding:4px 8px;margin:0;background:#2d96dd;color:#fff;border:0;border-radius:4px;font-size:11px;line-height:100%;font-weight:bold;text-align:center;text-decoration:none;}
 	span.itemEditLink a:hover,
 	span.catItemEditLink a:hover,
-	span.userItemEditLink a:hover {background:#217dbb;}
+	span.userItemEditLink a:hover,
+	span.userItemAddLink a:hover {background:#217dbb;}
 
 
 
@@ -325,7 +326,7 @@ div.itemRelated {margin-bottom:16px;padding:0;} /* Add overflow-x:scroll; if you
 			div.itemRelImageGallery {}
 
 /* Video */
-div.itemVideoBlock {margin:0 0 16px 0;padding:16px;background:#010101 url(../images/system/videoplayer-bg.gif) repeat-x bottom;color:#eee;}
+div.itemVideoBlock {margin:0 0 16px 0;padding:16px;background:#010101 url(../images/videobg.gif) repeat-x bottom;color:#eee;}
 	div.itemVideoBlock div.itemVideoEmbedded {text-align:center;} /* for embedded videos (not using AllVideos) */
 	div.itemVideoBlock span.itemVideo {display:block;overflow:hidden;}
 	div.itemVideoBlock span.itemVideoCaption {color:#eee;float:left;display:block;font-size:11px;font-weight:bold;width:60%;}
@@ -363,7 +364,7 @@ div.itemComments {background:#fafafa;border:1px solid #ddd;border-radius:4px;pad
 	div.itemComments ul.itemCommentsList li span.commentToolbar {display:block;clear:both;}
 	div.itemComments ul.itemCommentsList li span.commentToolbar a {font-size:11px;color:#999;text-decoration:underline;margin-right:4px;}
 	div.itemComments ul.itemCommentsList li span.commentToolbar a:hover {font-size:11px;color:#555;text-decoration:underline;}
-	div.itemComments ul.itemCommentsList li span.commentToolbarLoading {background:url(../images/system/searchLoader.gif) no-repeat 100% 50%;}
+	div.itemComments ul.itemCommentsList li span.commentToolbarLoading {background:url(../images/loaders/search.gif) no-repeat 100% 50%;}
 
 div.itemCommentsPagination {padding:4px;margin:0 0 24px 0;}
 	/* Joomla 1.5 - 2.5 */
@@ -391,7 +392,7 @@ div.itemCommentsForm h3 {margin:0;padding:0 0 4px 0;}
 	div.itemCommentsForm form span#formLog {margin:24px;padding:8px 12px;border-radius:4px;text-align:center;display:none;}
 		div.itemCommentsForm form span#formLog.k2FormLogError {display:block;background:#f00;color:#fff;}
 		div.itemCommentsForm form span#formLog.k2FormLogSuccess {display:block;background:#18ac00;color:#fff;}
-	div.itemCommentsForm form .formLogLoading {background:url(../images/system/loading.gif) no-repeat left center;}
+	div.itemCommentsForm form .formLogLoading {background:url(../images/loaders/generic.gif) no-repeat left center;}
 
 div.itemCommentsLoginFirst {display:block;margin:24px;padding:8px 12px;background:#f00;color:#fff;border-radius:4px;}
 
@@ -406,7 +407,7 @@ div.k2ReportCommentFormContainer {padding:8px;width:480px;margin:0 auto;}
 	div.k2ReportCommentFormContainer form textarea {display:block;border:1px solid #ddd;font-size:12px;padding:2px;margin:0 0 8px 0;width:474px;}
 	div.k2ReportCommentFormContainer form #recaptcha {margin-bottom:24px;}
 	div.k2ReportCommentFormContainer form span#formLog {margin:24px;padding:8px 12px;background:#fafafa;border-radius:4px;text-align:center;display:none;}
-	div.k2ReportCommentFormContainer form .formLogLoading {background:url(../images/system/loading.gif) no-repeat left center;}
+	div.k2ReportCommentFormContainer form .formLogLoading {background:url(../images/loaders/generic.gif) no-repeat left center;}
 
 /* Back to top link */
 div.itemBackToTop {text-align:right;}
@@ -455,7 +456,7 @@ div.itemList {}
 		div.itemContainer {float:left;}
 		div.itemContainerLast {} /* this class is appended to the last container on each row of items (useful when you want to set 0 padding/margin to the last container) */
 		@media screen and ( max-width:600px ){
-			div.itemContainer {float:none;display:block;width:100%!important;}
+			div.itemContainer, div.subCategoryContainer {float:none;display:block;width:100%!important;}
 		}
 
 /* --- Item block for each item group --- */
@@ -532,7 +533,7 @@ div.catItemAttachmentsBlock {padding:4px;border-bottom:1px dotted #ccc;}
 	div.catItemAttachmentsBlock ul.catItemAttachments li span {font-size:10px;color:#999;font-weight:normal;}
 
 /* Video */
-div.catItemVideoBlock {margin:0 0 16px 0;padding:16px;background:#010101 url(../images/system/videoplayer-bg.gif) repeat-x bottom;}
+div.catItemVideoBlock {margin:0 0 16px 0;padding:16px;background:#010101 url(../images/videobg.gif) repeat-x bottom;}
 	div.catItemVideoBlock div.catItemVideoEmbedded {text-align:center;} /* for embedded videos (not using AllVideos) */
 	div.catItemVideoBlock span.catItemVideo {display:block;}
 
@@ -561,10 +562,6 @@ span.catItemDateModified {display:block;text-align:right;padding:4px;margin:4px 
 /* User info block */
 div.userView {}
 	div.userBlock {background:#fafafa;border:1px solid #ddd;border-radius:4px;margin:0 0 24px 0;padding:8px;}
-
-		span.userItemAddLink {display:block;padding:8px 0;margin:0 0 4px 0;border-bottom:1px dotted #ccc;text-align:right;}
-		span.userItemAddLink a {padding:4px 16px;border:1px solid #ddd;background:#fafafa;text-decoration:none;}
-		span.userItemAddLink a:hover {background:#ffffcc;}
 
 		div.userBlock img {display:block;float:left;background:#fff;padding:4px;border:1px solid #ddd;margin:0 8px 0 0;border-radius:50%;}
 		div.userBlock h2 {}
@@ -777,7 +774,7 @@ div.latestItemTagsBlock {padding:4px 0;}
 	div.latestItemTagsBlock ul.latestItemTags li a:hover {}
 
 /* Video */
-div.latestItemVideoBlock {margin:0 0 16px 0;padding:16px;background:#010101 url(../images/system/videoplayer-bg.gif) repeat-x bottom;}
+div.latestItemVideoBlock {margin:0 0 16px 0;padding:16px;background:#010101 url(../images/videobg.gif) repeat-x bottom;}
 	div.latestItemVideoBlock span.latestItemVideo {display:block;}
 
 /* Anchor link to comments */
@@ -943,7 +940,7 @@ div.k2BreadcrumbsBlock span.bcSeparator {padding:0 4px;font-size:14px;}
 
 /* --- Calendar --- */
 div.k2CalendarBlock {height:190px;margin-bottom:8px;} /* use this height value so that the calendar height won't change on Month change via ajax */
-div.k2CalendarLoader {background:#fff url(../images/system/k2CalendarLoader.gif) no-repeat 50% 50%;}
+div.k2CalendarLoader {background:#fff url(../images/loaders/calendar.gif) no-repeat 50% 50%;}
 table.calendar {margin:0 auto;background:#fff;border-collapse:collapse;}
 table.calendar tr td {text-align:center;vertical-align:middle;padding:2px;border:1px solid #f4f4f4;background:#fff;}
 table.calendar tr td.calendarNavMonthPrev {background:#fafafa;text-align:left;}
@@ -1005,7 +1002,7 @@ div.k2SearchBlock {position:relative;}
 div.k2SearchBlock form {}
 div.k2SearchBlock form input.inputbox {}
 div.k2SearchBlock form input.button {}
-div.k2SearchBlock form input.k2SearchLoading {background:url(../images/system/searchLoader.gif) no-repeat 100% 50%;}
+div.k2SearchBlock form input.k2SearchLoading {background:url(../images/loaders/search.gif) no-repeat 100% 50%;}
 div.k2SearchBlock div.k2LiveSearchResults {display:none;background:#fff;position:absolute;z-index:99;border:1px solid #ddd;margin-top:-1px;}
 	/* Live search results (fetched via ajax) */
 	div.k2SearchBlock div.k2LiveSearchResults ul.liveSearchResults {list-style:none;margin:0;padding:0;}

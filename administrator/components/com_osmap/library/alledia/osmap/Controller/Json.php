@@ -3,7 +3,7 @@
  * @package   OSMap
  * @copyright 2007-2014 XMap - Joomla! Vargas - Guillermo Vargas. All rights reserved.
  * @copyright 2016 Open Source Training, LLC. All rights reserved.
- * @contact   www.alledia.com, support@alledia.com
+ * @contact   www.joomlashack.com, help@joomlashack.com
  * @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
  */
 
@@ -14,15 +14,18 @@ defined('_JEXEC') or die();
 class Json extends \JControllerLegacy
 {
     /**
-     * Standard token checking for json controllers
+     * @param string $method
+     * @param bool   $redirect
      *
-     * @return void
-     * @throws Exception
+     * @return bool
+     * @throws \Exception
      */
-    protected function checkToken()
+    public function checkToken($method = 'post', $redirect = true)
     {
         if (!\JSession::checkToken()) {
             throw new \Exception(\JText::_('JINVALID_TOKEN'), 403);
         }
+
+        return true;
     }
 }

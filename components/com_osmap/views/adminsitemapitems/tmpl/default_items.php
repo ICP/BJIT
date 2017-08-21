@@ -3,7 +3,7 @@
  * @package   OSMap
  * @copyright 2007-2014 XMap - Joomla! Vargas - Guillermo Vargas. All rights reserved.
  * @copyright 2016 Open Source Training, LLC. All rights reserved.
- * @contact   www.alledia.com, support@alledia.com
+ * @contact   www.joomlashack.com, help@joomlashack.com
  * @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
  */
 
@@ -50,6 +50,18 @@ $printNodeCallback = function ($item) {
         $item->addAdminNote('COM_OSMAP_ADMIN_NOTE_VISIBLE_XML_ONLY');
     }
 
+    if (!$item->visibleForRobots) {
+        $item->addAdminNote('COM_OSMAP_ADMIN_NOTE_INVISIBLE_FOR_ROBOTS');
+    }
+
+    if (!$item->parentIsVisibleForRobots) {
+        $item->addAdminNote('COM_OSMAP_ADMIN_NOTE_PARENT_INVISIBLE_FOR_ROBOTS');
+    }
+
+    if (!$item->hasCompatibleLanguage()) {
+        return false;
+    }
+
     if ($item->ignore) {
         return false;
     }
@@ -58,7 +70,7 @@ $printNodeCallback = function ($item) {
     <tr
         class="sitemapitem row<?php echo $count; ?> <?php echo ($showItemUID) ? 'with-uid' : ''; ?>"
         data-uid="<?php echo $item->uid; ?>"
-        data-url-hash="<?php echo $item->fullLinkHash; ?>">
+        data-settings-hash="<?php echo $item->settingsHash; ?>">
 
         <td class="center">
             <?php if (!$item->ignore) : ?>
@@ -90,13 +102,13 @@ $printNodeCallback = function ($item) {
                 </span>
             <?php endif; ?>
 
-            <?php if (!empty($item->fullLink) && $item->fullLink !== '#' && $item->link !== '#') : ?>
+            <?php if (!empty($item->rawLink) && $item->rawLink !== '#' && $item->link !== '#') : ?>
                 <a
-                    href="<?php echo $item->fullLink; ?>"
+                    href="<?php echo $item->rawLink; ?>"
                     target="_blank"
                     class="hasTooltip"
                     title="<?php echo $item->link; ?>">
-                    <?php echo $item->fullLink; ?>
+                    <?php echo $item->rawLink; ?>
                 </a>
                 <span class="icon-new-tab"></span>
             <?php else : ?>

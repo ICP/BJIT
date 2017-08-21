@@ -1,18 +1,18 @@
 <?php
 /**
- * @version    2.7.x
+ * @version    2.8.x
  * @package    K2
  * @author     JoomlaWorks http://www.joomlaworks.net
- * @copyright  Copyright (c) 2006 - 2016 JoomlaWorks Ltd. All rights reserved.
+ * @copyright  Copyright (c) 2006 - 2017 JoomlaWorks Ltd. All rights reserved.
  * @license    GNU/GPL license: http://www.gnu.org/copyleft/gpl.html
  */
 
 // no direct access
-defined('_JEXEC') or die ;
+defined('_JEXEC') or die;
 
-require_once (JPATH_SITE.DS.'components'.DS.'com_k2'.DS.'helpers'.DS.'route.php');
-require_once (JPATH_SITE.DS.'components'.DS.'com_k2'.DS.'helpers'.DS.'utilities.php');
-require_once (dirname(__FILE__).DS.'includes'.DS.'calendarClass.php');
+require_once(JPATH_SITE.'/components/com_k2/helpers/route.php');
+require_once(JPATH_SITE.'/components/com_k2/helpers/utilities.php');
+require_once(JPATH_SITE.'/media/k2/assets/vendors/cascade/calendar/calendar.php');
 
 class modK2ToolsHelper
 {
@@ -20,7 +20,7 @@ class modK2ToolsHelper
 
 	public static function getAuthors(&$params)
 	{
-		$mainframe = JFactory::getApplication();
+		$application = JFactory::getApplication();
 		$componentParams = JComponentHelper::getParams('com_k2');
 		$where = '';
 		$cid = $params->get('authors_module_category');
@@ -35,7 +35,7 @@ class modK2ToolsHelper
 
 		$user = JFactory::getUser();
 		$aid = (int)$user->get('aid');
-		$db = JFactory::getDBO();
+		$db = JFactory::getDbo();
 
 		$jnow = JFactory::getDate();
 		$now = K2_JVERSION == '15' ? $jnow->toMySQL() : $jnow->toSql();
@@ -44,7 +44,7 @@ class modK2ToolsHelper
 		if (K2_JVERSION != '15')
 		{
 			$languageCheck = '';
-			if ($mainframe->getLanguageFilter())
+			if ($application->getLanguageFilter())
 			{
 				$languageTag = JFactory::getLanguage()->getTag();
 				$languageCheck = "AND language IN (".$db->Quote($languageTag).", ".$db->Quote('*').")";
@@ -80,7 +80,7 @@ class modK2ToolsHelper
 			foreach ($rows as $row)
 			{
 				$author = JFactory::getUser($row->created_by);
-				$author->link = str_replace('/author', '/blog/author', JRoute::_(K2HelperRoute::getUserRoute($author->id)));
+				$author->link = JRoute::_(K2HelperRoute::getUserRoute($author->id));
 
 				$query = "SELECT id, gender, description, image, url, `group`, plugins FROM #__k2_users WHERE userID=".(int)$author->id;
 				$db->setQuery($query);
@@ -94,7 +94,7 @@ class modK2ToolsHelper
 				if (K2_JVERSION != '15')
 				{
 					$languageCheck = '';
-					if ($mainframe->getLanguageFilter())
+					if ($application->getLanguageFilter())
 					{
 						$languageTag = JFactory::getLanguage()->getTag();
 						$languageCheck = "AND i.language IN (".$db->Quote($languageTag).", ".$db->Quote('*').") AND c.language IN (".$db->Quote($languageTag).", ".$db->Quote('*').")";
@@ -134,7 +134,7 @@ class modK2ToolsHelper
 					if (K2_JVERSION != '15')
 					{
 						$languageCheck = '';
-						if ($mainframe->getLanguageFilter())
+						if ($application->getLanguageFilter())
 						{
 							$languageTag = JFactory::getLanguage()->getTag();
 							$languageCheck = "AND language IN (".$db->Quote($languageTag).", ".$db->Quote('*').")";
@@ -158,10 +158,10 @@ class modK2ToolsHelper
 	public static function getArchive(&$params)
 	{
 
-		$mainframe = JFactory::getApplication();
+		$application = JFactory::getApplication();
 		$user = JFactory::getUser();
 		$aid = (int)$user->get('aid');
-		$db = JFactory::getDBO();
+		$db = JFactory::getDbo();
 
 		$jnow = JFactory::getDate();
 		$now = K2_JVERSION == '15' ? $jnow->toMySQL() : $jnow->toSql();
@@ -172,7 +172,7 @@ class modK2ToolsHelper
 		if (K2_JVERSION != '15')
 		{
 			$query .= " AND access IN(".implode(',', $user->getAuthorisedViewLevels()).") ";
-			if ($mainframe->getLanguageFilter())
+			if ($application->getLanguageFilter())
 			{
 				$languageTag = JFactory::getLanguage()->getTag();
 				$query .= " AND language IN (".$db->Quote($languageTag).", ".$db->Quote('*').") ";
@@ -240,10 +240,10 @@ class modK2ToolsHelper
 	public static function tagCloud(&$params)
 	{
 
-		$mainframe = JFactory::getApplication();
+		$application = JFactory::getApplication();
 		$user = JFactory::getUser();
 		$aid = (int)$user->get('aid');
-		$db = JFactory::getDBO();
+		$db = JFactory::getDbo();
 
 		$jnow = JFactory::getDate();
 		$now = K2_JVERSION == '15' ? $jnow->toMySQL() : $jnow->toSql();
@@ -309,7 +309,7 @@ class modK2ToolsHelper
 
 		if (K2_JVERSION != '15')
 		{
-			if ($mainframe->getLanguageFilter())
+			if ($application->getLanguageFilter())
 			{
 				$languageTag = JFactory::getLanguage()->getTag();
 				$query .= " AND c.language IN (".$db->Quote($languageTag).", ".$db->Quote('*').") AND i.language IN (".$db->Quote($languageTag).", ".$db->Quote('*').") ";
@@ -373,7 +373,7 @@ class modK2ToolsHelper
 				$tmp->tag = $key;
 				$tmp->count = $value;
 				$tmp->size = $size;
-				$tmp->link = str_replace('/tag', '/blog/tag', urldecode(JRoute::_(K2HelperRoute::getTagRoute($key))));
+				$tmp->link = urldecode(JRoute::_(K2HelperRoute::getTagRoute($key)));
 				$tags[$counter] = $tmp;
 				$counter++;
 			}
@@ -428,16 +428,16 @@ class modK2ToolsHelper
 	public static function hasChildren($id)
 	{
 
-		$mainframe = JFactory::getApplication();
+		$application = JFactory::getApplication();
 		$user = JFactory::getUser();
 		$aid = (int)$user->get('aid');
 		$id = (int)$id;
-		$db = JFactory::getDBO();
+		$db = JFactory::getDbo();
 		$query = "SELECT * FROM #__k2_categories  WHERE parent={$id} AND published=1 AND trash=0 ";
 		if (K2_JVERSION != '15')
 		{
 			$query .= " AND access IN(".implode(',', $user->getAuthorisedViewLevels()).") ";
-			if ($mainframe->getLanguageFilter())
+			if ($application->getLanguageFilter())
 			{
 				$languageTag = JFactory::getLanguage()->getTag();
 				$query .= " AND language IN (".$db->Quote($languageTag).", ".$db->Quote('*').") ";
@@ -475,7 +475,7 @@ class modK2ToolsHelper
 		{
 			$output = '';
 		}
-		$mainframe = JFactory::getApplication();
+		$application = JFactory::getApplication();
 		$root_id = (int)$params->get('root_id');
 		$end_level = $params->get('end_level', NULL);
 		$id = (int)$id;
@@ -485,7 +485,7 @@ class modK2ToolsHelper
 
 		$user = JFactory::getUser();
 		$aid = (int)$user->get('aid');
-		$db = JFactory::getDBO();
+		$db = JFactory::getDbo();
 
 		switch ($params->get('categoriesListOrdering'))
 		{
@@ -524,7 +524,7 @@ class modK2ToolsHelper
 		if (K2_JVERSION != '15')
 		{
 			$query .= " AND access IN(".implode(',', $user->getAuthorisedViewLevels()).") ";
-			if ($mainframe->getLanguageFilter())
+			if ($application->getLanguageFilter())
 			{
 				$languageTag = JFactory::getLanguage()->getTag();
 				$query .= " AND language IN (".$db->Quote($languageTag).", ".$db->Quote('*').") ";
@@ -589,7 +589,7 @@ class modK2ToolsHelper
 	public static function treeselectbox(&$params, $id = 0, $level = 0)
 	{
 
-		$mainframe = JFactory::getApplication();
+		$application = JFactory::getApplication();
 		$root_id = (int)$params->get('root_id2');
 		$option = JRequest::getCmd('option');
 		$view = JRequest::getCmd('view');
@@ -597,7 +597,7 @@ class modK2ToolsHelper
 		$id = (int)$id;
 		$user = JFactory::getUser();
 		$aid = (int)$user->get('aid');
-		$db = JFactory::getDBO();
+		$db = JFactory::getDbo();
 		if (($root_id != 0) && ($level == 0))
 		{
 			$query = "SELECT * FROM #__k2_categories WHERE parent={$root_id} AND published=1 AND trash=0 ";
@@ -610,7 +610,7 @@ class modK2ToolsHelper
 		if (K2_JVERSION != '15')
 		{
 			$query .= " AND access IN(".implode(',', $user->getAuthorisedViewLevels()).") ";
-			if ($mainframe->getLanguageFilter())
+			if ($application->getLanguageFilter())
 			{
 				$languageTag = JFactory::getLanguage()->getTag();
 				$query .= " AND language IN (".$db->Quote($languageTag).", ".$db->Quote('*').") ";
@@ -694,18 +694,18 @@ class modK2ToolsHelper
 	public static function breadcrumbs($params)
 	{
 
-		$mainframe = JFactory::getApplication();
+		$application = JFactory::getApplication();
 		$array = array();
 		$view = JRequest::getCmd('view');
 		$id = JRequest::getInt('id');
 		$option = JRequest::getCmd('option');
 		$task = JRequest::getCmd('task');
 
-		$db = JFactory::getDBO();
+		$db = JFactory::getDbo();
 		$user = JFactory::getUser();
 		$aid = (int)$user->get('aid');
 
-		$menu = $mainframe->getMenu();
+		$menu = $application->getMenu();
 		$active = $menu->getActive();
 
 		if ($option == 'com_k2')
@@ -718,7 +718,7 @@ class modK2ToolsHelper
 					if (K2_JVERSION != '15')
 					{
 						$languageCheck = '';
-						if ($mainframe->getLanguageFilter())
+						if ($application->getLanguageFilter())
 						{
 							$languageTag = JFactory::getLanguage()->getTag();
 							$languageCheck = " AND language IN (".$db->Quote($languageTag).", ".$db->Quote('*').") ";
@@ -769,7 +769,7 @@ class modK2ToolsHelper
 						if (K2_JVERSION != '15')
 						{
 							$query .= " AND access IN(".implode(',', $user->getAuthorisedViewLevels()).") ";
-							if ($mainframe->getLanguageFilter())
+							if ($application->getLanguageFilter())
 							{
 								$languageTag = JFactory::getLanguage()->getTag();
 								$query .= " AND language IN (".$db->Quote($languageTag).", ".$db->Quote('*').") ";
@@ -823,8 +823,8 @@ class modK2ToolsHelper
 	public static function getSitePath()
 	{
 
-		$mainframe = JFactory::getApplication();
-		$pathway = $mainframe->getPathway();
+		$application = JFactory::getApplication();
+		$pathway = $application->getPathway();
 		$items = $pathway->getPathway();
 		$count = count($items);
 		$path = array();
@@ -849,17 +849,17 @@ class modK2ToolsHelper
 			return self::$paths[$catid];
 		}
 
-		$mainframe = JFactory::getApplication();
+		$application = JFactory::getApplication();
 		$user = JFactory::getUser();
 		$aid = (int)$user->get('aid');
 		$catid = (int)$catid;
-		$db = JFactory::getDBO();
+		$db = JFactory::getDbo();
 		$query = "SELECT * FROM #__k2_categories WHERE id={$catid} AND published=1 AND trash=0 ";
 
 		if (K2_JVERSION != '15')
 		{
 			$query .= " AND access IN(".implode(',', $user->getAuthorisedViewLevels()).") ";
-			if ($mainframe->getLanguageFilter())
+			if ($application->getLanguageFilter())
 			{
 				$languageTag = JFactory::getLanguage()->getTag();
 				$query .= " AND language IN (".$db->Quote($languageTag).", ".$db->Quote('*').") ";
@@ -892,16 +892,16 @@ class modK2ToolsHelper
 	{
 
 		static $array = array();
-		$mainframe = JFactory::getApplication();
+		$application = JFactory::getApplication();
 		$user = JFactory::getUser();
 		$aid = (int)$user->get('aid');
 		$catid = (int)$catid;
-		$db = JFactory::getDBO();
+		$db = JFactory::getDbo();
 		$query = "SELECT * FROM #__k2_categories WHERE parent={$catid} AND published=1 AND trash=0 ";
 		if (K2_JVERSION != '15')
 		{
 			$query .= " AND access IN(".implode(',', $user->getAuthorisedViewLevels()).") ";
-			if ($mainframe->getLanguageFilter())
+			if ($application->getLanguageFilter())
 			{
 				$languageTag = JFactory::getLanguage()->getTag();
 				$query .= " AND language IN (".$db->Quote($languageTag).", ".$db->Quote('*').") ";
@@ -934,12 +934,12 @@ class modK2ToolsHelper
 	public static function countArchiveItems($month, $year, $catid = 0)
 	{
 
-		$mainframe = JFactory::getApplication();
+		$application = JFactory::getApplication();
 		$user = JFactory::getUser();
 		$aid = (int)$user->get('aid');
 		$month = (int)$month;
 		$year = (int)$year;
-		$db = JFactory::getDBO();
+		$db = JFactory::getDbo();
 
 		$jnow = JFactory::getDate();
 		$now = K2_JVERSION == '15' ? $jnow->toMySQL() : $jnow->toSql();
@@ -950,7 +950,7 @@ class modK2ToolsHelper
 		if (K2_JVERSION != '15')
 		{
 			$query .= " AND access IN(".implode(',', $user->getAuthorisedViewLevels()).") ";
-			if ($mainframe->getLanguageFilter())
+			if ($application->getLanguageFilter())
 			{
 				$languageTag = JFactory::getLanguage()->getTag();
 				$query .= " AND language IN (".$db->Quote($languageTag).", ".$db->Quote('*').") ";
@@ -973,11 +973,11 @@ class modK2ToolsHelper
 	public static function countCategoryItems($id)
 	{
 
-		$mainframe = JFactory::getApplication();
+		$application = JFactory::getApplication();
 		$user = JFactory::getUser();
 		$aid = (int)$user->get('aid');
 		$id = (int)$id;
-		$db = JFactory::getDBO();
+		$db = JFactory::getDbo();
 
 		$jnow = JFactory::getDate();
 		$now = K2_JVERSION == '15' ? $jnow->toMySQL() : $jnow->toSql();
@@ -988,7 +988,7 @@ class modK2ToolsHelper
 		if (K2_JVERSION != '15')
 		{
 			$query .= " AND access IN(".implode(',', $user->getAuthorisedViewLevels()).") ";
-			if ($mainframe->getLanguageFilter())
+			if ($application->getLanguageFilter())
 			{
 				$languageTag = JFactory::getLanguage()->getTag();
 				$query .= " AND language IN (".$db->Quote($languageTag).", ".$db->Quote('*').") ";
@@ -1055,7 +1055,7 @@ class modK2ToolsHelper
 		$document = JFactory::getDocument();
 		if ($params->get('parsePhp'))
 		{
-			$filename = tempnam(JPATH_SITE.DS.'cache'.DS.'mod_k2_tools', 'tmp');
+			$filename = tempnam(JPATH_SITE.'/cache/mod_k2_tools', 'tmp');
 			$customCode = $params->get('customCode');
 			JFile::write($filename, $customCode);
 			ob_start();
@@ -1123,10 +1123,10 @@ class MyCalendar extends Calendar
 		if(is_null($this->cache)) {
 
 			$this->cache = array();
-			$mainframe = JFactory::getApplication();
+			$application = JFactory::getApplication();
 			$user = JFactory::getUser();
 			$aid = $user->get('aid');
-			$db = JFactory::getDBO();
+			$db = JFactory::getDbo();
 
 			$jnow = JFactory::getDate();
 			$now = K2_JVERSION == '15' ? $jnow->toMySQL() : $jnow->toSql();
@@ -1137,7 +1137,7 @@ class MyCalendar extends Calendar
 			if (K2_JVERSION != '15')
 			{
 				$accessCheck = " access IN(".implode(',', $user->getAuthorisedViewLevels()).") ";
-				if ($mainframe->getLanguageFilter())
+				if ($application->getLanguageFilter())
 				{
 					$languageTag = JFactory::getLanguage()->getTag();
 					$languageCheck = " AND language IN (".$db->Quote($languageTag).", ".$db->Quote('*').") ";

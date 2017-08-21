@@ -1,14 +1,14 @@
 <?php
 /**
- * @version    2.7.x
+ * @version    2.8.x
  * @package    K2
  * @author     JoomlaWorks http://www.joomlaworks.net
- * @copyright  Copyright (c) 2006 - 2016 JoomlaWorks Ltd. All rights reserved.
+ * @copyright  Copyright (c) 2006 - 2017 JoomlaWorks Ltd. All rights reserved.
  * @license    GNU/GPL license: http://www.gnu.org/copyleft/gpl.html
  */
 
 // no direct access
-defined('_JEXEC') or die ;
+defined('_JEXEC') or die;
 
 require_once JPATH_ADMINISTRATOR.'/components/com_k2/tables/table.php';
 
@@ -175,7 +175,7 @@ class TableK2Item extends K2Table
 		$params = JComponentHelper::getParams('com_k2');
 		if ($params->get('k2Sef') && !$params->get('k2SefInsertItemId'))
 		{
-			$db = JFactory::getDBO();
+			$db = JFactory::getDbo();
 			$db->setQuery("SELECT id FROM #__k2_items WHERE alias = ".$db->quote($this->alias)." AND id != ".(int)$this->id);
 			$result = count($db->loadObjectList());
 			if ($result > 0)

@@ -3,7 +3,7 @@
  * @package   OSMap
  * @copyright 2007-2014 XMap - Joomla! Vargas - Guillermo Vargas. All rights reserved.
  * @copyright 2016 Open Source Training, LLC. All rights reserved.
- * @contact   www.alledia.com, support@alledia.com
+ * @contact   www.joomlashack.com, help@joomlashack.com
  * @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
  */
 
@@ -15,21 +15,22 @@ defined('_JEXEC') or die();
 
 class Base extends \JControllerLegacy
 {
-    /**
-     * Standard form token check and redirect
-     *
-     * @return void
-     */
-    protected function checkToken()
+    public function checkToken($method = 'post', $redirect = true)
     {
-        if (!\JSession::checkToken()) {
-            $home = OSMap\Factory::getApplication()->getMenu()->getDefault();
+        $valid = \JSession::checkToken();
+        if (!$valid && $redirect) {
+            if ($redirect) {
+                $home      = OSMap\Factory::getApplication()->getMenu()->getDefault();
+                $container = OSMap\Factory::getContainer();
 
-            OSMap\Factory::getApplication()->redirect(
-                OSMap\Router::routeURL('index.php?Itemid=' . $home->id),
-                JText::_('JINVALID_TOKEN'),
-                'error'
-            );
+                OSMap\Factory::getApplication()->redirect(
+                    $container->router->routeURL('index.php?Itemid=' . $home->id),
+                    \JText::_('JINVALID_TOKEN'),
+                    'error'
+                );
+            }
         }
+
+        return $valid;
     }
 }

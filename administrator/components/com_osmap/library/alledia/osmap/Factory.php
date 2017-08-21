@@ -3,7 +3,7 @@
  * @package   OSMap
  * @copyright 2007-2014 XMap - Joomla! Vargas - Guillermo Vargas. All rights reserved.
  * @copyright 2016 Open Source Training, LLC. All rights reserved.
- * @contact   www.alledia.com, support@alledia.com
+ * @contact   www.joomlashack.com, help@joomlashack.com
  * @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
  */
 
@@ -20,7 +20,7 @@ defined('_JEXEC') or die();
 class Factory extends Framework\Factory
 {
     /**
-     * @var Service
+     * @var Container
      */
     protected static $container;
 
@@ -28,16 +28,12 @@ class Factory extends Framework\Factory
      * Get a OSMap container class
      *
      * @return Container
-     * @throws Exception
+     * @throws \Exception
      */
     public static function getContainer()
     {
         if (empty(static::$container)) {
-            // $params = Component\Helper::getParams();
-
-            $config = array(
-
-            );
+            $config = array();
 
             $container = new Container(
                 array(
@@ -80,5 +76,18 @@ class Factory extends Framework\Factory
         }
 
         return false;
+    }
+
+    /**
+     * Returns an instance of a table. If no prefix is set, we use OSMap's table
+     * prefix as default.
+     *
+     * @param string $tableName
+     *
+     * @return mixed
+     */
+    public static function getTable($tableName, $prefix = 'OSMapTable')
+    {
+        return \JTable::getInstance($tableName, $prefix);
     }
 }

@@ -3,7 +3,7 @@
  * @package   OSMap
  * @copyright 2007-2014 XMap - Joomla! Vargas - Guillermo Vargas. All rights reserved.
  * @copyright 2016 Open Source Training, LLC. All rights reserved.
- * @contact   www.alledia.com, support@alledia.com
+ * @contact   www.joomlashack.com, help@joomlashack.com
  * @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
  */
 
@@ -45,7 +45,7 @@ class OSMapModelSitemap extends JModelAdmin
 
             // Load the menus
             if (!empty($id)) {
-                $db = OSMap\Factory::getDbo();
+                $db    = OSMap\Factory::getDbo();
                 $query = $db->getQuery(true)
                     ->select('*')
                     ->from('#__osmap_sitemap_menus')
@@ -74,7 +74,6 @@ class OSMapModelSitemap extends JModelAdmin
      */
     protected function prepareTable($table)
     {
-
     }
 
     /**
@@ -84,6 +83,5 @@ class OSMapModelSitemap extends JModelAdmin
      */
     public function getSelectedMenus($sitemapId)
     {
-
     }
 }

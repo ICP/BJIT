@@ -1,9 +1,9 @@
 <?php
 /**
- * @version    2.7.x
+ * @version    2.8.x
  * @package    K2
  * @author     JoomlaWorks http://www.joomlaworks.net
- * @copyright  Copyright (c) 2006 - 2016 JoomlaWorks Ltd. All rights reserved.
+ * @copyright  Copyright (c) 2006 - 2017 JoomlaWorks Ltd. All rights reserved.
  * @license    GNU/GPL license: http://www.gnu.org/copyleft/gpl.html
  */
 
@@ -309,7 +309,7 @@ defined('_JEXEC') or die;
 		<?php if($this->item->params->get('itemTwitterButton',1)): ?>
 		<!-- Twitter Button -->
 		<div class="itemTwitterButton">
-			<a href="https://twitter.com/share" class="twitter-share-button" data-via="<?php if($this->item->params->get('twitterUsername')) echo $this->item->params->get('twitterUsername'); ?>"><?php echo JText::_('K2_TWEET'); ?></a>
+			<a href="https://twitter.com/share" class="twitter-share-button" data-lang="<?php echo $this->item->langTagForTW; ?>" data-via="<?php if($this->item->params->get('twitterUsername')) echo $this->item->params->get('twitterUsername'); ?>"><?php echo JText::_('K2_TWEET'); ?></a>
 			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 		</div>
 		<?php endif; ?>
@@ -318,7 +318,7 @@ defined('_JEXEC') or die;
 		<!-- Facebook Button -->
 		<div class="itemFacebookButton">
 			<div id="fb-root"></div>
-			<script>(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id)) return;js=d.createElement(s);js.id=id;js.src="//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";fjs.parentNode.insertBefore(js,fjs);}(document,'script','facebook-jssdk'));</script>
+			<script>(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id)) return;js=d.createElement(s);js.id=id;js.src="//connect.facebook.net/<?php echo $this->item->langTagForFB; ?>/sdk.js#xfbml=1&version=v2.5";fjs.parentNode.insertBefore(js,fjs);}(document,'script','facebook-jssdk'));</script>
 			<div class="fb-like" data-width="200" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
 		</div>
 		<?php endif; ?>
@@ -326,8 +326,8 @@ defined('_JEXEC') or die;
 		<?php if($this->item->params->get('itemGooglePlusOneButton',1)): ?>
 		<!-- Google +1 Button -->
 		<div class="itemGooglePlusOneButton">
-			<div class="g-plusone" data-size="medium" width="120"></div>
-			<script>(function(){var po=document.createElement('script');po.type='text/javascript';po.async=true;po.src='https://apis.google.com/js/platform.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(po,s);})();</script>
+			<div class="g-plusone" data-size="medium"></div>
+			<script>window.___gcfg={lang:'<?php echo $this->item->langTagForGP; ?>'};(function(){var po=document.createElement('script');po.type='text/javascript';po.async=true;po.src='https://apis.google.com/js/platform.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(po,s);})();</script>
 		</div>
 		<?php endif; ?>
 
@@ -402,15 +402,15 @@ defined('_JEXEC') or die;
 			<?php endif; ?>
 
 			<?php if($this->item->params->get('itemAuthorURL') && !empty($this->item->author->profile->url)): ?>
-			<span class="itemAuthorUrl"><i class="k2icon-globe"></i> <a rel="me" href="<?php echo $this->item->author->profile->url; ?>" target="_blank"><?php echo str_replace('http://','',$this->item->author->profile->url); ?></a></span>
+			<span class="itemAuthorUrl"><i class="icon-globe"></i> <a rel="me" href="<?php echo $this->item->author->profile->url; ?>" target="_blank"><?php echo str_replace('http://','',$this->item->author->profile->url); ?></a></span>
 			<?php endif; ?>
-			
+
 			<?php if($this->item->params->get('itemAuthorURL') && !empty($this->item->author->profile->url) && $this->item->params->get('itemAuthorEmail')): ?>
 			<span class="k2HorizontalSep">|</span>
 			<?php endif; ?>
-			
+
 			<?php if($this->item->params->get('itemAuthorEmail')): ?>
-			<span class="itemAuthorEmail"><i class="k2icon-envelope"></i> <?php echo JHTML::_('Email.cloak', $this->item->author->email); ?></span>
+			<span class="itemAuthorEmail"><i class="icon-envelope"></i> <?php echo JHTML::_('Email.cloak', $this->item->author->email); ?></span>
 			<?php endif; ?>
 
 			<div class="clr"></div>
@@ -472,7 +472,7 @@ defined('_JEXEC') or die;
 				<?php endif; ?>
 
 				<?php if($this->item->params->get('itemRelatedImageSize')): ?>
-				<img style="width:<?php echo $item->imageWidth; ?>px;height:auto;" class="itemRelImg" src="<?php echo $item->image; ?>" alt="<?php K2HelperUtilities::cleanHtml($item->title); ?>" />
+				<img style="width:<?php echo $item->imageWidth; ?>px;height:auto;" class="itemRelImg" src="<?php echo $item->image; ?>" alt="<?php echo K2HelperUtilities::cleanHtml($item->title); ?>" />
 				<?php endif; ?>
 
 				<?php if($this->item->params->get('itemRelatedIntrotext')): ?>

@@ -1,14 +1,14 @@
 <?php
 /**
- * @version    2.7.x
+ * @version    2.8.x
  * @package    K2
  * @author     JoomlaWorks http://www.joomlaworks.net
- * @copyright  Copyright (c) 2006 - 2016 JoomlaWorks Ltd. All rights reserved.
+ * @copyright  Copyright (c) 2006 - 2017 JoomlaWorks Ltd. All rights reserved.
  * @license    GNU/GPL license: http://www.gnu.org/copyleft/gpl.html
  */
 
 // no direct access
-defined('_JEXEC') or die ;
+defined('_JEXEC') or die;
 
 jimport('joomla.html.parameter');
 
@@ -142,19 +142,19 @@ class K2HelperPermissions
         }
         $task = JRequest::getCmd('task');
         $user = JFactory::getUser();
-        $mainframe = JFactory::getApplication();
+        $application = JFactory::getApplication();
         if ($user->guest && ($task == 'add' || $task == 'edit'))
         {
             $uri = JURI::getInstance();
             $return = base64_encode($uri->toString());
-			$mainframe->enqueueMessage(JText::_('K2_YOU_NEED_TO_LOGIN_FIRST'), 'notice');
+			$application->enqueueMessage(JText::_('K2_YOU_NEED_TO_LOGIN_FIRST'), 'notice');
             if (K2_JVERSION == '15')
             {
-                $mainframe->redirect('index.php?option=com_user&view=login&return='.$return.'&tmpl=component');
+                $application->redirect('index.php?option=com_user&view=login&return='.$return.'&tmpl=component');
             }
             else
             {
-                $mainframe->redirect('index.php?option=com_users&view=login&return='.$return.'&tmpl=component');
+                $application->redirect('index.php?option=com_users&view=login&return='.$return.'&tmpl=component');
             }
         }
 
@@ -172,7 +172,7 @@ class K2HelperPermissions
                 $cid = JRequest::getInt('cid');
                 if($cid)
                 {
-                  JTable::addIncludePath(JPATH_COMPONENT_ADMINISTRATOR.DS.'tables');
+                  JTable::addIncludePath(JPATH_COMPONENT_ADMINISTRATOR.'/tables');
                   $item = JTable::getInstance('K2Item', 'Table');
                   $item->load($cid);
 
@@ -199,7 +199,7 @@ class K2HelperPermissions
                 if ($cid)
                 {
 
-                    JTable::addIncludePath(JPATH_COMPONENT_ADMINISTRATOR.DS.'tables');
+                    JTable::addIncludePath(JPATH_COMPONENT_ADMINISTRATOR.'/tables');
                     $item = JTable::getInstance('K2Item', 'Table');
                     $item->load($cid);
 
@@ -229,7 +229,7 @@ class K2HelperPermissions
     public static function getK2User($userID)
     {
 
-        $db = JFactory::getDBO();
+        $db = JFactory::getDbo();
         $query = "SELECT * FROM #__k2_users WHERE userID = ".(int)$userID;
         $db->setQuery($query);
         $row = $db->loadObject();
@@ -239,7 +239,7 @@ class K2HelperPermissions
     public static function getK2UserGroup($id)
     {
 
-        $db = JFactory::getDBO();
+        $db = JFactory::getDbo();
         $query = "SELECT * FROM #__k2_user_groups WHERE id = ".(int)$id;
         $db->setQuery($query);
         $row = $db->loadObject();
@@ -259,7 +259,7 @@ class K2HelperPermissions
         {
             return in_array('add.category.'.$category, $K2Permissions->actions);
         }
-        $db = JFactory::getDBO();
+        $db = JFactory::getDbo();
         $query = "SELECT id FROM #__k2_categories WHERE published=1 AND trash=0";
         if (K2_JVERSION != '15')
         {

@@ -1,14 +1,14 @@
 <?php
 /**
- * @version    2.7.x
+ * @version    2.8.x
  * @package    K2
  * @author     JoomlaWorks http://www.joomlaworks.net
- * @copyright  Copyright (c) 2006 - 2016 JoomlaWorks Ltd. All rights reserved.
+ * @copyright  Copyright (c) 2006 - 2017 JoomlaWorks Ltd. All rights reserved.
  * @license    GNU/GPL license: http://www.gnu.org/copyleft/gpl.html
  */
 
 // no direct access
-defined('_JEXEC') or die ;
+defined('_JEXEC') or die;
 
 jimport('joomla.application.component.controller');
 
@@ -75,15 +75,15 @@ class K2ControllerExtraFields extends K2Controller
 
     function add()
     {
-        $mainframe = JFactory::getApplication();
-        $mainframe->redirect('index.php?option=com_k2&view=extrafield');
+        $application = JFactory::getApplication();
+        $application->redirect('index.php?option=com_k2&view=extrafield');
     }
 
     function edit()
     {
-        $mainframe = JFactory::getApplication();
+        $application = JFactory::getApplication();
         $cid = JRequest::getVar('cid');
-        $mainframe->redirect('index.php?option=com_k2&view=extrafield&cid='.$cid[0]);
+        $application->redirect('index.php?option=com_k2&view=extrafield&cid='.$cid[0]);
     }
 
 }

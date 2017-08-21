@@ -3,7 +3,7 @@
  * @package   OSMap
  * @copyright 2007-2014 XMap - Joomla! Vargas - Guillermo Vargas. All rights reserved.
  * @copyright 2016 Open Source Training, LLC. All rights reserved.
- * @contact   www.alledia.com, support@alledia.com
+ * @contact   www.joomlashack.com, help@joomlashack.com
  * @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
  */
 
@@ -36,7 +36,9 @@ if (!is_null($this->params->get('menu_text'))) {
     <!-- Heading -->
 
     <?php if ($this->params->get('show_page_heading', 1)) : ?>
-        <h1><?php echo $this->escape($pageHeading); ?></h1>
+        <div class="page-header">
+            <h1><?php echo $this->escape($pageHeading); ?></h1>
+        </div>
     <?php endif; ?>
 
     <!-- Description -->

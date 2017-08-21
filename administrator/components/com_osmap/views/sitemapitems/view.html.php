@@ -3,7 +3,7 @@
  * @package   OSMap
  * @copyright 2007-2014 XMap - Joomla! Vargas - Guillermo Vargas. All rights reserved.
  * @copyright 2016 Open Source Training, LLC. All rights reserved.
- * @contact   www.alledia.com, support@alledia.com
+ * @contact   www.joomlashack.com, help@joomlashack.com
  * @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
  */
 
@@ -16,7 +16,7 @@ class OSMapViewSitemapItems extends OSMap\View\Admin\Base
 {
     public function display($tpl = null)
     {
-        $app = OSMap\Factory::getApplication();
+        $app             = OSMap\Factory::getApplication();
         $this->sitemapId = $app->input->getInt('id', 0);
         $this->language  = $app->input->get('lang', '');
 

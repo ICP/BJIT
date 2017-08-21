@@ -1,24 +1,49 @@
 <?php
 /**
- * @version    2.7.x
+ * @version    2.8.x
  * @package    K2
  * @author     JoomlaWorks http://www.joomlaworks.net
- * @copyright  Copyright (c) 2006 - 2016 JoomlaWorks Ltd. All rights reserved.
+ * @copyright  Copyright (c) 2006 - 2017 JoomlaWorks Ltd. All rights reserved.
  * @license    GNU/GPL license: http://www.gnu.org/copyleft/gpl.html
  */
 
 // no direct access
-defined('_JEXEC') or die ;
+defined('_JEXEC') or die;
 
 jimport('joomla.application.component.view');
 
 class K2ViewExtraField extends K2View
 {
-
 	function display($tpl = null)
 	{
-		JRequest::setVar('hidemainmenu', 1);
+		JHTML::_('behavior.modal');
 		JHTML::_('behavior.keepalive');
+
+		$document = JFactory::getDocument();
+		$document->addScriptDeclaration('
+			var K2BasePath = "'.JURI::base(true).'/";
+			var K2Language = [
+				"'.JText::_('K2_REMOVE', true).'",
+				"'.JText::_('K2_OPTIONAL', true).'",
+				"'.JText::_('K2_COMMA_SEPARATED_VALUES', true).'",
+				"'.JText::_('K2_USE_EDITOR', true).'",
+				"'.JText::_('K2_ALL_SETTINGS_ABOVE_ARE_OPTIONAL', true).'",
+				"'.JText::_('K2_ADD_AN_OPTION', true).'",
+				"'.JText::_('K2_LINK_TEXT', true).'",
+				"'.JText::_('K2_URL', true).'",
+				"'.JText::_('K2_OPEN_IN', true).'",
+				"'.JText::_('K2_SAME_WINDOW', true).'",
+				"'.JText::_('K2_NEW_WINDOW', true).'",
+				"'.JText::_('K2_CLASSIC_JAVASCRIPT_POPUP', true).'",
+				"'.JText::_('K2_LIGHTBOX_POPUP', true).'",
+				"'.JText::_('K2_RESET_VALUE', true).'",
+				"'.JText::_('K2_CALENDAR', true).'",
+				"'.JText::_('K2_PLEASE_SELECT_A_FIELD_TYPE_FROM_THE_LIST_ABOVE', true).'",
+				"'.JText::_('K2_COLUMNS', true).'",
+				"'.JText::_('K2_ROWS', true).'",
+			];
+		');
+
 		$model = $this->getModel();
 		$extraField = $model->getData();
 		if (!$extraField->id)
@@ -31,9 +56,7 @@ class K2ViewExtraField extends K2View
 		}
 		else
 		{
-			require_once (JPATH_COMPONENT.DS.'lib'.DS.'JSON.php');
-			$json = new Services_JSON;
-			$values = $json->decode($extraField->value);
+			$values = json_decode($extraField->value);
 			if (isset($values[0]->alias) && !empty($values[0]->alias))
 			{
 				$extraField->alias = $values[0]->alias;
@@ -105,38 +128,18 @@ class K2ViewExtraField extends K2View
 		$lists['type'] = JHTML::_('select.genericlist', $typeOptions, 'type', '', 'value', 'text', $extraField->type);
 
 		$this->assignRef('lists', $lists);
-		(JRequest::getInt('cid')) ? $title = JText::_('K2_EDIT_EXTRA_FIELD') : $title = JText::_('K2_ADD_EXTRA_FIELD');
-		JToolBarHelper::title($title, 'k2.png');
-		JToolBarHelper::save();
-		JToolBarHelper::apply();
-		JToolBarHelper::cancel();
-		JHTML::_('behavior.calendar');
 
-		$document = JFactory::getDocument();
-		$document->addScriptDeclaration('
-		var K2BasePath = "'.JURI::base(true).'/";
-		var K2Language = [
-		"'.JText::_('K2_REMOVE', true).'",
-		"'.JText::_('K2_OPTIONAL', true).'",
-		"'.JText::_('K2_COMMA_SEPARATED_VALUES', true).'",
-		"'.JText::_('K2_USE_EDITOR', true).'",
-		"'.JText::_('K2_ALL_SETTINGS_ABOVE_ARE_OPTIONAL', true).'",
-		"'.JText::_('K2_ADD_AN_OPTION', true).'",
-		"'.JText::_('K2_LINK_TEXT', true).'",
-		"'.JText::_('K2_URL', true).'",
-		"'.JText::_('K2_OPEN_IN', true).'",
-		"'.JText::_('K2_SAME_WINDOW', true).'",
-		"'.JText::_('K2_NEW_WINDOW', true).'",
-		"'.JText::_('K2_CLASSIC_JAVASCRIPT_POPUP', true).'",
-		"'.JText::_('K2_LIGHTBOX_POPUP', true).'",
-		"'.JText::_('K2_RESET_VALUE', true).'",
-		"'.JText::_('K2_CALENDAR', true).'",
-		"'.JText::_('K2_PLEASE_SELECT_A_FIELD_TYPE_FROM_THE_LIST_ABOVE', true).'",
-		"'.JText::_('K2_COLUMNS', true).'",
-		"'.JText::_('K2_ROWS', true).'",
-		];');
-		JHTML::_('behavior.modal');
+		// Disable Joomla menu
+		JRequest::setVar('hidemainmenu', 1);
+
+		// Toolbar
+		$title = (JRequest::getInt('cid')) ? JText::_('K2_EDIT_EXTRA_FIELD') : JText::_('K2_ADD_EXTRA_FIELD');
+		JToolBarHelper::title($title, 'k2.png');
+
+		JToolBarHelper::apply();
+		JToolBarHelper::save();
+		JToolBarHelper::cancel();
+
 		parent::display($tpl);
 	}
-
 }

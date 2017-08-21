@@ -1,9 +1,9 @@
 <?php
 /**
- * @version    2.7.x
+ * @version    2.8.x
  * @package    K2
  * @author     JoomlaWorks http://www.joomlaworks.net
- * @copyright  Copyright (c) 2006 - 2016 JoomlaWorks Ltd. All rights reserved.
+ * @copyright  Copyright (c) 2006 - 2017 JoomlaWorks Ltd. All rights reserved.
  * @license    GNU/GPL license: http://www.gnu.org/copyleft/gpl.html
  */
 
@@ -18,7 +18,7 @@ class K2HelperPermissions
     public static function checkPermissions()
     {
         // Set some variables
-        $mainframe = JFactory::getApplication();
+        $application = JFactory::getApplication();
         $user = JFactory::getUser();
         $option = JRequest::getCmd('option');
         $view = JRequest::getCmd('view');
@@ -29,12 +29,12 @@ class K2HelperPermissions
         if (!$user->authorise('core.manage', $option))
         {
             JError::raiseWarning(404, JText::_('JERROR_ALERTNOAUTHOR'));
-            $mainframe->redirect('index.php');
+            $application->redirect('index.php');
         }
 
         // Determine action for rest checks
         $action = false;
-        if ($mainframe->isAdmin() && $view != '' && $view != 'info')
+        if ($application->isAdmin() && $view != '' && $view != 'info')
         {
             switch($task)
             {
@@ -63,7 +63,7 @@ class K2HelperPermissions
             // Edit or Edit own action
             if ($action == 'core.edit' && $view == 'item' && $id)
             {
-                JTable::addIncludePath(JPATH_COMPONENT_ADMINISTRATOR.DS.'tables');
+                JTable::addIncludePath(JPATH_COMPONENT_ADMINISTRATOR.'/tables');
                 $item = JTable::getInstance('K2Item', 'Table');
                 $item->load($id);
                 if ($item->created_by == $user->id)
@@ -78,7 +78,7 @@ class K2HelperPermissions
                 if (!$user->authorise($action, $option))
                 {
                     JError::raiseWarning(404, JText::_('JERROR_ALERTNOAUTHOR'));
-                    $mainframe->redirect('index.php?option=com_k2');
+                    $application->redirect('index.php?option=com_k2');
                 }
             }
 

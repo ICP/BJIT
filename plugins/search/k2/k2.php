@@ -1,14 +1,14 @@
 <?php
 /**
- * @version    2.7.x
+ * @version    2.8.x
  * @package    K2
  * @author     JoomlaWorks http://www.joomlaworks.net
- * @copyright  Copyright (c) 2006 - 2016 JoomlaWorks Ltd. All rights reserved.
+ * @copyright  Copyright (c) 2006 - 2017 JoomlaWorks Ltd. All rights reserved.
  * @license    GNU/GPL license: http://www.gnu.org/copyleft/gpl.html
  */
 
 // no direct access
-defined('_JEXEC') or die ;
+defined('_JEXEC') or die;
 
 jimport('joomla.plugin.plugin');
 jimport('joomla.html.parameter');
@@ -37,8 +37,8 @@ class plgSearchK2 extends JPlugin
     {
         JPlugin::loadLanguage('plg_search_k2', JPATH_ADMINISTRATOR);
         jimport('joomla.html.parameter');
-        $mainframe = JFactory::getApplication();
-        $db = JFactory::getDBO();
+        $application = JFactory::getApplication();
+        $db = JFactory::getDbo();
         $jnow = JFactory::getDate();
         $now = K2_JVERSION == '15' ? $jnow->toMySQL() : $jnow->toSql();
 
@@ -56,8 +56,8 @@ class plgSearchK2 extends JPlugin
         $tagIDs = array();
         $itemIDs = array();
 
-        require_once (JPATH_SITE.DS.'administrator'.DS.'components'.DS.'com_search'.DS.'helpers'.DS.'search.php');
-        require_once (JPATH_SITE.DS.'components'.DS.'com_k2'.DS.'helpers'.DS.'route.php');
+        require_once(JPATH_SITE.'/administrator/components/com_search/helpers/search.php');
+        require_once(JPATH_SITE.'/components/com_k2/helpers/route.php');
 
         $searchText = $text;
         if (is_array($areas))
@@ -164,7 +164,7 @@ class plgSearchK2 extends JPlugin
 								AND ( i.publish_up = ".$db->Quote($nullDate)." OR i.publish_up <= ".$db->Quote($now)." )
 								AND ( i.publish_down = ".$db->Quote($nullDate)." OR i.publish_down >= ".$db->Quote($now)." )";
 
-            if (K2_JVERSION != '15' && $mainframe->isSite() && $mainframe->getLanguageFilter())
+            if (K2_JVERSION != '15' && $application->isSite() && $application->getLanguageFilter())
             {
                 $languageTag = JFactory::getLanguage()->getTag();
                 $query .= " AND c.language IN (".$db->Quote($languageTag).", ".$db->Quote('*').") AND i.language IN (".$db->Quote($languageTag).", ".$db->Quote('*').") ";

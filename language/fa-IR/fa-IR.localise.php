@@ -1,8 +1,8 @@
 <?php
 /**
  * @version		$Id: language.php 15628 2012-01-27 05:20:29Z infograf768 $
- * @copyright	Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
- * @copyright	Copyright (C) 2011 - 2016 JoomlaFarsi.com. All Rights Reserver.
+ * @copyright	Copyright (C) 2005 - 2017 Open Source Matters, Inc. All rights reserved.
+ * @copyright	Copyright (C) 2011 - 2017 JoomlaFarsi.com. All Rights Reserver.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 

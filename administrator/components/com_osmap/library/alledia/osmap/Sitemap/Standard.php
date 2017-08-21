@@ -3,13 +3,14 @@
  * @package   OSMap
  * @copyright 2007-2014 XMap - Joomla! Vargas - Guillermo Vargas. All rights reserved.
  * @copyright 2016 Open Source Training, LLC. All rights reserved.
- * @contact   www.alledia.com, support@alledia.com
+ * @contact   www.joomlashack.com, help@joomlashack.com
  * @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
  */
 
 namespace Alledia\OSMap\Sitemap;
 
 use Alledia\OSMap;
+use Joomla\Registry\Registry;
 
 defined('_JEXEC') or die();
 
@@ -26,7 +27,7 @@ class Standard implements SitemapInterface
     public $name;
 
     /**
-     * @var \JRegistry
+     * @var Registry
      */
     public $params;
 
@@ -61,35 +62,40 @@ class Standard implements SitemapInterface
     protected $collector;
 
     /**
+     * Limit in days for news sitemap items
+     *
+     * @var int
+     */
+    public $newsDateLimit = 2;
+
+    /**
      * The constructor
      *
      * @param int $id
      *
      * @return void
+     * @throws \Exception
      */
     public function __construct($id)
     {
-        $db = OSMap\Factory::getContainer()->db;
+        $row = OSMap\Factory::getTable('Sitemap');
+        $row->load($id);
 
-        $query = $db->getQuery(true)
-            ->select('*')
-            ->from('#__osmap_sitemaps')
-            ->where('id = ' . $db->quote($id));
-        $row = $db->setQuery($query)->loadObject();
-
-        if (empty($row)) {
+        if (empty($row) || !$row->id) {
             throw new \Exception(\JText::_('COM_OSMAP_SITEMAP_NOT_FOUND'));
         }
 
         $this->id          = $row->id;
         $this->name        = $row->name;
         $this->isDefault   = (bool)$row->is_default;
-        $this->isPublished = (bool)$row->published;
+        $this->isPublished = $row->published == 1;
         $this->createdOn   = $row->created_on;
         $this->linksCount  = (int)$row->links_count;
 
-        $this->params = new \JRegistry;
+        $this->params = new Registry();
         $this->params->loadString($row->params);
+
+        $row = null;
 
         // Initiate the collector
         $this->initCollector();
@@ -117,20 +123,18 @@ class Standard implements SitemapInterface
     public function traverse($callback, $triggerEvents = true)
     {
         if ($triggerEvents) {
-            // Prepare the plugins
+            // Call the plugins, allowing to interact or override the collector
             \JPluginHelper::importPlugin('osmap');
 
-            // Call the plugins, allowing to interact or override the collector
-            $eventParams = array(
-                &$this,
-                &$callback
-            );
-            $results = \JEventDispatcher::getInstance()->trigger('osmapOnBeforeCollectItems', $eventParams);
+            $eventParams = array(&$this, &$callback);
+            $results     = \JEventDispatcher::getInstance()->trigger('osmapOnBeforeCollectItems', $eventParams);
 
             // A plugin asked to stop the traverse
             if (in_array(true, $results)) {
                 return;
             }
+
+            $results = null;
         }
 
         // Fetch the sitemap items
@@ -138,6 +142,10 @@ class Standard implements SitemapInterface
 
         // Update the links count in the sitemap
         $this->updateLinksCount($count);
+
+        // Cleanup
+        $this->collector->cleanup();
+        $this->collector = null;
     }
 
     /**
@@ -149,12 +157,16 @@ class Standard implements SitemapInterface
      */
     protected function updateLinksCount($count)
     {
-        $db = OSMap\Factory::getContainer()->db;
+        $row = OSMap\Factory::getTable('Sitemap');
+        $row->load($this->id);
 
-        $query = $db->getQuery(true)
-            ->update('#__osmap_sitemaps')
-            ->set('links_count = ' . (int)$count)
-            ->where('id = ' . $db->quote($this->id));
-        $db->setQuery($query)->execute();
+        $data = array('links_count' => (int)$count);
+        $row->save($data);
+    }
+
+    public function cleanup()
+    {
+        $this->collector = null;
+        $this->params    = null;
     }
 }

@@ -3,7 +3,7 @@
  * @package   OSMap
  * @copyright 2007-2014 XMap - Joomla! Vargas - Guillermo Vargas. All rights reserved.
  * @copyright 2016 Open Source Training, LLC. All rights reserved.
- * @contact   www.alledia.com, support@alledia.com
+ * @contact   www.joomlashack.com, help@joomlashack.com
  * @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
  */
 
@@ -20,6 +20,8 @@ JHtml::stylesheet('media/com_osmap/css/admin.min.css');
 JHtml::stylesheet('media/jui/css/icomoon.css');
 
 JHtml::script('com_osmap/sitemapitems.min.js', false, true);
+
+$container = OSMap\Factory::getContainer();
 ?>
 
 <form
@@ -56,7 +58,7 @@ JHtml::script('com_osmap/sitemapitems.min.js', false, true);
 ;(function($) {
     $(function() {
         $.fn.osmap.loadSitemapItems({
-            baseUri: '<?php echo OSMap\Router::getFrontendBase(); ?>',
+            baseUri: '<?php echo $container->router->getFrontendBase(); ?>',
             sitemapId: '<?php echo $this->sitemapId; ?>',
             container: '#osmap-items-list',
             language: '<?php echo $this->language; ?>',

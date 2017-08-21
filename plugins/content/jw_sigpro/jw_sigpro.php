@@ -25,7 +25,7 @@ class plgContentJw_sigpro extends JPlugin
 	var $plg_copyrights_start = "";
 	var $plg_copyrights_end = "";
 
-	function plgContentJw_sigpro(&$subject, $params)
+	function __construct(&$subject, $params)
 	{
 		parent::__construct($subject, $params);
 

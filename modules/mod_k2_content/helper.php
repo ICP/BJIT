@@ -1,17 +1,17 @@
 <?php
 /**
- * @version    2.7.x
+ * @version    2.8.x
  * @package    K2
  * @author     JoomlaWorks http://www.joomlaworks.net
- * @copyright  Copyright (c) 2006 - 2016 JoomlaWorks Ltd. All rights reserved.
+ * @copyright  Copyright (c) 2006 - 2017 JoomlaWorks Ltd. All rights reserved.
  * @license    GNU/GPL license: http://www.gnu.org/copyleft/gpl.html
  */
 
 // no direct access
-defined('_JEXEC') or die ;
+defined('_JEXEC') or die;
 
-require_once (JPATH_SITE.DS.'components'.DS.'com_k2'.DS.'helpers'.DS.'route.php');
-require_once (JPATH_SITE.DS.'components'.DS.'com_k2'.DS.'helpers'.DS.'utilities.php');
+require_once(JPATH_SITE.'/components/com_k2/helpers/route.php');
+require_once(JPATH_SITE.'/components/com_k2/helpers/utilities.php');
 
 class modK2ContentHelper
 {
@@ -20,7 +20,7 @@ class modK2ContentHelper
 	{
 
 		jimport('joomla.filesystem.file');
-		$mainframe = JFactory::getApplication();
+		$application = JFactory::getApplication();
 		$limit = $params->get('itemCount', 5);
 		$cid = $params->get('category_id', NULL);
 		$ordering = $params->get('itemsOrdering', '');
@@ -29,7 +29,7 @@ class modK2ContentHelper
 
 		$user = JFactory::getUser();
 		$aid = $user->get('aid');
-		$db = JFactory::getDBO();
+		$db = JFactory::getDbo();
 
 		$jnow = JFactory::getDate();
 		$now = K2_JVERSION == '15' ? $jnow->toMySQL() : $jnow->toSql();
@@ -77,7 +77,7 @@ class modK2ContentHelper
 				AND i.id={$id}";
 				if (K2_JVERSION != '15')
 				{
-					if ($mainframe->getLanguageFilter())
+					if ($application->getLanguageFilter())
 					{
 						$languageTag = JFactory::getLanguage()->getTag();
 						$query .= " AND c.language IN (".$db->Quote($languageTag).", ".$db->Quote('*').") AND i.language IN (".$db->Quote($languageTag).", ".$db->Quote('*').")";
@@ -93,7 +93,7 @@ class modK2ContentHelper
 
 		else
 		{
-			$query = "SELECT i.*,";
+			$query = "SELECT DISTINCT i.*,";
 
 			if ($ordering == 'modified')
 			{
@@ -199,7 +199,7 @@ class modK2ContentHelper
 
 			if (K2_JVERSION != '15')
 			{
-				if ($mainframe->getLanguageFilter())
+				if ($application->getLanguageFilter())
 				{
 					$languageTag = JFactory::getLanguage()->getTag();
 					$query .= " AND c.language IN (".$db->Quote($languageTag).", ".$db->Quote('*').") AND i.language IN (".$db->Quote($languageTag).", ".$db->Quote('*').")";
@@ -305,7 +305,7 @@ class modK2ContentHelper
 					$date = JFactory::getDate($item->modified);
 					$timestamp = '?t='.$date->toUnix();
 
-					if (JFile::exists(JPATH_SITE.DS.'media'.DS.'k2'.DS.'items'.DS.'cache'.DS.md5("Image".$item->id).'_XS.jpg'))
+					if (JFile::exists(JPATH_SITE.'/media/k2/items/cache/'.md5("Image".$item->id).'_XS.jpg'))
 					{
 						$item->imageXSmall = JURI::base(true).'/media/k2/items/cache/'.md5("Image".$item->id).'_XS.jpg';
 						if ($componentParams->get('imageTimestamp'))
@@ -314,7 +314,7 @@ class modK2ContentHelper
 						}
 					}
 
-					if (JFile::exists(JPATH_SITE.DS.'media'.DS.'k2'.DS.'items'.DS.'cache'.DS.md5("Image".$item->id).'_S.jpg'))
+					if (JFile::exists(JPATH_SITE.'/media/k2/items/cache/'.md5("Image".$item->id).'_S.jpg'))
 					{
 						$item->imageSmall = JURI::base(true).'/media/k2/items/cache/'.md5("Image".$item->id).'_S.jpg';
 						if ($componentParams->get('imageTimestamp'))
@@ -323,7 +323,7 @@ class modK2ContentHelper
 						}
 					}
 
-					if (JFile::exists(JPATH_SITE.DS.'media'.DS.'k2'.DS.'items'.DS.'cache'.DS.md5("Image".$item->id).'_M.jpg'))
+					if (JFile::exists(JPATH_SITE.'/media/k2/items/cache/'.md5("Image".$item->id).'_M.jpg'))
 					{
 						$item->imageMedium = JURI::base(true).'/media/k2/items/cache/'.md5("Image".$item->id).'_M.jpg';
 						if ($componentParams->get('imageTimestamp'))
@@ -332,7 +332,7 @@ class modK2ContentHelper
 						}
 					}
 
-					if (JFile::exists(JPATH_SITE.DS.'media'.DS.'k2'.DS.'items'.DS.'cache'.DS.md5("Image".$item->id).'_L.jpg'))
+					if (JFile::exists(JPATH_SITE.'/media/k2/items/cache/'.md5("Image".$item->id).'_L.jpg'))
 					{
 						$item->imageLarge = JURI::base(true).'/media/k2/items/cache/'.md5("Image".$item->id).'_L.jpg';
 						if ($componentParams->get('imageTimestamp'))
@@ -341,7 +341,7 @@ class modK2ContentHelper
 						}
 					}
 
-					if (JFile::exists(JPATH_SITE.DS.'media'.DS.'k2'.DS.'items'.DS.'cache'.DS.md5("Image".$item->id).'_XL.jpg'))
+					if (JFile::exists(JPATH_SITE.'/media/k2/items/cache/'.md5("Image".$item->id).'_XL.jpg'))
 					{
 						$item->imageXLarge = JURI::base(true).'/media/k2/items/cache/'.md5("Image".$item->id).'_XL.jpg';
 						if ($componentParams->get('imageTimestamp'))
@@ -350,7 +350,7 @@ class modK2ContentHelper
 						}
 					}
 
-					if (JFile::exists(JPATH_SITE.DS.'media'.DS.'k2'.DS.'items'.DS.'cache'.DS.md5("Image".$item->id).'_Generic.jpg'))
+					if (JFile::exists(JPATH_SITE.'/media/k2/items/cache/'.md5("Image".$item->id).'_Generic.jpg'))
 					{
 						$item->imageGeneric = JURI::base(true).'/media/k2/items/cache/'.md5("Image".$item->id).'_Generic.jpg';
 						if ($componentParams->get('imageTimestamp'))

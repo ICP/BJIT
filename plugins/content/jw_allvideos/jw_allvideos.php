@@ -1,10 +1,10 @@
 <?php
 /**
- * @version		4.7.0
- * @package		AllVideos (plugin)
- * @author    	JoomlaWorks - http://www.joomlaworks.net
- * @copyright	Copyright (c) 2006 - 2015 JoomlaWorks Ltd. All rights reserved.
- * @license		GNU/GPL license: http://www.gnu.org/copyleft/gpl.html
+ * @version    4.8.0
+ * @package    AllVideos (plugin)
+ * @author     JoomlaWorks - http://www.joomlaworks.net
+ * @copyright  Copyright (c) 2006 - 2016 JoomlaWorks Ltd. All rights reserved.
+ * @license    GNU/GPL license: http://www.gnu.org/copyleft/gpl.html
  */
 
 // no direct access
@@ -19,25 +19,20 @@ class plgContentJw_allvideos extends JPlugin {
 
 	// JoomlaWorks reference parameters
 	var $plg_name					= "jw_allvideos";
-	var $plg_copyrights_start		= "";
-	var $plg_copyrights_end			= "";
+	var $plg_copyrights_start		= "\n\n<!-- JoomlaWorks \"AllVideos\" Plugin (v4.8.0) starts here -->\n";
+	var $plg_copyrights_end			= "\n<!-- JoomlaWorks \"AllVideos\" Plugin (v4.8.0) ends here -->\n\n";
 
-	function plgContentJw_allvideos( &$subject, $params ) {
-		parent::__construct( $subject, $params );
-
-		// Define the DS constant under Joomla! 3.0+
-		if (!defined('DS')) {
-			define('DS', DIRECTORY_SEPARATOR);
-		}
+	public function __construct(&$subject, $params) {
+		parent::__construct($subject, $params);
 	}
 
 	// Joomla! 1.5
-	function onPrepareContent(&$row, &$params, $page = 0){
+	public function onPrepareContent(&$row, &$params, $page = 0) {
 		$this->renderAllVideos($row, $params, $page = 0);
 	}
 
 	// Joomla! 2.5+
-	function onContentPrepare($context, &$row, &$params, $page = 0){
+	public function onContentPrepare($context, &$row, &$params, $page = 0) {
 		$this->renderAllVideos($row, $params, $page = 0);
 	}
 
@@ -65,12 +60,12 @@ class plgContentJw_allvideos extends JPlugin {
 		JPlugin::loadLanguage('plg_content_'.$this->plg_name, JPATH_ADMINISTRATOR);
 
 		// Includes
-		require_once(dirname(__FILE__).DS.$this->plg_name.DS.'includes'.DS.'helper.php');
-		require(dirname(__FILE__).DS.$this->plg_name.DS.'includes'.DS.'sources.php');
+		require_once(dirname(__FILE__).'/'.$this->plg_name.'/includes/helper.php');
+		require(dirname(__FILE__).'/'.$this->plg_name.'/includes/sources.php');
 
 		// Simple performance check to determine whether plugin should process further
 		$grabTags = strtolower(implode(array_keys($tagReplace),"|"));
-		if (preg_match("#{(".$grabTags.")}#is", $row->text)==false) return;
+		if (preg_match("~{(".$grabTags.")}~is", $row->text)==false) return;
 
 
 
@@ -82,6 +77,9 @@ class plgContentJw_allvideos extends JPlugin {
 		// Control external parameters and set variable for controlling plugin layout within modules
 		if (!$params) {
 			$params = class_exists('JParameter') ? new JParameter(null) : new JRegistry(null);
+		}
+		if(is_string($params)) {
+			$params = class_exists('JParameter') ? new JParameter($params) : new JRegistry($params);
 		}
 		$parsedInModule = $params->get('parsedInModule');
 
@@ -107,6 +105,7 @@ class plgContentJw_allvideos extends JPlugin {
 		/* Global Parameters */
 		$autoplay 						= ($params->get('autoplay')) ? $params->get('autoplay') : $pluginParams->get('autoplay',0);
 		$loop 							= ($params->get('loop')) ? $params->get('loop') : $pluginParams->get('loop',0);
+		$ytnocookie						= ($params->get('ytnocookie')) ? $params->get('ytnocookie') : $pluginParams->get('ytnocookie',0);
 		/* Performance Parameters */
 		$gzipScripts					= $pluginParams->get('gzipScripts',0);
 		/* Advanced */
@@ -133,32 +132,32 @@ class plgContentJw_allvideos extends JPlugin {
 			// CSS
 			$avCSS = $AllVideosHelper->getTemplatePath($this->plg_name,'css/template.css',$playerTemplate);
 			$avCSS = $avCSS->http;
-//			$document->addStyleSheet($avCSS);
+			$document->addStyleSheet($avCSS);
 
 			// JS
 			if (version_compare(JVERSION,'2.5.0','ge')) {
-//				JHtml::_('behavior.framework');
+				JHtml::_('behavior.framework');
 			} else {
 				JHTML::_('behavior.mootools');
 			}
 
 			if ($gzipScripts) {
-//				$document->addScript($pluginLivePath.'/includes/js/jwp.js.php?v=4.7.0');
+				$document->addScript($pluginLivePath.'/includes/js/jwp.js.php?v=4.8.0');
 			} else {
-//				$document->addScript($pluginLivePath.'/includes/js/behaviour.js?v=4.7.0');
-//				$document->addScript($pluginLivePath.'/includes/js/wmvplayer/silverlight.js?v=4.7.0');
-//				$document->addScript($pluginLivePath.'/includes/js/wmvplayer/wmvplayer.js?v=4.7.0');
-//				$document->addScript($pluginLivePath.'/includes/js/quicktimeplayer/ac_quicktime.js?v=4.7.0');
+				$document->addScript($pluginLivePath.'/includes/js/behaviour.js?v=4.8.0');
+				$document->addScript($pluginLivePath.'/includes/js/wmvplayer/silverlight.js?v=4.8.0');
+				$document->addScript($pluginLivePath.'/includes/js/wmvplayer/wmvplayer.js?v=4.8.0');
+				$document->addScript($pluginLivePath.'/includes/js/quicktimeplayer/ac_quicktime.js?v=4.8.0');
 			}
 
-			if($jwPlayerLoading=='local'){
-//				$document->addScript($pluginLivePath.'/includes/js/jwplayer/jwplayer.js?v=4.7.0');
+			if($jwPlayerLoading=='local') {
+				$document->addScript($pluginLivePath.'/includes/js/jwplayer/jwplayer.js?v=4.8.0');
 				$document->addScriptDeclaration('
 					/* JW Player API Key */
 					jwplayer.key="'.$jwPlayerAPIKey.'";
 				');
 			} else {
-//				$document->addScript($jwPlayerCDNUrl);
+				$document->addScript($jwPlayerCDNUrl);
 			}
 
 		}
@@ -171,7 +170,7 @@ class plgContentJw_allvideos extends JPlugin {
 			$plg_tag = strtolower($plg_tag);
 
 			// expression to search for
-			$regex = "#{".$plg_tag."}.*?{/".$plg_tag."}#is";
+			$regex = "~{".$plg_tag."}.*?{/".$plg_tag."}~is";
 
 			// process tags
 			if (preg_match_all($regex, $row->text, $matches, PREG_PATTERN_ORDER)) {
@@ -181,9 +180,8 @@ class plgContentJw_allvideos extends JPlugin {
 
 					$tagcontent 	= preg_replace("/{.+?}/", "", $match);
 					$tagcontent		= str_replace(array('"','\'','`'), array('&quot;','&apos;','&#x60;'), $tagcontent); // Address potential XSS attacks
-//					$tagparams 		= explode('|',$tagcontent);
-//					$tagsource 		= trim(strip_tags($tagparams[0]));
-					$tagsource = $tagcontent;
+					$tagparams 		= explode('|',$tagcontent);
+					$tagsource 		= trim(strip_tags($tagparams[0]));
 
 					// Prepare the HTML
 					$output = new JObject;
@@ -269,6 +267,24 @@ class plgContentJw_allvideos extends JPlugin {
 						$tagsource = substr($tagsource,0,-1);
 					}
 
+					if ($plg_tag=="myvideo") {
+						if (strpos($tagsource,'myvideo.de')!==false) {
+							if (strpos($tagsource,'myvideo.de/watch')!==false) {
+								$tagsource = parse_url($tagsource);
+								$tagsource = explode('/',$tagsource['path']);
+								$tagsource = $tagsource[2];
+							} else {
+								$tagsource = parse_url($tagsource);
+								$tagsource = explode('/',$tagsource['path']);
+								$tagsource = array_reverse($tagsource);
+								$tagsource = $tagsource[0];
+								$tagsource = explode('-',$tagsource);
+								$tagsource = array_reverse($tagsource);
+								$tagsource = $tagsource[0];
+							}
+						}
+					}
+
 					if ($plg_tag=="sevenload") {
 						$tagsource = parse_url($tagsource);
 						$tagsource = explode('-',$tagsource['query']);
@@ -326,9 +342,12 @@ class plgContentJw_allvideos extends JPlugin {
 					if ($plg_tag=="youtube") {
 
 						// Check the presence of fully pasted URLs
-						if (strpos($tagsource,'youtube.com')!==false || strpos($tagsource,'youtu.be')!==false) {
+						if (strpos($tagsource,'youtube.com')!==false) {
 							$ytQuery = parse_url($tagsource, PHP_URL_QUERY);
 							$ytQuery = str_replace('&amp;', '&', $ytQuery);
+						} elseif(strpos($tagsource,'youtu.be')!==false) {
+							$ytQuery = explode('youtu.be/', $tagsource);
+							$tagsource = $ytQuery[1];
 						} else {
 							$ytQuery = $tagsource;
 						}
@@ -341,22 +360,22 @@ class plgContentJw_allvideos extends JPlugin {
 								$ytParam = explode('=',$ytParam);
 								$ytParams[$ytParam[0]] = $ytParam[1];
 							}
-							if(array_key_exists('v', $ytParams)){
+							if(array_key_exists('v', $ytParams)) {
 								$tagsource = $ytParams['v'];
-							} elseif(array_key_exists('list', $ytParams)){
+							} elseif(array_key_exists('list', $ytParams)) {
 								$tagsource = 'videoseries?list='.$ytParams['list'];
 							}
 						} elseif (strpos($ytQuery,'=')!==false) {
 							$ytQuery = explode('=',$ytQuery);
 							$ytParams = array();
 							$ytParams[$ytQuery[0]] = $ytQuery[1];
-							if(array_key_exists('v', $ytParams)){
+							if(array_key_exists('v', $ytParams)) {
 								$tagsource = $ytParams['v'];
-							} elseif(array_key_exists('list', $ytParams)){
+							} elseif(array_key_exists('list', $ytParams)) {
 								$tagsource = 'videoseries?list='.$ytParams['list'];
 							}
 						} else {
-							if(substr($tagsource, 0, 2)=="PL"){
+							if(substr($tagsource, 0, 2)=="PL") {
 								$tagsource = 'videoseries?list='.$tagsource;
 							}
 						}
@@ -378,17 +397,17 @@ class plgContentJw_allvideos extends JPlugin {
 					}
 
 					// Poster frame
-					
-					$posterFramePath = $sitePath.DS.str_replace('/',DS,$vfolder);
-					if (JFile::exists($posterFramePath.DS.$tagsource.'.jpg')) {
+					$posterFramePath = $sitePath.'/'.$vfolder;
+					if (JFile::exists($posterFramePath.'/'.$tagsource.'.jpg')) {
 						$output->posterFrame = $siteUrl.'/'.$vfolder.'/'.$tagsource.'.jpg';
-					} elseif (JFile::exists($posterFramePath.DS.$tagsource.'.png')) {
+					} elseif (JFile::exists($posterFramePath.'/'.$tagsource.'.png')) {
 						$output->posterFrame = $siteUrl.'/'.$vfolder.'/'.$tagsource.'.png';
-					} elseif (JFile::exists($posterFramePath.DS.$tagsource.'.gif')) {
+					} elseif (JFile::exists($posterFramePath.'/'.$tagsource.'.gif')) {
 						$output->posterFrame = $siteUrl.'/'.$vfolder.'/'.$tagsource.'.gif';
 					} else {
 						$output->posterFrame = '';
 					}
+
 					// Poster frame (remote)
 					$output->posterFrameRemote = substr($tagsource,0,-3).'jpg';
 
@@ -411,6 +430,7 @@ class plgContentJw_allvideos extends JPlugin {
 						"{SITEURL}",
 						"{SITEURL_ABS}",
 						"{FILE_EXT}",
+                        "{FILE_TYPE}",
 						"{PLUGIN_PATH}",
 						"{PLAYER_POSTER_FRAME}",
 						"{PLAYER_POSTER_FRAME_REMOTE}",
@@ -435,6 +455,7 @@ class plgContentJw_allvideos extends JPlugin {
 						$siteUrl,
 						substr(JURI::root(false),0,-1),
 						$plg_tag,
+						str_replace("remote","",$plg_tag),
 						$pluginLivePath,
 						$output->posterFrame,
 						$output->posterFrameRemote,
@@ -444,29 +465,22 @@ class plgContentJw_allvideos extends JPlugin {
 					);
 
 					// Do the element replace
-//					print_r($replaceAVparams); die();
-					$subject = "{SITEURL}/{FOLDER}/{SOURCE}.{FILE_EXT}";
-					if (stristr($replaceAVparams[0], '$old|')) {
-						$replaceAVparams[0] = str_replace('$old|', '', $replaceAVparams[0]);
-						$subject = VIDEO_BASE . "/{SOURCE}";
-					} else {
-						$replaceAVparams[0] = str_replace(JURI::root(), '', $replaceAVparams[0]);
-						$subject = VIDEO_BASE . "{SOURCE}";
-					}
-					
-//					$output->player = JFilterOutput::ampReplace(str_replace($findAVparams, $replaceAVparams, $tagReplace[$cloned_plg_tag]));
-					$output->player = JFilterOutput::ampReplace(str_replace($findAVparams, $replaceAVparams, $subject));
+					$output->player = JFilterOutput::ampReplace(str_replace($findAVparams, $replaceAVparams, $tagReplace[$cloned_plg_tag]));
+
+					// Post processing
+					// For YouTube
+					if($ytnocookie) $output->player = str_replace('www.youtube.com/embed','www.youtube-nocookie.com/embed', $output->player);
 
 					// Fetch the template
 					ob_start();
 					$getTemplatePath = $AllVideosHelper->getTemplatePath($this->plg_name,'default.php',$playerTemplate);
 					$getTemplatePath = $getTemplatePath->file;
 					include($getTemplatePath);
-					$getTemplate = ob_get_contents();
+					$getTemplate = $this->plg_copyrights_start.ob_get_contents().$this->plg_copyrights_end;
 					ob_end_clean();
 
 					// Output
-					$row->text = preg_replace("#{".$plg_tag."}".preg_quote($tagcontent)."{/".$plg_tag."}#is", $getTemplate , $row->text);
+					$row->text = preg_replace("~{".$plg_tag."}".preg_quote($tagcontent)."{/".$plg_tag."}~is", $getTemplate , $row->text);
 
 				} // End second foreach
 

@@ -1,31 +1,29 @@
 <?php
 /**
- * @version    2.7.x
+ * @version    2.8.x
  * @package    K2
  * @author     JoomlaWorks http://www.joomlaworks.net
- * @copyright  Copyright (c) 2006 - 2016 JoomlaWorks Ltd. All rights reserved.
+ * @copyright  Copyright (c) 2006 - 2017 JoomlaWorks Ltd. All rights reserved.
  * @license    GNU/GPL license: http://www.gnu.org/copyleft/gpl.html
  */
 
 // no direct access
-defined('_JEXEC') or die ;
+defined('_JEXEC') or die;
 
 class K2HelperUtilities
 {
-
 	// Get user avatar
 	public static function getAvatar($userID, $email = NULL, $width = 50)
 	{
-
 		jimport('joomla.filesystem.folder');
 		jimport('joomla.application.component.model');
-		$mainframe = JFactory::getApplication();
+		$application = JFactory::getApplication();
 		$params = K2HelperUtilities::getParams('com_k2');
 
 		// Check for placeholder overrides
-		if (JFile::exists(JPATH_SITE.DS.'assets'.DS.'img'.DS.'placeholder.png'))
+		if (JFile::exists(JPATH_SITE.'/templates/'.$application->getTemplate().'/images/placeholder/user.png'))
 		{
-			$avatarPath = 'assets/img/placeholder.png';
+			$avatarPath = 'templates/'.$application->getTemplate().'/images/placeholder/user.png';
 		}
 		else
 		{
@@ -50,7 +48,7 @@ class K2HelperUtilities
 		}
 		else if (is_numeric($userID) && $userID > 0)
 		{
-			K2Model::addIncludePath(JPATH_SITE.DS.'components'.DS.'com_k2'.DS.'models');
+			K2Model::addIncludePath(JPATH_SITE.'/components/com_k2/models');
 			$model = K2Model::getInstance('Item', 'K2Model');
 			$profile = $model->getUserProfile($userID);
 			$avatar = (is_null($profile)) ? '' : $profile->image;
@@ -82,9 +80,8 @@ class K2HelperUtilities
 
 	public static function getCategoryImage($image, $params)
 	{
-
 		jimport('joomla.filesystem.file');
-		$mainframe = JFactory::getApplication();
+		$application = JFactory::getApplication();
 		$categoryImage = NULL;
 		if (!empty($image))
 		{
@@ -94,9 +91,9 @@ class K2HelperUtilities
 		{
 			if ($params->get('catImageDefault'))
 			{
-				if (JFile::exists(JPATH_SITE.DS.'templates'.DS.$mainframe->getTemplate().DS.'images'.DS.'placeholder'.DS.'category.png'))
+				if (JFile::exists(JPATH_SITE.'/templates/'.$application->getTemplate().'/images/placeholder/category.png'))
 				{
-					$categoryImage = JURI::root(true).'/templates/'.$mainframe->getTemplate().'/images/placeholder/category.png';
+					$categoryImage = JURI::root(true).'/templates/'.$application->getTemplate().'/images/placeholder/category.png';
 				}
 				else
 				{
@@ -149,7 +146,6 @@ class K2HelperUtilities
 		{
 			return $str;
 		}
-
 	}
 
 	// Cleanup HTML entities
@@ -175,26 +171,20 @@ class K2HelperUtilities
 		{
 			$image = 'image'.$item->params->get('itemImgSize');
 			$item->image = $item->$image;
-
 			switch ($item->params->get('itemImgSize'))
 			{
-
 				case 'XSmall' :
 					$item->imageWidth = $item->params->get('itemImageXS');
 					break;
-
 				case 'Small' :
 					$item->imageWidth = $item->params->get('itemImageS');
 					break;
-
 				case 'Medium' :
 					$item->imageWidth = $item->params->get('itemImageM');
 					break;
-
 				case 'Large' :
 					$item->imageWidth = $item->params->get('itemImageL');
 					break;
-
 				case 'XLarge' :
 					$item->imageWidth = $item->params->get('itemImageXL');
 					break;
@@ -205,26 +195,20 @@ class K2HelperUtilities
 		{
 			$image = 'image'.$params->get($item->itemGroup.'ImgSize');
 			$item->image = isset($item->$image) ? $item->$image : '';
-
 			switch ($params->get($item->itemGroup.'ImgSize'))
 			{
-
 				case 'XSmall' :
 					$item->imageWidth = $item->params->get('itemImageXS');
 					break;
-
 				case 'Small' :
 					$item->imageWidth = $item->params->get('itemImageS');
 					break;
-
 				case 'Medium' :
 					$item->imageWidth = $item->params->get('itemImageM');
 					break;
-
 				case 'Large' :
 					$item->imageWidth = $item->params->get('itemImageL');
 					break;
-
 				case 'XLarge' :
 					$item->imageWidth = $item->params->get('itemImageXL');
 					break;
@@ -235,26 +219,20 @@ class K2HelperUtilities
 		{
 			$image = 'image'.$params->get('latestItemImageSize');
 			$item->image = $item->$image;
-
 			switch ($params->get('latestItemImageSize'))
 			{
-
 				case 'XSmall' :
 					$item->imageWidth = $item->params->get('itemImageXS');
 					break;
-
 				case 'Small' :
 					$item->imageWidth = $item->params->get('itemImageS');
 					break;
-
 				case 'Medium' :
 					$item->imageWidth = $item->params->get('itemImageM');
 					break;
-
 				case 'Large' :
 					$item->imageWidth = $item->params->get('itemImageL');
 					break;
-
 				case 'XLarge' :
 					$item->imageWidth = $item->params->get('itemImageXL');
 					break;
@@ -263,40 +241,31 @@ class K2HelperUtilities
 
 		if ($view == 'relatedByTag' && $params->get('itemRelatedImageSize'))
 		{
-
 			$image = 'image'.$params->get('itemRelatedImageSize');
 			$item->image = $item->$image;
-
 			switch ($params->get('itemRelatedImageSize'))
 			{
-
 				case 'XSmall' :
 					$item->imageWidth = $item->params->get('itemImageXS');
 					break;
-
 				case 'Small' :
 					$item->imageWidth = $item->params->get('itemImageS');
 					break;
-
 				case 'Medium' :
 					$item->imageWidth = $item->params->get('itemImageM');
 					break;
-
 				case 'Large' :
 					$item->imageWidth = $item->params->get('itemImageL');
 					break;
-
 				case 'XLarge' :
 					$item->imageWidth = $item->params->get('itemImageXL');
 					break;
 			}
 		}
-
 	}
 
 	public static function getParams($option)
 	{
-
 		if (K2_JVERSION != '15')
 		{
 			$application = JFactory::getApplication();
@@ -314,7 +283,6 @@ class K2HelperUtilities
 			$params = JComponentHelper::getParams($option);
 		}
 		return $params;
-
 	}
 
 	public static function cleanTags($string, $allowed_tags)
@@ -351,63 +319,29 @@ class K2HelperUtilities
 		return $string;
 	}
 
-//	public static function verifyRecaptcha() {
-//		// Farid: Skip captcha checking
-////		return true;
-//		$params = JComponentHelper::getParams('com_k2');
-//		try {
-//			$url = 'https://www.google.com/recaptcha/api/siteverify';
-//			$data = ['secret' => $params->get('recaptcha_private_key'),
-//				'response' => $_POST['g-recaptcha-response'],
-//				'remoteip' => $_SERVER['REMOTE_ADDR']];
-//			$options = [
-//				'http' => [
-//					'header' => "Content-type: application/x-www-form-urlencoded; charset=utf-8\r\n",
-//					'method' => 'POST',
-//					'content' => http_build_query($data)
-//				]
-//			];
-//			$context = stream_context_create($options);
-//			$result = file_get_contents($url, false, $context);
-//			if (isset($_COOKIE['dev']) && $_COOKIE['dev'] == "dev") {
-//				var_dump(json_decode($result));
-//			}
-//			return (json_decode($result)->success == false) ? null : true;
-//		} catch (Exception $e) {
-//			return null;
-//		}
-//	}
-	
-
-	public static function verifyRecaptcha() {
-
+	public static function verifyRecaptcha()
+	{
 		$params = JComponentHelper::getParams('com_k2');
 		$vars = array();
 		$vars['secret'] = $params->get('recaptcha_private_key');
 		$vars['response'] = $_POST['g-recaptcha-response'];
-		$vars['remoteip'] = $_SERVER['REMOTE_ADDR'];
-		if (isset($_COOKIE['dev']) && $_COOKIE['dev'] == "dev") {
-			var_dump($vars);
-		}
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, 'https://www.google.com/recaptcha/api/siteverify');
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-		curl_setopt($ch, CURLOPT_POST, false);
+		curl_setopt($ch, CURLOPT_POST, true);
 		curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($vars, '', '&'));
-		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 		$result = curl_exec($ch);
 		$info = curl_getinfo($ch);
 		curl_close($ch);
 		$response = json_decode($result);
-
-		if ($result && $info['http_code'] == 200 && is_object($response) && isset($response->success) && $response->success == true) {
+		if($result && $info['http_code'] == 200 && is_object($response) && isset($response->success) && $response->success == true)
+		{
 			return true;
-		} else {
+		}
+		else
+		{
 			return false;
 		}
 	}
-
 }
-
-// End Class

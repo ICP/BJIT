@@ -1,14 +1,14 @@
 <?php
 /**
- * @version    2.7.x
+ * @version    2.8.x
  * @package    K2
  * @author     JoomlaWorks http://www.joomlaworks.net
- * @copyright  Copyright (c) 2006 - 2016 JoomlaWorks Ltd. All rights reserved.
+ * @copyright  Copyright (c) 2006 - 2017 JoomlaWorks Ltd. All rights reserved.
  * @license    GNU/GPL license: http://www.gnu.org/copyleft/gpl.html
  */
 
 // no direct access
-defined('_JEXEC') or die ;
+defined('_JEXEC') or die;
 
 jimport('joomla.application.component.view');
 
@@ -17,7 +17,7 @@ class K2ViewComments extends K2View
 
 	function report($tpl = null)
 	{
-		JTable::addIncludePath(JPATH_COMPONENT_ADMINISTRATOR.DS.'tables');
+		JTable::addIncludePath(JPATH_COMPONENT_ADMINISTRATOR.'/tables');
 		$row = JTable::getInstance('K2Comment', 'Table');
 		$row->load(JRequest::getInt('commentID'));
 		if (!$row->published)

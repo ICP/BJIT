@@ -3,11 +3,12 @@
  * @package   OSMap
  * @copyright 2007-2014 XMap - Joomla! Vargas - Guillermo Vargas. All rights reserved.
  * @copyright 2016 Open Source Training, LLC. All rights reserved.
- * @contact   www.alledia.com, support@alledia.com
+ * @contact   www.joomlashack.com, help@joomlashack.com
  * @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
  */
 
 use Alledia\OSMap;
+use Joomla\Utilities\ArrayHelper;
 
 defined('_JEXEC') or die();
 
@@ -17,8 +18,10 @@ class OSMapModelSitemaps extends JModelList
     public function __construct($config = array())
     {
         $config['filter_fields'] = array(
-            'published', 'sitemap.published',
-            'default', 'sitemap.default'
+            'published',
+            'sitemap.published',
+            'default',
+            'sitemap.default'
         );
 
         parent::__construct($config);
@@ -41,12 +44,14 @@ class OSMapModelSitemaps extends JModelList
             } else {
                 $query->where('sitemap.published >= 0');
             }
+        } else {
+            $query->where('(sitemap.published = 0 OR sitemap.published = 1)');
         }
 
         // Filter by default state
         $default = $this->getState('filter.default');
         if ($default != '') {
-            $query->where('sitemap.is_default = ' . (int) $default);
+            $query->where('sitemap.is_default = ' . (int)$default);
         }
 
         $search = $this->getState('filter.search');
@@ -92,7 +97,7 @@ class OSMapModelSitemaps extends JModelList
             $menus = $db->setQuery($query)->loadObjectList();
 
             if (!empty($menus)) {
-                $item->menuIdList= array();
+                $item->menuIdList = array();
 
                 foreach ($menus as $menu) {
                     preg_match('#view=(xml|html)#', $menu->link, $matches);
@@ -112,8 +117,8 @@ class OSMapModelSitemaps extends JModelList
     /**
      * Method to change the published state of one or more records.
      *
-     * @param   array    &$pks   A list of the primary keys to change.
-     * @param   integer  $value  The value of the published state.
+     * @param   array   &$pks  A list of the primary keys to change.
+     * @param   integer $value The value of the published state.
      *
      * @return  boolean  True on success.
      *
@@ -129,5 +134,50 @@ class OSMapModelSitemaps extends JModelList
             ->where('id IN (' . implode(',', $pks) . ')');
 
         return $db->setQuery($query)->execute();
+    }
+
+    /**
+     * @param int[] $ids
+     *
+     * @return bool
+     * @throws Exception
+     */
+    public function delete($ids)
+    {
+        $ids = ArrayHelper::toInteger($ids);
+        $db  = $this->getDbo();
+
+        $query = $db->getQuery(true)
+            ->delete('#__osmap_sitemaps')
+            ->where(sprintf('id IN (%s)', join(',', $ids)));
+
+        if ($db->setQuery($query)->execute()) {
+            JFactory::getApplication()->enqueueMessage('SITEMAPS: ' . $db->getAffectedRows());
+            $relatedTables = array(
+                '#__osmap_sitemap_menus',
+                '#__osmap_items_settings'
+            );
+
+            $extension = new \Alledia\Framework\Joomla\Extension\Licensed('OSMap', 'Component');
+            if ($extension->isPro()) {
+                $relatedTables = array_merge(
+                    $relatedTables,
+                    array('#__osmap_itemscache', '#__osmap_itemscacheimg')
+                );
+            }
+
+            foreach ($relatedTables as $table) {
+                $db->setQuery(
+                    $db->getQuery(true)
+                        ->delete($table)
+                        ->where('sitemap_id NOT IN (SELECT id FROM #__osmap_sitemaps)')
+                )->execute();
+                JFactory::getApplication()->enqueueMessage($table . ':: ' . $db->getAffectedRows());
+            }
+
+            return true;
+        }
+
+        return false;
     }
 }

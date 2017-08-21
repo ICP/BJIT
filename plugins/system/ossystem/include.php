@@ -1,7 +1,7 @@
 <?php
 /**
  * @package   OSSystem
- * @contact   www.ostraining.com, support@ostraining.com
+ * @contact   www.joomlashack.com, help@joomlashack.com
  * @copyright 2016 Open Source Training, LLC. All rights reserved
  * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
  */
@@ -29,14 +29,14 @@ if (defined('ALLEDIA_FRAMEWORK_LOADED') && !defined('OSSYSTEM_LOADED')) {
     define('OSSYSTEM_PATH', __DIR__);
     define('OSSYSTEM_LIBRARY', OSSYSTEM_PATH . '/library');
 
-    Framework\AutoLoader::register('Alledia\OSSystem', OSSYSTEM_LIBRARY);
+    Framework\AutoLoader::register('\\Alledia\\OSSystem', OSSYSTEM_LIBRARY);
 
     // Only for backward compatibility
     if (!class_exists('OSSystemHelper')) {
         include_once 'helper.php';
     }
 
-    if (class_exists('Alledia\OSSystem\Helper')) {
+    if (class_exists('\\Alledia\\OSSystem\\Helper')) {
         define('OSSYSTEM_LOADED', 1);
     }
 

@@ -83,7 +83,7 @@ class Generic
     /**
      * The manifest information
      *
-     * @var \JRegistry
+     * @var JRegistry
      */
     public $manifest;
 
@@ -157,7 +157,7 @@ class Generic
             $this->id = null;
             $this->name = null;
             $this->enabled = false;
-            $this->params = new JRegistry;
+            $this->params = new JRegistry();
         }
     }
 

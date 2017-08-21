@@ -1,9 +1,9 @@
 <?php
 /**
- * @version    2.7.x
+ * @version    2.8.x
  * @package    K2
  * @author     JoomlaWorks http://www.joomlaworks.net
- * @copyright  Copyright (c) 2006 - 2016 JoomlaWorks Ltd. All rights reserved.
+ * @copyright  Copyright (c) 2006 - 2017 JoomlaWorks Ltd. All rights reserved.
  * @license    GNU/GPL license: http://www.gnu.org/copyleft/gpl.html
  */
 
@@ -145,7 +145,7 @@ defined('_JEXEC') or die;
 			<?php endforeach; ?>
 			<?php endif; ?>
 
-			<!-- Joomla! 1.6+ JForm implementation -->
+			<!-- Joomla 1.6+ JForm implementation -->
 			<?php if(isset($this->form)): ?>
 			<?php foreach ($this->form->getFieldsets() as $fieldset): // Iterate through the form fieldsets and display each one.?>
 				<?php if($fieldset->name != 'default'): ?>

@@ -3,21 +3,21 @@
  * @package   OSMap
  * @copyright 2007-2014 XMap - Joomla! Vargas - Guillermo Vargas. All rights reserved.
  * @copyright 2016 Open Source Training, LLC. All rights reserved.
- * @contact   www.alledia.com, support@alledia.com
+ * @contact   www.joomlashack.com, help@joomlashack.com
  * @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
  */
 
 // no direct access
 defined('_JEXEC') or die('Restricted access');
 
-JHtml::addIncludePath(JPATH_COMPONENT.'/helpers/html');
+JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 
 JHtml::_('behavior.tooltip');
 JHtml::_('formbehavior.chosen', 'select');
 
 JHtml::stylesheet('media/com_osmap/css/admin.min.css');
 
-$function = JRequest::getString('function', 'jSelectSitemap');
+$function  = JFactory::getApplication()->input->getString('function', 'jSelectSitemap');
 $baseUrl   = JUri::root();
 $listOrder = $this->escape($this->state->get('list.ordering'));
 $listDir   = $this->escape($this->state->get('list.direction'));

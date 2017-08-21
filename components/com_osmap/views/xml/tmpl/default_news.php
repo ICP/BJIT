@@ -3,7 +3,7 @@
  * @package   OSMap
  * @copyright 2007-2014 XMap - Joomla! Vargas - Guillermo Vargas. All rights reserved.
  * @copyright 2016 Open Source Training, LLC. All rights reserved.
- * @contact   www.alledia.com, support@alledia.com
+ * @contact   www.joomlashack.com, help@joomlashack.com
  * @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
  */
 
@@ -13,18 +13,45 @@ defined('_JEXEC') or die();
 
 $params = $this->params;
 
+$params->set('cutoff_date', new DateTime('-' . $this->sitemap->newsDateLimit . ' days'));
+
 $printNodeCallback = function ($node) use ($params) {
+    // Limit to Google requirements
+    static $limit = 1000;
+
     $display = !$node->ignore
         && $node->published
         && (!$node->duplicate || ($node->duplicate && !$this->osmapParams->get('ignore_duplicated_uids', 1)))
         && isset($node->newsItem)
         && !empty($node->newsItem)
         && $node->visibleForRobots
+        && $node->parentIsVisibleForRobots
         && $node->visibleForXML
         && $node->isInternal
         && trim($node->fullLink) != '';
 
+    if (!$node->hasCompatibleLanguage()) {
+        $display = false;
+    }
+
     if (!$display) {
+        return false;
+    }
+
+    if (--$limit < 0) {
+        return false;
+    }
+
+    // Publication date
+    $publicationDate = (
+        isset($node->publishUp)
+        && !empty($node->publishUp)
+        && $node->publishUp != OSMap\Factory::getDbo()->getNullDate()
+        && $node->publishUp != -1
+    ) ? $node->publishUp : null;
+
+    $publicationDate = new JDate($publicationDate);
+    if ($params->get('cutoff_date') > $publicationDate) {
         return false;
     }
 
@@ -45,8 +72,8 @@ $printNodeCallback = function ($node) use ($params) {
         // Legacy code. Not sure why the hardcoded zh-cn and zh-tw
         if (preg_match('/^([a-z]+)-.*/', $defaultLanguage, $matches)
 
-           && !in_array($defaultLanguage, array(' zh-cn',' zh-tw'))) {
-
+            && !in_array($defaultLanguage, array(' zh-cn', ' zh-tw'))
+        ) {
             $defaultLanguage = $matches[1];
         }
 
@@ -57,28 +84,7 @@ $printNodeCallback = function ($node) use ($params) {
 
     echo '</news:publication>';
 
-    // Publication date
-    $publicationDate = (
-        isset($node->modified)
-        && !empty($node->modified)
-        && $node->modified != OSMap\Factory::getDbo()->getNullDate()
-        && $node->modified != -1
-    ) ? $node->modified : null;
-
-    if (empty($publicationDate)) {
-        $publicationDate = time();
-    }
-
-    if ($publicationDate && !is_numeric($publicationDate)) {
-        $date = new JDate($publicationDate);
-        $publicationDate = $date->toUnix();
-    }
-
-    if ($publicationDate) {
-        $publicationDate = gmdate('Y-m-d\TH:i:s\Z', $publicationDate);
-    }
-
-    echo '<news:publication_date>' . $publicationDate . '</news:publication_date>';
+    echo '<news:publication_date>' . $publicationDate->format('Y-m-d\TH:i:s\Z') . '</news:publication_date>';
 
     // Title
     echo '<news:title>' . htmlspecialchars($node->name) . '</news:title>';
@@ -93,6 +99,16 @@ $printNodeCallback = function ($node) use ($params) {
 
     return true;
 };
+
+// Do we need to apply XSL?
+if ($this->params->get('add_styling', 1)) {
+    $title = '';
+    if ($this->params->get('show_page_heading', 1)) {
+        $title = '&amp;title=' . urlencode($this->pageHeading);
+    }
+
+    echo '<?xml-stylesheet type="text/xsl" href="' . JUri::base() . 'index.php?option=com_osmap&amp;view=xsl&amp;format=xsl&amp;tmpl=component&amp;layout=news&amp;id=' . $this->sitemap->id . $title . '"?>';
+}
 
 echo '<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">';
 

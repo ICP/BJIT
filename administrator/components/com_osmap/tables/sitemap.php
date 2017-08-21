@@ -3,11 +3,13 @@
  * @package   OSMap
  * @copyright 2007-2014 XMap - Joomla! Vargas - Guillermo Vargas. All rights reserved.
  * @copyright 2016 Open Source Training, LLC. All rights reserved.
- * @contact   www.alledia.com, support@alledia.com
+ * @contact   www.joomlashack.com, help@joomlashack.com
  * @license   http://www.gnu.org/licenses/gpl.html GNU/GPL
  */
 
 use Alledia\OSMap;
+use Joomla\Registry\Registry;
+use Joomla\Utilities\ArrayHelper;
 
 defined('_JEXEC') or die();
 
@@ -92,13 +94,13 @@ class OSMapTableSitemap extends JTable
     public function bind($array, $ignore = '')
     {
         if (isset($array['params']) && is_array($array['params'])) {
-            $registry = new JRegistry();
+            $registry = new Registry();
             $registry->loadArray($array['params']);
             $array['params'] = $registry->toString();
         }
 
         if (isset($array['metadata']) && is_array($array['metadata'])) {
-            $registry = new JRegistry();
+            $registry = new Registry();
             $registry->loadArray($array['metadata']);
             $array['metadata'] = $registry->toString();
         }
@@ -225,7 +227,7 @@ class OSMapTableSitemap extends JTable
         $k = $this->_tbl_key;
 
         // Sanitize input.
-        JArrayHelper::toInteger($pks);
+        ArrayHelper::toInteger($pks);
         $userId = (int) $userId;
         $state  = (int) $state;
 
@@ -247,7 +249,7 @@ class OSMapTableSitemap extends JTable
         // Update the publishing state for rows with the given primary keys.
         $query =  $this->_db->getQuery(true)
             ->update($this->_db->quoteName('#__osmap_sitemaps'))
-            ->set($this->_db->quoteName('state').' = '. (int) $state)
+            ->set($this->_db->quoteName('state') . ' = ' . (int) $state)
             ->where($where);
 
         $this->_db->setQuery($query);
@@ -279,11 +281,56 @@ class OSMapTableSitemap extends JTable
     public function removeMenus()
     {
         if (!empty($this->id)) {
-            $db = OSMap\Factory::getDbo();
+            $db    = OSMap\Factory::getDbo();
             $query = $db->getQuery(true)
                 ->delete('#__osmap_sitemap_menus')
                 ->where('sitemap_id = ' . $db->quote($this->id));
             $db->setQuery($query)->execute();
         }
+    }
+
+    /**
+     * Method to load a row from the database by primary key and bind the fields to the JTable instance properties.
+     *
+     * @param   mixed    $keys   An optional primary key value to load the row by, or an array of fields to match.
+     *                           If not set the instance property value is used.
+     * @param   boolean  $reset  True to reset the default values before loading the new row.
+     *
+     * @return  boolean  True if successful. False if row not found.
+     *
+     * @since   11.1
+     * @throws  InvalidArgumentException
+     * @throws  RuntimeException
+     * @throws  UnexpectedValueException
+     */
+    public function load($keys = null, $reset = true)
+    {
+        $success = parent::load($keys, $reset);
+
+        if ($success) {
+            // Load the menus information
+            $db       = OSMap\Factory::getDbo();
+            $ordering = array();
+
+            $query = $db->getQuery(true)
+                ->select('*')
+                ->from('#__osmap_sitemap_menus')
+                ->where('sitemap_id = ' . $db->quote($this->id))
+                ->order('ordering');
+            $menusRows = $db->setQuery($query)->loadObjectList();
+
+            if (!empty($menusRows)) {
+                foreach ($menusRows as $menu) {
+                    $this->menus[]            = $menu->menutype_id;
+                    $this->menus_priority[]   = $menu->priority;
+                    $ordering[]               = 'menu_' . $menu->menutype_id;
+                    $this->menus_changefreq[] = $menu->changefreq;
+                }
+            }
+
+            $this->menus_ordering = implode(',', $ordering);
+        }
+
+        return $success;
     }
 }

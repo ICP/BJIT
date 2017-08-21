@@ -1,9 +1,9 @@
 <?php
 /**
- * @version    2.7.x
+ * @version    2.8.x
  * @package    K2
  * @author     JoomlaWorks http://www.joomlaworks.net
- * @copyright  Copyright (c) 2006 - 2016 JoomlaWorks Ltd. All rights reserved.
+ * @copyright  Copyright (c) 2006 - 2017 JoomlaWorks Ltd. All rights reserved.
  * @license    GNU/GPL license: http://www.gnu.org/copyleft/gpl.html
  */
 
@@ -41,17 +41,17 @@ defined('_JEXEC') or die;
       <?php if($params->get('itemAuthor')): ?>
       <div class="moduleItemAuthor">
 	      <?php echo K2HelperUtilities::writtenBy($item->authorGender); ?>
-	
+
 				<?php if(isset($item->authorLink)): ?>
 				<a rel="author" title="<?php echo K2HelperUtilities::cleanHtml($item->author); ?>" href="<?php echo $item->authorLink; ?>"><?php echo $item->author; ?></a>
 				<?php else: ?>
 				<?php echo $item->author; ?>
 				<?php endif; ?>
-				
+
 				<?php if($params->get('userDescription')): ?>
 				<?php echo $item->authorDescription; ?>
 				<?php endif; ?>
-				
+
 			</div>
 			<?php endif; ?>
 
@@ -104,11 +104,11 @@ defined('_JEXEC') or die;
 
       <div class="clr"></div>
 
-      <?php if($params->get('itemVideo')): ?>
+      <?php if($params->get('itemVideo') && !empty($item->video)): ?>
       <div class="moduleItemVideo">
-      	<?php echo $item->video ; ?>
-      	<span class="moduleItemVideoCaption"><?php echo $item->video_caption ; ?></span>
-      	<span class="moduleItemVideoCredits"><?php echo $item->video_credits ; ?></span>
+      	<?php echo $item->video; ?>
+      	<span class="moduleItemVideoCaption"><?php echo $item->video_caption; ?></span>
+      	<span class="moduleItemVideoCredits"><?php echo $item->video_credits; ?></span>
       </div>
       <?php endif; ?>
 
@@ -121,11 +121,11 @@ defined('_JEXEC') or die;
       <?php echo $item->event->K2AfterDisplayContent; ?>
 
       <?php if($params->get('itemDateCreated')): ?>
-      <span class="moduleItemDateCreated"><?php echo JText::_('K2_WRITTEN_ON') ; ?> <?php echo JHTML::_('date', $item->created, JText::_('K2_DATE_FORMAT_LC2')); ?></span>
+      <span class="moduleItemDateCreated"><?php echo JText::_('K2_WRITTEN_ON'); ?> <?php echo JHTML::_('date', $item->created, JText::_('K2_DATE_FORMAT_LC2')); ?></span>
       <?php endif; ?>
 
       <?php if($params->get('itemCategory')): ?>
-      <?php echo JText::_('K2_IN') ; ?> <a class="moduleItemCategory" href="<?php echo $item->categoryLink; ?>"><?php echo $item->categoryname; ?></a>
+      <?php echo JText::_('K2_IN'); ?> <a class="moduleItemCategory" href="<?php echo $item->categoryLink; ?>"><?php echo $item->categoryname; ?></a>
       <?php endif; ?>
 
       <?php if($params->get('itemTags') && count($item->tags)>0): ?>
@@ -188,13 +188,13 @@ defined('_JEXEC') or die;
   <?php endif; ?>
 
 	<?php if($params->get('itemCustomLink')): ?>
-	<a class="moduleCustomLink" href="<?php echo $params->get('itemCustomLinkURL'); ?>" title="<?php echo K2HelperUtilities::cleanHtml($itemCustomLinkTitle); ?>"><?php echo $itemCustomLinkTitle; ?></a>
+	<a class="moduleCustomLink" href="<?php echo $itemCustomLinkURL; ?>" title="<?php echo K2HelperUtilities::cleanHtml($itemCustomLinkTitle); ?>"><?php echo $itemCustomLinkTitle; ?></a>
 	<?php endif; ?>
 
 	<?php if($params->get('feed')): ?>
 	<div class="k2FeedIcon">
 		<a href="<?php echo JRoute::_('index.php?option=com_k2&view=itemlist&format=feed&moduleID='.$module->id); ?>" title="<?php echo JText::_('K2_SUBSCRIBE_TO_THIS_RSS_FEED'); ?>">
-			<i class="k2icon-feed"></i>
+			<i class="icon-feed"></i>
 			<span><?php echo JText::_('K2_SUBSCRIBE_TO_THIS_RSS_FEED'); ?></span>
 		</a>
 		<div class="clr"></div>
