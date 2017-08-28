@@ -4,7 +4,7 @@ class JConfig {
 	public $offline_message = 'This site is down for maintenance.<br />Please check back again soon.';
 	public $display_offline_message = '1';
 	public $offline_image = '';
-	public $sitename = 'گیلگمش';
+	public $sitename = 'شبکه مستند';
 	public $editor = 'tinymce';
 	public $captcha = '0';
 	public $list_limit = '50';
@@ -15,7 +15,7 @@ class JConfig {
 	public $host = 'localhost';
 	public $user = 'root';
 	public $password = 'root';
-	public $db = 'gilgamesh';
+	public $db = 'doctv';
 	public $dbprefix = 'dtv_';
 	public $live_site = '';
 	public $secret = 'f5C2O6Wv0TCMgNbG';
@@ -32,7 +32,7 @@ class JConfig {
 	public $mailonline = '0';
 	public $mailer = 'mail';
 	public $mailfrom = 'faridv@gmail.com';
-	public $fromname = 'گیلگمش';
+	public $fromname = 'شبکه تهران';
 	public $sendmail = '/usr/sbin/sendmail';
 	public $smtpauth = '0';
 	public $smtpuser = '';

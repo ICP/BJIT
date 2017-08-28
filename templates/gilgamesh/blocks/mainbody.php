@@ -189,17 +189,8 @@
 		</div>
 	<?php } ?>
 </footer>
-<?php if ($isFrontpage) { ?>
 	<script src="<?php echo JURI::base(); ?>assets/js/jquery-1.11.1.min.js"></script>
-<?php } else { ?>
-	<script src="<?php echo JURI::base(); ?>assets/js/select2.full.min.js"></script>
-	<script src="<?php echo JURI::base(); ?>assets/js/persian-date-0.1.8.min.js"></script>
-	<script src="<?php echo JURI::base(); ?>assets/js/persian-datepicker-0.4.5.min.js?_=20160608"></script>
-	<script src="<?php echo JURI::base(); ?>assets/js/jquery.nanoscroller.min.js"></script>
-<?php } ?>
-<script src="<?php echo JURI::base(); ?>assets/js/bootstrap.min.js"></script>
-<script src="<?php echo JURI::base(); ?>assets/js/owl.carousel.min.js"></script>
-<script src="<?php echo JURI::base(); ?>assets/js/tehran.min.js?_=20160326"></script>
+<script src="<?php echo JURI::base(); ?>assets/js/gilgamesh.min.js"></script>
 <script type="text/javascript">
     // Piwik code
 </script>
