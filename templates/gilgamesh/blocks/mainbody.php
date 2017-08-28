@@ -12,17 +12,6 @@
 						<div class="search hidden-sm hidden-xs">
 							<a class="search-toggle" href="<?php echo JURI::base() . 'search'; ?>" data-toggle="toggle" data-target="#search" data-focus="#search input[type='text']"><i class="icon-search"></i></a>
 						</div>
-						<ul class="header-anchors list-inline list-unstyled">
-							<li><a href="#"><i class="icon-facebook"></i></a></li>
-							<li><a href="#"><i class="icon-twitter"></i></a></li>
-							<li><a href="#"><i class="icon-aparat"></i></a></li>
-							<li><a href="#"><i class="icon-instagram"></i></a></li>
-							<li><a href="#"><i class="icon-telegram"></i></a></li>
-							<li><a href="<?php echo JUri::base(); ?>itemlist?format=feed&type=rss"><i class="icon-rss"></i></a></li>
-							<li class="search hidden-md hidden-lg">
-								<a class="search-toggle" href="<?php echo JURI::base() . 'search'; ?>" data-toggle="toggle" data-target="#search" data-focus="#search input[type='text']"><i class="icon-search"></i><span>جستجو</span></a>
-							</li>
-						</ul>
 					</div>
 				</div>
 			</div>

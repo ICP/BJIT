@@ -1,0 +1,78 @@
+#item {
+    .item-inner { .clearfix(); padding-top: @grid-gutter-width; }
+    .item-tools {
+        margin: @grid-gutter-width 0;
+        ul {
+            font-size: 0; text-align: center;
+            li {
+                font-size: @font-size-base + 6; line-height: 48px; width: 48px; background: @beige; margin: 0 4px;
+                a {
+                    color: #fff; display: block;
+                    &:hover { color: @cyan; }
+                }
+            }
+        }
+    }
+    .item-date {
+        line-height: 48px; font-size: @font-size-base - 2; color: #ababab; text-align: left;
+    }
+    .item-header {
+        .page-title {
+            border-top: 1px solid #ddd;
+            h2 {
+                margin: 0; padding: (@grid-gutter-width) 0; font-size: 28px; color: @link-color-light; line-height: 1.5;
+                small { display: block; }
+            }
+        }
+    }
+    .item-image {
+        margin-bottom: @grid-gutter-width;
+        a, img { display: block; width: 100%; height: auto; }
+    }
+    #item-media { margin-bottom: @grid-gutter-width; }
+
+    .item-boxes {
+        .clearfix();
+        .box:last-child { margin-bottom: 0; }
+    }
+    .box {
+        .clearfix();
+        > header h2 { font-size: 22px; color: @yellow-dark; }
+        &.more {
+            header { background: @gray-light; padding: 0; margin-bottom: @grid-gutter-width; }
+            h2 { margin: 0; padding: (@grid-gutter-width / 2) (@grid-gutter-width / 2); font-size: 18px !important; color: @blue-dark; }
+        }
+    }
+
+    &.episode {
+        margin-top: @header-height; 
+       .media-container {
+            width: 60%; float: left; min-height: 300px;
+            &.has-video {
+                width: 100%; float: none;
+                & + .item-container { margin: 0; padding: 0; }
+            }
+        }
+        .item-container {
+            margin-left: 60%; padding-left: @grid-gutter-width;
+        }
+        .item-fields { .clearfix(); }
+        .item-headings {
+            .page-title {
+                border: 0 none;
+                /*.cat-title { color: white; }*/
+                .item-title {
+                    display: inline-block; color: @text-color; min-height: 30px; min-width: 30px; border-radius: 30px; text-align: center; line-height: 30px; font-size: 16px; font-weight: bold; padding: 0 10px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; max-width: 95%; text-indent: 0; margin-left: 15px; 
+                    /*background: @yellow;*/ 
+                }
+            }
+        }
+        /*.item-body { color: lighten(@gray-lightest, 20%); }*/
+    }
+    &.blog {
+        .item-author {
+            margin-bottom: 0 !important; line-height: 48px;
+            .author-avatar { height: 48px; float: right; display: block; margin-left: @grid-gutter-width / 2; }
+        }
+    }
+}

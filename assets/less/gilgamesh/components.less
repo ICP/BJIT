@@ -1,0 +1,20 @@
+ul.pagination {
+    padding: 0; background: @gray-light; width: 100%; direction: rtl; text-align: right;
+    li, a, span { background-color: transparent; border: 0 none; z-index: 1; }
+    li {
+        &:last-child {
+            float: right;
+        }
+        span, a { color: @gray-darker; }
+        &:first-child, &:last-child {
+            span { padding: 10px 10px; }
+            a { padding-left: 0; padding-right: 0; }
+        }
+        &.disabled {
+            > span { background-color: transparent; color: @gray-darker; }
+            &:hover span { background-color: transparent; z-index: 0; }
+        }
+        &:hover a, &.active span, &.active:hover span { background: @beige; color: white; }
+    }
+}
+.label { font-size: @font-size-base; margin-left: 4px; }

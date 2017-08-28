@@ -1,0 +1,54 @@
+#footer {
+    position: relative; z-index: 200;
+    & > .wrapper { padding: (@grid-gutter-width / 2) 0; color: @gray-lightest; }
+    a {
+        color: @footer-link-color;
+        &:hover { color: @footer-link-hover; }
+    }
+    .row._relative > div { position: static; }
+    .footer-logo { display: block; position: absolute; bottom: -45px; left: 0; }
+    .footer-about {
+        padding-top: 30px; border-left: 1px solid @gray-light;
+        a { display: block; text-align: center; }
+        .desc {
+            margin: (@grid-gutter-width * 2) 0 0 (@grid-gutter-width ); text-align: justify;
+            .more {
+                color: @yellow-dark; text-align: right;
+            }
+        }
+    }
+    .copyright-text {
+        font-size: @copyright-font-size - 2; text-align: center;
+        a {
+            color: @brand-info;
+            &:hover { color: #fff; }
+        }
+    }
+    .menu {
+        font-family: @headings-font-family; font-size: @footer-menu-font-size; margin-top: 90px; font-size: 0;
+        li {
+            font-size: @footer-menu-font-size; padding: 0 (@grid-gutter-width / 2);
+        }
+    }
+    .social-links {
+        font-size: 0; padding: @grid-gutter-width 0 (@grid-gutter-width / 2);
+        li {
+            font-size: 24px;
+            a {
+                color: @beige;
+                &:hover { color: white; }
+            }
+        }
+    }
+    #sitemap {
+        background: @gray-darkest;
+        padding: (@grid-gutter-width * 2) 0 @grid-gutter-width;
+        li {
+            color: @gray-darker;
+            a {
+                /*color: @gray-lightest;*/
+                &:hover { color: white; }
+            }
+        }
+    }
+}
