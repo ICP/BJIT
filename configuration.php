@@ -4,7 +4,7 @@ class JConfig {
 	public $offline_message = 'This site is down for maintenance.<br />Please check back again soon.';
 	public $display_offline_message = '1';
 	public $offline_image = '';
-	public $sitename = 'گیلگمش';
+	public $sitename = 'فصلنامه میراث و گردشگری گیلگمش';
 	public $editor = 'tinymce';
 	public $captcha = '0';
 	public $list_limit = '50';
@@ -21,7 +21,7 @@ class JConfig {
 	public $secret = 'f5C2O6Wv0TCMgNbG';
 	public $gzip = '0';
 	public $error_reporting = 'maximum';
-	public $helpurl = 'https://help.joomla.org/proxy/index.php?keyref=Help{major}{minor}:{keyref}';
+	public $helpurl = 'https://help.joomla.org/proxy?keyref=Help{major}{minor}:{keyref}&lang={langcode}';
 	public $ftp_host = '';
 	public $ftp_port = '';
 	public $ftp_user = '';
@@ -90,4 +90,7 @@ class JConfig {
 	public $cookie_domain = '';
 	public $cookie_path = '';
 	public $asset_id = '1';
+	public $replyto = '';
+	public $replytoname = '';
+	public $shared_session = '0';
 }

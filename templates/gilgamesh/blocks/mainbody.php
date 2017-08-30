@@ -1,7 +1,7 @@
 <body id="bd" class="dark <?php echo strtolower($helper->device) . ($isFrontpage ? ' home' : '') . ($isProgram ? ' home program' : ''); ?>" data-spy="scroll" data-target="#menu">
 	<header id="header">
 		<?php if ($isFrontpage) { ?><h1 class="hide"><?php echo $sitename; ?></h1><?php } ?>
-		<div id="masthead" class="wrapper purple">
+		<div id="masthead" class="wrapper">
 			<div class="container">
 				<div class="row">
 					<div class="col-xs-12">
@@ -9,20 +9,20 @@
 							<a href="<?php echo JURI::base(); ?>" title="<?php echo $sitename; ?>"><?php echo $sitename; ?></a>
 						</div>
 						<div class="menu-toggle hidden-md hidden-lg"><a href="#" data-toggle="menuslide" data-target=".menu"><i class="icon-menu"></i></a></div>
-						<div class="search hidden-sm hidden-xs">
-							<a class="search-toggle" href="<?php echo JURI::base() . 'search'; ?>" data-toggle="toggle" data-target="#search" data-focus="#search input[type='text']"><i class="icon-search"></i></a>
-						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div id="navbar" class="wrapper purple">
+		<div id="navbar" class="wrapper">
 			<div class="container">
 				<div class="row">
 					<div class="col-xs-12">
 						<?php if ($helper->countModules('menu')) { ?>
 							<jdoc:include type="modules" name="menu" />
 						<?php } ?>
+							<div class="search hidden-sm hidden-xs">
+							<a class="search-toggle" href="<?php echo JURI::base() . 'search'; ?>" data-toggle="toggle" data-target="#search" data-focus="#search input[type='text']"><i class="icon-search"></i></a>
+						</div>
 					</div>
 				</div>
 			</div>
