@@ -3,16 +3,16 @@
 <metafile version="3.7" client="site" >
 	<tag>fa-IR</tag>
 	<name>Persian</name>
-	<description>Persian language for Joomla 3.7.4</description>
-	<version>3.7.4.1</version>
-	<creationDate>July 2017</creationDate>
+	<description>Persian language for Joomla 3.7.5</description>
+	<version>3.7.5.1</version>
+	<creationDate>August 2017</creationDate>
     <author>Persian Translation Team, Joomlafarsi.com</author>
     <authorEmail>info@joomlafarsi.com</authorEmail>
     <authorUrl>www.JoomlaFarsi.com</authorUrl>
     <copyright>Copyright (C) 2005 - 2017 Open Source Matters. All rights reserved.</copyright>
 	<copyright>joomlafarsi.com</copyright>
     <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
-    <description><![CDATA[Persian site language pack for Joomla 3.7.4]]></description>
+    <description><![CDATA[Persian site language pack for Joomla 3.7.5]]></description>
 	<metadata>
 		<name>Persian (IR)</name>
 		<nativeName>Persian (Iran)</nativeName>

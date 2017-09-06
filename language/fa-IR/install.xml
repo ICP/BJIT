@@ -3,14 +3,14 @@
 <extension version="3.7" client="site" type="language" method="upgrade">
     <name>Persian</name>
     <tag>fa-IR</tag>
-    <version>3.7.4.1</version>
-	<creationDate>July 2017</creationDate>
+    <version>3.7.5.1</version>
+	<creationDate>August 2017</creationDate>
     <author>Persian Translation Team, Joomlafarsi.com</author>
     <authorEmail>info@joomlafarsi.com</authorEmail>
     <authorUrl>www.joomlafarsi.com</authorUrl>
     <copyright>Copyright (C) 2005 - 2017 Joomlafarsi.com and Open Source Matters. All rights reserved.</copyright>
 	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
-    <description>Persian site language pack for Joomla 3.7.4</description>
+    <description>Persian site language pack for Joomla 3.7.5</description>
     <files>
 		<folder>/</folder>
         <filename file="meta">install.xml</filename>
