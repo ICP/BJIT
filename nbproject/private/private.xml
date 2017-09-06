@@ -3,9 +3,23 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="2"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/irib/doctv/language/fa-IR/fa-IR.localise.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/libs/browser.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/helper.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/mod_content/Cards/default.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/com_k2/articles/item.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/com_k2/articles/category.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/modules/mod_content/helper.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/blocks/header.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/gilgamesh/project.less</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/gilgamesh/misc.less</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/components/com_k2/templates/default/category.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/js/gilgamesh.js</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/gilgamesh/footer.less</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/gilgamesh/main.less</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/mod_content/FirstFeatured2/default.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/gilgamesh/variables.less</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/blocks/mainbody.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/gilgamesh/header.less</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/templateDetails.xml</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/gilgamesh/box.less</file>
         </group>
     </open-files>
 </project-private>
