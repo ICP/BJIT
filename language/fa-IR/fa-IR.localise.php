@@ -103,7 +103,7 @@ class fa_IRDate extends JDate {
 			$return = str_replace(self::MONTH_ABBR, self::$month_names[$m-1] , $return);
 		}
 		if (strpos($return, self::MONTH_NAME) !== false) {
-			@$return = str_replace(self::MONTH_NAME, self::$month_names[$m-1] , $return);
+			$return = str_replace(self::MONTH_NAME, self::$month_names[$m-1] , $return);
 		}
 		if (strpos($return, self::MONTH_NUMBER) !== false) {
 			$return = str_replace(self::MONTH_NUMBER, $m , $return);
