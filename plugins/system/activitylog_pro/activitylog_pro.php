@@ -37,7 +37,7 @@ function ualog_predict_id($table)
 
 function ualog_get_title($id, $table, $field = 'title', $key = null)
 {
-	$db = &JFactory::getDBO();
+	$db = JFactory::getDBO();
 
 	$where = "id";
 
@@ -62,8 +62,8 @@ function ualog_get_title($id, $table, $field = 'title', $key = null)
 
 function ualog_save( $alink, $atitle, $item )
 {
-	$db      = &JFactory::getDBO();
-	$user    = &JFactory::getUser();
+	$db      = JFactory::getDBO();
+	$user    = JFactory::getUser();
 	$time    = time();
 	$com     = $db->Quote( JRequest::getVar('option') );
 	$task    = $db->Quote( JRequest::getVar('task') );
