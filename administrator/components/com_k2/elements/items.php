@@ -26,7 +26,7 @@ class K2ElementItems extends K2Element
         {
             JHTML::_('behavior.mootools');
         }
-        K2HelperHTML::loadjQuery();
+        //K2HelperHTML::loadjQuery();
         $mainframe = JFactory::getApplication();
         if (K2_JVERSION != '15')
         {
