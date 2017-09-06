@@ -48,3 +48,6 @@ Temporary Items
 .apdisk
 doctv.zip
 htaccess.txt
+.idea
+.idea/*
+nbproject/private/private.xml
