@@ -25,6 +25,7 @@
                 <field name="type" type="list" default="items" label="Type" description="">
                     <option value="items">Items</option>
                     <option value="categories">Categories</option>
+                    <option value="category-items">Category Items</option>
                 </field>
                 <field name="source" type="list" default="filter" label="K2_SOURCE" description="">
                     <option value="filter">K2_RETRIEVE_ITEMS_FROM_CATEGORIES</option>

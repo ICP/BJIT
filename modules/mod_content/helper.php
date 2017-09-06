@@ -33,245 +33,275 @@ class modK2ContentHelper {
 		$now = K2_JVERSION == '15' ? $jnow->toMySQL() : $jnow->toSql();
 		$nullDate = $db->getNullDate();
 
-		if ($params->get('type', 'items') == "categories") {
-			$query = $db->getQuery(true);
-			$query->select('c.id AS categoryid, c.name AS categoryname, c.alias AS categoryalias, c.params AS categoryparams, c.description, c.parent, c.image')
-					->from($db->quoteName('#__k2_categories') . ' AS c')
-					->where('c.published = 1 AND c.trash = 0 AND c.access = 1', 'AND');
-
-			if ($params->get('catfilter')) {
-				if (is_array($cid)) {
-					JArrayHelper::toInteger($cid);
-					$query->where("c.parent IN(" . implode(',', $cid) . ")");
-				} else {
-					$query->where("c.parent=" . (int) $cid);
+		switch ($params->get('type', 'items')) {
+			case 'categories':
+				$query = $db->getQuery(true);
+				$query->select('c.id AS categoryid, c.name AS categoryname, c.alias AS categoryalias, c.params AS categoryparams, c.description, c.parent, c.image')
+						->from($db->quoteName('#__k2_categories') . ' AS c')
+						->where('c.published = 1 AND c.trash = 0 AND c.access = 1', 'AND');
+				if ($params->get('catfilter')) {
+					if (is_array($cid)) {
+						JArrayHelper::toInteger($cid);
+						$query->where("c.parent IN(" . implode(',', $cid) . ")");
+					} else {
+						$query->where("c.parent=" . (int) $cid);
+					}
 				}
-			}
-			
-			$query->order('c.id DESC');
-			$db->setQuery($query, 0, $limit);
-			$items = $db->loadObjectList();
-			if (count($items)) {
-				foreach ($items as $item) {
-					$item->link = urldecode(JRoute::_(K2HelperRoute::getCategoryRoute($item->categoryid . ':' . urlencode($item->categoryalias))));
+				$query->order('c.id DESC');
+				$db->setQuery($query, 0, $limit);
+				$items = $db->loadObjectList();
+				if (count($items)) {
+					foreach ($items as $item) {
+						$item->link = urldecode(JRoute::_(K2HelperRoute::getCategoryRoute($item->categoryid . ':' . urlencode($item->categoryalias))));
+					}
 				}
-			}
-			
-//			var_dump($items); die;
-			return $items;
-		}
-
-		if ($params->get('source') == 'specific') {
-
-			$value = $params->get('items');
-			$current = array();
-			if (is_string($value) && !empty($value))
-				$current[] = $value;
-			if (is_array($value))
-				$current = $value;
-
-			$items = array();
-
-			foreach ($current as $id) {
-
-				$query = "SELECT i.*, c.name AS categoryname,c.id AS categoryid, c.alias AS categoryalias, c.params AS categoryparams
+				return $items;
+				break;
+			case 'items':
+				if ($params->get('source') == 'specific') {
+					$value = $params->get('items');
+					$current = array();
+					if (is_string($value) && !empty($value))
+						$current[] = $value;
+					if (is_array($value))
+						$current = $value;
+					$items = array();
+					foreach ($current as $id) {
+						$query = "SELECT i.*, c.name AS categoryname,c.id AS categoryid, c.alias AS categoryalias, c.params AS categoryparams
 					, c.description as categorydesc, c.image as categoryimage
 				FROM #__k2_items as i 
 				LEFT JOIN #__k2_categories c ON c.id = i.catid 
 				WHERE i.published = 1 ";
-				if (K2_JVERSION != '15') {
-					$query .= " AND i.access IN(" . implode(',', $user->getAuthorisedViewLevels()) . ") ";
-				} else {
-					$query .= " AND i.access<={$aid} ";
-				}
-				$query .= " AND i.trash = 0 AND c.published = 1 ";
-				if (K2_JVERSION != '15') {
-					$query .= " AND c.access IN(" . implode(',', $user->getAuthorisedViewLevels()) . ") ";
-				} else {
-					$query .= " AND c.access<={$aid} ";
-				}
-				$query .= " AND c.trash = 0 
+						if (K2_JVERSION != '15') {
+							$query .= " AND i.access IN(" . implode(',', $user->getAuthorisedViewLevels()) . ") ";
+						} else {
+							$query .= " AND i.access<={$aid} ";
+						}
+						$query .= " AND i.trash = 0 AND c.published = 1 ";
+						if (K2_JVERSION != '15') {
+							$query .= " AND c.access IN(" . implode(',', $user->getAuthorisedViewLevels()) . ") ";
+						} else {
+							$query .= " AND c.access<={$aid} ";
+						}
+						$query .= " AND c.trash = 0 
 				AND ( i.publish_up = " . $db->Quote($nullDate) . " OR i.publish_up <= " . $db->Quote($now) . " ) 
 				AND ( i.publish_down = " . $db->Quote($nullDate) . " OR i.publish_down >= " . $db->Quote($now) . " ) 
 				AND i.id={$id}";
-				if (K2_JVERSION != '15') {
-					if ($mainframe->getLanguageFilter()) {
-						$languageTag = JFactory::getLanguage()->getTag();
-						$query .= " AND c.language IN (" . $db->Quote($languageTag) . ", " . $db->Quote('*') . ") AND i.language IN (" . $db->Quote($languageTag) . ", " . $db->Quote('*') . ")";
-					}
-				}
-				$db->setQuery($query);
-				$item = $db->loadObject();
-				if ($item)
-					$items[] = $item;
-			}
-		} else {
-			$query = "SELECT i.*,";
-
-			if ($ordering == 'modified') {
-				$query .= " CASE WHEN i.modified = 0 THEN i.created ELSE i.modified END as lastChanged,";
-			}
-
-			$query .= "c.name AS categoryname,c.id AS categoryid, c.alias AS categoryalias, c.params AS categoryparams";
-			$query .= ", c.description as categorydesc, c.image as categoryimg";
-
-			if ($ordering == 'best')
-				$query .= ", (r.rating_sum/r.rating_count) AS rating";
-
-			if ($ordering == 'comments')
-				$query .= ", COUNT(comments.id) AS numOfComments";
-
-			$query .= " FROM #__k2_items as i RIGHT JOIN #__k2_categories c ON c.id = i.catid";
-
-			if ($ordering == 'best')
-				$query .= " LEFT JOIN #__k2_rating r ON r.itemID = i.id";
-
-			if ($ordering == 'comments')
-				$query .= " LEFT JOIN #__k2_comments comments ON comments.itemID = i.id";
-
-			$tagsFilter = $params->get('tags');
-			if ($tagsFilter && is_array($tagsFilter) && count($tagsFilter)) {
-				$query .= " INNER JOIN #__k2_tags_xref tags_xref ON tags_xref.itemID = i.id";
-			}
-
-			if (K2_JVERSION != '15') {
-				$query .= " WHERE i.published = 1 AND i.access IN(" . implode(',', $user->getAuthorisedViewLevels()) . ") AND i.trash = 0 AND c.published = 1 AND c.access IN(" . implode(',', $user->getAuthorisedViewLevels()) . ")  AND c.trash = 0";
-			} else {
-				$query .= " WHERE i.published = 1 AND i.access <= {$aid} AND i.trash = 0 AND c.published = 1 AND c.access <= {$aid} AND c.trash = 0";
-			}
-
-			$query .= " AND ( i.publish_up = " . $db->Quote($nullDate) . " OR i.publish_up <= " . $db->Quote($now) . " )";
-			$query .= " AND ( i.publish_down = " . $db->Quote($nullDate) . " OR i.publish_down >= " . $db->Quote($now) . " )";
-
-			if ($params->get('catfilter')) {
-				if (!is_null($cid)) {
-					if (is_array($cid)) {
-						if ($params->get('getChildren')) {
-							$itemListModel = K2Model::getInstance('Itemlist', 'K2Model');
-							$categories = $itemListModel->getCategoryTree($cid);
-							$sql = @implode(',', $categories);
-							$query .= " AND i.catid IN ({$sql})";
-						} else {
-							JArrayHelper::toInteger($cid);
-							$query .= " AND i.catid IN(" . implode(',', $cid) . ")";
+						if (K2_JVERSION != '15') {
+							if ($mainframe->getLanguageFilter()) {
+								$languageTag = JFactory::getLanguage()->getTag();
+								$query .= " AND c.language IN (" . $db->Quote($languageTag) . ", " . $db->Quote('*') . ") AND i.language IN (" . $db->Quote($languageTag) . ", " . $db->Quote('*') . ")";
+							}
 						}
+						$db->setQuery($query);
+						$item = $db->loadObject();
+						if ($item)
+							$items[] = $item;
+					}
+				} else {
+					$query = "SELECT i.*,";
+
+					if ($ordering == 'modified') {
+						$query .= " CASE WHEN i.modified = 0 THEN i.created ELSE i.modified END as lastChanged,";
+					}
+
+					$query .= "c.name AS categoryname,c.id AS categoryid, c.alias AS categoryalias, c.params AS categoryparams";
+					$query .= ", c.description as categorydesc, c.image as categoryimg";
+
+					if ($ordering == 'best')
+						$query .= ", (r.rating_sum/r.rating_count) AS rating";
+
+					if ($ordering == 'comments')
+						$query .= ", COUNT(comments.id) AS numOfComments";
+
+					$query .= " FROM #__k2_items as i RIGHT JOIN #__k2_categories c ON c.id = i.catid";
+
+					if ($ordering == 'best')
+						$query .= " LEFT JOIN #__k2_rating r ON r.itemID = i.id";
+
+					if ($ordering == 'comments')
+						$query .= " LEFT JOIN #__k2_comments comments ON comments.itemID = i.id";
+
+					$tagsFilter = $params->get('tags');
+					if ($tagsFilter && is_array($tagsFilter) && count($tagsFilter)) {
+						$query .= " INNER JOIN #__k2_tags_xref tags_xref ON tags_xref.itemID = i.id";
+					}
+
+					if (K2_JVERSION != '15') {
+						$query .= " WHERE i.published = 1 AND i.access IN(" . implode(',', $user->getAuthorisedViewLevels()) . ") AND i.trash = 0 AND c.published = 1 AND c.access IN(" . implode(',', $user->getAuthorisedViewLevels()) . ")  AND c.trash = 0";
 					} else {
-						if ($params->get('getChildren')) {
-							$itemListModel = K2Model::getInstance('Itemlist', 'K2Model');
-							$categories = $itemListModel->getCategoryTree($cid);
-							$sql = @implode(',', $categories);
-							$query .= " AND i.catid IN ({$sql})";
-						} else {
-							$query .= " AND i.catid=" . (int) $cid;
+						$query .= " WHERE i.published = 1 AND i.access <= {$aid} AND i.trash = 0 AND c.published = 1 AND c.access <= {$aid} AND c.trash = 0";
+					}
+
+					$query .= " AND ( i.publish_up = " . $db->Quote($nullDate) . " OR i.publish_up <= " . $db->Quote($now) . " )";
+					$query .= " AND ( i.publish_down = " . $db->Quote($nullDate) . " OR i.publish_down >= " . $db->Quote($now) . " )";
+
+					if ($params->get('catfilter')) {
+						if (!is_null($cid)) {
+							if (is_array($cid)) {
+								if ($params->get('getChildren')) {
+									$itemListModel = K2Model::getInstance('Itemlist', 'K2Model');
+									$categories = $itemListModel->getCategoryTree($cid);
+									$sql = @implode(',', $categories);
+									$query .= " AND i.catid IN ({$sql})";
+								} else {
+									JArrayHelper::toInteger($cid);
+									$query .= " AND i.catid IN(" . implode(',', $cid) . ")";
+								}
+							} else {
+								if ($params->get('getChildren')) {
+									$itemListModel = K2Model::getInstance('Itemlist', 'K2Model');
+									$categories = $itemListModel->getCategoryTree($cid);
+									$sql = @implode(',', $categories);
+									$query .= " AND i.catid IN ({$sql})";
+								} else {
+									$query .= " AND i.catid=" . (int) $cid;
+								}
+							}
 						}
 					}
-				}
-			}
 
-			$tagsFilter = $params->get('tags');
-			if ($tagsFilter && is_array($tagsFilter) && count($tagsFilter)) {
-				$query .= " AND tags_xref.tagID IN(" . implode(',', $tagsFilter) . ")";
-			}
-
-			$usersFilter = $params->get('users');
-			if ($usersFilter && is_array($usersFilter) && count($usersFilter)) {
-				$query .= " AND i.created_by IN(" . implode(',', $usersFilter) . ") AND i.created_by_alias = ''";
-			}
-
-			if ($params->get('FeaturedItems') == '0')
-				$query .= " AND i.featured != 1";
-
-			if ($params->get('FeaturedItems') == '2')
-				$query .= " AND i.featured = 1";
-
-			if ($params->get('videosOnly'))
-				$query .= " AND (i.video IS NOT NULL AND i.video!='')";
-
-			if ($ordering == 'comments')
-				$query .= " AND comments.published = 1";
-
-			if (K2_JVERSION != '15') {
-				if ($mainframe->getLanguageFilter()) {
-					$languageTag = JFactory::getLanguage()->getTag();
-					$query .= " AND c.language IN (" . $db->Quote($languageTag) . ", " . $db->Quote('*') . ") AND i.language IN (" . $db->Quote($languageTag) . ", " . $db->Quote('*') . ")";
-				}
-			}
-
-			switch ($ordering) {
-
-				case 'date' :
-					$orderby = 'i.created ASC';
-					break;
-
-				case 'rdate' :
-					$orderby = 'i.created DESC';
-					break;
-
-				case 'alpha' :
-					$orderby = 'i.title';
-					break;
-
-				case 'ralpha' :
-					$orderby = 'i.title DESC';
-					break;
-
-				case 'order' :
-					if ($params->get('FeaturedItems') == '2')
-						$orderby = 'i.featured_ordering';
-					else
-						$orderby = 'i.ordering';
-					break;
-
-				case 'rorder' :
-					if ($params->get('FeaturedItems') == '2')
-						$orderby = 'i.featured_ordering DESC';
-					else
-						$orderby = 'i.ordering DESC';
-					break;
-
-				case 'hits' :
-					if ($params->get('popularityRange')) {
-						$datenow = JFactory::getDate();
-						$date = K2_JVERSION == '15' ? $datenow->toMySQL() : $datenow->toSql();
-						$query .= " AND i.created > DATE_SUB('{$date}',INTERVAL " . $params->get('popularityRange') . " DAY) ";
+					$tagsFilter = $params->get('tags');
+					if ($tagsFilter && is_array($tagsFilter) && count($tagsFilter)) {
+						$query .= " AND tags_xref.tagID IN(" . implode(',', $tagsFilter) . ")";
 					}
-					$orderby = 'i.hits DESC';
-					break;
 
-				case 'rand' :
-					$orderby = 'RAND()';
-					break;
-
-				case 'best' :
-					$orderby = 'rating DESC';
-					break;
-
-				case 'comments' :
-					if ($params->get('popularityRange')) {
-						$datenow = JFactory::getDate();
-						$date = K2_JVERSION == '15' ? $datenow->toMySQL() : $datenow->toSql();
-						$query .= " AND i.created > DATE_SUB('{$date}',INTERVAL " . $params->get('popularityRange') . " DAY) ";
+					$usersFilter = $params->get('users');
+					if ($usersFilter && is_array($usersFilter) && count($usersFilter)) {
+						$query .= " AND i.created_by IN(" . implode(',', $usersFilter) . ") AND i.created_by_alias = ''";
 					}
-					$query .= " GROUP BY i.id ";
-					$orderby = 'numOfComments DESC';
-					break;
 
-				case 'modified' :
-					$orderby = 'lastChanged DESC';
-					break;
+					if ($params->get('FeaturedItems') == '0')
+						$query .= " AND i.featured != 1";
 
-				case 'publishUp' :
-					$orderby = 'i.publish_up DESC';
-					break;
+					if ($params->get('FeaturedItems') == '2')
+						$query .= " AND i.featured = 1";
 
-				default :
-					$orderby = 'i.id DESC';
-					break;
-			}
+					if ($params->get('videosOnly'))
+						$query .= " AND (i.video IS NOT NULL AND i.video!='')";
 
-			$query .= " ORDER BY " . $orderby;
-			$db->setQuery($query, 0, $limit);
-			$items = $db->loadObjectList();
+					if ($ordering == 'comments')
+						$query .= " AND comments.published = 1";
+
+					if (K2_JVERSION != '15') {
+						if ($mainframe->getLanguageFilter()) {
+							$languageTag = JFactory::getLanguage()->getTag();
+							$query .= " AND c.language IN (" . $db->Quote($languageTag) . ", " . $db->Quote('*') . ") AND i.language IN (" . $db->Quote($languageTag) . ", " . $db->Quote('*') . ")";
+						}
+					}
+
+					switch ($ordering) {
+
+						case 'date' :
+							$orderby = 'i.created ASC';
+							break;
+
+						case 'rdate' :
+							$orderby = 'i.created DESC';
+							break;
+
+						case 'alpha' :
+							$orderby = 'i.title';
+							break;
+
+						case 'ralpha' :
+							$orderby = 'i.title DESC';
+							break;
+
+						case 'order' :
+							if ($params->get('FeaturedItems') == '2')
+								$orderby = 'i.featured_ordering';
+							else
+								$orderby = 'i.ordering';
+							break;
+
+						case 'rorder' :
+							if ($params->get('FeaturedItems') == '2')
+								$orderby = 'i.featured_ordering DESC';
+							else
+								$orderby = 'i.ordering DESC';
+							break;
+
+						case 'hits' :
+							if ($params->get('popularityRange')) {
+								$datenow = JFactory::getDate();
+								$date = K2_JVERSION == '15' ? $datenow->toMySQL() : $datenow->toSql();
+								$query .= " AND i.created > DATE_SUB('{$date}',INTERVAL " . $params->get('popularityRange') . " DAY) ";
+							}
+							$orderby = 'i.hits DESC';
+							break;
+
+						case 'rand' :
+							$orderby = 'RAND()';
+							break;
+
+						case 'best' :
+							$orderby = 'rating DESC';
+							break;
+
+						case 'comments' :
+							if ($params->get('popularityRange')) {
+								$datenow = JFactory::getDate();
+								$date = K2_JVERSION == '15' ? $datenow->toMySQL() : $datenow->toSql();
+								$query .= " AND i.created > DATE_SUB('{$date}',INTERVAL " . $params->get('popularityRange') . " DAY) ";
+							}
+							$query .= " GROUP BY i.id ";
+							$orderby = 'numOfComments DESC';
+							break;
+
+						case 'modified' :
+							$orderby = 'lastChanged DESC';
+							break;
+
+						case 'publishUp' :
+							$orderby = 'i.publish_up DESC';
+							break;
+
+						default :
+							$orderby = 'i.id DESC';
+							break;
+					}
+
+					$query .= " ORDER BY " . $orderby;
+					$db->setQuery($query, 0, $limit);
+					$items = $db->loadObjectList();
+				}
+				break;
+			case 'category-items':
+				$query = "SELECT i.*,";
+				$query .= " c.`name` AS categoryname,c.id AS categoryid, c.alias AS categoryalias, c.params AS categoryparams";
+				$query .= " , c.description as categorydesc, c.image as categoryimg";
+				$query .= " FROM #__k2_items as i RIGHT JOIN #__k2_categories c ON c.id = i.catid";
+				
+				$query .= " WHERE i.id IN (SELECT max(i.id) AS maxid FROM #__k2_items AS i LEFT JOIN #__k2_categories c ON c.id = i.catid ";
+				
+				$query .= " WHERE i.published = 1 AND i.access IN(" . implode(',', $user->getAuthorisedViewLevels()) . ") AND i.trash = 0 AND c.published = 1 AND c.access IN(" . implode(',', $user->getAuthorisedViewLevels()) . ")  AND c.trash = 0";
+				$query .= " AND ( i.publish_up = " . $db->Quote($nullDate) . " OR i.publish_up <= " . $db->Quote($now) . " )";
+				$query .= " AND ( i.publish_down = " . $db->Quote($nullDate) . " OR i.publish_down >= " . $db->Quote($now) . " )";		
+
+				if (is_array($cid)) {
+					JArrayHelper::toInteger($cid);
+					$query .= " AND c.parent IN(" . implode(',', $cid) . ")";
+				} else {
+					$query .= " AND c.parent=" . (int) $cid;
+				}
+
+				if ($params->get('FeaturedItems') == '0')
+					$query .= " AND i.featured != 1";
+
+				if ($params->get('FeaturedItems') == '2')
+					$query .= " AND i.featured = 1";
+
+				if ($params->get('videosOnly'))
+					$query .= " AND (i.video IS NOT NULL AND i.video!='')";
+
+				if ($ordering == 'comments')
+					$query .= " AND comments.published = 1";
+
+				$query .= " GROUP BY c.id)";
+				$db->setQuery($query, 0, $limit);
+				$items = $db->loadObjectList();
+				break;
 		}
 
 		$model = K2Model::getInstance('Item', 'K2Model');
@@ -355,9 +385,8 @@ class modK2ContentHelper {
 //				$item->categoryLink = urldecode(JRoute::_(K2HelperRoute::getCategoryRoute($params->get('itemCategory') . ':' . urlencode($item->categoryalias))));
 				//Extra fields
 //				if ($params->get('itemExtraFields')) {
-					$item->extra_fields = $model->getItemExtraFields($item->extra_fields, $item);
+				$item->extra_fields = $model->getItemExtraFields($item->extra_fields, $item);
 //				}
-
 				//Comments counter
 				if ($params->get('itemCommentsCounter'))
 					$item->numOfComments = $model->countItemComments($item->id);
