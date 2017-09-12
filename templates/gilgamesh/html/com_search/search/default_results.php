@@ -7,6 +7,9 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 defined('_JEXEC') or die;
+//var_dump($this->results);
+require_once (JPATH_SITE . DS . 'components' . DS . 'com_k2' . DS . 'helpers' . DS . 'route.php');
+//urldecode(JRoute::_(K2HelperRoute::getCategoryRoute($item->catid . ':' . urlencode($item->categoryalias))));
 ?>
 <section class="box episodes tiles highlights latest grid">
 	<div>
@@ -21,14 +24,16 @@ defined('_JEXEC') or die;
 					<div class="desc">
 						<div class="item-header">
 							<h3 class="item-title">
-								<a href="<?php echo JRoute::_($result->href); ?>"<?php if ($result->browsernav == 1) { ?> target="_blank"<?php } ?>><?php echo $this->escape($result->title); ?></a>
+								<a href="<?php echo JRoute::_($result->href); ?>"<?php if ($result->browsernav == 1) { ?> target="_blank"<?php } ?>><?php echo ($result->title); ?></a>
 							</h3>
 						</div>
 						<div class="introtext">
 							<?php echo $result->text; ?>
 						</div>
 						<div class="item-category">
+							<a href="<?php echo urldecode(JRoute::_(K2HelperRoute::getCategoryRoute($result->catslug))); ?>">
 							<?php echo $this->escape($result->section); ?>
+								</a>
 						</div>
 					</div>
 				</li>

@@ -13,18 +13,18 @@ K2HelperUtilities::setDefaultImage($this->item, 'itemlist', $this->params);
 ?>
 <?php echo $this->item->event->BeforeDisplay; ?>
 <?php echo $this->item->event->K2BeforeDisplay; ?>
-<?php if ($this->item->params->get('catItemImage') && !empty($this->item->image)) { ?>
-	<figure class="img">
-		<a href="<?php echo $this->item->link; ?>">
+<figure class="img">
+	<a href="<?php echo $this->item->link; ?>">
+		<?php if ($this->item->params->get('catItemImage') && !empty($this->item->image)) { ?>
 			<img src="<?php echo $this->item->image; ?>" alt="<?php
 			if (!empty($this->item->image_caption))
 				echo K2HelperUtilities::cleanHtml($this->item->image_caption);
 			else
 				echo K2HelperUtilities::cleanHtml($this->item->title);
 			?>" />
-		</a>
-	</figure>
-<?php } ?>
+			 <?php } ?>
+	</a>
+</figure>
 <div class="desc">
 	<?php if ($this->item->params->get('catItemTitle')) { ?>
 		<h3 class="item-title">
@@ -72,7 +72,7 @@ K2HelperUtilities::setDefaultImage($this->item, 'itemlist', $this->params);
 		</div>
 	<?php } ?>
 	<?php if ($this->item->params->get('catItemDateCreated')) { ?>
-		<time class="created"><?php echo JHTML::_('date', $this->item->created, JText::_('K2_DATE_FORMAT_LC2')); ?></time>
+		<time class="created"><?php echo str_replace(',', '،', JHTML::_('date', $this->item->created, JText::_('DATE_FORMAT_LC1'))); ?></time>
 		<?php } ?>
 </div>
 <?php echo $this->item->event->AfterDisplay; ?>

@@ -15,30 +15,9 @@ $en = stristr(JFactory::getApplication()->getMenu()->getActive()->params["pagecl
 		<?php echo JText::_('K2_PRINT_THIS_PAGE'); ?>
 	</a>
 <?php } ?>
-<article id="item" class="item news<?php echo ($this->item->featured) ? ' featured' : ''; ?><?php if ($this->item->params->get('pageclass_sfx')) echo ' ' . $this->item->params->get('pageclass_sfx'); ?>" data-hits="<?php echo $this->item->hits; ?>" data-hits="<?php if ($this->item->params->get('itemDateModified') && intval($this->item->modified) != 0) { ?><?php echo JHTML::_('date', $this->item->modified, JText::_('K2_DATE_FORMAT_LC2')); ?><?php } ?>">
+<article id="item" class="item misc<?php echo ($this->item->featured) ? ' featured' : ''; ?><?php if ($this->item->params->get('pageclass_sfx')) echo ' ' . $this->item->params->get('pageclass_sfx'); ?>" data-hits="<?php echo $this->item->hits; ?>" data-hits="<?php if ($this->item->params->get('itemDateModified') && intval($this->item->modified) != 0) { ?><?php echo JHTML::_('date', $this->item->modified, JText::_('K2_DATE_FORMAT_LC2')); ?><?php } ?>">
 	<?php echo $this->item->event->BeforeDisplay; ?>
 	<?php echo $this->item->event->K2BeforeDisplay; ?>
-	<header class="item-header">
-		<?php if ($this->item->params->get('itemTitle')) { ?>
-			<div class="page-title">
-				<h2 class="item-title">
-					<?php echo $this->item->title; ?>
-				</h2>
-			</div>
-		<?php } ?>
-		<?php if ($this->item->params->get('itemAuthor')) { ?>
-			<div class="item-author">
-				<?php echo K2HelperUtilities::writtenBy($this->item->author->profile->gender); ?>
-				<?php if (empty($this->item->created_by_alias)) { ?>
-					<a rel="author" href="<?php echo $this->item->author->link; ?>"><?php echo $this->item->author->name; ?></a>
-				<?php } else { ?>
-					<?php echo $this->item->author->name; ?>
-				<?php } ?>
-			</div>
-		<?php } ?>
-	</header>
-	<?php echo $this->item->event->AfterDisplayTitle; ?>
-	<?php echo $this->item->event->K2AfterDisplayTitle; ?>
 	<div class="item-body">
 		<?php echo $this->item->event->BeforeDisplayContent; ?>
 		<?php echo $this->item->event->K2BeforeDisplayContent; ?>
@@ -65,6 +44,27 @@ $en = stristr(JFactory::getApplication()->getMenu()->getActive()->params["pagecl
 				<?php } ?>
 			</figure>
 		<?php } ?>
+		<header class="item-header">
+			<?php if ($this->item->params->get('itemTitle')) { ?>
+				<div class="page-title">
+					<h1 class="item-title">
+						<?php echo $this->item->title; ?>
+					</h1>
+				</div>
+			<?php } ?>
+			<?php if ($this->item->params->get('itemAuthor') && empty($this->item->created_by_alias)) { ?>
+				<div class="item-author">
+					<?php echo K2HelperUtilities::writtenBy($this->item->author->profile->gender); ?>
+					<?php if (empty($this->item->created_by_alias)) { ?>
+						<a rel="author" href="<?php echo $this->item->author->link; ?>"><?php echo $this->item->author->name; ?></a>
+					<?php } else { ?>
+						<?php echo $this->item->author->name; ?>
+					<?php } ?>
+				</div>
+			<?php } ?>
+		</header>
+		<?php echo $this->item->event->AfterDisplayTitle; ?>
+		<?php echo $this->item->event->K2AfterDisplayTitle; ?>
 		<?php if ($this->item->params->get('itemExtraFields') && count($this->item->extra_fields)) { ?>
 			<?php foreach ($this->item->extra_fields as $key => $extraField) { ?>
 				<?php if ($extraField->alias == "embed" && $extraField->value != '') { ?>
@@ -112,72 +112,32 @@ $en = stristr(JFactory::getApplication()->getMenu()->getActive()->params["pagecl
 		<?php echo $this->item->event->AfterDisplayContent; ?>
 		<?php echo $this->item->event->K2AfterDisplayContent; ?>
 	</div>
-	<?php /* if ($this->item->params->get('itemAuthorBlock') && empty($this->item->created_by_alias)) { ?>
-	  <div class="itemAuthorBlock">
-	  <?php if ($this->item->params->get('itemAuthorImage') && !empty($this->item->author->avatar)) { ?>
-	  <img class="itemAuthorAvatar" src="<?php echo $this->item->author->avatar; ?>" alt="<?php echo K2HelperUtilities::cleanHtml($this->item->author->name); ?>" />
-	  <?php } ?>
-	  <div class="itemAuthorDetails">
-	  <h3 class="itemAuthorName">
-	  <a rel="author" href="<?php echo $this->item->author->link; ?>"><?php echo $this->item->author->name; ?></a>
-	  </h3>
-	  <?php if ($this->item->params->get('itemAuthorDescription') && !empty($this->item->author->profile->description)) { ?>
-	  <p><?php echo $this->item->author->profile->description; ?></p>
-	  <?php } ?>
-	  <?php if ($this->item->params->get('itemAuthorURL') && !empty($this->item->author->profile->url)) { ?>
-	  <span class="itemAuthorUrl"><i class="k2icon-globe"></i> <a rel="me" href="<?php echo $this->item->author->profile->url; ?>" target="_blank"><?php echo str_replace('http://', '', $this->item->author->profile->url); ?></a></span>
-	  <?php } ?>
-
-	  <?php if ($this->item->params->get('itemAuthorURL') && !empty($this->item->author->profile->url) && $this->item->params->get('itemAuthorEmail')) { ?>
-	  <span class="k2HorizontalSep">|</span>
-	  <?php } ?>
-
-	  <?php if ($this->item->params->get('itemAuthorEmail')) { ?>
-	  <span class="itemAuthorEmail"><i class="k2icon-envelope"></i> <?php echo JHTML::_('Email.cloak', $this->item->author->email); ?></span>
-	  <?php } ?>
-	  <div class="clr"></div>
-
-	  <?php echo $this->item->event->K2UserDisplay; ?>
-	  <div class="clr"></div>
-	  </div>
-	  <div class="clr"></div>
-	  </div>
-	  <?php } ?>
-	  <?php if ($this->item->params->get('itemAuthorLatest') && empty($this->item->created_by_alias) && isset($this->authorLatestItems)) { ?>
-	  <div class="itemAuthorLatest">
-	  <h3><?php echo JText::_('K2_LATEST_FROM'); ?> <?php echo $this->item->author->name; ?></h3>
-	  <ul>
-	  <?php foreach ($this->authorLatestItems as $key => $item) { ?>
-	  <li class="<?php echo ($key % 2) ? "odd" : "even"; ?>">
-	  <a href="<?php echo $item->link ?>"><?php echo $item->title; ?></a>
-	  </li>
-	  <?php } ?>
-	  </ul>
-	  <div class="clr"></div>
-	  </div>
-	  <?php } */ ?>
-		<div class="item-header">
-			<div class="row">
-				<div class="col-xs-12 item-tools">
-					<ul class="list-inline list-unstyled">
-						<?php if ($this->item->params->get('itemPrintButton') && !JRequest::getInt('print')) { ?>
-							<li>
-							   <a rel="nofollow" href="<?php echo $this->item->printLink; ?>" onclick="window.open(this.href, 'printWindow', 'width=900,height=600,location=no,menubar=no,resizable=yes,scrollbars=yes');
-	                                       return false;">
-									<i class="icon-print"></i>
-								</a>
-							</li>
-						<?php } ?>
-						<li class="fb"><a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo JUri::current(); ?>" target="_blank"><i class="icon-facebook"></i></a></li>
-						<li class="tw"><a href="https://twitter.com/home?status=<?php echo $this->item->title; ?> - <?php echo JUri::current(); ?>" target="_blank"><i class="icon-twitter"></i></a></li>
-						<li class="gp"><a href="https://plus.google.com/share?url=<?php echo JUri::current(); ?>" target="_blank"><i class="icon-gplus"></i></a></li>
-						<li class="ln"><a href="http://www.linkedin.com/shareArticle?mini=true&url=<?php echo JUri::current(); ?>" target="_blank"><i class="icon-linkedin"></i></a></li>
-						<li class="cl"><a href="http://www.cloob.com/share/link/add?url=<?php echo JUri::current(); ?>" target="_blank"><i class="icon-cloob"></i></a></li>
-						<li class="tg"><a href="https://telegram.me/share/url?url=<?php echo JUri::current(); ?>&title=<?php echo $this->item->title; ?>" target="_blank"><i class="icon-telegram"></i></a></li>
-					</ul>
-				</div>
-			</div>
+	<div class="item-header">
+		<div class="item-sharing">
+			<ul class="list-inline list-unstyled">
+				<?php if ($this->item->params->get('itemPrintButton') && !JRequest::getInt('print')) { ?>
+					<li>
+						<a rel="nofollow" href="<?php echo $this->item->printLink; ?>" onclick="window.open(this.href, 'printWindow', 'width=900,height=600,location=no,menubar=no,resizable=yes,scrollbars=yes');
+	                            return false;">
+							<i class="icon-print"></i>
+						</a>
+					</li>
+				<?php } ?>
+				<li class="fb"><a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo JUri::current(); ?>" target="_blank"><i class="icon-facebook"></i></a></li>
+				<li class="tw"><a href="https://twitter.com/home?status=<?php echo $this->item->title; ?> - <?php echo JUri::current(); ?>" target="_blank"><i class="icon-twitter"></i></a></li>
+				<li class="gp"><a href="https://plus.google.com/share?url=<?php echo JUri::current(); ?>" target="_blank"><i class="icon-gplus"></i></a></li>
+				<li class="ln"><a href="http://www.linkedin.com/shareArticle?mini=true&url=<?php echo JUri::current(); ?>" target="_blank"><i class="icon-linkedin"></i></a></li>
+				<li class="cl"><a href="http://www.cloob.com/share/link/add?url=<?php echo JUri::current(); ?>" target="_blank"><i class="icon-cloob"></i></a></li>
+				<li class="tg"><a href="https://telegram.me/share/url?url=<?php echo JUri::current(); ?>&title=<?php echo $this->item->title; ?>" target="_blank"><i class="icon-telegram"></i></a></li>
+			</ul>
 		</div>
+	</div>
+	<div class="short-link-container">
+		<div class="form-group">
+			<i class="icon-link"></i>
+			<input type="text" id="short-url" class="clean" value="<?php echo rtrim(JURI::base(), '/') . substr($this->item->link, 0, strrpos($this->item->link, "/")); ?>" readonly="readonly">
+		</div>
+	</div>
 	<div class="item-boxes">
 		<?php if ($this->item->params->get('itemRelated') && isset($this->relatedItems)) { ?>
 			<section class="box list">
@@ -195,12 +155,25 @@ $en = stristr(JFactory::getApplication()->getMenu()->getActive()->params["pagecl
 				</div>
 			</section>
 		<?php } ?>
-		<?php if ($this->item->params->get('itemImageGallery') && !empty($this->item->gallery)) { ?>
-			<section class="box gallery">
-				<header><h2>گالری</h2></header>
-				<?php echo $this->item->gallery; ?>
+		<?php if ($this->item->params->get('itemAttachments') && count($this->item->attachments)): ?>
+			<section class="box item-attachments cols cols-4">
+				<header>
+					<h2><?php echo JText::_('ATTACHMENTS'); ?></h2>
+				</header>
+				<div>
+					<ul>
+						<?php foreach ($this->item->attachments as $attachment): ?>
+							<li>
+								<a title="<?php echo K2HelperUtilities::cleanHtml($attachment->titleAttribute); ?>" href="<?php echo $attachment->link; ?>">
+									<i class="icon-download"></i>
+									<?php echo $attachment->title; ?>
+								</a>
+							</li>
+						<?php endforeach; ?>
+					</ul>
+				</div>
 			</section>
-		<?php } ?>
+		<?php endif; ?>
 	</div>
 	<?php echo $this->item->event->AfterDisplay; ?>
 	<?php echo $this->item->event->K2AfterDisplay; ?>

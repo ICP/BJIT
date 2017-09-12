@@ -9,10 +9,19 @@
 
 // no direct access
 defined('_JEXEC') or die;
-$date = new JDate('now');
-
+$date = JHTML::_('date', new JDate('now'), JText::_('Y'));
+$format = '&copy; %s %s. %s.';
+$siteLink = '<a href="' . JURI::base() . '">' . JFactory::getConfig()->get( 'sitename' ) . '</a>';
+switch(JLanguageHelper::getLanguages('lang_code')[JFactory::getLanguage()->getTag()]->sef) {
+	default:
+	case 'fa':
+		$text = 'تمامی حقوق محفوظ است';
+		break;
+	case 'en':
+		$text = 'All Rights Reserved';
+		break;
+}
 ?>
 <div class="copyright-text">
-&copy;&nbsp;<?php echo JHTML::_('date', $date, JText::_('Y')); ?>.&nbsp;
-کلیه حقوق این وب‌سایت  متعلق به&nbsp;<a href="<?php echo JURI::base(); ?>"><?php echo JFactory::getConfig()->get( 'sitename' ); ?></a>&nbsp;می‌باشد.
+	<?php echo sprintf($format, $date, $siteLink, $text); ?>
 </div>

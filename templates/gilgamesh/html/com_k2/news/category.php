@@ -61,6 +61,8 @@ if ($limitstart && $limitstart > 0) {
 					<article class="item">
 						<?php
 						$this->item = $item;
+//						var_dump($item);
+//						$this->item->created = $item->created;
 						echo $this->loadTemplate('item');
 						?>
 					</article>

@@ -18,13 +18,13 @@ defined('_JEXEC') or die('Restricted access');
 			<li>
 				<?php if ($key == 0) { ?>
 					<?php if ($params->get('itemImage') || $params->get('itemIntroText')) { ?>
-						<?php if ($params->get('itemImage') && isset($item->image)) { ?>
-							<figure>
-								<a href="<?php echo $item->link; ?>">
+						<figure>
+							<a href="<?php echo $item->link; ?>">
+								<?php if ($params->get('itemImage') && isset($item->image)) { ?>
 									<img src="<?php echo $item->image; ?>" alt="<?php echo K2HelperUtilities::cleanHtml($item->title); ?>"/>
-								</a>
-							</figure>
-						<?php } ?>
+								<?php } ?>
+							</a>
+						</figure>
 						<div class="desc">
 							<?php if ($params->get('itemTitle')) { ?>
 								<h3><a href="<?php echo $item->link; ?>"><?php echo $item->title; ?></a></h3>

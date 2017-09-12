@@ -13,45 +13,23 @@ defined('_JEXEC') or die('Restricted access');
 	<ul>
 		<?php foreach ($items as $key => $item) { ?>
 			<li>
-				<div class="inner">
-					<?php if ($key == 0) { ?>
-						<?php if ($params->get('itemImage') || $params->get('itemIntroText')) { ?>
-							<?php if ($params->get('itemImage') && isset($item->image)) { ?>
-								<figure>
-									<a href="<?php echo $item->link; ?>">
-										<img src="<?php echo $item->image; ?>" alt="<?php echo K2HelperUtilities::cleanHtml($item->title); ?>"/>
-									</a>
-								</figure>
-							<?php } ?>
-							<div class="desc">
-								<?php if ($params->get('itemTitle')) { ?>
-									<h3><a href="<?php echo $item->link; ?>"><?php echo $item->title; ?></a></h3>
-								<?php } ?>
-								<?php if ($params->get('itemIntroText')) { ?>
-									<div class="introtext">
-										<p><?php echo $item->introtext; ?></p>
-									</div>
-								<?php } ?>
-							</div>
+				<?php if ($params->get('itemImage') || $params->get('itemIntroText')) { ?>
+					<?php // if ($params->get('itemImage') && isset($item->image)) { ?>
+					<figure>
+						<a href="<?php echo $item->link; ?>">
+							<img src="<?php echo $item->image; ?>" alt="<?php echo K2HelperUtilities::cleanHtml($item->title); ?>"/>
+						</a>
+					</figure>
+					<?php // } ?>
+					<div class="desc">
+						<?php if ($params->get('itemTitle')) { ?>
+							<h3><a href="<?php echo $item->link; ?>"><?php echo $item->title; ?></a></h3>
 						<?php } ?>
-					<?php } else { ?>
-						<figure>
-							<a href="<?php echo $item->link; ?>">
-								<img src="<?php echo $item->image; ?>" alt="<?php echo K2HelperUtilities::cleanHtml($item->title); ?>"/>
-							</a>
-						</figure>
-						<div class="desc">
-							<?php if ($params->get('itemTitle')) { ?>
-								<h3><a href="<?php echo $item->link; ?>"><?php echo $item->title; ?></a></h3>
-							<?php } ?>
-								<?php if ($params->get('itemIntroText')) { ?>
-									<div class="introtext">
-										<p><?php echo $item->introtext; ?></p>
-									</div>
-								<?php } ?>
-						</div>
-					<?php } ?>
-				</div>
+						<?php if ($params->get('itemIntroText')) { ?>
+							<p><?php echo $item->introtext; ?></p>
+						<?php } ?>
+					</div>
+				<?php } ?>
 			</li>
 		<?php } ?>
 	</ul>

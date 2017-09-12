@@ -14,7 +14,7 @@ defined('_JEXEC') or die('Restricted access');
 		<a href="<?php echo JRoute::_('index.php?option=com_k2&Itemid=' . $params->get('mymenu_id')); ?>" class="btn btn-default category-link">بیشتر</a>
 	<?php } ?>
 	<?php if (count($items > 2)) { ?>
-		<section class="box cols cols-2 featured-items _border-bottom">
+		<section class="box article-items cols cols-2 featured-items _border-bottom">
 			<div>
 				<?php foreach ($items as $key => $item) { ?>
 				<?php $media = !empty($item->video) ? ' video' : ''; ?>

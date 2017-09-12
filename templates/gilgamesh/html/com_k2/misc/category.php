@@ -70,7 +70,7 @@ if ($this->category->alias == "catalog" || $this->category->alias == "کاتال
 			</div>
 		<?php } ?>
 		<?php if (isset($this->secondary) && count($this->secondary)) { ?>
-			<div class="box articles highlights">
+			<div class="box articles highlights no-img">
 				<?php
 				foreach ($this->secondary as $key => $item) {
 					$media = !empty($item->video) ? ' video' : '';

@@ -42,7 +42,7 @@ defined('_JEXEC') or die;
 		</div>
 		<?php if ($this->item->params->get('itemTitle')) { ?>
 			<div class="page-title">
-				<h2 class="item-title">
+				<h1 class="item-title">
 					<?php
 					if (count($this->item->extra_fields)) {
 						foreach ($this->item->extra_fields as $key => $extraField) {
@@ -55,7 +55,7 @@ defined('_JEXEC') or die;
 					}
 					?>
 					<?php echo $this->item->title; ?>
-				</h2>
+				</h1>
 			</div>
 		<?php } ?>
 	</header>

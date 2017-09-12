@@ -9,7 +9,7 @@
 // no direct access
 defined('_JEXEC') or die;
 
-JFactory::getDocument()->setTitle($this->item->category->name . ': ' . $this->item->title);
+//JFactory::getDocument()->setTitle($this->item->category->name . ': ' . $this->item->title);
 //print_r($this->item);
 ?>
 <div id="item-wrapper" class="wrapper item">
