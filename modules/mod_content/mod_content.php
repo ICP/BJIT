@@ -21,12 +21,15 @@ $itemAuthorAvatarWidthSelect = $params->get('itemAuthorAvatarWidthSelect', 'cust
 $itemAuthorAvatarWidth = $params->get('itemAuthorAvatarWidth', 50);
 $itemCustomLinkTitle = $params->get('itemCustomLinkTitle', '');
 if ($params->get('itemCustomLinkMenuItem')) {
-	$menu = JMenu::getInstance('site');
+//	$menu = JMenu::getInstance('site');
+	$menu = JFactory::getApplication()->getMenu();
 	$menuLink = $menu->getItem($params->get('itemCustomLinkMenuItem'));
-	if (!$itemCustomLinkTitle) {
-		$itemCustomLinkTitle = (K2_JVERSION != '15') ? $menuLink->title : $menuLink->name;
+	if ($menu->getItem($params->get('itemCustomLinkMenuItem'))) {
+		if (!$itemCustomLinkTitle) {
+			$itemCustomLinkTitle = $menuLink->title;
+		}
+		$params->set('itemCustomLinkURL', JRoute::_('index.php?&Itemid=' . $menuLink->id));
 	}
-	$params->set('itemCustomLinkURL', JRoute::_('index.php?&Itemid=' . $menuLink->id));
 }
 
 // Get component params
