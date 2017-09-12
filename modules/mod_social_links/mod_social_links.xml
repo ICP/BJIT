@@ -36,6 +36,8 @@
 				<field name="aparat" type="text" default="" label="Aparat Page Link" description="" />
 				<field name="lenzor" type="text" default="" label="Lenzor Page Link" description="" />
 				<field name="cloob" type="text" default="" label="Cloob Page Link" description="" />
+				<field name="linkedin" type="text" default="" label="LinkedIn Page Link" description="" />
+				<field name="foursquare" type="text" default="" label="FourSquare Page Link" description="" />
 			</fieldset>
 		</fields>
 	</config>			

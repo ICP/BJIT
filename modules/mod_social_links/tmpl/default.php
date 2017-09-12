@@ -20,4 +20,6 @@ defined('_JEXEC') or die('Restricted access');
 	<?php if ($params->get('aparat')) { ?><li class="ap"><a target="_blank" href="<?php echo $params->get('aparat'); ?>"><i class="icon-aparat"></i></a></li><?php } ?>
 	<?php if ($params->get('lenzor')) { ?><li class="lz"><a target="_blank" href="<?php echo $params->get('lenzor'); ?>"><i class="icon-lenzor"></i></a></li><?php } ?>
 	<?php if ($params->get('cloob')) { ?><li class="cl"><a target="_blank" href="<?php echo $params->get('cloob'); ?>"><i class="icon-cloob"></i></a></li><?php } ?>
+	<?php if ($params->get('linkedin')) { ?><li class="ln"><a target="_blank" href="<?php echo $params->get('linkedin'); ?>"><i class="icon-linkedin"></i></a></li><?php } ?>
+	<?php if ($params->get('foursquare')) { ?><li class="fs"><a target="_blank" href="<?php echo $params->get('foursquare'); ?>"><i class="icon-foursquare"></i></a></li><?php } ?>
 </ul>
