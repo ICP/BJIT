@@ -23,13 +23,13 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 
 function ualog_predict_id($table)
 {
-	$db = &JFactory::getDBO();
+	$db = JFactory::getDBO();
 
 	$query = "SHOW TABLE STATUS LIKE '".$db->replacePrefix($table)."'";
 	$db->setQuery($query);
 	$result = $db->loadAssocList();
 
-	$id = $result[0]['Auto_increment'];
+	@$id = $result[0]['Auto_increment'];
 
 	return $id;
 }
@@ -434,7 +434,8 @@ if($user->id != 0) {
 						else {
 							$atitle = $db->quote( 'USER_UNPUBLISHED_A_MENU_ITEM_LINK' );
 						}
-							
+						if (is_array($cid))
+							$cid = $cid[0];
 						$alink  = $db->quote( "index.php?option=com_menus&task=item.edit&id=$cid" );
 						$item   = $db->quote( ualog_get_title($id, '#__menu', 'title') );
 						ualog_save( $alink, $atitle, $item );
