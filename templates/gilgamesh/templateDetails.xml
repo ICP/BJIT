@@ -38,12 +38,14 @@
         <position>main-top</position>
         <position>main-left</position>
         <position>main-right</position>
+        <position>ads-bot</position>
         <position>main</position>
         <position>main-bot</position>
         <position>sidebar</position>
         <position>footer</position>
         <position>copyright</position>
         <position>footer-about</position>
+        <position>logo</position>
         <position>multimedia_carousels</position>
     </positions>
     <config>
@@ -53,4 +55,8 @@
             </fieldset>
         </fields>
     </config>
+    <languages folder="language">
+		<language tag="fa-IR">fa-IR/fa-IR.tpl_gilgamesh.ini</language>
+		<language tag="en-GB">en-GB/en-GB.tpl_gilgamesh.ini</language>
+	</languages>
 </extension>
