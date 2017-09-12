@@ -27,8 +27,7 @@ $this->direction = $doc->direction;
 
 <html>
 <head>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-
+<meta charset="utf-8" />
 <meta name="language" content="<?php echo $this->language; ?>" />
 
 	<title><?php echo $this->error->getCode(); ?> - <?php echo $this->title; ?></title>
@@ -200,9 +199,9 @@ if (!isset($this->error)) {
 			<div id="techinfo">
 			<p><?php echo $this->error->getMessage(); ?></p>
 			<p>
-				<?php if ($this->debug) :
+				<?php // if ($this->debug) :
 					echo $this->renderBacktrace();
-				endif; ?>
+//				endif; ?>
 			</p>
 			</div>
 			</div>
