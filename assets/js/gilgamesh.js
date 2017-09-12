@@ -1,3 +1,4 @@
+//@prepros-append slick.min.js
 $(function () {
     $("[data-toggle]").each(function () {
         var href = $(this).attr('data-target');
@@ -46,15 +47,56 @@ $(function () {
         $("html").addClass('no-scroll');
     });
 
-    $(window).on('scroll', function () {
-//        if ($("body").hasClass("_md") || $("body").hasClass("_lg")) {
-            var headerHeight = $("#header").height() - $("#navbar").height();
-            if ($(this).scrollTop() > headerHeight)
-                $("body").addClass("sticky-navbar");
-            else
-                $("body").removeClass("sticky-navbar");
-//        }
+    $(".box.gallery").each(function () {
+        var $box = $(this);
+
+        var count = $box.hasClass('cols') ? $box.attr('class').match(/cols-(\d+)/)[1] : 1;
+        var carouselConfig = {
+            autoplay: false
+            , infinite: true
+            , slidesToShow: +count
+            , slidesToScroll: 1
+            , SwipetoSlide: true
+            , arrows: true
+            , dots: true
+//                , centerMode: $box.hasClass('top') ? true : false
+            , rtl: true
+        };
+        if ($box.hasClass('has-indicator')) {
+            carouselConfig.asNavFor = "#" + $box.next().attr('id') + ' >div ul';
+        }
+        if ($box.hasClass('is-indicator')) {
+            carouselConfig.asNavFor = $box.attr('data-target') + ' >div ul';
+            carouselConfig.focusOnSelect = true;
+//                carouselConfig.centerMode = true;
+        }
+        $box.find("> div ul").slick(carouselConfig);
+        console.log($box, carouselConfig);
     });
+
+    function handleStickyHeader() {
+        var headerHeight = $("#header").height() - $("#navbar").height();
+        if ($(this).scrollTop() > headerHeight)
+            $("body").addClass("sticky-navbar");
+        else
+            $("body").removeClass("sticky-navbar");
+    }
+    handleStickyHeader();
+    $(window).on('scroll', function () {
+        handleStickyHeader();
+    });
+
+    $(".short-link-container").click(function (e) {
+        e.preventDefault();
+        $(this).find("input").select();
+        try {
+            document.execCommand('copy');
+        } catch (er) {
+            console.log(er);
+        }
+//        $(this).find("input").focus();
+//        document.execCommand('selectAll');
+    }); // Short link selections
 
     $(".item-image[data-video]").each(function () {
         var poster = $(this).find("img:first").attr('src');
@@ -66,18 +108,24 @@ $(function () {
             aspectratio: "16:9"
         });
     });
-    $(".page-tools").on('click', ".clickable", function (e) {
-        if (!$(this).parent().hasClass('active')) {
-            var type = $(this).attr('data-style');
-            if (type === "grid")
-                $(".box.episodes, .box.subcategories").addClass("grid");
-            else
-                $(".box.episodes, .box.subcategories").removeClass("grid");
-            $(".page-tools").find("li").removeClass("active");
-            $(this).parent().addClass("active");
-        }
-        e.preventDefault();
-    });
+
+    if ($("#sidebar .box.ads").length) {
+        var top = $("#sidebar .box.ads").offset().top;
+        $(window).on('scroll', function () {
+            
+            if ($(this).scrollTop() + 60 >= top) {
+                if ($("#sidebar .box.ads").css('position') !== "fixed") {
+                    $("#sidebar .box.ads").css({
+                        position: 'fixed'
+                        , top: 60
+                        , left: $("#sidebar .box.ads").offset().left
+                    });
+                }
+            } else {
+                $("#sidebar .box.ads").css({position: 'static'});
+            }
+        });
+    }
 
     $(".box.gallery").on('click', ".thumbnail", function (e) {
         var imgPath = $(this).attr('href');
@@ -88,121 +136,6 @@ $(function () {
             $preview.attr('src', imgPath).fadeIn();
         });
         e.preventDefault();
-    });
-
-    $itemWidth = $(".box.showcase > div ul").find("li:first").width();
-    $showcaseItems = $(".box.showcase > div ul");
-    $showcaseItems.find("li").each(function () {
-        $(this).width($itemWidth);
-    });
-
-    var sc = $showcaseItems.owlCarousel({
-        margin: 0
-        , loop: true
-        , center: true
-        , items: 1
-        , autoWidth: true
-        , rtl: true
-        , themeClass: 'carousel-theme'
-        , baseClass: 'items-carousel'
-        , startPosition: 5
-        , itemClass: 'item'
-        , animateOut: ''
-        , nav: true
-        , navText: ["", ""]
-    });
-
-    $(".box.content ul.slider:not(.blog-posts)").owlCarousel({
-        margin: 0
-        , loop: true
-        , items: 1
-        , autoWidth: false
-        , rtl: true
-        , themeClass: 'carousel-theme'
-        , baseClass: 'items-carousel'
-        , itemClass: 'item'
-        , animateIn: 'fadeIn'
-        , animateOut: 'fadeOut'
-        , nav: true
-        , navText: ["", ""]
-    });
-
-    $(".box.content ul.slider.blog-posts").owlCarousel({
-        margin: 0
-        , loop: true
-        , items: 1
-        , autoWidth: false
-        , rtl: true
-        , themeClass: 'carousel-theme'
-        , baseClass: 'items-carousel'
-        , itemClass: 'item'
-        , animateIn: 'fadeIn'
-        , animateOut: 'fadeOut'
-        , nav: true
-        , navText: ["", ""]
-        , dots: true
-    });
-
-    $(".box.gallery ul.slider.galllery").owlCarousel({
-        margin: 0
-        , loop: true
-        , items: 1
-        , autoWidth: false
-        , rtl: true
-        , themeClass: 'carousel-theme'
-        , baseClass: 'items-carousel'
-        , itemClass: 'item'
-        , animateIn: 'fadeIn'
-        , animateOut: 'fadeOut'
-        , nav: true
-        , navText: ["", ""]
-        , dots: true
-    });
-
-    $(".box.tiles.has-carousel ul").owlCarousel({
-        margin: 20
-        , loop: true
-        , items: 4
-        , autoWidth: false
-        , rtl: true
-        , themeClass: 'carousel-theme'
-        , baseClass: 'items-carousel'
-        , itemClass: 'item'
-        , animateIn: 'fadeIn'
-        , animateOut: 'fadeOut'
-        , nav: true
-        , navText: ["", ""]
-    });
-
-    $(".box.thumbs.carousel > div ul").owlCarousel({
-        margin: 0
-        , loop: true
-//        , center: true
-        , items: 4
-        , autoWidth: false
-        , rtl: true
-        , themeClass: 'carousel-theme'
-        , baseClass: 'items-carousel'
-        , itemClass: 'item'
-        , animateOut: ''
-        , nav: true
-        , navText: ["", ""]
-    });
-
-    $itemWidth = $(".box.special > .carousel ul").find("li:first").width();
-    $(".box.showcase > .carousel ul").find("li").each(function () {
-        $(this).width($itemWidth);
-    });
-    $(".box.special > div ul").owlCarousel({
-        margin: 0
-        , loop: true
-        , center: false
-        , items: 3
-        , autoWidth: false
-        , rtl: true
-        , themeClass: 'carousel-theme'
-        , baseClass: 'items-carousel'
-        , itemClass: 'item'
     });
 
     $(".box.newsletter").on('submit', "form", function (e) {
