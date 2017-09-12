@@ -77,12 +77,12 @@ class TemplateHelper {
                 $baseClasses = '';
         } else
             $baseClasses = ''; // Other standard browsers
-		$frontpage = ($this->checkDefaultMenu($currentMenu)) ? ' frontpage' : '';
+		$frontpage = ($this->checkDefaultMenu($currentMenu, JFactory::getLanguage())) ? ' frontpage' : '';
         return $baseClasses . $frontpage;
     }
 	
 	public function isFrontpage($currentMenu) {
-		return ($this->checkDefaultMenu($currentMenu)) ? true : false;
+		return ($this->checkDefaultMenu($currentMenu, JFactory::getLanguage())) ? true : false;
 	}
 	
 	/*
@@ -316,11 +316,11 @@ class TemplateHelper {
      * 
      * @return	  $frontpage	  Boolean
      */
-    public function checkDefaultMenu(&$currentMenu) {
+    public function checkDefaultMenu(&$currentMenu, $lang) {
 
         $frontpage = false;
 
-        $frontpage = ($currentMenu->getActive() == $currentMenu->getDefault()) ? true : false;
+        $frontpage =  ($currentMenu->getActive() == $currentMenu->getDefault($lang->getTag())) ? true : false;
         return $frontpage;
     }
 
