@@ -32,6 +32,7 @@ class modK2ContentHelper {
 		$jnow = JFactory::getDate();
 		$now = K2_JVERSION == '15' ? $jnow->toMySQL() : $jnow->toSql();
 		$nullDate = $db->getNullDate();
+		$offset = $params->get('offset', 0);
 
 		switch ($params->get('type', 'items')) {
 			case 'categories':
@@ -48,7 +49,7 @@ class modK2ContentHelper {
 					}
 				}
 				$query->order('c.id DESC');
-				$db->setQuery($query, 0, $limit);
+				$db->setQuery($query, $offset, $limit);
 				$items = $db->loadObjectList();
 				if (count($items)) {
 					foreach ($items as $item) {
@@ -263,7 +264,7 @@ class modK2ContentHelper {
 					}
 
 					$query .= " ORDER BY " . $orderby;
-					$db->setQuery($query, 0, $limit);
+					$db->setQuery($query, $offset, $limit);
 					$items = $db->loadObjectList();
 				}
 				break;

@@ -44,6 +44,7 @@
                 <field name="tags" type="k2tags" label="K2_TAGS"/>
                 <field name="users" type="k2users" label="K2_USERS"/>
                 <field name="itemCount" type="text" size="4" default="5" label="K2_ITEM_COUNT" description=""/>
+                <field name="offset" type="text" size="4" default="" label="Offset" description=""/>
                 <field name="itemsOrdering" type="list" default="" label="K2_ITEM_ORDERING" description="">
                     <option value="">K2_DEFAULT</option>
                     <option value="date">K2_OLDEST_FIRST</option>
