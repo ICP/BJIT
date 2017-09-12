@@ -4,43 +4,22 @@
             font-size: 16px;
             a { padding: 0 (@grid-gutter-width); }
         }
+        .logo-container {
+            .box { left: 20px; }
+        }
     }
     .box-wrapper {
         &.showcase { padding-bottom: 0; }
     }
     .box {
-        &.showcase {
-            margin-bottom: 60px;
-            ul .item li {
-                width: @container-md !important; margin-bottom: 60px; margin: 0 30px 60px;
-                .desc { max-height: 324px; padding: @grid-gutter-width; overflow: hidden; }
-            }
-            .owl-controls {
-                width: @container-md + 160; margin-left: -((@container-md + 160) / 2);
-                .owl-nav {
-                    & > * { margin-top: 110px; }
-                }
-            }
-        }
         &.special {
             .cat-desc {
                 .introtext { max-height: 85px; overflow: hidden; }
             }
-            .carousel { height: 169px; }
         }
-        &.list {
-            &.thumbs {
-                &.vertical {
-                    ul li { padding-left: @grid-gutter-width; }
-                    &.sidebar {
-                        figure { margin: 0 0 0 (@grid-gutter-width / 2); }
-                        h3 {
-                            margin-right: 0;
-                            a { padding: 0; }
-                        }
-                    }
-                }
-            }
+        &.content.blog ul li .desc {
+            padding: @grid-gutter-width;
+            h3 { font-size: 24px; }
         }
         &.articles {
             &.top {
@@ -54,11 +33,21 @@
             }
         }
     }
+    #item .item-sharing {
+        margin-right: -40px;
+        ul li {
+            width: 32px; height: 32px; line-height: 32px; font-size: 16px;
+        }
+    }
 }
 @media (max-width: @screen-sm-max){
     #header{
         position: relative;
         &, .wrapper { overflow: visible; }
+        #masthead {
+            height: 0px;
+            .logo { display: none; }
+        }
         .header-schedule {
             width: 70px;
             &:after { left: 70px; }

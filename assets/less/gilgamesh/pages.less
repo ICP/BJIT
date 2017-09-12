@@ -27,10 +27,16 @@
     }
     
     &.search {
+        .item-category {
+            border-right: 3px solid @cyan; padding-right: @grid-gutter-width / 3; margin-top: @grid-gutter-width / 2;
+            a { color: @cyan; }
+            &:hover a { color: @beige; }
+        }
         .box.tiles.highlights.latest.grid ul li {
-            height: 300px;
+            height: auto; border-bottom: 0 none;
+            &:nth-child(4n+1) { clear: both; }
             .desc {
-                .introtext { max-height: 40px; margin-top: 8px; }
+                .introtext { max-height: none; margin-top: 8px; }
             }
         }
         .search-options {
@@ -40,5 +46,6 @@
             }
             .total-count { margin-top: @grid-gutter-width; }
         }
+        .alert { margin-top: @grid-gutter-width; margin-bottom: @grid-gutter-width * 10; }
     }
 }

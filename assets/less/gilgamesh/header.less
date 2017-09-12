@@ -4,8 +4,8 @@ body.home {
     }
 }
 #header {
-    height: @header-height + 5;
-    z-index: 100; background: transparent; width: 100%;
+    height: @header-height; background: @gray-lighter;
+    z-index: 100; width: 100%;
     position: static;
     #masthead {
         height: @masthead-height; overflow: visible;
@@ -14,13 +14,15 @@ body.home {
         height: @navbar-height; overflow-y: visible; position: relative; background: @primary;
         [class*="col-"] { position: static; }
         .container { position: relative; }
-        body.sticky-navbar & { position: fixed; top: 0; left: 0; width: 100%; z-index: 800 }
+        body.sticky-navbar & {
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 999;
+            /*ul.menu { overflow: hidden; }*/
+        }
     }
     .menu {
-        font-family: @menu-font-family; font-size: 0; float: right; height: @navbar-height; font-weight: bold; margin-right: @logo-width;
-        position: static;
+        font-family: @menu-font-family; font-size: 0; height: @navbar-height; font-weight: bold; text-align: center; transition: 0.2s all;
         li {
-            padding: 0; font-size: @menu-font-size; position: static;
+            padding: 0; font-size: @menu-font-size; display: inline-block;
             a {
                 display: block; color: white; line-height: @navbar-height; padding: 0 25px;
             }
@@ -67,14 +69,70 @@ body.home {
             .search-toggle { background: @beige; color: white; }
         }
     }
+    .box {
+        margin: 0;
+        &.ads { padding-top: @grid-gutter-width / 2; }
+    }
+    .logo-container {
+        position: relative;
+        .box {
+            position: absolute; top: 0; left: @grid-gutter-width*4; padding: 0 10px; background: transparent; z-index: 800;
+            ul li {
+                font-size: 12px; font-family: Tahoma; text-transform: uppercase;
+                a { display: block; padding: @grid-gutter-width / 2 @grid-gutter-width / 3; }
+                &.active { font-weight: bold; }
+            }
+        }
+    }
+    .logo-alt {
+        display: block; width: 150px; height: @navbar-height; background: url('../img/logo_menu_gilgamesh.png') no-repeat 0 0 transparent;
+        position: absolute; top: -90px; right: 0; transition: 0.2s all; opacity: 0; visibility: hidden;
+        .sticky-navbar & { top: 0; opacity: 1; visibility: visible; }
+    }
 }
 .logo {
     width: @logo-width;  position: relative; z-index: 700; margin: 0 auto; height: 100px;
     a { display: block; width: 100%; height: 100%; overflow: hidden; text-indent: -999px; background: url(../img/logo_gilgamesh.png) no-repeat center center transparent; }
 }
 .page-header {
-    margin: 0; padding: 0; border: 0 none; background: @cyan; height: 80px;
-    h1 {
-        margin: 0; padding: 0; border: 0 none; color: @yellow-light; line-height: 80px; font-size: 30px; font-weight: bold;
+    margin: 0; padding: 0; border: 0 none; background: @purple-light; height: 80px;
+    h1, strong {
+        margin: 0; padding: 0; border: 0 none; color: #fff; line-height: 80px; font-size: 30px; font-weight: bold; display: block;
+    }
+}
+body {
+    &.alias-events, &.alias-history, &.alias-heritage, &.alias-tourism, &.alias-special-cases, &.alias-travel, &.alias-future {
+        .page-header {
+            overflow: hidden;
+            h1, strong { background: url(../img/titles.png) no-repeat left 0 transparent; }
+        }
+    }
+    &.alias-events .page-header {
+        background: @events;
+        h1, strong { background-position-y: -8px; }
+    }
+    &.alias-history .page-header {
+        background: @history;
+        h1, strong { background-position-y: -100px; }
+    }
+    &.alias-heritage .page-header {
+        background: @heritage ;
+        h1, strong { background-position-y: -200px; }
+    }
+    &.alias-tourism .page-header {
+        background: @tourism;
+        h1, strong { background-position-y: -300px; }
+    }
+    &.alias-special-cases .page-header {
+        background: @special-cases;
+        h1, strong { background-position-y: -400px; }
+    }
+    &.alias-travel .page-header {
+        background: @travel;
+        h1, strong { background-position-y: -500px; }
+    }
+    &.alias-future .page-header {
+        background: @future;
+        h1, strong { background-position-y: -600px; }
     }
 }
