@@ -1,14 +1,35 @@
-<body id="bd" class="dark <?php echo strtolower($helper->device) . ($isFrontpage ? ' home' : '') . ($isProgram ? ' home program' : ''); ?>" data-spy="scroll" data-target="#menu">
+<?php
+$pageOptions = JFactory::getApplication()->input->getArray();
+if (isset($pageOptions['task']) && $pageOptions['task'] === "user")
+	$isFrontpage = false;
+//print_r();
+$titleTag = JFactory::getApplication()->input->get('view') === "item" ? ['<strong>', '</strong>'] : ['<h1>', '</h1>'];
+$pagetitle = isset(JFactory::getApplication()->getMenu()->getActive()->title) ? JFactory::getApplication()->getMenu()->getActive()->title : $sitename;
+?>
+<body id="bd" class="dark <?php echo strtolower($helper->device) . ($isFrontpage ? ' home' : '') . ($isProgram ? ' home program' : '') . (isset(JFactory::getApplication()->getMenu()->getActive()->alias) ? ' alias-' . JFactory::getApplication()->getMenu()->getActive()->alias : ''); ?>"  dir="<?php echo $this->direction; ?>">
 	<header id="header">
-		<?php if ($isFrontpage) { ?><h1 class="hide"><?php echo $sitename; ?></h1><?php } ?>
+		<?php if ($isFrontpage) { ?><h1 style="display: none;"><?php echo $sitename; ?></h1><?php } ?>
 		<div id="masthead" class="wrapper">
 			<div class="container">
 				<div class="row">
-					<div class="col-xs-12">
+					<div class="col-xs-12 col-md-3">
+						<?php if ($helper->countModules('header-right')) { ?>
+							<jdoc:include type="modules" name="header-right" style="default" />
+						<?php } ?>
+					</div>
+					<div class="col-xs-12 col-md-6 logo-container">
+						<?php if ($helper->countModules('logo')) { ?>
+							<jdoc:include type="modules" name="logo" style="default" />
+						<?php } ?>
 						<div class="logo">
 							<a href="<?php echo JURI::base(); ?>" title="<?php echo $sitename; ?>"><?php echo $sitename; ?></a>
 						</div>
 						<div class="menu-toggle hidden-md hidden-lg"><a href="#" data-toggle="menuslide" data-target=".menu"><i class="icon-menu"></i></a></div>
+					</div>
+					<div class="col-xs-12 col-md-3">
+						<?php if ($helper->countModules('header-left')) { ?>
+							<jdoc:include type="modules" name="header-left" style="default" />
+						<?php } ?>
 					</div>
 				</div>
 			</div>
@@ -17,10 +38,11 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-xs-12">
+						<a href="<?php echo JURI::base(); ?>" class="logo-alt"></a>
 						<?php if ($helper->countModules('menu')) { ?>
 							<jdoc:include type="modules" name="menu" />
 						<?php } ?>
-							<div class="search hidden-sm hidden-xs">
+						<div class="search hidden-sm hidden-xs">
 							<a class="search-toggle" href="<?php echo JURI::base() . 'search'; ?>" data-toggle="toggle" data-target="#search" data-focus="#search input[type='text']"><i class="icon-search"></i></a>
 						</div>
 					</div>
@@ -29,114 +51,137 @@
 		</div>
 	</header>
 <?php if ($helper->countModules('search')) { ?><jdoc:include type="modules" name="search" /><?php } ?>
-<?php if ($helper->countModules('showcase') || $isProgram) { ?>
-	<section id="showcase">
-		<div data-identifier="showcase" class="wrapper">
-			<jdoc:include type="modules" name="showcase" style="basic" />
-			<?php if ($isProgram) { ?>
-				<div class="page">
-					<header class="page-header hide">
-						<div class="container">
-							<div class="row">
-								<div class="col-xs-12">
-									<h1><?php echo isset(JFactory::getApplication()->getMenu()->getActive()->title) ? JFactory::getApplication()->getMenu()->getActive()->title : $sitename; ?></h1>
-								</div>
-							</div>
-						</div>
-					</header>
-					<jdoc:include type="component" />
+<?php if ($isFrontpage) { ?>
+	<?php if ($helper->countModules('showcase')) { ?>
+		<section id="showcase">
+			<div data-identifier="showcase" class="wrapper">
+				<jdoc:include type="modules" name="showcase" style="basic" />
+			</div>
+		</section>
+	<?php } ?>
+	<aside id="top" class="wrapper">
+		<?php if ($helper->countModules('top')) { ?>
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12">
+						<jdoc:include type="modules" name="top" style="default" />
+					</div>
 				</div>
-			<?php } ?>
-		</div>
-	</section>
+			</div>
+		<?php } ?>
+	</aside>
 <?php } ?>
 <main id="mainbody">
-	<div data-identifier="main-top" class="wrapper content gray-lighter">
-		<?php if (!$isFrontpage && !$isProgram) { ?>
+	<section data-identifier="main-top" class="wrapper content">
+		<?php if (!$isFrontpage) { ?>
 			<div class="page">
 				<header class="page-header">
 					<div class="container">
 						<div class="row">
 							<div class="col-xs-12">
-								<h1><?php echo isset(JFactory::getApplication()->getMenu()->getActive()->title) ? JFactory::getApplication()->getMenu()->getActive()->title : $sitename; ?></h1>
+								<?php echo $titleTag[0] . $pagetitle . $titleTag[1]; ?>
 							</div>
 						</div>
 					</div>
 				</header>
-				<?php if (!$isProgram) { ?>
-					<div class="container">
-						<div class="row">
-							<div class="<?php echo (JFactory::getApplication()->getMenu()->getActive()->note === 'cols-9-3') ? "col-xs-12 col-md-9" : "col-xs-12"; ?>">
-								<section class="page-conntent">
-									<jdoc:include type="component" />
-								</section>
+				<div class="container">
+					<div class="row">
+						<div class="<?php echo (JFactory::getApplication()->getMenu()->getActive()->note === 'cols-9-3') ? "col-xs-12 col-md-9" : "col-xs-12"; ?>">
+							<!--<section class="page-content">-->
+								<jdoc:include type="component" />
+							<!--</section>-->
+							<div class="hide"><jdoc:include type="message" /></div>
+						</div>
+						<?php if (JFactory::getApplication()->getMenu()->getActive()->note === 'cols-9-3') { ?>
+							<div id="sidebar" class="col-xs-12 col-md-3">
+								<jdoc:include type="modules" name="sidebar" style="default" />
 							</div>
-							<?php if (JFactory::getApplication()->getMenu()->getActive()->note === 'cols-9-3') { ?>
-								<div id="sidebar" class="col-xs-12 col-md-3">
-									<jdoc:include type="modules" name="sidebar" style="default" />
-								</div>
-							<?php } ?>
+						<?php } ?>
+					</div>
+				</div>
+			</div>
+		<?php } ?>
+		<?php if ($isFrontpage) { ?>
+			<div class="container">
+				<?php if ($helper->countModules('main-top')) { ?>
+					<div id="main-top" class="row">
+						<div class="col-xs-12">
+							<jdoc:include type="modules" name="main-top" style="default" />
 						</div>
 					</div>
 				<?php } ?>
 			</div>
 		<?php } ?>
-		<div class="container">
-			<?php if ($helper->countModules('main-top')) { ?>
-				<div id="main-top" class="row">
-					<div class="col-xs-12">
-						<jdoc:include type="modules" name="main-top" style="default" />
+	</section>
+	<?php if ($isFrontpage) { ?>
+		<section data-identifier="main" class="wrapper content gray-lighter">
+			<?php if ($helper->countModules('special')) { ?>
+				<section id="special">
+					<div class="wrapper purple-light">
+						<div class="container">
+							<div class="row">
+								<div class="col-xs-12">
+									<jdoc:include type="modules" name="special" style="default" />
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+			<?php } ?>
+		</section>
+		<?php if ($helper->countModules('main')) { ?>
+			<section data-identifier="main" class="wrapper content">
+				<div class="container">
+					<div id="main" class="row">
+						<div class="col-xs-12">
+							<jdoc:include type="modules" name="main" style="default" />
+						</div>
 					</div>
 				</div>
-			<?php } ?>
-		</div>
-	</div>
-	<div data-identifier="main" class="wrapper content gray-light">
-		<div class="container">
-			<?php if ($helper->countModules('main')) { ?>
-				<div id="main" class="row">
-					<div class="col-xs-12">
-						<jdoc:include type="modules" name="main" style="default" />
-					</div>
-				</div>
-			<?php } ?>
-		</div>
-	</div>
-	<?php if ($helper->countModules('special')) { ?>
-		<aside id="showcase">
-			<div class="wrapper purple">
-				<jdoc:include type="modules" name="special" style="basic" />
-			</div>
-		</aside>
+			</section>
+		<?php } ?>
 	<?php } ?>
-	<div data-identifier="main-bot" class="wrapper content gray-lighter">
+	<?php if ($helper->countModules('ads-bot')) { ?>
+	<section data-identifier="subscribe" class="wrapper content gray-lighter">
 		<div class="container">
-			<?php if ($helper->countModules('main-bot')) { ?>
-				<div id="main-bot" class="row">
-					<div class="col-xs-12">
-						<jdoc:include type="modules" name="main-bot" style="default" />
+			<div id="main-bot" class="row">
+				<div class="col-xs-12">
+					<jdoc:include type="modules" name="ads-bot" style="default" />
+				</div>
+			</div>
+		</div>
+	</section>
+	<?php } ?>
+	<?php if ($isFrontpage) { ?>
+		<?php if ($helper->countModules('main-bot')) { ?>
+			<section data-identifier="main-bot" class="wrapper content">
+				<div class="container">
+					<div id="main-bot" class="row">
+						<div class="col-xs-12">
+							<jdoc:include type="modules" name="main-bot" style="default" />
+						</div>
 					</div>
 				</div>
-			<?php } ?>
-		</div>
-	</div>
+			</section>
+		<?php } ?>
+	<?php } ?>
 </main>
 <footer id="footer">
 	<?php // if ($helper->countModules('newsletter')) { ?>
-	<div id="newsletter" class="wrapper gray">
+	<div id="subscribe" class="wrapper gray">
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-12">
-					<jdoc:include type="modules" name="newsletter" />
+					<jdoc:include type="modules" name="subscribe" />
 					<section class="box newsletter inline">
 						<header>
-							<h2>عضویت در خبرنامه</h2>
+							<h2><?php echo JText::_('SUBSCRIBE_TO_OUR_NEWSLETTER'); ?></h2>
 						</header>
 						<div>
 							<form action="#" role="form" class="form-inline">
 								<div class="form-group">
 									<input class="form-control ltr" name="email" type="email" placeholder="ایمیل خود را وارد کنید" />
-									<button type="submit" class="btn btn-default">عضویت</button>
+									<button type="submit" class="btn btn-default"><?php echo JText::_('SUBSCRIBE'); ?></button>
 								</div>
 							</form>
 						</div>
@@ -151,23 +196,17 @@
 			<div class="container">
 				<div class="row _relative">
 					<div class="col-xs-12 col-sm-10 col-md-9">
-						<ul class="list-inline">
-							<li><a href="<?php echo JURI::base(); ?>">صفحه اصلی</a></li>
-							<li><a href="<?php echo JURI::base(); ?>about-us">درباره ما</a></li>
-							<li><a href="<?php echo JURI::base(); ?>contact-us">تماس با ما</a></li>
-							<li><a href="#">خبرنامه</a></li>
-						</ul>
-						<jdoc:include type="modules" name="sitemap" />
+						<jdoc:include type="modules" name="footer" />
 					</div>
 					<div class="col-xs-12 col-sm-2 col-md-3">
-						<a href="<?php echo JURI::base(); ?>" class="footer-logo"><img src="<?php echo JURI::base() ?>assets/img/logo_tehran.png" /></a>
+						<a href="<?php echo JURI::base(); ?>" class="footer-logo"><img src="<?php echo JURI::base() ?>assets/img/logo_footer_gilgamesh.png" /></a>
 					</div>
 				</div>
 			</div>
 		</div>
 	<?php } ?>
 	<?php if ($helper->countModules('copyright')) { ?>
-		<div id="copyright" class="wrapper purple">
+		<div id="copyright" class="wrapper blue">
 			<div class="container">
 				<div class="row">
 					<div class="col-xs-12">
@@ -178,7 +217,7 @@
 		</div>
 	<?php } ?>
 </footer>
-	<script src="<?php echo JURI::base(); ?>assets/js/jquery-1.11.1.min.js"></script>
+<script src="<?php echo JURI::base(); ?>assets/js/jquery-1.11.1.min.js"></script>
 <script src="<?php echo JURI::base(); ?>assets/js/gilgamesh.min.js"></script>
 <script type="text/javascript">
     // Piwik code

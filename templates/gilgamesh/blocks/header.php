@@ -10,14 +10,13 @@ $url = JURI::base(); // Root URL
 $turl = rtrim($url, "/"); // Root URL without tailing slash
 
 $isFrontpage = $helper->isFrontpage($app->getMenu());
-$isProgram = $helper->isProgram($app->getMenu());
-
+$isProgram = false;
 $this->setGenerator(''); // Remove Joomla generator tag
 $sitename = $app->getCfg('sitename');
-
+$lang = JLanguageHelper::getLanguages('lang_code')[JFactory::getLanguage()->getTag()]->sef;
 $pageSuffix = JFactory::getApplication()->getMenu()->getActive()->params["pageclass_sfx"];
 
-?><html class="no-js<?php echo $helper->getBaseClasses($app->getMenu()); ?>" lang="<?php echo JLanguageHelper::getLanguages('lang_code')[JFactory::getLanguage()->getTag()]->sef; ?>">
+?><html class="no-js<?php echo $helper->getBaseClasses($app->getMenu()); ?>" lang="<?php echo $lang; ?>">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
