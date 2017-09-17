@@ -5,21 +5,74 @@
         <group>
             <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/mod_content/Cards/default.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/com_k2/articles/item.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/com_k2/articles/category.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/mod_content/FeaturesSlider/default.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/gilgamesh/responsive.less</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/modules/mod_content/helper.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/blocks/header.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/com_search/search/default.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/mod_content/Thumbs/default.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/modules/mod_content/index.html</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/gilgamesh/project.less</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/gilgamesh/misc.less</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/components/com_k2/templates/default/category.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/assets/js/gilgamesh.js</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/gilgamesh/footer.less</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/gilgamesh/main.less</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/modules/mod_social_links/mod_social_links.xml</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/mod_content/FirstFeatured2/default.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/com_k2/news/category_item.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/mod_banners/headermag.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/mod_langselect/default.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/com_k2/misc/category.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/modules/mod_content/mod_content.xml</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/mod_banners/default.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/mod_content/Categories/default.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/com_k2/articles/category.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/modules/mod_content/tmpl/Standard/default.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/mod_footer/default.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/gilgamesh/pages.less</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/com_search/search/default_form.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/mod_languages/default.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/mod_content/FirstFeatured/default.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/js/gilgamesh.js</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/com_k2/_comments/list.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/fframework/icons.less</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/com_contact/contact/default.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/gilgamesh/variables.less</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/com_k2/articles/user.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/modules/mod_content/mod_content.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/mod_content/Showcase/default.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/blocks/mainbody.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/gilgamesh/header.less</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/error.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/language/fa-IR/fa-IR.tpl_gilgamesh.ini</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/templateDetails.xml</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/helper.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/gilgamesh/box.less</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/com_k2/news/category.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/com_search/search/default_results.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/modules.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/blocks/header.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/com_k2/multimedia/category.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/gilgamesh/misc.less</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/administrator/templates/hathor/html/com_menus/item/edit.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/components/com_k2/templates/default/item.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/modules/mod_social_links/tmpl/default.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/com_k2/misc/item.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/gilgamesh/main.less</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/beez3/index.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/com_k2/multimedia/item.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/com_k2/magazine/category.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/com_contact/contact/default_address.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/gilgamesh/header.less</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/com_k2/articles/category_item.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/doctv/html/com_k2/_comments/list.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/gilgamesh/item.less</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/com_search/search/default_error.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/language/fa-IR/fa-IR.com_contact.ini</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/com_contact/contact/default_form.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/com_k2/news/item.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/gilgamesh/components.less</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/layouts/joomla/form/renderfield.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/com_k2/magazine/item.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/language/fa-IR/fa-IR.ini</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/plugins/system/activitylog_pro/activitylog_pro.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/gilgamesh.less</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/mod_content/Promo/default.php</file>
         </group>
     </open-files>
 </project-private>
