@@ -160,12 +160,6 @@ defined('_JEXEC') or die;
 				</div>
 			</section>
 		<?php } ?>
-		<?php if ($this->item->params->get('itemImageGallery') && !empty($this->item->gallery)) { ?>
-			<section class="box gallery">
-				<header><h2>گالری</h2></header>
-				<?php echo $this->item->gallery; ?>
-			</section>
-		<?php } ?>
 	</div>
 	<?php echo $this->item->event->AfterDisplay; ?>
 	<?php echo $this->item->event->K2AfterDisplay; ?>
