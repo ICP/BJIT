@@ -25,6 +25,7 @@ $pagetitle = isset(JFactory::getApplication()->getMenu()->getActive()->title) ? 
 							<a href="<?php echo JURI::base(); ?>" title="<?php echo $sitename; ?>"><?php echo $sitename; ?></a>
 						</div>
 						<div class="menu-toggle hidden-md hidden-lg"><a href="#" data-toggle="menuslide" data-target=".menu"><i class="icon-menu"></i></a></div>
+						<a class="search-toggle hidden-md hidden-lg" href="<?php echo JURI::base() . 'search'; ?>" data-toggle="toggle" data-target="#search" data-focus="#search input[type='text']"><i class="icon-search"></i></a>
 					</div>
 					<div class="col-xs-12 col-md-3">
 						<?php if ($helper->countModules('header-left')) { ?>
