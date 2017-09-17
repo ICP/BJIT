@@ -10,17 +10,6 @@ defined('_JEXEC') or die;
 
 JLoader::register('BannerHelper', JPATH_ROOT . '/components/com_banners/helpers/banner.php');
 ?>
-<!--		<?php foreach ($list as $key => $item) { ?>
-						<a href="<?php echo JURI::base(); ?>promotion">
-							<span class="text"><?php echo strip_tags($item->introtext, '<strong>'); ?></span>
-	<?php if ($params->get('itemImage') && isset($item->image)) { ?>
-											<span class="img">
-												<img src="<?php echo $item->image; ?>" alt="<?php echo K2HelperUtilities::cleanHtml($item->title); ?>"/>
-											</span>
-	<?php } ?>
-						</a>
-<?php } ?>
-	</div>-->
 <?php foreach ($list as $item) : ?>
 	<?php $link = JRoute::_('index.php?option=com_banners&task=click&id=' . $item->id); ?>
 	<?php if ($item->type == 1) : ?>
@@ -42,9 +31,8 @@ JLoader::register('BannerHelper', JPATH_ROOT . '/components/com_banners/helpers/
 				<?php if ($target == 1) : ?>
 					<?php // Open in a new window ?>
 					<a
-						href="<?php echo $link; ?>" target="_blank" rel="noopener noreferrer"
-						title="<?php echo htmlspecialchars($item->name, ENT_QUOTES, 'UTF-8'); ?>">
-						<span class="text"><?php echo strip_tags($item->description, '<strong>'); ?></span>
+						href="<?php echo $link; ?>" target="_blank" rel="noopener noreferrer">
+						<span class="text"><?php echo nl2br(strip_tags($item->description, '<strong>')); ?></span>
 						<span class="img">
 							<img
 								src="<?php echo $baseurl . $imageurl; ?>"
@@ -59,9 +47,8 @@ JLoader::register('BannerHelper', JPATH_ROOT . '/components/com_banners/helpers/
 					<a
 						href="<?php echo $link; ?>" onclick="window.open(this.href, '',
 					                    'toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=780,height=550');
-					            return false"
-						title="<?php echo htmlspecialchars($item->name, ENT_QUOTES, 'UTF-8'); ?>">
-						<span class="text"><?php echo strip_tags($item->description, '<strong>'); ?></span>
+					            return false">
+						<span class="text"><?php echo nl2br(strip_tags($item->description, '<strong>')); ?></span>
 						<span class="img">
 							<img
 								src="<?php echo $baseurl . $imageurl; ?>"
@@ -74,9 +61,8 @@ JLoader::register('BannerHelper', JPATH_ROOT . '/components/com_banners/helpers/
 				<?php else : ?>
 					<?php // Open in parent window ?>
 					<a
-						href="<?php echo $link; ?>"
-						title="<?php echo htmlspecialchars($item->name, ENT_QUOTES, 'UTF-8'); ?>">
-						<span class="text"><?php echo strip_tags($item->description, '<strong>'); ?></span>
+						href="<?php echo $link; ?>">
+						<span class="text"><?php echo nl2br(strip_tags($item->description, '<strong>')); ?></span>
 						<span class="img">
 							<img
 								src="<?php echo $baseurl . $imageurl; ?>"
