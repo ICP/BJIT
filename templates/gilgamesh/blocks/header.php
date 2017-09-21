@@ -16,6 +16,8 @@ $sitename = $app->getCfg('sitename');
 $lang = JLanguageHelper::getLanguages('lang_code')[JFactory::getLanguage()->getTag()]->sef;
 $pageSuffix = JFactory::getApplication()->getMenu()->getActive()->params["pageclass_sfx"];
 
+JResponse::clearHeaders();
+
 ?><html class="no-js<?php echo $helper->getBaseClasses($app->getMenu()); ?>" lang="<?php echo $lang; ?>">
 	<head>
 		<meta charset="utf-8" />

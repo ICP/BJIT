@@ -1,6 +1,23 @@
-.ltr {
-    .page-header h1 { text-align: left; direction: ltr; }
-    #item {
-        text-align: left; direction: ltr;
+body[dir="ltr"] {
+    header, section, footer, .wrapper, .container { direction: ltr; }
+    [class*=col-] { float: left; direction: ltr; text-align: left; }
+    .logo a { background-image: url('../img/logo_gilgamesh_en.png'); }
+    #header {
+        .search { float: right; left: auto; right: 10px; }
+        .logo-alt { background-image: url('../img/logo_menu_gilgamesh_en.png'); background-position-y: center; width: 230px; right: auto; left: 0; }
+    }
+    #footer {
+        .footer-logo { left: auto; right: 0; }
+    }
+    
+    .box {
+        &.search .search-form {
+            input[type=text] { padding-right: 12px; padding-left: 100px; direction: ltr; text-align: left; }
+            .form-group {
+                margin-left: 0; margin-right: 60px;
+                .btn-link { left: auto; right: -60px; }
+                &:after { right: auto; left: 20px; }
+            }
+        }
     }
 }

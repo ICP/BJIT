@@ -200,7 +200,7 @@ $pagetitle = isset(JFactory::getApplication()->getMenu()->getActive()->title) ? 
 						<jdoc:include type="modules" name="footer" />
 					</div>
 					<div class="col-xs-12 col-sm-2 col-md-3">
-						<a href="<?php echo JURI::base(); ?>" class="footer-logo"><img src="<?php echo JURI::base() ?>assets/img/logo_footer_gilgamesh.png" /></a>
+						<a href="<?php echo JURI::base(); ?>" class="footer-logo"><img src="<?php echo JURI::base() ?>assets/img/logo_footer_gilgamesh<?php echo ($lang == "en") ? '_en' : ''; ?>.png" /></a>
 					</div>
 				</div>
 			</div>
