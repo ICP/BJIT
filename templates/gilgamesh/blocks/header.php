@@ -22,7 +22,8 @@ JResponse::clearHeaders();
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
-		<meta name="google-site-verification" content="hNVmYmqorsHWellD3gmvYGlezOzxor8dcs2JHUDMdnY" />
+		<meta name="google-site-verification" content="RuhLN7r7CmLWXg0zwSSAqLrHsQN0WnPOpvUTKgi8IJ0" />
+		<meta name="samandehi" content="996884440"/>
 		<?php if ($isFrontpage) { ?><meta property="og:image" content="<?php echo JURI::base() . 'assets/data/placeholder_gilgamesh.jpg'; ?>">
 <?php } ?>
 		<?php
