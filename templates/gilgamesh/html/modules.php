@@ -107,7 +107,8 @@ function modChrome_hascontainer ($module, $params, $attribs) {
 function modChrome_default ($module, $params, $attribs) {
 	if (!empty ($module->content)) {
 		$sfx = ($params->get('moduleclass_sfx') != '') ? ' ' . $params->get('moduleclass_sfx') : '';
-		echo '<section class="box' . $sfx . '">';
+		$dir = JFactory::getLanguage()->get('rtl') ? ' dir="rtl"' : '';
+		echo '<section class="box' . $sfx . '"' . $dir . '>';
 			if ($module->showtitle)
 				echo '<header><h2>' . handleDefaultChromeTitle($module->title) . '</h2></header>';
 			echo '<div>' . $module->content . '</div>';
