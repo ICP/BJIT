@@ -74,3 +74,8 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule .* index.php [L]
 #
 ## End - Joomla! core SEF Section.
+
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^gilgameshmag.ir [OR]
+RewriteCond %{HTTP_HOST} ^gilgamesh-mag.ir
+RewriteRule ^(.*)$ http://www.gilgameshmag.com/$1 [R=permanent,L]
