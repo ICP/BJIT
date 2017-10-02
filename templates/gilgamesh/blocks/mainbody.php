@@ -6,7 +6,7 @@ if (isset($pageOptions['task']) && $pageOptions['task'] === "user")
 $titleTag = JFactory::getApplication()->input->get('view') === "item" ? ['<strong>', '</strong>'] : ['<h1>', '</h1>'];
 $pagetitle = isset(JFactory::getApplication()->getMenu()->getActive()->title) ? JFactory::getApplication()->getMenu()->getActive()->title : $sitename;
 ?>
-<body id="bd" class="dark <?php echo strtolower($helper->device) . ($isFrontpage ? ' home' : '') . ($isProgram ? ' home program' : '') . (isset(JFactory::getApplication()->getMenu()->getActive()->alias) ? ' alias-' . JFactory::getApplication()->getMenu()->getActive()->alias : ''); ?>"  dir="<?php echo $this->direction; ?>">
+<body id="bd" class="dark <?php echo strtolower($helper->device) . ($isFrontpage ? ' home' : '') . ($isProgram ? ' home program' : '') . (isset(JFactory::getApplication()->getMenu()->getActive()->alias) ? ' alias-' . JFactory::getApplication()->getMenu()->getActive()->alias : ''); ?>" dir="<?php echo $this->direction; ?>">
 	<header id="header">
 		<?php if ($isFrontpage) { ?><h1 style="display: none;"><?php echo $sitename; ?></h1><?php } ?>
 		<div id="masthead" class="wrapper">
@@ -196,11 +196,24 @@ $pagetitle = isset(JFactory::getApplication()->getMenu()->getActive()->title) ? 
 		<div id="sitemap" class="wrapper gray-lightest">
 			<div class="container">
 				<div class="row _relative">
-					<div class="col-xs-12 col-sm-10 col-md-9">
+					<div class="col-xs-12 col-sm-10 col-md-6">
 						<jdoc:include type="modules" name="footer" />
+						<ul class="list-inline app-links">
+							<li>
+								<a href="https://play.google.com/store/apps/details?id=com.Mehrafarid.Gilgamesh">
+									<img src="https://play.google.com/intl/en_us/badges/images/generic/fa_badge_web_generic.png" />
+								</a>
+							</li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<div class="samandehi-holder">
+							<img id="sizpnbqesizpesgtapfu" class="logo-samandehi" onclick='window.open("https://logo.samandehi.ir/Verify.aspx?id=92905&p=pfvluiwkpfvlobpddshw", "Popup","toolbar=no, scrollbars=no, location=no, statusbar=no, menubar=no, resizable=0, width=450, height=630, top=30")' alt="logo-samandehi" src="https://logo.samandehi.ir/logo.aspx?id=92905&p=bsiyodrfbsiylymaujyn" />
+						</div>
 					</div>
 					<div class="col-xs-12 col-sm-2 col-md-3">
 						<a href="<?php echo JURI::base(); ?>" class="footer-logo"><img src="<?php echo JURI::base() ?>assets/img/logo_footer_gilgamesh<?php echo ($lang == "en") ? '_en' : ''; ?>.png" /></a>
+						
 					</div>
 				</div>
 			</div>
@@ -220,7 +233,13 @@ $pagetitle = isset(JFactory::getApplication()->getMenu()->getActive()->title) ? 
 </footer>
 <script src="<?php echo JURI::base(); ?>assets/js/jquery-1.11.1.min.js"></script>
 <script src="<?php echo JURI::base(); ?>assets/js/gilgamesh.min.js"></script>
-<script type="text/javascript">
-    // Piwik code
+<!-- Global Site Tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-63573054-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+  gtag('config', 'UA-63573054-2');
 </script>
+
 </body>

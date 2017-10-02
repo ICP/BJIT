@@ -44,26 +44,32 @@ defined('_JEXEC') or die;
 		<?php echo $this->item->event->K2BeforeDisplayContent; ?>
 		<?php if ($this->item->params->get('itemImage') && !empty($this->item->image)) { ?>
 			<?php $video = ($this->item->params->get('itemVideo') && !empty($this->item->video)) ? $this->item->video : null; ?>
-			<figure id="item-media" class="item-image"<?php echo ($video) ? ' data-video=' . $video : '' ?>>
-				<a href="<?php echo $this->item->imageXLarge; ?>" title="<?php echo JText::_('K2_CLICK_TO_PREVIEW_IMAGE'); ?>">
-					<img src="<?php echo $this->item->image; ?>" alt="<?php
-					if (!empty($this->item->image_caption))
-						echo K2HelperUtilities::cleanHtml($this->item->image_caption);
-					else
-						echo K2HelperUtilities::cleanHtml($this->item->title);
-					?>" />
-				</a>
-				<?php if (!empty($this->item->image_caption) || !empty($this->item->image_credits)) { ?>
-					<figcaption>
-						<?php if ($this->item->params->get('itemImageMainCaption') && !empty($this->item->image_caption)) { ?>
-							<div class="img-caption"><?php echo $this->item->image_caption; ?></div>
-						<?php } ?>
-						<?php if ($this->item->params->get('itemImageMainCredits') && !empty($this->item->image_credits)) { ?>
-							<div class="img-credits"><?php echo $this->item->image_credits; ?></div>
-						<?php } ?>
-					</figcaption>
-				<?php } ?>
-			</figure>
+			<?php if ($this->item->videoType != "embedded") { ?>
+				<figure id="item-media" class="item-image"<?php echo ($video) ? ' data-video=' . $video : '' ?>>
+					<a href="<?php echo $this->item->imageXLarge; ?>" title="<?php echo JText::_('K2_CLICK_TO_PREVIEW_IMAGE'); ?>">
+						<img src="<?php echo $this->item->image; ?>" alt="<?php
+						if (!empty($this->item->image_caption))
+							echo K2HelperUtilities::cleanHtml($this->item->image_caption);
+						else
+							echo K2HelperUtilities::cleanHtml($this->item->title);
+						?>" />
+					</a>
+					<?php if (!empty($this->item->image_caption) || !empty($this->item->image_credits)) { ?>
+						<figcaption>
+							<?php if ($this->item->params->get('itemImageMainCaption') && !empty($this->item->image_caption)) { ?>
+								<div class="img-caption"><?php echo $this->item->image_caption; ?></div>
+							<?php } ?>
+							<?php if ($this->item->params->get('itemImageMainCredits') && !empty($this->item->image_credits)) { ?>
+								<div class="img-credits"><?php echo $this->item->image_credits; ?></div>
+							<?php } ?>
+						</figcaption>
+					<?php } ?>
+				</figure>
+			<?php } else { ?>
+				<div id="item-video" class="">
+					<?php echo $this->item->video; ?>
+				</div>
+			<?php } ?>
 		<?php } ?>
 		<div class="item-navbar">
 			<div class="row">
