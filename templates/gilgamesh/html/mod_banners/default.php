@@ -59,15 +59,10 @@ JLoader::register('BannerHelper', JPATH_ROOT . '/components/com_banners/helpers/
 						</a>
 					<?php else : ?>
 						<?php // Open in parent window ?>
-						<a
-							href="<?php echo $link; ?>"
-							title="<?php echo htmlspecialchars($item->name, ENT_QUOTES, 'UTF-8'); ?>">
-							<img
-								src="<?php echo $baseurl . $imageurl; ?>"
-								alt="<?php echo $alt;?>"
+						<a href="<?php echo $link; ?>" title="<?php echo htmlspecialchars($item->name, ENT_QUOTES, 'UTF-8'); ?>">
+							<img src="<?php echo $baseurl . $imageurl; ?>" alt="<?php echo $alt;?>"
 								<?php if (!empty($width)) echo ' width="' . $width . '"';?>
-								<?php if (!empty($height)) echo ' height="' . $height . '"';?>
-							/>
+								<?php if (!empty($height)) echo ' height="' . $height . '"';?> />
 						</a>
 					<?php endif; ?>
 				<?php else : ?>
