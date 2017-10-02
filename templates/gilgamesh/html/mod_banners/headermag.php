@@ -30,13 +30,10 @@ JLoader::register('BannerHelper', JPATH_ROOT . '/components/com_banners/helpers/
 				<?php $target = $params->get('target', 1); ?>
 				<?php if ($target == 1) : ?>
 					<?php // Open in a new window ?>
-					<a
-						href="<?php echo $link; ?>" target="_blank" rel="noopener noreferrer">
+					<a href="<?php echo $link; ?>" target="_blank" rel="noopener noreferrer">
 						<span class="text"><?php echo nl2br(strip_tags($item->description, '<strong>')); ?></span>
 						<span class="img">
-							<img
-								src="<?php echo $baseurl . $imageurl; ?>"
-								alt="<?php echo $alt; ?>"
+							<img src="<?php echo $baseurl . $imageurl; ?>" alt="<?php echo $alt; ?>"
 								<?php if (!empty($width)) echo ' width="' . $width . '"'; ?>
 								<?php if (!empty($height)) echo ' height="' . $height . '"'; ?>
 								/>
@@ -44,32 +41,20 @@ JLoader::register('BannerHelper', JPATH_ROOT . '/components/com_banners/helpers/
 					</a>
 				<?php elseif ($target == 2) : ?>
 					<?php // Open in a popup window ?>
-					<a
-						href="<?php echo $link; ?>" onclick="window.open(this.href, '',
+					<a href="<?php echo $link; ?>" onclick="window.open(this.href, '',
 					                    'toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=780,height=550');
 					            return false">
 						<span class="text"><?php echo nl2br(strip_tags($item->description, '<strong>')); ?></span>
 						<span class="img">
-							<img
-								src="<?php echo $baseurl . $imageurl; ?>"
-								alt="<?php echo $alt; ?>"
-								<?php if (!empty($width)) echo ' width="' . $width . '"'; ?>
-								<?php if (!empty($height)) echo ' height="' . $height . '"'; ?>
-								/>
+							<img src="<?php echo $baseurl . $imageurl; ?>" alt="<?php echo $alt; ?>"<?php if (!empty($width)) echo ' width="' . $width . '"'; if (!empty($height)) echo ' height="' . $height . '"'; ?> />
 						</span>
 					</a>
 				<?php else : ?>
 					<?php // Open in parent window ?>
-					<a
-						href="<?php echo $link; ?>">
+					<a href="<?php echo $link; ?>">
 						<span class="text"><?php echo nl2br(strip_tags($item->description, '<strong>')); ?></span>
 						<span class="img">
-							<img
-								src="<?php echo $baseurl . $imageurl; ?>"
-								alt="<?php echo $alt; ?>"
-								<?php if (!empty($width)) echo ' width="' . $width . '"'; ?>
-								<?php if (!empty($height)) echo ' height="' . $height . '"'; ?>
-								/>
+							<img src="<?php echo $baseurl . $imageurl; ?>" alt="<?php echo $alt; ?>" <?php if (!empty($width)) echo ' width="' . $width . '"'; if (!empty($height)) echo ' height="' . $height . '"'; ?> />
 						</span>
 					</a>
 				<?php endif; ?>
