@@ -1,18 +1,27 @@
-# If the Joomla site is installed within a folder such as at
-# e.g. www.example.com/joomla/ the robots.txt file MUST be
-# moved to the site root at e.g. www.example.com/robots.txt
-# AND the joomla folder name MUST be prefixed to the disallowed
-# path, e.g. the Disallow rule for the /administrator/ folder
-# MUST be changed to read Disallow: /joomla/administrator/
+#
+# robots.txt
+#
+# This file is to prevent the crawling and indexing of certain parts
+# of your site by web crawlers and spiders run by sites like Yahoo!
+# and Google. By telling these "robots" where not to go on your site,
+# you save bandwidth and server resources.
+#
+# This file will be ignored unless it is at the root of your host:
+# Used:    http://example.com/robots.txt
+# Ignored: http://example.com/site/robots.txt
 #
 # For more information about the robots.txt standard, see:
-# http://www.robotstxt.org/orig.html
-#
-# For syntax checking, see:
-# http://tool.motoricerca.info/robots-checker.phtml
+# http://www.robotstxt.org/robotstxt.html
 
 User-agent: *
-Disallow: /administrator/
+Disallow: /wp-admin
+Disallow: /wp-includes
+Disallow: /wp-content/plugins
+Disallow: /wp-content/cache
+Disallow: /wp-content/themes
+Disallow: /wp-includes/js
+Disallow: /trackback
+Disallow: */trackback
 Disallow: /bin/
 Disallow: /cache/
 Disallow: /cli/
@@ -26,4 +35,15 @@ Disallow: /logs/
 Disallow: /modules/
 Disallow: /plugins/
 Disallow: /tmp/
-
+Disallow: /misc/
+Disallow: /profiles/
+Disallow: /scripts/
+Disallow: /themes/
+Disallow: /admin/
+Disallow: /comment/reply/
+Disallow: /filter/tips/
+Disallow: /node/add/
+Disallow: /user/register/
+Disallow: /user/password/
+Disallow: /user/login/
+Disallow: /user/logout/
