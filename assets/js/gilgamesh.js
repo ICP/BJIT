@@ -47,6 +47,61 @@ $(function () {
         $("html").addClass('no-scroll');
     });
 
+    // Carousel
+	if ($(".box.has-indicator").length) {
+		$(".box.has-indicator").each(function () {
+			var $box = $(this);
+			if (typeof $box.attr('id') === "undefined" || !$box.attr('id'))
+				$box.attr('id', 'box-' + Math.floor(Math.random() * 1001));
+			var clone = $box.clone()
+					.attr('class', 'box cols cols-5 has-carousel hidden-desc no-header is-indicator')
+					.attr('data-target', "#" + $box.attr('id'))
+					.attr('id', 'box-' + Math.floor(Math.random() * 1001));
+			clone.find("a").attr('href', 'javascript:;');
+			clone.insertAfter($box);
+		});
+	}
+	$(".box.has-carousel").each(function () {
+		var $box = $(this);
+
+		var count = $box.hasClass('cols') ? $box.attr('class').match(/cols-(\d+)/)[1] : 1;
+		var carouselConfig = {
+			autoplay: $box.hasClass('top') ? true : false
+//			, fade: $box.hasClass('top') ? true : false
+			, infinite: true
+			, slidesToShow: +count
+			, slidesToScroll: +count
+			, SwipetoSlide: true
+//                , centerMode: $box.hasClass('top') ? true : false
+			, rtl: true
+			, dots: $box.hasClass('top') ? true : false
+		};
+		if ($box.hasClass('has-indicator')) {
+			carouselConfig.asNavFor = "#" + $box.next().attr('id') + ' >div ul';
+		}
+		if ($box.hasClass('is-indicator')) {
+			carouselConfig.asNavFor = $box.attr('data-target') + ' >div ul';
+			carouselConfig.focusOnSelect = true;
+		}
+		if (count > 1) {
+			carouselConfig.responsive = [
+				{
+					breakpoint: 1199,
+					settings: {
+						slidesToShow: count > 4 ? 4 : count
+					}
+				},
+				{
+					breakpoint: 992,
+					settings: {
+						slidesToShow: count > 2 ? 2 : count
+					}
+				}
+			];
+		}
+		$box.find("> div ul").slick(carouselConfig);
+	});
+    
     $(".box.gallery").each(function () {
         var $box = $(this);
 

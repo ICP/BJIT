@@ -34,7 +34,7 @@ JResponse::clearHeaders();
 		foreach ($this->_style as $style)
 			unset($style);
 		// Adding stylesheets and scripts to joomla head to prevent core to face an empty array
-		$this->_styleSheets[JURI::base() . 'assets/css/gilgamesh.css'] = array('mime' => "text/css");
+		$this->_styleSheets[JURI::base() . 'assets/css/gilgamesh.css?_=20171002'] = array('mime' => "text/css");
 		$this->_scripts[JURI::base() . 'assets/js/modernizr-2.6.2.min.js'] = array('mime' => "text/javascript");
 		if (!$isFrontpage) {
 			$this->_scripts[JURI::base() . 'assets/js/jwplayer.js'] = array('mime' => "text/javascript");

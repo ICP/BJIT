@@ -747,6 +747,11 @@
             figure a { .responsive-ratio(3, 3.8); }
             &:hover { transform: scale(1.1); }
         }
+        .slick-list { padding: @grid-gutter-width 0; }
+        .slick-arrow {
+            margin-left: -45px;
+            &.slick-next { margin-left: 0; margin-right: -45px; }
+        }
     }
     &.episodes {
         ul {
