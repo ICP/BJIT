@@ -82,7 +82,7 @@
     figure {
         overflow: hidden;
         a {
-            display: block; overflow: hidden; .responsive-ratio(16, 9);
+            display: block; overflow: hidden; .responsive-ratio(16, 9); color: #fff;
             img { display: block; width: 100%; height: auto; }
         }
     }
@@ -1036,6 +1036,7 @@
                     &:before { content: ': '; color: @gray; }
                 }
                 &.tel:before { content: '\E815'; }
+                &.fax:before { content: '\e80d'; }
                 &.email:before { content: '\E80A'; }
                 &.website:before { content: '\E820'; }
                 &.sms:before { content: '\E824'; }
