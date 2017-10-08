@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="2.5" type="plugin" method="upgrade" group="k2">
+  <name>K2 Plugin - J2Store</name>
+  <author>RameshElamathi</author>
+  <creationDate>APRIL 2016</creationDate>
+  <copyright>Copyright (c) 2016 Weblogicx India Private Ltd. All rights reserved.</copyright>
+  <authorEmail>support@k2store.org</authorEmail>
+  <authorUrl>www.j2store.org</authorUrl>
+  <version>1.2</version>
+  <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<description><![CDATA[<h3>J2Store</h3>
+      The Plugin extends the K2 CCK with an <b>e-commerce feature using J2Store Joomla Shopping Cart.</b> ]]></description>
+	<files>
+		<filename plugin="j2store">j2store.php</filename>
+		<filename>index.html</filename>
+		<folder>elements</folder>
+	</files>
+	
+	<fields group="item-content">
+	<fieldset addfieldpath="/plugins/k2/j2store/elements">
+		<field name="j2data" type="j2store" id="j2store" description="PLG_K2STORE_PRODUCT_DESC" label="PLG_K2STORE_PRODUCT_LABEL" message="PLG_K2STORE_PRODUCT_MESSAGE" size="10" />				
+		</fieldset>
+	</fields>
+</extension>

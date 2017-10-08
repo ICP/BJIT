@@ -14,7 +14,7 @@ $isProgram = false;
 $this->setGenerator(''); // Remove Joomla generator tag
 $sitename = $app->getCfg('sitename');
 $lang = JLanguageHelper::getLanguages('lang_code')[JFactory::getLanguage()->getTag()]->sef;
-$pageSuffix = JFactory::getApplication()->getMenu()->getActive()->params["pageclass_sfx"];
+@$pageSuffix = JFactory::getApplication()->getMenu()->getActive()->params["pageclass_sfx"];
 
 JResponse::clearHeaders();
 
@@ -34,8 +34,10 @@ JResponse::clearHeaders();
 		foreach ($this->_style as $style)
 			unset($style);
 		// Adding stylesheets and scripts to joomla head to prevent core to face an empty array
-		$this->_styleSheets[JURI::base() . 'assets/css/gilgamesh.css?_=20171002'] = array('mime' => "text/css");
+		$this->_styleSheets[JURI::base() . 'assets/css/gilgamesh.css?_=20171006_1'] = array('mime' => "text/css");
 		$this->_scripts[JURI::base() . 'assets/js/modernizr-2.6.2.min.js'] = array('mime' => "text/javascript");
+		$this->_scripts[JURI::base() . 'assets/js/jquery-1.11.1.min.js'] = array('mime' => "text/javascript");
+//		$this->_scripts[JURI::base() . 'media/j2store/js/j2store.js'] = array('mime' => "text/javascript");
 		if (!$isFrontpage) {
 			$this->_scripts[JURI::base() . 'assets/js/jwplayer.js'] = array('mime' => "text/javascript");
 			$this->_scripts['https://www.google.com/recaptcha/api.js?hl=fa'] = array('mime' => "text/javascript");
