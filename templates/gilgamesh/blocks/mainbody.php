@@ -1,7 +1,13 @@
 <?php
 $pageOptions = JFactory::getApplication()->input->getArray();
-if (isset($pageOptions['task']) && $pageOptions['task'] === "user")
-	$isFrontpage = false;
+if (isset($pageOptions['task'])) {
+	if ($pageOptions['task'] === "user" ||
+			stristr($pageOptions['task'], 'confirm')) {
+		$isFrontpage = false;
+	}
+}
+//if (isset($pageOptions['task']) && $pageOptions['task'] === "user")
+//	$isFrontpage = false;
 //print_r();
 $titleTag = JFactory::getApplication()->input->get('view') === "item" ? ['<strong>', '</strong>'] : ['<h1>', '</h1>'];
 $pagetitle = isset(JFactory::getApplication()->getMenu()->getActive()->title) ? JFactory::getApplication()->getMenu()->getActive()->title : $sitename;
@@ -26,6 +32,7 @@ $pagetitle = isset(JFactory::getApplication()->getMenu()->getActive()->title) ? 
 						</div>
 						<div class="menu-toggle hidden-md hidden-lg"><a href="#" data-toggle="menuslide" data-target=".menu"><i class="icon-menu"></i></a></div>
 						<a class="search-toggle hidden-md hidden-lg" href="<?php echo JURI::base() . 'search'; ?>" data-toggle="toggle" data-target="#search" data-focus="#search input[type='text']"><i class="icon-search"></i></a>
+
 					</div>
 					<div class="col-xs-12 col-md-3">
 						<?php if ($helper->countModules('header-left')) { ?>
@@ -45,6 +52,10 @@ $pagetitle = isset(JFactory::getApplication()->getMenu()->getActive()->title) ? 
 						<?php } ?>
 						<div class="search hidden-sm hidden-xs">
 							<a class="search-toggle" href="<?php echo JURI::base() . 'search'; ?>" data-toggle="toggle" data-target="#search" data-focus="#search input[type='text']"><i class="icon-search"></i></a>
+							<?php if ($lang != "en") { ?>
+								<a class="user-link" href="<?php echo JURI::base() . 'user/profile'; ?>"><i class="icon-user"></i></a>
+								<a class="cart-link" href="<?php echo JURI::base() . 'shop/cart'; ?>"><i class="icon-basket"></i></a>
+							<?php } ?>
 						</div>
 					</div>
 				</div>
@@ -88,8 +99,9 @@ $pagetitle = isset(JFactory::getApplication()->getMenu()->getActive()->title) ? 
 				<div class="container">
 					<div class="row">
 						<div class="<?php echo (JFactory::getApplication()->getMenu()->getActive()->note === 'cols-9-3') ? "col-xs-12 col-md-9" : "col-xs-12"; ?>">
+							<?php if (stristr($pageOptions['option'], 'store') || stristr($pageOptions['option'], 'user')) { ?><jdoc:include type="message" /><?php } ?>
 							<!--<section class="page-content">-->
-								<jdoc:include type="component" />
+							<jdoc:include type="component" />
 							<!--</section>-->
 							<div class="hide"><jdoc:include type="message" /></div>
 						</div>
@@ -143,15 +155,15 @@ $pagetitle = isset(JFactory::getApplication()->getMenu()->getActive()->title) ? 
 		<?php } ?>
 	<?php } ?>
 	<?php if ($helper->countModules('ads-bot')) { ?>
-	<section data-identifier="subscribe" class="wrapper content gray-lighter">
-		<div class="container">
-			<div id="main-bot" class="row">
-				<div class="col-xs-12">
-					<jdoc:include type="modules" name="ads-bot" style="default" />
+		<section data-identifier="subscribe" class="wrapper content gray-lighter">
+			<div class="container">
+				<div id="main-bot" class="row">
+					<div class="col-xs-12">
+						<jdoc:include type="modules" name="ads-bot" style="default" />
+					</div>
 				</div>
 			</div>
-		</div>
-	</section>
+		</section>
 	<?php } ?>
 	<?php if ($isFrontpage) { ?>
 		<?php if ($helper->countModules('main-bot')) { ?>
@@ -201,19 +213,19 @@ $pagetitle = isset(JFactory::getApplication()->getMenu()->getActive()->title) ? 
 						<ul class="list-inline app-links">
 							<li>
 								<a href="https://play.google.com/store/apps/details?id=com.Mehrafarid.Gilgamesh">
-									<img src="https://play.google.com/intl/en_us/badges/images/generic/fa_badge_web_generic.png" />
+									<img src="https://play.google.com/intl/en_us/badges/images/generic/<?php echo ($lang == "en") ? 'en_' : 'fa_'; ?>badge_web_generic.png" />
 								</a>
 							</li>
 						</ul>
 					</div>
 					<div class="col-md-3">
 						<div class="samandehi-holder">
-							<img id="sizpnbqesizpesgtapfu" class="logo-samandehi" onclick='window.open("https://logo.samandehi.ir/Verify.aspx?id=92905&p=pfvluiwkpfvlobpddshw", "Popup","toolbar=no, scrollbars=no, location=no, statusbar=no, menubar=no, resizable=0, width=450, height=630, top=30")' alt="logo-samandehi" src="https://logo.samandehi.ir/logo.aspx?id=92905&p=bsiyodrfbsiylymaujyn" />
+							<img id="sizpnbqesizpesgtapfu" class="logo-samandehi" onclick='window.open("https://logo.samandehi.ir/Verify.aspx?id=92905&p=pfvluiwkpfvlobpddshw", "Popup", "toolbar=no, scrollbars=no, location=no, statusbar=no, menubar=no, resizable=0, width=450, height=630, top=30")' alt="logo-samandehi" src="https://logo.samandehi.ir/logo.aspx?id=92905&p=bsiyodrfbsiylymaujyn" />
 						</div>
 					</div>
 					<div class="col-xs-12 col-sm-2 col-md-3">
 						<a href="<?php echo JURI::base(); ?>" class="footer-logo"><img src="<?php echo JURI::base() ?>assets/img/logo_footer_gilgamesh<?php echo ($lang == "en") ? '_en' : ''; ?>.png" /></a>
-						
+
 					</div>
 				</div>
 			</div>
@@ -231,15 +243,18 @@ $pagetitle = isset(JFactory::getApplication()->getMenu()->getActive()->title) ? 
 		</div>
 	<?php } ?>
 </footer>
-<script src="<?php echo JURI::base(); ?>assets/js/jquery-1.11.1.min.js"></script>
-<script src="<?php echo JURI::base(); ?>assets/js/gilgamesh.min.js"></script>
+<?php /* <script src="<?php echo JURI::base(); ?>assets/js/jquery-1.11.1.min.js"></script> */ ?>
+<script src="<?php echo JURI::base(); ?>assets/js/gilgamesh.min.js?_=20171006"  type="text/javascript"></script>
 <!-- Global Site Tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-63573054-2"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments)};
-  gtag('js', new Date());
-  gtag('config', 'UA-63573054-2');
+                                window.dataLayer = window.dataLayer || [];
+                                function gtag() {
+                                    dataLayer.push(arguments)
+                                }
+                                ;
+                                gtag('js', new Date());
+                                gtag('config', 'UA-63573054-2');
 </script>
 
 </body>
