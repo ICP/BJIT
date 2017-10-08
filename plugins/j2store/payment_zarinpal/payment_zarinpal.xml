@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.0" type="plugin" method="upgrade" group="j2store">
+    <name>Zarinpal</name>
+    <title>zarinpal</title>
+    <author>Trangell</author>
+    <creationDate>Aug 2017</creationDate>
+    <copyright>Copyright 2017 Trangell Team</copyright>
+    <license>http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU/GPL version 2</license>
+    <authorEmail>info@trangell.com</authorEmail>
+    <authorUrl>http://trangell.com</authorUrl>
+    <version>0.0.1</version>
+    <description>پلاگین پرداخت جی۲ برای زرین پال</description>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field name="merchant_id" type="text" size="40" label="شناسه مرچند" description="شانسه مرچند خود را وارد کنید" default=""></field>
+                <field name="zaringate" type="list" default="0" label="درگاه زرین گیت" description="">
+                    <option value="0">غیر فعال</option>
+                    <option value="1">فعال</option>
+                </field>
+                <field 
+                    name="articleid" 
+                    type="text" 
+                    size="10" 
+                    default="" 
+                    label="j2store_thanks_msg"
+                    description="j2store_thanks_msg_desc"
+                />
+            </fieldset>
+        </fields>
+    </config>
+    <files>
+        <filename plugin="payment_zarinpal">payment_zarinpal.php</filename>
+        <filename plugin="payment_zarinpal">trangell_inputcheck.php</filename>
+        <filename>index.html</filename>
+        <folder>payment_zarinpal</folder>
+    </files>	
+</extension>
