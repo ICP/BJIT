@@ -65,6 +65,11 @@ $app->map('/comments(/)(:id(/))', function ($id = null) use ($app) {
 	}
 })->via('POST');
 
+// Subsctiptions
+$app->map('/subscribe(/)(:type(/))', function ($type = null) use ($app) {
+	Subscription::addContact($app, $type);
+})->via('POST');
+
 // Schedules
 $app->map('/schedules(/)(:date(/))', function ($date = null) use ($app) {
 	$date = (!$date) ? date('Y-m-d', time()) : $date;

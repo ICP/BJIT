@@ -40,3 +40,4 @@ include 'classes/route.php';
 include 'classes/items.php';
 include 'classes/schedule.php';
 include 'classes/comments.php';
+include 'classes/subscription.php';
