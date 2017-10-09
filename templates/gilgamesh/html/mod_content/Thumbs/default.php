@@ -14,9 +14,19 @@ defined('_JEXEC') or die('Restricted access');
 		<a href="<?php echo JRoute::_('index.php?option=com_k2&Itemid=' . $params->get('mymenu_id')); ?>" class="btn btn-default category-link">بیشتر</a>
 	<?php } ?>
 	<ul>
-		<?php foreach ($items as $key => $item) { ?>
-			<li>
+		<?php
+		foreach ($items as $key => $item) {
+			$isProduct = false;
+			if ($item->plugins !== "") {
+				$item->plugins = json_decode($item->plugins);
+				if (isset($item->plugins->j2storej2data->enabled) && $item->plugins->j2storej2data->enabled) {
+					$isProduct = true;
+				}
+			}
+			?>
+			<li<?php echo $isProduct ? ' class="product"' : ''; ?>>
 				<?php if ($params->get('itemImage') || $params->get('itemIntroText')) { ?>
+					<?php if ($isProduct) { ?><span class="available"><i class="icon-basket"></i></span><?php } ?>
 					<figure>
 						<a href="<?php echo $item->link; ?>">
 							<?php if ($params->get('itemImage') && isset($item->image)) { ?>

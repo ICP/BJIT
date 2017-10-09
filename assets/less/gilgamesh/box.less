@@ -48,6 +48,12 @@
                 &.special-cases .desc { border-top-color: @special-cases; a.cat { color: @special-cases; } }
                 &.travel .desc { border-top-color: @travel; a.cat { color: @travel; } }
                 &.future .desc { border-top-color: @future; a.cat { color: @future; } }
+                &.product {
+                    position: relative;
+                    .available {
+                        display: block; position: absolute; top: 0; left: @grid-gutter-width / 2; width: 32px; height: 32px; line-height: 32px; text-align: center; color: #fff; background: rgba(0, 0, 0, 0.5); font-size: 18px;
+                    }
+                }
             }
         }
     }
