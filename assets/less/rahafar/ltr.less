@@ -1,0 +1,105 @@
+body[dir="ltr"] {
+    header, section, footer, .wrapper, .container { direction: ltr; }
+    .form-control, button, input, text-area { direction: ltr; text-align: left; }
+    [class*=col-] { float: left; direction: ltr; text-align: left; }
+    .table * { float: none !important; }
+    .logo a { background-image: url('../img/logo_gilgamesh_en.png'); }
+    .form-horizontal .control-label { text-align: left; }
+    #header {
+        .search { float: right; left: auto; right: 10px; }
+        .logo-alt { background-image: url('../img/logo_menu_gilgamesh_en.png'); background-position-y: center; width: 230px; right: auto; left: 0; }
+    }
+    #footer {
+        .footer-logo { left: auto; right: 0; }
+    }
+    
+    .wrapper.purple-light { background: @primary; }
+    
+    .box {
+        &.search .search-form {
+            input[type=text] { padding-right: 12px; padding-left: 100px; direction: ltr; text-align: left; }
+            .form-group {
+                margin-left: 0; margin-right: 60px;
+                .btn-link { left: auto; right: -60px; }
+                &:after { right: auto; left: 20px; }
+            }
+        }
+        &.newsletter {
+            > div { float: right; }
+        }
+        &.top {
+            ul li {
+                .desc { right: auto; left: 0; }
+            }
+        }
+        &.articles.secondary .item { float: left; }
+        &.list {
+            ul li {
+                &:before { right: auto; left: 8px; }
+                h3 { padding-right: 0; padding-left: 24px; }
+            }
+            &.highlights {
+                ul li {
+                    figure { float: left; }
+                    .desc { margin-right: 0; margin-left: 45%; padding-right: 0; padding-left: @grid-gutter-width; }
+                }
+            }
+        }
+        &.item-tags {
+            >header { float: left; }
+            ul li { padding-right: 0; padding-left: 30px; }
+        }
+        &.content.blog ul li .desc { right: auto; left: 0; }
+        &.magazines article {
+            figure { float: left; }
+            .desc { margin-right: 0; margin-left: 220px; padding-right: 0; padding-left: @grid-gutter-width; }
+        }
+        
+        &.subcategories.articles ul li {
+            width: 11.111111%;
+            h3 a {
+                height: 100px;
+                &:after { background: url('../img/titles_en.png') no-repeat center 0 transparent; }
+            }
+            &.geography h3 a:after { background-position-y: 0; }
+            &.iranology h3 a:after { background-position-y: -100px; }
+            &.lifestyle h3 a:after { background-position-y: -200px; }
+            &.graball h3 a:after { background-position-y: -300px; }
+            &.art h3 a:after { background-position-y: -400px; }
+            &.mythology h3 a:after { background-position-y: -500px; }
+            &.environment h3 a:after { background-position-y: -600px; }
+            &.study h3 a:after { background-position-y: -700px; }
+            &.history-articles h3 a:after { background-position-y: -800px; }
+        }
+    }
+    
+    #item {
+        &.blog {
+            .item-author {
+                .author-avatar { float: left; margin-left: 0; margin-right: @grid-gutter-width / 2; }
+            }
+        }
+        &.magazine {
+            #item-media {
+                float: right;
+                & ~ * { margin-left: 0; margin-right: 40%; padding-left: 0; padding-right: @grid-gutter-width; }
+            }
+        }
+        
+        .item-sharing { margin-right: 0; margin-left: -60px; }
+        .item-boxes .box { clear: both; }
+    } 
+    
+    .page {
+        &.user {
+            .page-tools { left: auto; right: @grid-gutter-width / 2; }
+        }
+        &.search {
+            .item-category { padding-right: 0; padding-left: 6px; border-right: 0 none; border-left: 3px solid #0aa; }
+            .search-options .form-group {
+                float: right;
+                button { left: auto; right: 0; }
+            }
+        }
+    }
+}

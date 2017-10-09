@@ -1,0 +1,52 @@
+.page {
+    &.user {
+        margin-bottom: @grid-gutter-width * 3;
+        form {
+            margin-top: 60px;
+            /*label { color: white; }*/
+            input[type=text], input[type=email], input[type=password] {
+                .form-control
+            }
+            input[type=checkbox], input[type=radio] { margin-right: 0; position: static; margin-left: 8px; }
+        }
+        ul { color: @gray-lightest; }
+        .page-tools { top: -58px; display: block; left: @grid-gutter-width / 2; }
+
+        &.login {
+            .user-links { margin-top: @grid-gutter-width * 2; }
+        }
+        .table { margin-top: @grid-gutter-width; }
+        
+        &.registration {
+            form .form-group {
+                &:first-child label { font-weight: normal; color: @gray-lightest; }
+                &:nth-child(n+3) {
+                    input[type=text], input[type=email], input[type=password] { direction: ltr; text-align: left; }
+                }
+            }
+        }
+    }
+    
+    &.search {
+        .item-category {
+            border-right: 3px solid @cyan; padding-right: @grid-gutter-width / 3; margin-top: @grid-gutter-width / 2;
+            a { color: @cyan; }
+            &:hover a { color: @beige; }
+        }
+        .box.tiles.highlights.latest.grid ul li {
+            height: auto; border-bottom: 0 none;
+            &:nth-child(4n+1) { clear: both; }
+            .desc {
+                .introtext { max-height: none; margin-top: 8px; }
+            }
+        }
+        .search-options {
+            .form-group {
+                width: 40%; float: left; margin-top: -76px; position: relative;
+                button { position: absolute; top: 0; left: 0; }
+            }
+            .total-count { margin-top: @grid-gutter-width; }
+        }
+        .alert { margin-top: @grid-gutter-width; margin-bottom: @grid-gutter-width * 10; }
+    }
+}
