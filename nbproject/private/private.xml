@@ -3,53 +3,22 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="2"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/com_j2store/checkout/default_billing.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/index.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/language/en-GB/en-GB.com_k2.ini</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/administrator/language/fa-IR/fa-IR.com_j2store.ini</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/com_j2store/checkout/default_shipping_payment.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/com_j2store/checkout/default_shipping.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/api/index.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/mod_content/Thumbs/default.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/blocks/header.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/com_j2store/product/item_cart.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/components/com_contact/views/contact/tmpl/default_address.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/plugins/j2store/payment_zarinpal/payment_zarinpal.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/administrator/components/com_j2store/tables/order.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/components/com_k2/models/item.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/com_j2store/myprofile/ordersummary.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/com_j2store/checkout/default.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/com_j2store/myprofile/orderitems.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/com_j2store/myprofile/default_login.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/layouts/joomla/system/message.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/com_j2store/myprofile/reorder.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/components/com_contact/views/contact/tmpl/default.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/com_j2store/checkout/shipping_yes.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/com_j2store/carts/default_items.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/com_j2store/myprofile/default.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/com_users/reset/default.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/gilgamesh/components.less</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/com_j2store/myprofile/address.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/language/fa-IR/fa-IR.com_j2store.ini</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/com_j2store/myprofile/index.html</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/com_j2store/myprofile/default_addresses.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/gilgamesh/ltr.less</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/administrator/components/com_j2store/helpers/strapper.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/com_j2store/myprofile/default_downloads.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/bootstrap/bootstrap.less</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/com_j2store/myprofile/view.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/rahafar.less</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/libraries/joomla/database/database.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/libraries/joomla/database/query/mysqli.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/js/gilgamesh.js</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/gilgamesh.less</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/fframework/icons.less</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/com_users/profile/default.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/com_j2store/checkout/default_terms.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/com_j2store/product/item.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/com_j2store/myprofile/default_orders.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/com_j2store/product/item_price.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/api/classes/subscription.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/libraries/joomla/database/query.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/js/doctv.js</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/blocks/mainbody.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/com_j2store/checkout/default_register.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/com_j2store/checkout/default_login.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/components/com_j2store/views/carts/tmpl/default_calculator.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/com_j2store/carts/default.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/js/j2store.js</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/libraries/joomla/database/driver/pdomysql.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/api/helpers/defines.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/api/routes.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/api/classes/comments.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/libraries/joomla/database/driver.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/gilgamesh/box.less</file>
         </group>
     </open-files>

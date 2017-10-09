@@ -153,3 +153,11 @@
 2017-10-02T10:06:25+00:00	INFO 127.0.0.1	update	Deleting removed files and folders.
 2017-10-02T10:06:26+00:00	INFO 127.0.0.1	update	Cleaning up after installation.
 2017-10-02T10:06:27+00:00	INFO 127.0.0.1	update	Update to version 3.8.0 is complete.
+2017-10-09T14:00:50+00:00	INFO 127.0.0.1	update	Update started by user فرید (575). Old version is 3.8.0.
+2017-10-09T14:00:56+00:00	INFO 127.0.0.1	update	Downloading update file from https://s3-us-west-2.amazonaws.com/joomla-official-downloads/joomladownloads/joomla3/Joomla_3.8.1-Stable-Update_Package.zip?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIZ6S3Q3YQHG57ZRA%2F20171009%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20171009T140102Z&X-Amz-Expires=60&X-Amz-SignedHeaders=host&X-Amz-Signature=ec1c3c037a41f3167eec2882b689f9a06c7a76feeb0e22dd3db96fd7d202a7b4.
+2017-10-09T14:01:18+00:00	INFO 127.0.0.1	update	File Joomla_3.8.1-Stable-Update_Package.zip successfully downloaded.
+2017-10-09T14:01:18+00:00	INFO 127.0.0.1	update	Starting installation of new version.
+2017-10-09T14:01:32+00:00	INFO 127.0.0.1	update	Finalising installation.
+2017-10-09T14:01:32+00:00	INFO 127.0.0.1	update	Deleting removed files and folders.
+2017-10-09T14:01:33+00:00	INFO 127.0.0.1	update	Cleaning up after installation.
+2017-10-09T14:01:33+00:00	INFO 127.0.0.1	update	Update to version 3.8.1 is complete.
