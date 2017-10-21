@@ -74,14 +74,16 @@ defined('_JEXEC') or die;
 		<div class="item-navbar">
 			<div class="row">
 				<div class="col-xs-12 col-sm-6">
-					<?php if ($this->item->params->get('itemAuthor') && empty($this->item->created_by_alias)) { ?>
+					<?php if ($this->item->params->get('itemAuthor')) { ?>
 						<div class="item-author">
+							<?php if($this->item->author->avatar) { ?>
 							<img class="author-avatar" src="<?php echo $this->item->author->avatar; ?>" alt="<?php echo K2HelperUtilities::cleanHtml($this->item->author->name); ?>" />
+							<?php } ?>
 							<?php echo K2HelperUtilities::writtenBy($this->item->author->profile->gender); ?>
 							<?php if (empty($this->item->created_by_alias)) { ?>
 								<a rel="author" href="<?php echo $this->item->author->link; ?>"><?php echo $this->item->author->name; ?></a>
 							<?php } else { ?>
-								<?php echo $this->item->author->name; ?>
+								<?php echo $this->item->created_by_alias; ?>
 							<?php } ?>
 						</div>
 					<?php } ?>
@@ -159,7 +161,7 @@ defined('_JEXEC') or die;
 	<?php echo $this->item->event->AfterDisplay; ?>
 	<?php echo $this->item->event->K2AfterDisplay; ?>
 
-	<?php if ($this->item->params->get('itemAuthor') && isset($this->item->author->id)) { ?>
+	<?php if ($this->item->params->get('itemAuthor') && isset($this->item->author->id) && trim(strip_tags($this->item->author->profile->description))) { ?>
 		<section class="box user-info">
 			<div>
 				<?php if (!empty($this->item->author->avatar)) { ?>

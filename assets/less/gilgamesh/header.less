@@ -107,6 +107,12 @@ body {
             h1, strong { background: url(../img/titles.png) no-repeat left 0 transparent; }
         }
     }
+    &.alias-geography, &.alias-iranology, &.alias-lifestyle, &.alias-graball, &.alias-art, &.alias-mythology, &.alias-environment, &.alias-study, &[dir="ltr"].alias-history {
+        .page-header {
+            overflow: hidden;
+            h1, strong { background: url(../img/titles_en.png) no-repeat right 0 transparent; background-size: 80px; }
+        }
+    }
     &.alias-events .page-header {
         background: @events;
         h1, strong { background-position-y: -8px; }
@@ -134,5 +140,31 @@ body {
     &.alias-future .page-header {
         background: @future;
         h1, strong { background-position-y: -600px; }
+    }
+    // En
+    &.alias-iranology .page-header {
+        h1, strong { background-position-y: -80px; }
+    }
+    &.alias-lifestyle .page-header {
+        h1, strong { background-position-y: -160px; }
+    }
+    &.alias-graball .page-header {
+        h1, strong { background-position-y: -240px; }
+    }
+    &.alias-art .page-header {
+        h1, strong { background-position-y: -320px; }
+    }
+    &.alias-mythology .page-header {
+        h1, strong { background-position-y: -400px; }
+    }
+    &.alias-environment .page-header {
+        h1, strong { background-position-y: -480px; }
+    }
+    &.alias-study .page-header {
+        h1, strong { background-position-y: -560px; }
+    }
+    &[dir="ltr"].alias-history .page-header {
+        background: @purple-light;
+        h1, strong { background-position-y: -640px; }
     }
 }

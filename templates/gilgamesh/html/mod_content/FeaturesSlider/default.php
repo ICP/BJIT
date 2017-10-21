@@ -36,7 +36,7 @@ defined('_JEXEC') or die('Restricted access');
 				<?php } ?>
 			</div>
 		</section>
-		<section class="box thumbs carousel full-row">
+		<section class="box cols cols-4">
 			<div>
 				<ul>
 					<?php foreach ($items as $key => $item) { ?>

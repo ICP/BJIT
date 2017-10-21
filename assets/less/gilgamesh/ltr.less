@@ -5,6 +5,9 @@ body[dir="ltr"] {
     .table * { float: none !important; }
     .logo a { background-image: url('../img/logo_gilgamesh_en.png'); }
     .form-horizontal .control-label { text-align: left; }
+    &.alias-about-us-en {
+        .table td { width: 33.333333% !important; }
+    }
     #header {
         .search { float: right; left: auto; right: 10px; }
         .logo-alt { background-image: url('../img/logo_menu_gilgamesh_en.png'); background-position-y: center; width: 230px; right: auto; left: 0; }
@@ -54,6 +57,7 @@ body[dir="ltr"] {
             figure { float: left; }
             .desc { margin-right: 0; margin-left: 220px; padding-right: 0; padding-left: @grid-gutter-width; }
         }
+        &.cols.article-items article { float: left; }
         
         &.subcategories.articles ul li {
             width: 11.111111%;
