@@ -1,5 +1,5 @@
-body { font-family: @font-family-base; text-align: right; }
-text-area, input, button, .form-control { direction: rtl; text-align: right; }
+body { font-family: @font-family-base;  }
+/*text-area, input, button, .form-control { direction: rtl; text-align: right; }*/
 .ltr { direction: ltr; }
 .tooltip { font-family: Tahoma, Arial; }
 a { transition: 0.2s all; }
@@ -39,7 +39,7 @@ p:empty { display: none; }
         span { font-size: 18px; transition: 0.2s all; }
         li {
             font-size: @font-size-base; padding: 0 3px;
-            &.active span { color: @yellow-dark; }
+            &.active span { color: @yellow; }
             &:hover span { color: @yellow-light; }
         }
     }
@@ -50,4 +50,9 @@ p:empty { display: none; }
     img { display: block; width: 100%; height: auto; }
 }
 
-blockqoute { border-left: 0 none; border-right: 5px solid #f4f4f4; }
+blockquote { font-size: @font-size-base; background: #f4f4f4; }
+.cat-title { font-weight: bold; font-size: 56px; line-height: 1.5; text-shadow:
+   -1px -1px 0 #000,  
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+     1px 1px 0 #000; }

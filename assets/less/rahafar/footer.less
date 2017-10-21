@@ -7,7 +7,8 @@
     }
     .row._relative > div { position: static; }
     .footer-logo {
-        display: block; position: absolute; bottom: 0; left: 0; opacity: 0.6; transition: 0.2s all;
+        display: block; float: right; opacity: 0.6; transition: 0.2s all; background: rgba(255, 255, 255, 0.3);
+        img { opacity: 0; }
         &:hover { opacity: 1; }
     }
     .footer-about {
@@ -16,7 +17,7 @@
         .desc {
             margin: (@grid-gutter-width * 2) 0 0 (@grid-gutter-width ); text-align: justify;
             .more {
-                color: @yellow-dark; text-align: right;
+                color: @accent; text-align: right;
             }
         }
     }
@@ -45,7 +46,7 @@
     }
     #sitemap {
         background: @gray-darkest;
-        padding: (@grid-gutter-width * 2) 0 @grid-gutter-width;
+        /*padding: (@grid-gutter-width * 2) 0 @grid-gutter-width;*/
         li {
             color: @gray-darker; font-size: @font-size-base + 2;
             a {

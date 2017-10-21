@@ -14,21 +14,23 @@
 @gray-darker: #666;
 @gray-darkest: #333;
 @yellow-light: #ffd513;
-@yellow: #f2c700;
-@yellow-dark: #ffcc00;
+@yellow: #ffb83e;
 @blue-dark: #006699;
 /*@purple-light: #73005d;*/
-@purple-light: lighten(#73005d, 5%);
-@purple: #5A0046;
+@purple-light: lighten(#5e7de9, 5%);
+@purple: #5e7de9;
 @beige: #c0a271;
 @cyan: #0aa;
+@red: #e95e5e;
 @brand-primary: darken(#428bca, 6.5%); // #337ab7
-@brand-success: #5cb85c;
+@green: #27e3b4;
+@brand-success: @green;
 @brand-info:    #5bc0de;
-@brand-warning: @beige;
-@brand-danger:  #d9534f;
+@brand-warning: @yellow;
+@brand-danger:  @red;
 
-@primary: #17479E;
+@primary: #0c3b54;
+@accent: #f77c5c;
 
 // Categories
 @events: #df771c;
@@ -67,16 +69,19 @@
 @btn-default-border: transparent;
 
 // Font family
-@font-family-base: 'iran-sans-web', 'Vazir', Tahoma, Arial;
+@font-family-base: 'Merriweather', Tahoma, Arial;
 /*@headings-font-family: 'B Yekan', 'Yekan', 'W_Yekan', 'WYekan', 'BYekan', Arial, Tahoma;*/
-@headings-font-family: 'iran-sans-web', 'Vazir', Tahoma, Arial;
+@headings-font-family: 'Lato', Tahoma, Arial;
 @font-family-icons: 'doctv';
+@font-size-base: 18px;
+@line-height-base: 1.8;
 
 // Sizes
 @carousel-height: 200px;
 
 // Header 
-@header-height: 145px;
+@header-bg: linear-gradient(to right, rgba(14,190,227,1) 0%,rgba(24,210,173,1) 100%);
+@header-height: 70px;
 @masthead-height: 100px;
 @navbar-height: @header-height - @masthead-height;
 @logo-width: 350px;

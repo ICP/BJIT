@@ -1,6 +1,7 @@
 #item {
+    margin-top: 100px; margin-bottom: 100px;
     .item-inner { .clearfix(); padding-top: @grid-gutter-width; }
-    .summary, .item-text { text-align: justify; }
+    .summary, .item-text { max-width: 940px; line-height: 1.8; }
     .item-tools {
         margin: @grid-gutter-width 0;
         ul {
@@ -37,9 +38,9 @@
     }
     .item-header {
         .page-title {
-            border-top: 1px solid #ddd;
+            /*border-top: 1px solid #ddd;*/
             h1 {
-                margin: 0; padding: (@grid-gutter-width) 0; font-size: 32px; color: @link-color-light; line-height: 1.5; font-weight: bold;
+                margin: 0; padding: (@grid-gutter-width) 0; font-size: 46px; color: @link-color-light; line-height: 1.5; font-weight: bold;
                 small { display: block; }
             }
         }
@@ -71,7 +72,7 @@
     .box {
         .clearfix();
         margin-top: @grid-gutter-width;
-        > header h2 { font-size: 22px; color: @yellow-dark; }
+        > header h2 { font-size: 22px; color: @accent; }
         &.more {
             header { background: @gray-light; padding: 0; margin-bottom: @grid-gutter-width; }
             h2 { margin: 0; padding: (@grid-gutter-width / 2) (@grid-gutter-width / 2); font-size: 18px !important; color: @blue-dark; }
