@@ -425,6 +425,14 @@ class modK2ContentHelper {
 						$item->text .= $item->introtext;
 					}
 				}
+				
+				// Fulltext
+//				$item->text = '';
+				if ($params->get('itemFullText')) {
+					// Word limit
+					
+						$item->text .= $item->fulltext;
+				}
 
 				if ($format != 'feed') {
 
