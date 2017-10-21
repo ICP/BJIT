@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE install PUBLIC "-//Joomla! 2.5//DTD template 1.0//EN" "http://www.joomla.org/xml/dtd/1.6/template-install.dtd">
 <extension version="3.1" type="template" client="site">
-    <name>Gilgamesh</name>
-    <creationDate>March 2016</creationDate>
+    <name>Rahafar</name>
+    <creationDate>October 2017</creationDate>
     <author>Farid Roshan</author>
     <authorEmail>faridv@gmail.com</authorEmail>
     <authorUrl>http://www.faridr.ir</authorUrl>
     <copyright>Copyright (C) 2016 IRIB DocTV. All rights reserved.</copyright>
     <license>GNU General Public License version 2 or later</license>
     <version>1.0.0</version>
-    <description>Gilgamesh Magazine: website template</description>
+    <description>Rahafar: website template</description>
     <files>
         <folder>html</folder>
         <folder>libs</folder>
@@ -42,11 +42,13 @@
         <position>main</position>
         <position>main-bot</position>
         <position>sidebar</position>
+        <position>bot</position>
         <position>footer</position>
         <position>copyright</position>
         <position>footer-about</position>
         <position>logo</position>
         <position>multimedia_carousels</position>
+        <position>category</position>
     </positions>
     <config>
         <fields name="params">

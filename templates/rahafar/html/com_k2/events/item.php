@@ -120,6 +120,25 @@ defined('_JEXEC') or die;
 					<?php echo $this->item->event->K2AfterDisplayContent; ?>
 				</div>
 				<div class="item-boxes">
+					<?php if ($this->item->params->get('itemAttachments') && count($this->item->attachments)): ?>
+						<section class="box item-attachments cols cols-3">
+							<header>
+								<h2><?php echo JText::_('ATTACHMENTS'); ?></h2>
+							</header>
+							<div>
+								<ul>
+									<?php foreach ($this->item->attachments as $attachment): ?>
+										<li>
+											<a title="<?php echo K2HelperUtilities::cleanHtml($attachment->titleAttribute); ?>" href="<?php echo $attachment->link; ?>">
+												<i class="icon-download"></i>
+												<?php echo $attachment->title; ?>
+											</a>
+										</li>
+									<?php endforeach; ?>
+								</ul>
+							</div>
+						</section>
+					<?php endif; ?>
 					<?php if ($this->item->params->get('itemTags') && count($this->item->tags)): ?>
 						<section class="box item-tags list">
 							<header><h2><?php echo JText::_('K2_TAGGED_UNDER'); ?></h2></header>

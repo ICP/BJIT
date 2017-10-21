@@ -10,25 +10,23 @@
 defined('_JEXEC') or die('Restricted access');
 if (count($items)) {
 	?>
-	<div class="box header-programs">
-		<div class="container">
-			<ul>
-				<?php foreach ($items as $key => $item) { ?>
-					<li<?php echo ($key === 0) ? ' class="featured"' : ''; ?>>
-						<?php if ($key === 0 && isset($item->image)) { ?>
-							<figure>
-								<a href="<?php echo $item->link; ?>">
-									<img src="<?php echo JUri::base() . 'media/k2/categories/' . $item->image; ?>" alt="<?php echo $item->categoryname; ?>" />
-								</a>
-							</figure>
-						<?php } ?>
-						<h3>
-							<a href="<?php echo $item->link; ?>"><?php echo $item->categoryname; ?></a>
-						</h3>
-					</li>
+	<ul>
+		<?php foreach ($items as $key => $item) { ?>
+			<li>
+				<?php if (isset($item->image)) { ?>
+					<figure>
+						<a href="<?php echo $item->link; ?>">
+							<img src="<?php echo JUri::base() . 'media/k2/categories/' . $item->image; ?>" alt="<?php echo $item->categoryname; ?>" />
+						</a>
+					</figure>
 				<?php } ?>
-			</ul>
-		</div>
-	</div>
+				<div class="desc">
+					<h3>
+						<a href="<?php echo $item->link; ?>"><?php echo $item->categoryname; ?></a>
+					</h3>
+				</div>
+			</li>
+		<?php } ?>
+	</ul>
 	<?php
 }

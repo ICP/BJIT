@@ -12,7 +12,7 @@ defined('_JEXEC') or die('Restricted access');
 <?php if (count($items)) { ?>
 	<ul>
 		<?php foreach ($items as $key => $item) { ?>
-			<li data-id="<?php echo $item->id; ?>">
+			<li>
 				<?php if ($params->get('itemImage') && isset($item->image)) { ?>
 					<figure>
 						<a href="<?php echo $item->link; ?>">
@@ -20,8 +20,22 @@ defined('_JEXEC') or die('Restricted access');
 						</a>
 					</figure>
 				<?php } ?>
-				<h3><a href="<?php echo $item->link; ?>"><?php echo $item->title; ?></a></h3>
+				<div class="desc">
+					<?php if ($params->get('itemTitle')) { ?>
+						<h3><a href="<?php echo $item->link; ?>"><?php echo $item->title; ?></a></h3>
+					<?php } ?>
+					<?php if ($params->get('itemIntroText')) { ?>
+						<p><?php echo $item->introtext; ?></p>
+					<?php } ?>
+					<?php if ($params->get('itemFullText')) { ?>
+						<p><?php echo $item->fulltext; ?></p>
+					<?php } ?>
+					<?php if ($params->get('itemReadMore')) { ?>
+						<a class="more" href="<?php echo $item->link; ?>">بیشتر...</a>
+					<?php } ?>
+				</div>
 			</li>
 		<?php } ?>
 	</ul>
-<?php } ?>
+	<?php
+}
