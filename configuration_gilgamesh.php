@@ -4,7 +4,7 @@ class JConfig {
 	public $offline_message = 'This site is down for maintenance.<br />Please check back again soon.';
 	public $display_offline_message = '1';
 	public $offline_image = '';
-	public $sitename = 'Rahafar';
+	public $sitename = 'فصلنامه میراث و گردشگری گیلگمش';
 	public $editor = 'tinymce';
 	public $captcha = '0';
 	public $list_limit = '50';
@@ -15,7 +15,7 @@ class JConfig {
 	public $host = 'localhost';
 	public $user = 'root';
 	public $password = 'root';
-	public $db = 'rahafar';
+	public $db = 'gilgamesh';
 	public $dbprefix = 'dtv_';
 	public $live_site = '';
 	public $secret = 'f5C2O6Wv0TCMgNbG';
@@ -93,6 +93,4 @@ class JConfig {
 	public $replyto = '';
 	public $replytoname = '';
 	public $shared_session = '0';
-	public $session_redis_server_host = 'localhost';
-	public $session_redis_server_port = '6379';
 }
