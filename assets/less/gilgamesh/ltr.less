@@ -4,10 +4,6 @@ body[dir="ltr"] {
     [class*=col-] { float: left; direction: ltr; text-align: left; }
     .table * { float: none !important; }
     .logo a { background-image: url('../img/logo_gilgamesh_en.png'); }
-    #header #masthead .logo {
-        width: 230px;
-        a { background-image: url('../img/logo_menu_gilgamesh_en.png'); width: 230px; }
-    }
     .form-horizontal .control-label { text-align: left; }
     &.alias-about-us-en {
         .table td { width: 33.333333% !important; }
@@ -19,9 +15,9 @@ body[dir="ltr"] {
     #footer {
         .footer-logo { left: auto; right: 0; }
     }
-    
+
     .wrapper.purple-light { background: @primary; }
-    
+
     .box {
         &.search .search-form {
             input[type=text] { padding-right: 12px; padding-left: 100px; direction: ltr; text-align: left; }
@@ -62,7 +58,7 @@ body[dir="ltr"] {
             .desc { margin-right: 0; margin-left: 220px; padding-right: 0; padding-left: @grid-gutter-width; }
         }
         &.cols.article-items article { float: left; }
-        
+
         &.subcategories.articles ul li {
             width: 11.111111%;
             h3 a {
@@ -80,7 +76,7 @@ body[dir="ltr"] {
             &.history-articles h3 a:after { background-position-y: -800px; }
         }
     }
-    
+
     #item {
         &.blog {
             .item-author {
@@ -93,12 +89,12 @@ body[dir="ltr"] {
                 & ~ * { margin-left: 0; margin-right: 40%; padding-left: 0; padding-right: @grid-gutter-width; }
             }
         }
-        
+
         .item-sharing { margin-right: 0; margin-left: -60px; }
         .item-boxes .box { clear: both; }
         .item-text, .summary { text-align: left; }
     } 
-    
+
     .page {
         &.user {
             .page-tools { left: auto; right: @grid-gutter-width / 2; }
@@ -110,5 +106,11 @@ body[dir="ltr"] {
                 button { left: auto; right: 0; }
             }
         }
+    }
+}
+@media (max-width: @screen-sm-max) {
+    #header #masthead .logo {
+        width: 230px;
+        a { background-image: url('../img/logo_menu_gilgamesh_en.png'); width: 230px; }
     }
 }
