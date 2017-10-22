@@ -51,3 +51,5 @@ htaccess.txt
 .idea
 .idea/*
 nbproject/private/private.xml
+cache
+cache/*

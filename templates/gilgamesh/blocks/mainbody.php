@@ -244,7 +244,7 @@ $pagetitle = isset(JFactory::getApplication()->getMenu()->getActive()->title) ? 
 	<?php } ?>
 </footer>
 <?php /* <script src="<?php echo JURI::base(); ?>assets/js/jquery-1.11.1.min.js"></script> */ ?>
-<script src="<?php echo JURI::base(); ?>assets/js/gilgamesh.min.js?_=20171006"  type="text/javascript"></script>
+<script src="<?php echo JURI::base(); ?>assets/js/gilgamesh.min.js?_=20171022"  type="text/javascript"></script>
 <!-- Global Site Tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-63573054-2"></script>
 <script>

@@ -78,7 +78,7 @@ $(function () {
             , slidesToScroll: +count
             , SwipetoSlide: true
 //                , centerMode: $box.hasClass('top') ? true : false
-            , rtl: true
+            , rtl: $("body").attr('dir') === "rtl" ? true : false
             , dots: $box.hasClass('top') ? true : false
         };
         if ($box.hasClass('has-indicator')) {
@@ -120,7 +120,7 @@ $(function () {
             , arrows: true
             , dots: true
 //                , centerMode: $box.hasClass('top') ? true : false
-            , rtl: true
+            , rtl: $("body").attr('dir') === "rtl" ? true : false
         };
         if ($box.hasClass('has-indicator')) {
             carouselConfig.asNavFor = "#" + $box.next().attr('id') + ' >div ul';
