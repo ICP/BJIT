@@ -4,6 +4,10 @@ body[dir="ltr"] {
     [class*=col-] { float: left; direction: ltr; text-align: left; }
     .table * { float: none !important; }
     .logo a { background-image: url('../img/logo_gilgamesh_en.png'); }
+    #header #masthead .logo {
+        width: 230px;
+        a { background-image: url('../img/logo_menu_gilgamesh_en.png'); width: 230px; }
+    }
     .form-horizontal .control-label { text-align: left; }
     &.alias-about-us-en {
         .table td { width: 33.333333% !important; }
@@ -92,6 +96,7 @@ body[dir="ltr"] {
         
         .item-sharing { margin-right: 0; margin-left: -60px; }
         .item-boxes .box { clear: both; }
+        .item-text, .summary { text-align: left; }
     } 
     
     .page {

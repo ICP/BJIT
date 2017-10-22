@@ -94,12 +94,14 @@ $(function () {
                     breakpoint: 1199,
                     settings: {
                         slidesToShow: count > 4 ? 4 : count
+                        , slidesToScroll: count > 4 ? 4 : count
                     }
                 },
                 {
                     breakpoint: 992,
                     settings: {
                         slidesToShow: count > 2 ? 2 : count
+                        , slidesToScroll: count > 2 ? 2 : count
                     }
                 }
             ];
