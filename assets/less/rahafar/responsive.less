@@ -42,6 +42,10 @@
         }
         .logo-alt { display: none; }
         .box.ads, .box.promo { display: none; }
+        .logo {
+            height: 45px; width: 250px;
+            a { background-image: url(../img/logo_rahafar_sm.png) }
+        }
 
         .menu-toggle {
             width: 50px; height: 45px; line-height: 45px; position: absolute; top: 0; right: @grid-gutter-width / 2; text-align: center; font-size: 24px; float: right; z-index: 600; border: 0 none;
@@ -66,7 +70,7 @@
         }
         .menu {
             .clearfix();
-            background: @primary; position: fixed; top: 45px; left: 50%; z-index: 10000; width: 100vw; margin: 0 0 0 -50vw; height: auto; padding: (@grid-gutter-width) 0; display: none;
+            background: @primary; position: fixed; top: 45px; left: 50%; z-index: 10000; width: 100vw; margin: 0 0 0 -50vw; height: auto; padding: 0; display: none;
             li {
                 display: block; margin: 0 auto;
                 &.active { background: @blue-dark }
@@ -109,11 +113,16 @@
         }
         &.misc .item-text, &.misc .summary { max-width: none; }
     }
+    #breadcrumbs { top: 45px; }
+    #category.itemlist .box {
+        margin-top: 70px;
+    }
 }
 @media (max-width: @screen-xs-max){
     #header {
         .menu-toggle { width: 45px; }
         .search-toggle { width: 45px; left: 50px; }
+        .logo { width: 230px; }
     }
     .box {
         &.search {
@@ -156,10 +165,15 @@
         }
 
         &.showcase {
-            ul li .desc {
-                top: 50%; transform: translateY(-50%) translateX(-50%); padding: 0 @grid-gutter-width / 2;
-                h3 { font-size: 50px; font-weight: bold; }
-                p, .introtext { font-size: 20px; }
+            ul li {
+                figure {
+                    img { width: auto; max-height: 100%; }
+                }
+                .desc {
+                    top: 50%; transform: translateY(-50%) translateX(-50%); padding: 0 @grid-gutter-width / 2;
+                    h3 { font-size: 50px; font-weight: bold; }
+                    p, .introtext { font-size: 20px; }
+                }
             }
         }
         &.itemlist {
@@ -168,7 +182,7 @@
                     td { display: block; width: 50%; float: left; padding: @grid-gutter-width / 4; }
                 }
             }
-            article#item-4170 img { float: none; margin-left: 0; margin-bottom: @grid-gutter-width; }
+            article#item-4170 img { float: none !important; margin-left: 0; margin-bottom: @grid-gutter-width; display: block; width: 100%; height: auto; }
             article[data-alias=meet-the-team] table td {
                 p {
                     display: none;
@@ -201,6 +215,17 @@
         h1, strong {
             line-height: 60px; font-size: 24px;
             body.alias-history & { background-position-y: -120px; }
+        }
+    }
+    
+    #category.itemlist .box {
+        margin-top: 70px;
+        ul li {
+            figure { float: none; width: 100%; margin-bottom: 0; }
+            .desc {
+                margin-left: 0; padding-left: 0;
+                h3 { font-size: 24px; margin-top: @grid-gutter-width / 2; }
+            }
         }
     }
 }
