@@ -189,16 +189,15 @@ $pagetitle = isset(JFactory::getApplication()->getMenu()->getActive()->title) ? 
 	<?php /* <script src="<?php echo JURI::base(); ?>assets/js/jquery-1.11.1.min.js"></script> */ ?>
 	<script src="<?php echo JURI::base(); ?>assets/js/rahafar.min.js?_=20171006"  type="text/javascript"></script>
 	<!-- Global Site Tag (gtag.js) - Google Analytics -->
-	<!--<script async src="https://www.googletagmanager.com/gtag/js?id=UA-63573054-2"></script>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-108514562-1"></script>
 	<script>
-									window.dataLayer = window.dataLayer || [];
-									function gtag() {
-										dataLayer.push(arguments)
-									}
-									;
-									gtag('js', new Date());
-									gtag('config', 'UA-63573054-2');
-	</script>-->
-	<!-- Go to www.addthis.com/dashboard to customize your tools -->
-	<!--<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=faridv"></script>--> 
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-108514562-1');
+	</script>
+	<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=faridv"></script> 
 </body>

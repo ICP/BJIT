@@ -17,15 +17,19 @@ $lang = JLanguageHelper::getLanguages('lang_code')[JFactory::getLanguage()->getT
 @$pageSuffix = JFactory::getApplication()->getMenu()->getActive()->params["pageclass_sfx"];
 
 JResponse::clearHeaders();
-
 ?><html class="no-js<?php echo $helper->getBaseClasses($app->getMenu()); ?>" lang="<?php echo $lang; ?>">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
-		<meta name="google-site-verification" content="RuhLN7r7CmLWXg0zwSSAqLrHsQN0WnPOpvUTKgi8IJ0" />
-		<meta name="samandehi" content="996884440"/>
-		<?php if ($isFrontpage) { ?><meta property="og:image" content="<?php echo JURI::base() . 'assets/data/placeholder_gilgamesh.jpg'; ?>">
-<?php } ?>
+		<meta name="google-site-verification" content="Z1250sQ6-9w4vL-yak2fLLVs5CxYov4RYnGY6qOCOw8" />
+		<meta property="og:site_name" content="<?php echo $sitename; ?>" />
+		<meta property="og:locale" content="<?php echo $lang; ?>" />
+		<?php if ($isFrontpage) { ?>
+			<meta name="image" content="<?php echo JURI::base() . 'media/k2/items/cache/670a551652ad7bb3913c64d9f97e24df_L.jpg'; ?>">
+			<meta property="og:image" content="<?php echo JURI::base() . 'media/k2/items/cache/670a551652ad7bb3913c64d9f97e24df_L.jpg'; ?>">
+			<meta property="og:image:width" content="1920">
+			<meta property="og:image:height" content="1080">
+		<?php } ?>
 		<?php
 		$JHeader = $this->getHeadData(); // Get Joomla Native Head tags
 		$this->setHeadData($helper->cleanHead($JHeader)); // Removing unwanted tags from Joomla native head
@@ -34,7 +38,7 @@ JResponse::clearHeaders();
 		foreach ($this->_style as $style)
 			unset($style);
 		// Adding stylesheets and scripts to joomla head to prevent core to face an empty array
-		$this->_styleSheets[JURI::base() . 'assets/css/rahafar.css?_=20171022_1'] = array('mime' => "text/css");
+		$this->_styleSheets[JURI::base() . 'assets/css/rahafar.css?_=20171024'] = array('mime' => "text/css");
 		$this->_scripts[JURI::base() . 'assets/js/modernizr-2.6.2.min.js'] = array('mime' => "text/javascript");
 		$this->_scripts[JURI::base() . 'assets/js/jquery-1.11.1.min.js'] = array('mime' => "text/javascript");
 //		$this->_scripts[JURI::base() . 'media/j2store/js/j2store.js'] = array('mime' => "text/javascript");

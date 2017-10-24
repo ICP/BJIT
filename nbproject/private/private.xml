@@ -3,28 +3,44 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="2"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/gilgamesh/item.less</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/rahafar/variables.less</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/templates/rahafar/blocks/mainbody.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/rahafar/fonts.less</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/rahafar/html/com_k2/events/item.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/gilgamesh/responsive.less</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/rahafar/ltr.less</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/modules/mod_content/helper.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/templates/rahafar/html/mod_content/Showcase/default.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/blocks/header.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/js/rahafar.js</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/rahafar/misc.less</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/templates/rahafar/templateDetails.xml</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/rahafar/box.less</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/templates/rahafar/index.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/rahafar/html/com_k2/events/category_item.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/com_k2/multimedia/item.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/templates/rahafar/blocks/header.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/modules/mod_content/mod_content.xml</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/rahafar/header.less</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/rahafar/responsive.less</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/rahafar/html/com_k2/news/item.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/rahafar/variables.less</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/rahafar/blocks/mainbody.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/com_k2/news/item.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/rahafar/fonts.less</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/rahafar/html/mod_content/Showcase/default.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/rahafar/html/com_k2/events/category.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/rahafar/html/com_k2/news/category.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/rahafar/misc.less</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/gilgamesh/ltr.less</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/rahafar/html/com_k2/misc/category.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/js/gilgamesh.js</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/rahafar/html/mod_content/Categories/default.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/rahafar/html/mod_breadcrumbs/default.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/rahafar/index.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/rahafar/main.less</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/templates/rahafar/html/mod_content/IntrotextOnly/default.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/rahafar/footer.less</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/mod_content/Showcase/default.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/modules/mod_content/mod_content.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/modules/mod_content/mod_content.xml</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/rahafar/header.less</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/blocks/mainbody.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/templates/rahafar/html/mod_content/Text/default.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/rahafar/item.less</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/gilgamesh/box.less</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/rahafar/html/mod_content/List/default.php</file>
         </group>
     </open-files>
 </project-private>
