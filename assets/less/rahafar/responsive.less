@@ -117,6 +117,16 @@
     #category.itemlist .box {
         margin-top: 70px;
     }
+    body.alias-collaborators {
+        table {
+            width: 100%;
+            td {
+                display: block; width: 50%; float: left;
+                img { display: block; height: auto; width: 100%; }
+                &:nth-child(2n+1) { clear: left; }
+            }
+        }
+    }
 }
 @media (max-width: @screen-xs-max){
     #header {
@@ -218,7 +228,7 @@
             body.alias-history & { background-position-y: -120px; }
         }
     }
-    
+
     #category.itemlist .box {
         margin-top: 70px;
         ul li {
@@ -226,6 +236,13 @@
             .desc {
                 margin-left: 0; padding-left: 0;
                 h3 { font-size: 24px; margin-top: @grid-gutter-width / 2; }
+            }
+        }
+    }
+    body.alias-collaborators {
+        table {
+            td {
+                width: 100%; float: none;
             }
         }
     }
