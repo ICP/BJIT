@@ -91,6 +91,10 @@
         }
     }
     #mainbody { padding-top: 45px; }
+    #top {
+        margin-top: 60px;
+        & + #mainbody { padding-top: 0; }
+    }
     body.home #mainbody { padding-top: 60px; }
     .box {
         &.list.highlights.cols {
@@ -161,7 +165,7 @@
             ul {
                 li {
                     width: 100%;
-                    .desc h3 a { padding-top: 0; }
+                    .desc h3 a { padding-top: 5px; }
                 }
             }
             &.cols-5 {
@@ -218,7 +222,12 @@
         }
     }
     #footer .footer-logo { position: static; text-align: center; }    
-
+    #top {
+        margin-top: 60px;
+        .box.cols.items-joined {
+            ul li:nth-child(n+3) { display: none; }
+        }
+    }
     .page-header {
         height: 60px;
         h1, strong {
