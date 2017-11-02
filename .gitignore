@@ -53,3 +53,5 @@ htaccess.txt
 nbproject/private/private.xml
 cache
 cache/*
+logs
+logs/*
