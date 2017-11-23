@@ -1,10 +1,10 @@
 <?php
 class JConfig {
 	public $offline = '0';
-	public $offline_message = 'در حال برطرف کردن ایرادات فنی وب‌سایت هستیم<br />چند دقیقه دیگر دوباره به ما سر بزنید';
+	public $offline_message = 'This site is down for maintenance.<br />Please check back again soon.';
 	public $display_offline_message = '1';
 	public $offline_image = '';
-	public $sitename = 'شبکه پویا';
+	public $sitename = 'Rahafar';
 	public $editor = 'tinymce';
 	public $captcha = '0';
 	public $list_limit = '50';
@@ -15,8 +15,8 @@ class JConfig {
 	public $host = 'localhost';
 	public $user = 'root';
 	public $password = 'root';
-	public $db = 'pooya';
-	public $dbprefix = 'ptv_';
+	public $db = 'rahafar';
+	public $dbprefix = 'dtv_';
 	public $live_site = '';
 	public $secret = 'f5C2O6Wv0TCMgNbG';
 	public $gzip = '0';
