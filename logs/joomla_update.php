@@ -161,3 +161,12 @@
 2017-10-09T14:01:32+00:00	INFO 127.0.0.1	update	Deleting removed files and folders.
 2017-10-09T14:01:33+00:00	INFO 127.0.0.1	update	Cleaning up after installation.
 2017-10-09T14:01:33+00:00	INFO 127.0.0.1	update	Update to version 3.8.1 is complete.
+2017-11-23T14:00:12+00:00	INFO 127.0.0.1	update	Update started by user فرید (575). Old version is 3.8.1.
+2017-11-23T14:00:19+00:00	INFO 127.0.0.1	update	Downloading update file from https://s3-us-west-2.amazonaws.com/joomla-official-downloads/joomladownloads/joomla3/Joomla_3.8.2-Stable-Update_Package.zip?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIZ6S3Q3YQHG57ZRA%2F20171123%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20171123T135954Z&X-Amz-Expires=60&X-Amz-SignedHeaders=host&X-Amz-Signature=06c555342f6c0e624aa07d561bd2ce84aa92c2fb99cfd1c88ff0ac4dea550fd5.
+2017-11-23T14:00:29+00:00	INFO 127.0.0.1	update	File Joomla_3.8.2-Stable-Update_Package.zip successfully downloaded.
+2017-11-23T14:00:30+00:00	INFO 127.0.0.1	update	Starting installation of new version.
+2017-11-23T14:00:42+00:00	INFO 127.0.0.1	update	Finalising installation.
+2017-11-23T14:00:42+00:00	INFO 127.0.0.1	update	Ran query from file 3.8.2-2017-10-14. Query text: ALTER TABLE `#__content` ADD INDEX `idx_alias` (`alias`(191));.
+2017-11-23T14:00:42+00:00	INFO 127.0.0.1	update	Deleting removed files and folders.
+2017-11-23T14:00:44+00:00	INFO 127.0.0.1	update	Cleaning up after installation.
+2017-11-23T14:00:44+00:00	INFO 127.0.0.1	update	Update to version 3.8.2 is complete.
