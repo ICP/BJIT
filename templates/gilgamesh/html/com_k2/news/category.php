@@ -31,6 +31,7 @@ if ($limitstart && $limitstart > 0) {
 		}
 		$this->secondary = $itemlist;
 	}
+	$this->primary = $itemlist;
 }
 ?>
 <div id="category" class="itemlist<?php if ($this->params->get('pageclass_sfx')) echo ' ' . $this->params->get('pageclass_sfx'); ?>">
