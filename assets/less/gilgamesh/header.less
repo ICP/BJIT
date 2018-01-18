@@ -79,8 +79,12 @@ body.home {
             position: absolute; top: 0; left: @grid-gutter-width*4; padding: 0 10px; background: transparent; z-index: 800;
             ul li {
                 font-size: 12px; font-family: Tahoma; text-transform: uppercase;
-                a { display: block; padding: @grid-gutter-width / 2 @grid-gutter-width / 3; }
-                &.active { font-weight: bold; }
+                a { display: block; padding: @grid-gutter-width / 2 @grid-gutter-width / 3; background: #dadada; width: 32px; text-align: center; }
+                &.active {
+                    font-weight: bold;
+                    a { background: #eaeaea; cursor: default; }
+                }
+                &:hover a { background: #eaeaea; color: @text-color; }
             }
         }
     }

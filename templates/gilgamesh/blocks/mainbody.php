@@ -213,7 +213,17 @@ $pagetitle = isset(JFactory::getApplication()->getMenu()->getActive()->title) ? 
 						<ul class="list-inline app-links">
 							<li>
 								<a href="https://play.google.com/store/apps/details?id=com.Mehrafarid.Gilgamesh">
-									<img src="https://play.google.com/intl/en_us/badges/images/generic/<?php echo ($lang == "en") ? 'en_' : 'fa_'; ?>badge_web_generic.png" />
+									<img src="/assets/data/playstore-<?php echo ($lang == "en") ? 'en' : 'fa'; ?>.png" alt="playstore" />
+								</a>
+							</li>
+							<li>
+								<a href="https://cafebazaar.ir/app/com.Mehrafarid.Gilgamesh/?l=<?php echo ($lang == "en") ? 'en' : 'fa'; ?>">
+									<img src="https://s.cafebazaar.ir/2/images/<?php echo ($lang == "en") ? 'get-cafebazaar-en' : 'badge-new'; ?>.png" alt="cafebazaar" />
+								</a>
+							</li>
+							<li>
+								<a href="https://new.sibapp.com/applications/gilgamesh">
+									<img src="/assets/data/sibapp-<?php echo ($lang == "en") ? 'en' : 'fa'; ?>.png" alt="sibapp" />
 								</a>
 							</li>
 						</ul>
