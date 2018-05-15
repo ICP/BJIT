@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<view title="products">
+		<message><![CDATA[COM_J2STORE_VIEW_PRODUCTWISHIST_DESC]]></message>
+	</view>	
+	<layout title="COM_J2STORE_VIEW_PRODUCTWISHLIST_LABEL">
+		<message>
+				<![CDATA[COM_J2STORE_VIEW_PRODUCTWISHLIST_DESC]]>
+		</message>
+	</layout>
+	<fields name="request">
+		<fieldset name="request">
+			<field name="task" default="wishlist" type="hidden" label="" required="" description=""/>
+		</fieldset>
+	</fields>
+</metadata> 
