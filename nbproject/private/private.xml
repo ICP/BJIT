@@ -44,6 +44,9 @@
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/gilgamesh/header.less</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/index.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/gilgamesh/footer.less</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/configuration.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/administrator/components/com_j2store/views/coupons/tmpl/default.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/libraries/fof_/view/form.php</file>
         </group>
     </open-files>
 </project-private>

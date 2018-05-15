@@ -170,3 +170,24 @@
 2017-11-23T14:00:42+00:00	INFO 127.0.0.1	update	Deleting removed files and folders.
 2017-11-23T14:00:44+00:00	INFO 127.0.0.1	update	Cleaning up after installation.
 2017-11-23T14:00:44+00:00	INFO 127.0.0.1	update	Update to version 3.8.2 is complete.
+2018-02-06T13:11:30+00:00	INFO 127.0.0.1	update	Update started by user فرید (575). Old version is 3.8.2.
+2018-02-06T13:11:36+00:00	INFO 127.0.0.1	update	Downloading update file from https://s3-us-west-2.amazonaws.com/joomla-official-downloads/joomladownloads/joomla3/Joomla_3.8.4-Stable-Update_Package.zip?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIZ6S3Q3YQHG57ZRA%2F20180206%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20180206T131115Z&X-Amz-Expires=60&X-Amz-SignedHeaders=host&X-Amz-Signature=860b1095814d525ceb096841a40e1a6b68e5d26c4eaf964a5ddee2f6c5f629ef.
+2018-02-06T13:11:47+00:00	INFO 127.0.0.1	update	File Joomla_3.8.4-Stable-Update_Package.zip successfully downloaded.
+2018-02-06T13:11:47+00:00	INFO 127.0.0.1	update	Starting installation of new version.
+2018-02-06T13:12:23+00:00	INFO 127.0.0.1	update	Finalising installation.
+2018-02-06T13:12:23+00:00	INFO 127.0.0.1	update	Ran query from file 3.8.2-2017-10-14. Query text: ALTER TABLE `#__content` ADD INDEX `idx_alias` (`alias`(191));.
+2018-02-06T13:12:23+00:00	INFO 127.0.0.1	update	Ran query from file 3.8.4-2018-01-16. Query text: ALTER TABLE `#__user_keys` DROP INDEX `series_2`;.
+2018-02-06T13:12:23+00:00	INFO 127.0.0.1	update	Ran query from file 3.8.4-2018-01-16. Query text: ALTER TABLE `#__user_keys` DROP INDEX `series_3`;.
+2018-02-06T13:12:23+00:00	INFO 127.0.0.1	update	Deleting removed files and folders.
+2018-02-06T13:12:24+00:00	INFO 127.0.0.1	update	Cleaning up after installation.
+2018-02-06T13:12:24+00:00	INFO 127.0.0.1	update	Update to version 3.8.4 is complete.
+2018-05-15T14:28:36+00:00	INFO ::1	update	Update started by user فرید (575). Old version is 3.8.4.
+2018-05-15T14:28:41+00:00	INFO ::1	update	Downloading update file from https://s3-us-west-2.amazonaws.com/joomla-official-downloads/joomladownloads/joomla3/Joomla_3.8.7-Stable-Update_Package.zip?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIZ6S3Q3YQHG57ZRA%2F20180515%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20180515T142803Z&X-Amz-Expires=60&X-Amz-SignedHeaders=host&X-Amz-Signature=58e192e58135ae2d566f4440ef7557c3af8823ce15e2210b87a3b261e06a0f81.
+2018-05-15T14:28:50+00:00	INFO ::1	update	File Joomla_3.8.7-Stable-Update_Package.zip successfully downloaded.
+2018-05-15T14:28:50+00:00	INFO ::1	update	Starting installation of new version.
+2018-05-15T14:29:05+00:00	INFO ::1	update	Finalising installation.
+2018-05-15T14:29:05+00:00	INFO ::1	update	Ran query from file 3.8.6-2018-02-14. Query text: INSERT INTO `#__extensions` (`extension_id`, `package_id`, `name`, `type`, `elem.
+2018-05-15T14:29:05+00:00	INFO ::1	update	Ran query from file 3.8.6-2018-02-14. Query text: INSERT INTO `#__postinstall_messages` (`extension_id`, `title_key`, `description.
+2018-05-15T14:29:05+00:00	INFO ::1	update	Deleting removed files and folders.
+2018-05-15T14:29:06+00:00	INFO ::1	update	Cleaning up after installation.
+2018-05-15T14:29:06+00:00	INFO ::1	update	Update to version 3.8.7 is complete.

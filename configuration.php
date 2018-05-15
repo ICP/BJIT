@@ -1,22 +1,22 @@
 <?php
 class JConfig {
 	public $offline = '0';
-	public $offline_message = 'در حال برطرف کردن ایرادات فنی وب‌سایت هستیم<br />چند دقیقه دیگر دوباره به ما سر بزنید';
+	public $offline_message = 'This site is down for maintenance.<br />Please check back again soon.';
 	public $display_offline_message = '1';
 	public $offline_image = '';
-	public $sitename = 'شبکه پویا';
+	public $sitename = 'فصلنامه میراث و گردشگری گیلگمش';
 	public $editor = 'tinymce';
 	public $captcha = '0';
 	public $list_limit = '50';
 	public $access = '1';
-	public $debug = '0';
+	public $debug = '1';
 	public $debug_lang = '0';
 	public $dbtype = 'mysqli';
 	public $host = 'localhost';
 	public $user = 'root';
 	public $password = 'root';
-	public $db = 'pooya';
-	public $dbprefix = 'ptv_';
+	public $db = 'pda';
+	public $dbprefix = 'dtv_';
 	public $live_site = '';
 	public $secret = 'f5C2O6Wv0TCMgNbG';
 	public $gzip = '0';
@@ -93,6 +93,9 @@ class JConfig {
 	public $replyto = '';
 	public $replytoname = '';
 	public $shared_session = '0';
+	public $session_redis_persist = '1';
 	public $session_redis_server_host = 'localhost';
 	public $session_redis_server_port = '6379';
+	public $session_redis_server_auth = '';
+	public $session_redis_server_db = '0';
 }
