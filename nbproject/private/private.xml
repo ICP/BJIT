@@ -48,5 +48,21 @@
             <file>file:/C:/xampp/htdocs/irib/doctv/administrator/components/com_j2store/views/coupons/tmpl/default.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/libraries/fof_/view/form.php</file>
         </group>
+        <group name="IKTV Group">
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/scss/pda/_variables.scss</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/scss/pda/parts/_menu.scss</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/pda/html/com_k2/default/item.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/scss/pda/parts/_main.scss</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/pda/templateDetails.xml</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/js/pda.js</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/scss/pda/parts/_header.scss</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/pda/blocks/header.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/pda/html/modules.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/pda/html/mod_content/Promo/default.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/scss/pda/box/_foundations.scss</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/scss/global/generic/_news.scss</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/pda/blocks/mainbody.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/pda/html/com_k2/default/category.php</file>
+        </group>
     </open-files>
 </project-private>

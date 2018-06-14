@@ -4,12 +4,12 @@ class JConfig {
 	public $offline_message = 'This site is down for maintenance.<br />Please check back again soon.';
 	public $display_offline_message = '1';
 	public $offline_image = '';
-	public $sitename = 'فصلنامه میراث و گردشگری گیلگمش';
+	public $sitename = 'PDA';
 	public $editor = 'tinymce';
 	public $captcha = '0';
 	public $list_limit = '50';
 	public $access = '1';
-	public $debug = '1';
+	public $debug = '0';
 	public $debug_lang = '0';
 	public $dbtype = 'mysqli';
 	public $host = 'localhost';

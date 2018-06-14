@@ -1,0 +1,55 @@
+.box.promo {
+    ul.item-titles {
+        @include clearfix;
+        border-bottom: 1px solid $gray-200;
+        list-style: none; padding: 0; margin: 0 -($grid-gutter-width / 2); text-align: center;
+        li {
+            width: 20%; float: right; padding: $grid-gutter-width $grid-gutter-width / 2; position: relative; cursor: pointer;
+            h3 { font-size: 1.4em; color: $primary; margin-bottom: $grid-gutter-width * 2; }
+            .circle {
+                width: 7rem; height: 7rem; border-radius: 50%;margin: $grid-gutter-width auto; font-weight: bold;
+                font: $title-font;
+                line-height: 7rem; font-size: 2rem; position: relative; background: #fff; color: $primary;
+                &:before {
+                    display: block; content: ''; position: absolute; top: -10%; left: -10%; width: 120%; height: 120%; border-radius: 50%; z-index: -1;
+                    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQYV2NkQAJnzpz5zwjjgzgmJiaMYAEYB8RmROaABAD4hQ9oQLNSJQAAAABJRU5ErkJggg==) repeat;
+                }
+            }
+            &.active {
+                h3 { color: $accent; }
+                .circle {
+                    &:before { background: $primary; }
+                    background: $primary;
+                    color: #fff;
+                }
+                &:after {
+                    display: block; content: ''; width: 8px; height: 8px; background: $primary; border-radius: 50%; position: absolute; bottom: -4px; right: 50%;
+                    transform: translateX(50%);
+                }
+            }
+        }
+    }
+    ul.item-bodies {
+        min-height: 180px;
+        > li {
+            display: none;
+            &.active {
+                display: block;
+            }
+            .introtext { font: $title-font; font-size: 1.3rem; margin: $grid-gutter-width * 2 0; }
+            table {
+                direction: ltr;
+                > * { direction: rtl }
+                strong { color: $primary; }
+                ul {
+                    list-style: disc inside; color: $primary;
+                    li { color: $text-color; }
+                }
+                tr {
+                    td:last-child { width: 30%; }
+                    td:first-child { width: 70%; color: $gray-500; }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,92 @@
+main {
+    transition: 0.35s all;
+    &:before { display: block; clear: both; content: ""; }
+}
+.wrapper {
+    width: $wrapper-width;
+    &.primary {
+        background: $primary;
+    }
+    &.accent {
+        background: $accent;
+    }
+    &.blue {
+        background: $blue;
+    }
+    &.dark {
+        background: $body-color;
+    }
+
+    &.gray {
+        background: $gray-200;
+    }
+
+    // Dark backgrounds
+    &.primary, &.accent, &.dark, &.blue {
+        color: #efefef;
+        a {
+            color: #fff;
+            &:hover { color: #ddd; }
+        }
+        .box {
+            > header h2 {
+                > a, > span { border-color: #fff; }
+            }
+        }
+    }
+}
+
+#top {
+    padding: $grid-gutter-width 0;
+}
+#top-wrapper {
+    .box.list.has-border-bottom { padding-bottom: 0; }
+}
+#main-right {
+    .box {
+        ul li .desc {
+            h3 { margin-top: $grid-gutter-width; margin-bottom: $grid-gutter-width / 2; }
+        }
+    }
+}
+#subscribe {
+    background: url('/images/pda/campaign_bg.jpg') no-repeat center center #899639; height: 120px;
+}
+#special-right.bg-accent .box {
+    position: relative;
+    &:before { display: block; content: ''; position: absolute; top: 0; left: 100%; height: 100%; background: $accent; width: 2000px; }
+}
+#bot {
+    .box {
+        margin-top: $grid-gutter-width * 4; margin-bottom: $grid-gutter-width * 4;
+    }
+}
+
+.page-header {
+    background: url('/images/pda/campaign_bg.jpg') no-repeat center center #899639; height: 120px; color: #fff; position: relative;
+    &:after { display: block; content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #899639; opacity: 0.3; }
+    h1, strong { font-size: 2rem; font-weight: bold; margin: 0; line-height: 120px; position: relative; z-index: 100; font-family: $headings-font-family; }
+    body.alias-support & {
+        height: 400px; background-image: url('/images/pda/support_bg.jpg'); text-align: center;
+        h1, strong { line-height: 300px; }
+        @include media-breakpoint-down(lg) {
+            height: 300px;
+            h1, strong { line-height: 200px; }
+        }
+        @include media-breakpoint-down(md) {
+            height: 200px;
+            h1, strong { line-height: 100px; }
+        }
+    }
+}
+body.alias-support {
+    .component-container {
+        background: #fff; margin-top: -100px; padding: $grid-gutter-width;
+    }
+}
+
+// TEMP
+.placeholder { background: $gray-300; height: 120px; line-height: 120px; text-align: center; }
+.pt-subTopic, .pt-topic, .pt-news {
+    .mainbody { margin-top: 35px; }
+}

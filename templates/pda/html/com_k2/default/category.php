@@ -38,41 +38,45 @@ if ($limitstart && $limitstart > 0) {
 		<?php if (isset($this->leading) && count($this->leading)) { ?>
 			<section class="box content blog">
 				<ul class="slider items-carousel">
-				<?php
-				foreach ($this->leading as $key => $item) {
-					$media = !empty($item->video) ? ' video' : '';
-					$media .=!empty($item->gallery) ? ' gallery' : '';
-					$modified = ($item->modified != $this->nullDate && $item->modified != $item->created) ? JHTML::_('date', $item->modified, JText::_('K2_DATE_FORMAT_LC2')) : '';
-					?>
-					<li class="group-<?php echo $item->itemGroup . $media; ?><?php echo ($item->featured) ? ' featured' : ''; ?>" data-hits="<?php echo $item->hits; ?>">
-						<?php
-						$this->item = $item;
-						$this->item->showMoreLink = true;
-						echo $this->loadTemplate('item');
+					<?php
+					foreach ($this->leading as $key => $item) {
+						$media = !empty($item->video) ? ' video' : '';
+						$media .= !empty($item->gallery) ? ' gallery' : '';
+						$modified = ($item->modified != $this->nullDate && $item->modified != $item->created) ? JHTML::_('date', $item->modified, JText::_('K2_DATE_FORMAT_LC2')) : '';
 						?>
-					</article>
-				<?php } ?>
-					</ul>
+						<li class="group-<?php echo $item->itemGroup . $media; ?><?php echo ($item->featured) ? ' featured' : ''; ?>" data-hits="<?php echo $item->hits; ?>">
+							<?php
+							$this->item = $item;
+							$this->item->showMoreLink = true;
+							echo $this->loadTemplate('item');
+							?>
+							</article>
+						<?php } ?>
+				</ul>
 			</section>
 		<?php } ?>
 		<?php if (isset($this->primary) && count($this->primary)) { ?>
-			<div class="box articles blog secondary">
-				<?php foreach ($this->primary as $key => $item) { ?>
-					<article class="item">
-						<?php
-						$this->item = $item;
-						echo $this->loadTemplate('item');
-						?>
-					</article>
-				<?php } ?>
-			</div>
+			<section class="box list list-bordered list-thumbs thumbs-lg highlights">
+				<div>
+					<ul>
+						<?php foreach ($this->primary as $key => $item) { ?>
+							<li>
+								<?php
+								$this->item = $item;
+								echo $this->loadTemplate('item');
+								?>
+							</li>
+						<?php } ?>
+					</ul>
+				</div>
+			</section>
 		<?php } ?>
 		<?php if (isset($this->secondary) && count($this->secondary)) { ?>
 			<div class="box articles highlights">
 				<?php
 				foreach ($this->secondary as $key => $item) {
 					$media = !empty($item->video) ? ' video' : '';
-					$media .=!empty($item->gallery) ? ' gallery' : '';
+					$media .= !empty($item->gallery) ? ' gallery' : '';
 					$modified = ($item->modified != $this->nullDate && $item->modified != $item->created) ? JHTML::_('date', $item->modified, JText::_('K2_DATE_FORMAT_LC2')) : '';
 					?>
 					<article class="item group-<?php echo $item->itemGroup . $media; ?><?php echo ($item->featured) ? ' featured' : ''; ?><?php if ($item->params->get('pageclass_sfx')) echo ' ' . $item->params->get('pageclass_sfx'); ?>" data-hits="<?php echo $item->hits; ?>">
@@ -91,7 +95,7 @@ if ($limitstart && $limitstart > 0) {
 					<?php
 					foreach ($this->links as $key => $item) {
 						$media = !empty($item->video) ? ' video' : '';
-						$media .=!empty($item->gallery) ? ' gallery' : '';
+						$media .= !empty($item->gallery) ? ' gallery' : '';
 						$modified = ($item->modified != $this->nullDate && $item->modified != $item->created) ? JHTML::_('date', $item->modified, JText::_('K2_DATE_FORMAT_LC2')) : '';
 						?>
 						<li class="<?php echo $media; ?><?php echo ($item->featured) ? ' featured' : ''; ?><?php if ($item->params->get('pageclass_sfx')) echo ' ' . $item->params->get('pageclass_sfx'); ?>" data-hits="<?php echo $item->hits; ?>">

@@ -1,0 +1,14 @@
+html, body { min-height: 100vh; transition: $transition-default; max-width: 100vw; overflow-x: hidden; }
+body {
+    background: $body-bg; 
+}
+body { direction: rtl; text-align: right; }
+.ltr { direction: ltr; text-align: left; }
+a {
+    transition: $transition-default;
+}
+
+.bg-accent { background-color: $green-dark !important; }
+
+// TEMP
+.placeholders { height: 60px; background: $gray-500; }

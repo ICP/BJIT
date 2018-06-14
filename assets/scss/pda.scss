@@ -1,0 +1,39 @@
+$bootstrap-version: '4.0.0';
+
+// Bootstrap functions are needed before it's variables file import
+/*@import '../../global/scss/bootstrap-4.0.0/functions';*/
+
+// Custom snippets are small utility mixin/functions without direct output
+@import 'global/snippets/snippets';
+
+// Variables, defines, etc.
+/*@import 'variables-bootstrap';*/
+@import 'pda/variables';
+
+// Bootstrap itself
+@import 'pda/bootstrap';
+
+
+// Components (sliders, datepickers, etc.)
+@import 'global/components/components';
+@import 'pda/components/components';
+
+// Generic pages and overrides, if any...
+@import 'pda/pages/pages';
+
+// Nastooh icons
+/*@import '../../global/scss/components/icons';*/
+/*@import '../../global/font/nastooh-icons/nastooh-icons';*/
+
+// Project-specific files
+@import 'pda/scaffolding';
+@import 'pda/typography';
+@import 'pda/parts/parts';
+@import 'pda/box/box';
+
+// Styles (dark, occassions, etc.)
+@import 'pda/styles/styles';
+@import 'pda/compatibility';
+
+// Responsive files
+@import 'pda/responsive/responsive';

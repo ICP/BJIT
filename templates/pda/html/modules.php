@@ -110,18 +110,22 @@ function modChrome_default ($module, $params, $attribs) {
 		$dir = JFactory::getLanguage()->get('rtl') ? ' dir="rtl"' : '';
 		echo '<section class="box' . $sfx . '"' . $dir . '>';
 			if ($module->showtitle)
-				echo '<header><h2>' . handleDefaultChromeTitle($module->title) . '</h2></header>';
+				echo '<header><h2>' . handleDefaultChromeTitle($module->title, $params) . '</h2></header>';
 			echo '<div>' . $module->content . '</div>';
 		echo '</section>';
 	}
 }
 
-function handleDefaultChromeTitle ($title) {
+function handleDefaultChromeTitle ($title, $params = null) {
+	$moduleTitle = $title;
 	if (stristr($title, '|')) {
 		list($title, $subtitle) = explode('|', $title);
-		return $title . '<span>' . $subtitle . '</span>';
+		$moduleTitle = $title . '<span>' . $subtitle . '</span>';
 	}
-	return $title;
+	if ($params && $params->get('category_link') && $params->get('mymenu_id')) {
+		$moduleTitle = '<a href="' . JRoute::_('index.php?option=com_k2&Itemid=' . $params->get('mymenu_id')) . '">' . $moduleTitle . '</a>';
+	}
+	return $moduleTitle;
 }
 
 ?>

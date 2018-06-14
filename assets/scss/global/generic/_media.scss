@@ -1,0 +1,88 @@
+#photo {
+    padding: 0;
+    .item-header {
+		@include media-breakpoint-down(sm) { 
+			display: flex; flex-direction: column-reverse;
+		} // XS
+    }
+	.item-title {
+		h4  {
+			a {
+				color: $gray-300;
+				&:hover { color: $accent; }
+			}
+		}
+	}
+	.item-nav {
+		float: left; height: auto; margin-right: $grid-gutter-width * 3; margin-top: 0; margin-bottom: 0;
+		min-width: 300px;
+		body.ltr & { float: right; margin-right: 0; margin-left: $grid-gutter-width * 3; }
+		@include media-breakpoint-down(sm) { 
+			margin-right: 0;
+		} // XS
+		&:after { border: 0 none; }
+		> div { clear: both; }
+		.item-sharing ul {
+/*			text-align: left;
+			body.ltr & { text-align: right; }*/
+			li:first-child {
+				margin-right: 0;
+				/*body.ltr & { margin-left: 0; }*/
+			}
+			i { font-size: .9rem; }
+		}
+	}
+	.item-summary {
+		margin-bottom: 0;
+		figure { display: none; }
+		.introtext {
+			@include media-breakpoint-down(sm) { 
+				margin-left: 0;
+			} // XS
+		}
+	}
+	.item-footer { padding: 0; margin: 0; border: 0 none; }
+	.item-author {
+		margin-top: 0; text-align: right;
+		body.ltr & { text-align: left; }
+		a {
+			.avatar {
+				float: left; margin-right: $grid-gutter-width / 2;
+				body.ltr & { float: right; margin-right: 0; margin-left: $grid-gutter-width / 2; }
+			}
+			.name { display: inline-block; }
+		}
+	}
+	.item-date {
+		text-align: right;
+		body.ltr & { text-align: left; }
+	}
+    .summary, .item-body p {
+        @include clearfix();
+        margin-bottom: ($grid-gutter-width);
+        font-family: $font-family-base; font-size: $font-size-base; line-height: 1.6; padding: $grid-gutter-width 0 0; margin-bottom: 0; color: $gray-300;
+    }
+    .short-link-container {
+        width: 260px; float: right;
+		body.ltr & { float: left; }
+        .form-group { position: relative; }
+        input {
+            background: $gray-800; color: $gray-300; padding-left: 30px; width: 100%; border: 0 none; box-shadow: 0 0 2px #222; height: 28px;text-align: left; direction: ltr;
+        }
+        i { position: absolute; top: 5px; left: 0; text-align: center; display: block; width: 30px; height: 30px; line-height: 30px; }
+    }
+    .gallery-desc { text-align: left; margin-bottom: $grid-gutter-width * 2; font-size: 85%; margin-top: $grid-gutter-width; }
+
+    .box {
+        &.tags {
+            margin-top: $grid-gutter-width; margin-bottom: $grid-gutter-width; padding-right: 0; padding-left: 0;
+            /*> div { margin-right: $grid-gutter-width / 2; }*/
+            ul li a {
+                background: $gray-800; line-height: 1.45; color: #fff;
+                &:hover { background: $accent; }
+            }
+        }
+    }
+	
+	& ~ .box { max-width: breakpoint-max(sm); }
+}

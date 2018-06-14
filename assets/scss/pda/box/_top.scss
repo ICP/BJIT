@@ -1,0 +1,36 @@
+.box.top {
+    margin-top: 0;
+    ul li {
+        figure {
+            font-size: 2rem;
+            > a {
+                @include responsive-ratio(1920 600);
+                @include media-breakpoint-down(md) {
+                    @include responsive-ratio(1920 800);
+                }
+            }
+        }
+        .desc {
+            h3 {
+                font-size: 1.5rem; line-height: 2rem;
+                a { display: inline-block; padding: $grid-gutter-width / 2 0; }
+            }
+        }
+    }
+    &.desc-overlay {
+        ul li .desc {
+            position: absolute; top: 50%; left: 50%; transform: translateX(-50%); background: transparent; padding: 0;
+            max-width: 100vw; width: 400px; text-align: center; text-shadow: none;
+            h3 {
+                font-size: 2rem; display: inline-block; background: $primary; padding: 0 20px; line-height: 2; font-weight: bold;
+                @include media-breakpoint-down(sm) {
+                    font-size: 1.2rem; margin-bottom: 4px; line-height: 1.5;
+                } // XS
+            }
+            .introtext {
+                background: $accent; margin: 0; color: #fff; white-space: nowrap; overflow: hidden; border: 20px solid $accent; text-overflow: ellipsis;
+                font-size: 1rem; font-family: $headings-font-family; display: inline-block;
+            }
+        }
+    }
+}

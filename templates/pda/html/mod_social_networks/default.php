@@ -14,7 +14,7 @@ $count = count($links);
 
 $direction = ' ' . $params->get('direction', 'vertical');
 ?>
-<ul id="social-networks">
+<ul id="footer-icons">
 <?php
 for($i = 0; $i < $count; $i++){
 ?>

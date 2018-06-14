@@ -12,8 +12,8 @@ defined('_JEXEC') or die('Restricted access');
 <?php if (count($items)) { ?>
 	<ul>
 		<?php foreach ($items as $key => $item) { ?>
-			<li>
-				<?php if ($params->get('itemImage') || $params->get('itemIntroText')) { ?>
+			<li class="<?php echo $item->video ? 'video' : ''; ?>">
+				<?php if ($params->get('itemImage')) { ?>
 					<figure>
 						<a href="<?php echo $item->link; ?>">
 							<?php if ($params->get('itemImage') && isset($item->image)) { ?>
@@ -21,18 +21,18 @@ defined('_JEXEC') or die('Restricted access');
 							<?php } ?>
 						</a>
 					</figure>
-					<div class="desc">
-						<?php if ($params->get('itemTitle')) { ?>
-							<h3><a href="<?php echo $item->link; ?>"><?php echo $item->title; ?></a></h3>
-						<?php } ?>
-						<?php if ($params->get('itemIntroText')) { ?>
-							<div class="introtext"><?php echo $item->introtext; ?></div>
-						<?php } ?>
-						<?php if ($params->get('itemReadMore')) { ?>
-							<a class="more" href="<?php echo $item->link; ?>">بیشتر</a>
-						<?php } ?>
-					</div>
 				<?php } ?>
+				<div class="desc">
+					<?php if ($params->get('itemTitle')) { ?>
+						<h3><a href="<?php echo $item->link; ?>"><?php echo $item->title; ?></a></h3>
+					<?php } ?>
+					<?php if ($params->get('itemIntroText')) { ?>
+						<div class="introtext"><?php echo $item->introtext; ?></div>
+					<?php } ?>
+					<?php if ($params->get('itemReadMore')) { ?>
+						<a class="more" href="<?php echo $item->link; ?>">بیشتر</a>
+					<?php } ?>
+				</div>
 			</li>
 		<?php } ?>
 	</ul>

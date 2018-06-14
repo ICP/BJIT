@@ -26,10 +26,12 @@
         <position>search</position>
         <position>schedule</position>
         <position>menu</position>
-        <position>header-left</position>
-        <position>header-right</position>
+        <position>left</position>
+        <position>right</position>
         <position>showcase</position>
         <position>special</position>
+        <position>special-left</position>
+        <position>special-right</position>
         <position>content</position>
         <position>content-left</position>
         <position>content-center</position>
@@ -38,10 +40,11 @@
         <position>main-top</position>
         <position>main-left</position>
         <position>main-right</position>
-        <position>ads-bot</position>
+        <position>subscribe</position>
         <position>main</position>
-        <position>main-bot</position>
+        <position>bot</position>
         <position>sidebar</position>
+        <position>sidebar-bot</position>
         <position>footer</position>
         <position>copyright</position>
         <position>footer-about</position>

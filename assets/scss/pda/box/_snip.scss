@@ -1,0 +1,124 @@
+.box.snip {
+    ul li {
+        .desc {
+            h3 {
+                font: $font-weight-bold 1.2rem/1.4 $headings-font-family;
+                body.ltr & { font-family: $headings-font-family-en; }
+                html[lang="ku"] & { font-family: $font-family-lang-ku }
+            }
+            > *:first-child a { display: inline-block; padding-top: $grid-gutter-width / 4; }
+        }
+        &:first-child ~ li { padding-top: $grid-gutter-width; }
+
+        &.photo .author span {
+            display: inline-block;
+            &:before {
+                font-family: 'nastooh-icons'; content: "\e82c"; margin-left: 8px;
+                body.ltr & { margin-left: 0; margin-right: 8px; }
+                html[lang="ku"] & { font-family: $font-family-lang-ku }
+            }
+        }
+    }
+
+    &.cols {
+        ul li:first-child ~ li { padding-top: 0; }
+        &.cols-4 {
+            ul li {
+                @include media-breakpoint-down(md) {
+                    width: 50%;
+                    &:nth-child(2n+1) { clear: both; }
+                    &:nth-child(n+1) { margin-top: $grid-gutter-width; }
+                } // SM-
+            }
+        }
+    }
+    &.snip-lg {
+        ul li {
+            .desc {
+                h3 { font: $font-weight-bold 1.5rem/1.4 $headings-font-family; }
+            }
+        }
+    }
+    &.snip-sm {
+        ul li {
+            .desc {
+                h3 {
+                    font: $font-weight-bold 1rem/1.2 $headings-font-family;
+                    max-height: 2.6rem; overflow: hidden; min-height: 2.6rem;
+                }
+            }
+        }
+    }
+
+    &.snip-cols {
+        ul {
+            margin: 0 $grid-gutter-width / -2;
+            li {
+                padding-right: $grid-gutter-width / 2; padding-left: $grid-gutter-width / 2;
+                width: 50%; float: right;
+                body.ltr & { float: left; }
+                .desc h3 { font-size: 1rem; }
+            }
+        }
+        &:not(.first-featured) {
+            ul li {
+                &:first-child ~ li { padding-top: 0; }
+                &:nth-child(2n+1) {
+                    clear: right;
+                    body.ltr & { clear: left; }
+                }
+                &:nth-child(n+2) ~ li { padding-top: $grid-gutter-width; }
+            }
+        }
+        &.first-featured {
+            ul li {
+                &:first-child {
+                    width: 100%; float: none;
+                    .desc h3 { font-size: 1.3rem; }
+                }
+                &:nth-child(2n) {
+                    clear: right;
+                    body.ltr & { float: left; }
+                }
+            }		
+        }
+    }
+
+    &.desc-overlay {
+        &.cols {
+            ul li {
+                &:nth-child(n+3) { margin-top: $grid-gutter-width; }
+                @include media-breakpoint-down(md) {
+                    .desc p { display: none; }
+                } // SM-
+                @include media-breakpoint-down(sm) {
+                    .desc { position: static; transform: none; background: transparent; padding: 0; }
+                } // SM-
+            }
+            &.cols-3 {
+                ul li {
+                    &:nth-child(n+3) { margin-top: auto; }
+                    &:nth-child(n+4) { margin-top: $grid-gutter-width; }
+                }
+            }
+            &.cols-4 {
+                ul li {
+                    &:nth-child(n+3) { margin-top: auto; }
+                    &:nth-child(n+5) { margin-top: $grid-gutter-width; }
+                    @include media-breakpoint-down(md) {
+                        .desc { position: static; transform: none; background: transparent; padding: 0; }
+                    } // SM-
+                }
+            }
+            &.cols-5 {
+                ul li {
+                    &:nth-child(n+3) { margin-top: auto; }
+                    &:nth-child(n+6) { margin-top: $grid-gutter-width; }
+                }
+            }
+        }
+    }
+    &.header-center {
+        > div ul li .desc h3 { margin-bottom: $grid-gutter-width; } 
+    }
+}

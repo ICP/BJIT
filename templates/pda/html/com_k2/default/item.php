@@ -14,17 +14,21 @@ defined('_JEXEC') or die;
 		<?php echo JText::_('K2_PRINT_THIS_PAGE'); ?>
 	</a>
 <?php } ?>
-<article id="item" class="item news<?php echo ($this->item->featured) ? ' featured' : ''; ?><?php if ($this->item->params->get('pageclass_sfx')) echo ' ' . $this->item->params->get('pageclass_sfx'); ?>" data-hits="<?php echo $this->item->hits; ?>" data-hits="<?php if ($this->item->params->get('itemDateModified') && intval($this->item->modified) != 0) { ?><?php echo JHTML::_('date', $this->item->modified, JText::_('K2_DATE_FORMAT_LC2')); ?><?php } ?>">
+<article id="item" class="box item news<?php echo ($this->item->featured) ? ' featured' : ''; ?><?php if ($this->item->params->get('pageclass_sfx')) echo ' ' . $this->item->params->get('pageclass_sfx'); ?>" data-hits="<?php echo $this->item->hits; ?>" data-hits="<?php if ($this->item->params->get('itemDateModified') && intval($this->item->modified) != 0) { ?><?php echo JHTML::_('date', $this->item->modified, JText::_('K2_DATE_FORMAT_LC2')); ?><?php } ?>">
 	<?php echo $this->item->event->BeforeDisplay; ?>
 	<?php echo $this->item->event->K2BeforeDisplay; ?>
-	<header class="item-header">
-		<div class="row hide">
-			<div class="col-xs-6  col-md-3 item-tools">
-				<ul class="list-inline list-unstyled">
+	<div class="item-header">
+		<div class="item-nav d-none row">
+			<div class="col-6 item-date">
+				<?php if ($this->item->params->get('itemDateCreated')) { ?>
+					<time><?php echo JHTML::_('date', $this->item->created, JText::_('K2_DATE_FORMAT_LC2')); ?></time>
+				<?php } ?>
+			</div>
+			<div class="col-6">
+				<ul class="header-sharing">
 					<?php if ($this->item->params->get('itemPrintButton') && !JRequest::getInt('print')) { ?>
 						<li>
-							<a rel="nofollow" href="<?php echo $this->item->printLink; ?>" onclick="window.open(this.href, 'printWindow', 'width=900,height=600,location=no,menubar=no,resizable=yes,scrollbars=yes');
-	                                return false;">
+							<a rel="nofollow" href="<?php echo $this->item->printLink; ?>" onclick="window.open(this.href, 'printWindow', 'width=900,height=600,location=no,menubar=no,resizable=yes,scrollbars=yes'); return false;">
 								<i class="icon-print"></i>
 							</a>
 						</li>
@@ -34,17 +38,12 @@ defined('_JEXEC') or die;
 					<li class="gp"><a href="https://plus.google.com/share?url=<?php echo JUri::current(); ?>" target="_blank"><i class="icon-gplus"></i></a></li>
 				</ul>
 			</div>
-			<?php if ($this->item->params->get('itemDateCreated')) { ?>
-				<div class="col-xs-6 col-md-9 item-date">
-					<time><?php echo JHTML::_('date', $this->item->created, JText::_('K2_DATE_FORMAT_LC2')); ?></time>
-				</div>
-			<?php } ?>
 		</div>
 		<?php if ($this->item->params->get('itemTitle')) { ?>
-			<div class="page-title">
-				<h1 class="item-title">
+			<div class="item-title">
+				<h1 class="title">
 					<?php
-					if (count($this->item->extra_fields)) {
+					if ((is_array($this->item->extra_fields) || is_object($this->item->extra_fields)) && count($this->item->extra_fields)) {
 						foreach ($this->item->extra_fields as $key => $extraField) {
 							if ($extraField->alias == "kicker") {
 								?>
@@ -58,15 +57,15 @@ defined('_JEXEC') or die;
 				</h1>
 			</div>
 		<?php } ?>
-	</header>
+	</div>
 	<?php echo $this->item->event->AfterDisplayTitle; ?>
 	<?php echo $this->item->event->K2AfterDisplayTitle; ?>
-	<div class="item-body">
-		<?php echo $this->item->event->BeforeDisplayContent; ?>
-		<?php echo $this->item->event->K2BeforeDisplayContent; ?>
+	<?php echo $this->item->event->BeforeDisplayContent; ?>
+	<?php echo $this->item->event->K2BeforeDisplayContent; ?>
+	<div class="item-summary">
 		<?php if ($this->item->params->get('itemImage') && !empty($this->item->image)) { ?>
 			<?php $video = ($this->item->params->get('itemVideo') && !empty($this->item->video)) ? $this->item->video : null; ?>
-			<figure id="item-media" class="item-image"<?php echo ($video) ? ' data-video=' . $video : '' ?>>
+			<figure id="item-media" class="item-img"<?php echo ($video) ? ' data-video=' . $video : '' ?>>
 				<a href="<?php echo $this->item->imageXLarge; ?>" title="<?php echo JText::_('K2_CLICK_TO_PREVIEW_IMAGE'); ?>">
 					<img src="<?php echo $this->item->image; ?>" alt="<?php
 					if (!empty($this->item->image_caption))
@@ -87,6 +86,13 @@ defined('_JEXEC') or die;
 				<?php } ?>
 			</figure>
 		<?php } ?>
+		<?php if (!empty($this->item->introtext) && $this->item->params->get('itemIntroText')) { ?>
+			<div class="summary">
+				<?php echo $this->item->introtext; ?>
+			</div>
+		<?php } ?>
+	</div>
+	<div class="item-body">
 		<?php if ($this->item->params->get('itemAuthor')) { ?>
 			<div class="item-author">
 				<?php echo K2HelperUtilities::writtenBy($this->item->author->profile->gender); ?>
@@ -98,46 +104,37 @@ defined('_JEXEC') or die;
 			</div>
 		<?php } ?>
 		<?php if (!empty($this->item->fulltext)) { ?>
-			<?php if ($this->item->params->get('itemIntroText')) { ?>
-				<div class="summary">
-					<?php echo $this->item->introtext; ?>
-				</div>
-			<?php } ?>
 			<?php if ($this->item->params->get('itemFullText')) { ?>
 				<div class="item-text">
 					<?php echo $this->item->fulltext; ?>
 				</div>
 			<?php } ?>
-		<?php } else { ?>
-			<div class="item-text">
-				<?php echo $this->item->introtext; ?>
-			</div>
 		<?php } ?>
 		<?php echo $this->item->event->AfterDisplayContent; ?>
 		<?php echo $this->item->event->K2AfterDisplayContent; ?>
-		<div class="item-header">
-			<div class="row">
-				<div class="col-xs-6  col-md-3 item-tools">
-					<ul class="list-inline list-unstyled">
-						<?php if ($this->item->params->get('itemPrintButton') && !JRequest::getInt('print')) { ?>
-							<li>
-								<a rel="nofollow" href="<?php echo $this->item->printLink; ?>" onclick="window.open(this.href, 'printWindow', 'width=900,height=600,location=no,menubar=no,resizable=yes,scrollbars=yes');
-										return false;">
-									<i class="icon-print"></i>
-								</a>
-							</li>
-						<?php } ?>
-						<li class="fb"><a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo JUri::current(); ?>" target="_blank"><i class="icon-facebook"></i></a></li>
-						<li class="tw"><a href="https://twitter.com/home?status=<?php echo $this->item->title; ?> - <?php echo JUri::current(); ?>" target="_blank"><i class="icon-twitter"></i></a></li>
-						<li class="gp"><a href="https://plus.google.com/share?url=<?php echo JUri::current(); ?>" target="_blank"><i class="icon-gplus"></i></a></li>
-					</ul>
-				</div>
-				<?php if ($this->item->params->get('itemDateCreated')) { ?>
-					<div class="col-xs-6 col-md-9 item-date">
-						<time><?php echo JHTML::_('date', $this->item->created, JText::_('K2_DATE_FORMAT_LC2')); ?></time>
-					</div>
-				<?php } ?>
+	</div>
+	<div class="item-footer row">
+		<div class="col-12 col-sm-6">
+			<div class="item-sharing">
+				<ul>
+					<?php if ($this->item->params->get('itemPrintButton') && !JRequest::getInt('print')) { ?>
+						<li>
+							<a rel="nofollow" href="<?php echo $this->item->printLink; ?>" onclick="window.open(this.href, 'printWindow', 'width=900,height=600,location=no,menubar=no,resizable=yes,scrollbars=yes');
+	                                return false;">
+								<i class="icon-print"></i>
+							</a>
+						</li>
+					<?php } ?>
+					<li class="fb"><a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo JUri::current(); ?>" target="_blank"><i class="icon-facebook"></i></a></li>
+					<li class="tw"><a href="https://twitter.com/home?status=<?php echo $this->item->title; ?> - <?php echo JUri::current(); ?>" target="_blank"><i class="icon-twitter"></i></a></li>
+					<li class="gp"><a href="https://plus.google.com/share?url=<?php echo JUri::current(); ?>" target="_blank"><i class="icon-gplus"></i></a></li>
+				</ul>
 			</div>
+		</div>
+		<div class="col-12 col-6">
+			<?php if ($this->item->params->get('itemDateCreated')) { ?>
+				<time><?php echo JHTML::_('date', $this->item->created, JText::_('K2_DATE_FORMAT_LC2')); ?></time>
+			<?php } ?>
 		</div>
 	</div>
 	<div class="item-boxes">

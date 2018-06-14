@@ -1,0 +1,35 @@
+.box {
+	&.photoGall {
+        & > div {
+			ul {
+				margin: 0 -($grid-gutter-width / 2);
+				li {
+					width: 25%; float: right; padding: ($grid-gutter-width / 2);
+					body.ltr & { float: left; }
+					&:nth-child(4n+1) {
+						clear: right;
+						body.ltr & { clear: left; }
+					}
+					@include media-breakpoint-down(sm) { 
+						width: 50%;
+						&:nth-child(2n+1) {
+							clear: right;
+							body.ltr & { clear: left; }
+						}
+					} // XS
+				}
+			}
+            a {
+				display: block; text-align: center; overflow: hidden; background: #000;
+                img {
+					display: block; width: auto; max-width: 100%; min-height: 100%; max-height: 100%; left: 50%; transform: translateX(-50%) translateY(-50%);
+					////
+				}
+                &.large-item {
+                    width: 100% !important; height: auto !important;
+                    img { min-height: 0 !important; }
+                }
+            }
+        }
+    }
+}

@@ -10,16 +10,25 @@
 defined('_JEXEC') or die('Restricted access');
 ?>
 <?php if (count($items)) { ?>
-	<div>
+	<ul class="item-titles">
 		<?php foreach ($items as $key => $item) { ?>
-			<a href="<?php echo JURI::base(); ?>promotion">
-				<span class="text"><?php echo strip_tags($item->introtext, '<strong>'); ?></span>
-				<?php if ($params->get('itemImage') && isset($item->image)) { ?>
-					<span class="img">
-						<img src="<?php echo $item->image; ?>" alt="<?php echo K2HelperUtilities::cleanHtml($item->title); ?>"/>
-					</span>
-				<?php } ?>
-			</a>
+			<li data-index="<?php echo $key; ?>" class="<?php echo $key == 0 ? 'active' : ''; ?>">
+				<h3><?php echo explode(':', $item->title)[0]; ?></h3>
+				<div class="circle">
+					<?php echo explode(':', $item->title)[1]; ?>
+				</div>
+			</li>
 		<?php } ?>
-	</div>
-<?php } ?>
+	</ul>
+	<ul class="item-bodies">
+		<?php foreach ($items as $key => $item) { ?>
+			<li data-index="<?php echo $key; ?>" class="<?php echo $key == 0 ? 'active' : ''; ?>">
+				<div class="desc">
+					<div class="introtext"><?php echo $item->introtext; ?></div>
+					<div class="item-text"><?php echo $item->fulltext; ?></div>
+				</div>
+			</li>
+		<?php } ?>
+	</ul>
+	<?php
+}

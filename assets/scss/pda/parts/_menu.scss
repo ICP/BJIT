@@ -1,0 +1,93 @@
+/*
+*  EXCEPTION: Mobile-related codes is at the end of file.
+*/
+#menu {
+    @include clearfix;
+	background: $menu-bg;
+    position: relative; font-family: $headings-font-family;
+	body.ltr & { font-family: $headings-font-family-en; }
+	html[lang="ku"] & { font-family: $font-family-lang-ku }
+    ul {
+        list-style: none; margin: 0; padding: 0; text-align: center; white-space: nowrap; display: block; float: left;
+        li {
+			transition: $transition-default;
+            float: right; line-height: $menu-height - 3; font-weight: $menu-font-weight; font-size: $menu-font-size;
+			body.ltr & { float: left; font-weight: normal; }
+            a { padding: 0 $grid-gutter-width; display: block; }
+            /*&:hover { border-bottom-color: $gray-200; }*/
+			&.active {
+				/*border-bottom-color: $gray-200;*/
+				.submenu { display: block; }
+			}
+            .btn {
+                margin-top: 28px; padding: 0.375rem 1.2rem; color: #fff;
+                font-size: $menu-font-size; margin-right: $grid-gutter-width;
+            }
+			.submenu-toggler { display: none; }
+			.submenu {
+				position: absolute; background: $submenu-bg; top: $menu-height; right: 0; width: 100%; z-index: 78; text-align: start; display: none;
+				white-space: normal;
+
+				&:before, &:after {
+					display: block; content: ''; width: 100vw; height: 100%; position: absolute; top: 0; background: $submenu-bg;
+					z-index: 0; left: 100%;
+				}
+				&:after { left: auto; right: 100%; }
+				li {
+					line-height: $submenu-line-height; border: 0 none; float: none; display: inline-block;
+					a { color: $gray-700; }
+					&:hover, &.active {
+						a { color: $primary; }
+					}
+				}
+			}
+        }
+		@include media-breakpoint-only(md) {
+			overflow-x: scroll !important;
+			li {
+				display: inline-block; float: none !important;
+				.submenu { overflow: hidden; }
+			}
+		}
+    }
+}
+@include media-breakpoint-down(sm) {
+	#menu {
+		overflow: visible; position: relative; z-index: 7000;
+		/*width: 100vw; margin-right: $grid-gutter-width / -2;*/ 
+		/*body.ltr & { margin-right: 0; margin-left: $grid-gutter-width / -2; }*/
+		ul {
+			position: absolute; z-index: 100; background: $gray-200; width: 100%; text-align: right; display: none;
+			body.ltr & { text-align: left; }
+			li {
+				display: block; float: none !important; padding: 0 $grid-gutter-width / 2; position: relative; line-height: 2.5rem; border: 0 none;
+				/*padding-right: 50px;*/
+				body.ltr & { padding-right: 0; padding-left: 50px; }
+				&.active {
+					.submenu { display: none; }
+				}
+				.submenu-toggler {
+					width: 50px; height: $menu-height; line-height: $menu-height; text-align: center;
+					position: absolute; top: 3px; right: 0; display: block; z-index: 500; cursor: pointer;
+					body.ltr & { right: auto; left: 0; }
+				}
+				.submenu {
+					&:before, &:after { display: none; }
+					position: static; background: darken($primary, 7%); display: none;
+					li {
+						display: block; padding-right: $grid-gutter-width / 2;
+						body.ltr & { padding-right: 0; padding-left: $grid-gutter-width / 2; }
+						a { color: #fff; }
+						&:hover, &.active {
+							background: darken($primary, 10%);
+							a { color: #fff; }
+						}
+					}
+				}
+                .btn {
+                    margin-right: 0; margin-bottom: $grid-gutter-width;
+                }
+			}
+		}
+	}
+} // XS

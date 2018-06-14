@@ -1,0 +1,13 @@
+.box.campaign {
+    margin: 0; padding: 0;
+    ul li .desc {
+        h3 {
+            width: 50%; font-size: 40px; float: right; font-weight: bold; line-height: 120px; margin: 0; padding: 0;
+            a { color: #fff; margin: 0; padding: 0; }
+        }
+        p {
+            width: 50%; float: left; color: #fff; font-size: 24px; margin: 0; line-height: 120px; height: 120px; overflow: hidden;
+            white-space: nowrap; text-overflow: ellipsis; text-align: left;
+        }
+    }
+}

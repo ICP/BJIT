@@ -1,0 +1,37 @@
+.box {
+    &.ads {
+		ul {
+			li {
+				figure {
+					margin-bottom: $grid-gutter-width / 2;
+					a {
+						padding: 0; height: auto;
+						> img { position: static; transform: none; min-height: 0; }
+					}
+				}
+			}
+		}
+		&.cols {
+			ul {
+				@include clearfix;
+				margin: 0 ($grid-gutter-width / -2);
+				li {
+					width: 50%; float: right;
+					border-left: $grid-gutter-width / 2 solid transparent; border-right: $grid-gutter-width / 2 solid transparent;
+					&:nth-child(2n+1) { clear: both; }
+					&:nth-child(n+3) { margin-top: $grid-gutter-width; }
+				}
+			}
+		}
+		&._trim-figure {
+			ul li figure { margin-bottom: 0; }
+		}
+    }
+	&.fixed-ad {
+        position: fixed !important; bottom: 0; left: 0; width: 100%; z-index: 9999; backface-visibility: hidden;
+        li {
+            margin-bottom: 0;
+            figure { margin-bottom: 0; }
+        }
+    }
+}

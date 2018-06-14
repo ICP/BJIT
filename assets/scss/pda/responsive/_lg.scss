@@ -1,0 +1,40 @@
+@include media-breakpoint-down(lg) {
+	#header {
+		
+	}
+	#masthead {
+		overflow: hidden;
+		.tools-menu li { font-size: .6rem; padding-right: $grid-gutter-width /2; }
+	}
+	#menu {
+		ul li {
+			font-size: 15px;
+			a { padding: 0 7px; }
+		}
+	}
+	.date { font-size: 10px; }
+	.search {width: 120px; }
+	
+	.box {
+		&.top {
+			ul li {
+				.desc {
+					h3 { font-size: 1.3rem; }
+					p { display: none; }
+				}
+			}
+		}
+		&.list {
+			&.list-thumbs {
+				ul li {
+					.desc {
+						p { font-size: .75rem; }
+					}
+				}
+			}
+			&.list-numbers ul li {
+				&:before { width: 30px; height: 30px; min-width: 30px; line-height: 30px; }
+			}
+		}
+	}
+}

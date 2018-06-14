@@ -1,0 +1,188 @@
+/* taken from nastooh ck editor quotes */
+blockquote, cite {
+	font-style: normal;
+	padding: 2px 0;
+	border-style: solid;
+	border-color: #ccc;
+	border-width: 0;
+}
+.quote-t1 {
+	float: left;
+	width: 200px;
+	padding-left: 8px;
+	padding-right: 15px;
+	border-right-width: 5px;
+	margin-right: 22px;
+}
+.quote-t2{
+	float: right;
+	width: 200px;
+	padding-left: 20px;
+	padding-right: 8px;
+	border-right-width: 5px;
+	margin-left: 12px;
+}
+.quote-t3{
+	display: block;
+	padding: 7px 11px;
+	margin-left: 5px;
+	width: 170px;
+	float: left;
+	margin-right: 12px;
+	background: #999;
+	color: #FEFEFE;
+	font-weight: bold;
+	line-height: 20px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+.quote-t4{
+	background: none repeat scroll 0 0 #FFFFFF;
+	border-left: 2px solid #C76C0C;
+	border-right: 9px solid #C76C0C;
+	color: #666666;
+	display: block;
+	float: left;
+	font: 1em/1.5em $headings-font-family, serif;
+	margin: 0 16px 20px 0;
+	padding: 15px 15px 15px 14px;
+	position: relative;
+	text-align: justify;
+	width: 200px;
+	-moz-box-shadow: 2px 2px 15px #ccc;
+	-webkit-box-shadow: 2px 2px 15px #ccc;
+	box-shadow: 2px 2px 15px #ccc;
+}
+.quote-t4::before{
+	content: "\201C"; /*Unicode for Left Double Quote*/
+	font-family: Georgia, serif;
+	font-size: 60px;
+	font-weight: bold;
+	color: #999;
+	position: absolute;
+	right: 10px;
+	top: 5px;
+}
+.quote-t4::after{
+	/*Reset to make sure*/
+	content: "";
+}
+.quote-t4 a{
+	background: #eee;
+	padding: 0 3px;
+	color: #c76c0c;
+}
+.quote-t4 a:hover{
+	color: #666;
+}
+.quote-t4 em{
+	font-style: italic;
+}
+.quote-t5{
+	background: none repeat scroll 0 0 #FAFAFA;
+	border: 1px solid #F0F0F0;
+	border-radius: 5px;
+	color: #444444;
+	display: block;
+	float: left;
+	font: 12px/1.7em tahoma;
+	margin-left: 5px;
+	margin-right: 12px;
+	padding: 7px 11px;
+	text-align: right;
+	width: 170px;
+}
+.quote-t6{
+	color: #505050;
+	display: block;
+	float: left;
+	font: 1.1em/1.8em $headings-font-family, serif;
+	margin: 28px 8px 20px 5px;
+	padding: 10px;
+	position: relative;
+	text-align: right;
+	width: 200px;
+}
+.quote-t6::before{
+	content: "\201D"; /*Unicode for Right Double Quote*/
+	border-bottom: 1px solid #D8D8D8;
+	border-top: 1px solid #D8D8D8;
+	color: #999999;
+	font-family: Georgia, serif;
+	font-size: 60px;
+	font-weight: bold;
+	height: 35px;
+	line-height: 58px;
+	position: absolute;
+	right: 0;
+	top: -29px;
+	width: 200px;
+}
+.quote-t6::after {
+	content: '"';
+	font-family: Georgia, serif;
+}
+.quote-t7{
+	background: none repeat scroll 0 0 #f9f5e4;
+	border-right: 10px solid #f6ebc1;
+	float: left;
+	font: 1.1em/1.7em $headings-font-family, serif;
+	margin: 6px 12px 6px 6px;
+	padding: 6px;
+	quotes: "�" "�" "�" "�";
+	width: 209px;
+}
+.quote-t7:before{
+	color: #f7ef76;
+	content: "\00BB";
+	font-size: 4em;
+	line-height: 0.5em;
+	margin-left: 0.25em;
+	vertical-align: -0.2em;
+}
+.quote-t7 p{
+	display: inline;
+}
+.quote-t8{
+	margin:1.5em -1.5em 0.75em 0;
+	box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+	-moz-box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+	background: #FFF;
+	padding: 0.75em 1em 0.75em 0.5em;
+	border-right: 0.5em solid #DDDDDD;
+	font: 1.2em/1.7em $headings-font-family, serif;
+}
+.quote-t8:before {
+	color: #999999;
+	content: "�";
+	display: block;
+	font: italic 400%/1 Cochin, Georgia, 'Times New Roman',serif;
+	height: 0;
+	margin-right: -0.95em;
+}
+.quote-t9-left, .quote-t9-right {
+	color: #0034cc;
+	width: 200px;
+	border-top-width: 1px;
+	border-top-style: dotted ;
+}
+.quote-t9-left img, .quote-t9-right img {
+	max-width: 190px;
+	text-align: center;
+}
+.quote-t9-left{
+	float: left;
+	padding-left: 6px;
+	padding-right: 12px;
+	margin-right: 14px;
+	margin-top: 12px;
+}
+.quote-t9-right{
+	float: right;
+	padding-left: 12px;
+	padding-right: 6px;
+	margin-left: 12px;
+	margin-top: 12px;
+}
+/* end of nastooh ck quotes */

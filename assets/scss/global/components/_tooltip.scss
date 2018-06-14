@@ -1,0 +1,4 @@
+.tooltip {
+    width: auto; text-align: center; font-size: 12px; color: #fff; font-family: Tahoma; height: 22px; line-height: 20px; padding: 1px 5px; background: #222; border-radius: 3px; position: absolute; z-index: 1600;
+    &:empty { display: none; }
+}

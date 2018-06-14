@@ -1,0 +1,9 @@
+.box {
+    &.support-item {
+        margin-bottom: 0; margin-top: 0; padding-top: $grid-gutter-width;
+        ul li .desc {
+            bottom: $grid-gutter-width * 6;
+            h3 { font-size: 1rem; white-space: nowrap; overflow: hidden; }
+        }
+    }
+}

@@ -1,0 +1,16 @@
+@include media-breakpoint-down(md) {
+	#masthead {
+		.tools-menu {
+			li {
+				font-size: 0;
+			}
+		}
+	}
+	.date { display: inline-block; }
+	.box {
+	}
+	#footer {
+		#footer-menu ul { text-align: center; }
+		.copyright-text { text-align: center; }
+	}
+}
