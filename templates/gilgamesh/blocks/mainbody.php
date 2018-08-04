@@ -228,7 +228,7 @@ $pagetitle = isset(JFactory::getApplication()->getMenu()->getActive()->title) ? 
 							</li>
 						</ul>
 					</div>
-					<div class="col-md-3">
+					<div class="hidden-xs hidden-sm col-md-3">
 						<div class="samandehi-holder">
 							<img id="sizpnbqesizpesgtapfu" class="logo-samandehi" onclick='window.open("https://logo.samandehi.ir/Verify.aspx?id=92905&p=pfvluiwkpfvlobpddshw", "Popup", "toolbar=no, scrollbars=no, location=no, statusbar=no, menubar=no, resizable=0, width=450, height=630, top=30")' alt="logo-samandehi" src="https://logo.samandehi.ir/logo.aspx?id=92905&p=bsiyodrfbsiylymaujyn" />
 						</div>
