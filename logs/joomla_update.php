@@ -203,3 +203,12 @@
 2018-05-29T13:11:30+00:00	INFO 127.0.0.1	update	Deleting removed files and folders.
 2018-05-29T13:11:32+00:00	INFO 127.0.0.1	update	Cleaning up after installation.
 2018-05-29T13:11:32+00:00	INFO 127.0.0.1	update	Update to version 3.8.8 is complete.
+2018-08-05T13:24:35+00:00	INFO 127.0.0.1	update	Update started by user فرید (575). Old version is 3.8.8.
+2018-08-05T13:24:40+00:00	INFO 127.0.0.1	update	Downloading update file from https://s3-us-west-2.amazonaws.com/joomla-official-downloads/joomladownloads/joomla3/Joomla_3.8.11-Stable-Update_Package.zip?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIZ6S3Q3YQHG57ZRA%2F20180805%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20180805T132408Z&X-Amz-Expires=60&X-Amz-SignedHeaders=host&X-Amz-Signature=e974a602e2eb8eec2a96dc9a650dcbbaba82517caa788ad421dbf3001bc5a0c7.
+2018-08-05T13:25:06+00:00	INFO 127.0.0.1	update	File Joomla_3.8.11-Stable-Update_Package.zip successfully downloaded.
+2018-08-05T13:25:07+00:00	INFO 127.0.0.1	update	Starting installation of new version.
+2018-08-05T13:26:16+00:00	INFO 127.0.0.1	update	Finalising installation.
+2018-08-05T13:26:16+00:00	INFO 127.0.0.1	update	Ran query from file 3.8.9-2018-06-19. Query text: UPDATE `#__extensions` SET `enabled` = '1' WHERE `name` = 'mod_sampledata';.
+2018-08-05T13:26:16+00:00	INFO 127.0.0.1	update	Deleting removed files and folders.
+2018-08-05T13:26:18+00:00	INFO 127.0.0.1	update	Cleaning up after installation.
+2018-08-05T13:26:18+00:00	INFO 127.0.0.1	update	Update to version 3.8.11 is complete.
