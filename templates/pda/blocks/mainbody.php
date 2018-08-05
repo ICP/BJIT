@@ -232,5 +232,5 @@ $pagetitle = isset(JFactory::getApplication()->getMenu()->getActive()->title) ? 
 	<?php } ?>
 </footer>
 <?php /* <script src="<?php echo JURI::base(); ?>assets/js/jquery-1.11.1.min.js"></script> */ ?>
-<script src="<?php echo JURI::base(); ?>assets/js/pda.min.js?_=20171022_3"  type="text/javascript"></script>
+<script src="<?php echo JURI::base(); ?>assets/js/pda.min.js?_=20170805"  type="text/javascript"></script>
 </body>

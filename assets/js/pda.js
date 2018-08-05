@@ -77,6 +77,7 @@ $(function () {
             , slidesToShow: +count
             , slidesToScroll: +count
             , SwipetoSlide: true
+            , fade: $box.hasClass('top') ? true : false
 //                , centerMode: $box.hasClass('top') ? true : false
             , rtl: $("body").attr('dir') === "rtl" ? true : false
             , dots: $box.hasClass('top') ? true : false
@@ -230,6 +231,34 @@ $(function () {
         $(this).addClass('active');
         $target.addClass('active');
     });
+
+    $(document).one('inview', '.box.promo .item-bodies', function () {
+        var duration = 2000;
+        $('.circle[data-value]').each(function () {
+            var $this = $(this);
+            var range = $this.data('value');
+            if (range === 0)
+                return false;
+            var stepTime = Math.abs(Math.floor(duration / range));
+            stepTime = Math.max(stepTime, 50);
+            var startTime = new Date().getTime();
+            var endTime = startTime + duration;
+            var timer;
+
+            function run() {
+                var now = new Date().getTime();
+                var remaining = Math.max((endTime - now) / duration, 0);
+                var value = Math.round(range - (remaining * range));
+                $this.html(value);
+                if (value == range) {
+                    clearInterval(timer);
+                    $this.attr('data-value', 0);
+                }
+            }
+            timer = setInterval(run, stepTime);
+            run();
+        });
+    });
 });
 
 $.fn.serializeObject = function () {
@@ -301,3 +330,54 @@ function CommentForm() {
         });
     }(this);
 }
+
+
+/**
+ * author Christopher Blum
+ *    - based on the idea of Remy Sharp, http://remysharp.com/2009/01/26/element-in-view-event-plugin/
+ *    - forked from http://github.com/zuk/jquery.inview/
+ *    https://github.com/protonet/jquery.inview
+ */
+!function (a) {
+    "function" == typeof define && define.amd ? define(["jquery"], a) : "object" == typeof exports ? module.exports = a(require("jquery")) : a(jQuery)
+}(function (a) {
+    function i() {
+        var b, c, d = {height: f.innerHeight, width: f.innerWidth};
+        return d.height || (b = e.compatMode, (b || !a.support.boxModel) && (c = "CSS1Compat" === b ? g : e.body, d = {height: c.clientHeight, width: c.clientWidth})), d
+    }
+    function j() {
+        return{top: f.pageYOffset || g.scrollTop || e.body.scrollTop, left: f.pageXOffset || g.scrollLeft || e.body.scrollLeft}
+    }
+    function k() {
+        if (b.length) {
+            var e = 0, f = a.map(b, function (a) {
+                var b = a.data.selector, c = a.$element;
+                return b ? c.find(b) : c
+            });
+            for (c = c || i(), d = d || j(); e < b.length; e++)
+                if (a.contains(g, f[e][0])) {
+                    var h = a(f[e]), k = {height: h[0].offsetHeight, width: h[0].offsetWidth}, l = h.offset(), m = h.data("inview");
+                    if (!d || !c)
+                        return;
+                    l.top + k.height > d.top && l.top < d.top + c.height && l.left + k.width > d.left && l.left < d.left + c.width ? m || h.data("inview", !0).trigger("inview", [!0]) : m && h.data("inview", !1).trigger("inview", [!1])
+                }
+        }
+    }
+    var c, d, h, b = [], e = document, f = window, g = e.documentElement;
+    a.event.special.inview = {add: function (c) {
+            b.push({data: c, $element: a(this), element: this}), !h && b.length && (h = setInterval(k, 250))
+        }, remove: function (a) {
+            for (var c = 0; c < b.length; c++) {
+                var d = b[c];
+                if (d.element === this && d.data.guid === a.guid) {
+                    b.splice(c, 1);
+                    break
+                }
+            }
+            b.length || (clearInterval(h), h = null)
+        }}, a(f).on("scroll resize scrollstop", function () {
+        c = d = null
+    }), !g.addEventListener && g.attachEvent && g.attachEvent("onfocusin", function () {
+        d = null
+    })
+});
