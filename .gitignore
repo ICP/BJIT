@@ -55,3 +55,4 @@ cache
 cache/*
 logs
 logs/*
+nbproject/private/private.xml
