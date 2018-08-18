@@ -66,7 +66,6 @@ $ajax_base_url = JRoute::_('index.php');
 </div>
 <?php echo J2Store::modules()->loadposition('j2store-checkout-bottom'); ?>
 <script type="text/javascript">
-
     var query = {};
     query['option'] = 'com_j2store';
     query['view'] = 'checkout';
@@ -79,7 +78,7 @@ $ajax_base_url = JRoute::_('index.php');
         , modify: '<?php echo JText::_('J2STORE_CHECKOUT_MODIFY'); ?>'
         , guestAllowed: <?php echo (!$this->logged && $this->params->get('allow_guest_checkout')) && (!$this->params->get('show_login_form', 1) && !$this->params->get('allow_registration', 1)) ? 1 : 0; ?>
         , notLoggedIn: <?php echo (!$this->logged) ? 1 : 0; ?>
-        , showShipping: <?php echo $this->showShipping; ?>
+        , showShipping: <?php echo $this->showShipping ? 1 : 0; ?>
     };
 
 </script>
