@@ -12,36 +12,14 @@ defined('_JEXEC') or die('Restricted access');
 
 /* -------------------------------- Clappr embed templates -------------------------------- */
 $clapprEmbed = "
-<div id=\"avID_{SOURCEID}\" style=\"width:{WIDTH}px;height:{HEIGHT}px;\" title=\"JoomlaWorks AllVideos Player\"></div>
-<script type=\"text/javascript\">
-    var player = new Clappr.Player({
-        source: '{SITEURL}/{FOLDER}/{SOURCE}.{FILE_EXT}',
-        poster: '{PLAYER_POSTER_FRAME}',
-        height: '{HEIGHT}',
-        width: '{WIDTH}',
-        autoPlay: {PLAYER_AUTOPLAY},
-        loop: {PLAYER_LOOP},
-        //hideMediaControl: {JWPLAYER_CONTROLS},
-        parentId: '#avID_{SOURCEID}'
-    });
-</script>
+<div id=\"avID_{SOURCEID}\" style=\"text-align: center;\">
+	<video controls poster=\"{PLAYER_POSTER_FRAME}\">
+		<source src=\"{SITEURL}/{FOLDER}/{SOURCE}.{FILE_EXT}\">
+	</video>
+</div>
 ";
 
-$clapprEmbedRemote = "
-<div id=\"avID_{SOURCEID}\" style=\"width:{WIDTH}px;height:{HEIGHT}px;\" title=\"JoomlaWorks AllVideos Player\"></div>
-<script type=\"text/javascript\">
-    var player = new Clappr.Player({
-        source: '{SOURCE}',
-        poster: '{PLAYER_POSTER_FRAME_REMOTE}',
-        height: '{HEIGHT}',
-        width: '{WIDTH}',
-        autoPlay: {PLAYER_AUTOPLAY},
-        loop: {PLAYER_LOOP},
-        //hideMediaControl: {JWPLAYER_CONTROLS},
-        parentId: '#avID_{SOURCEID}'
-    });
-</script>
-";
+$clapprEmbedRemote = "";
 
 /* -------------------------------- JW Player embed templates -------------------------------- */
 $jwPlayerEmbed = "

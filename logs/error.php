@@ -11,3 +11,4 @@
 2016-07-30T15:45:46+00:00	INFO 127.0.0.1	joomlafailure	Username and password do not match or you do not have an account yet.
 2016-07-30T15:45:52+00:00	INFO 127.0.0.1	joomlafailure	Username and password do not match or you do not have an account yet.
 2016-07-30T15:45:59+00:00	INFO 127.0.0.1	joomlafailure	Username and password do not match or you do not have an account yet.
+2018-09-01T10:30:23+00:00	INFO 127.0.0.1	gmailfailure	تشخیص هویت ناموفق: کاربر جز لیست سیاه است

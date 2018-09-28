@@ -64,8 +64,8 @@ defined('_JEXEC') or die;
 	<?php echo $this->item->event->K2BeforeDisplayContent; ?>
 	<div class="item-summary">
 		<?php if ($this->item->params->get('itemImage') && !empty($this->item->image)) { ?>
-			<?php $video = ($this->item->params->get('itemVideo') && !empty($this->item->video)) ? $this->item->video : null; ?>
-			<figure id="item-media" class="item-img"<?php echo ($video) ? ' data-video=' . $video : '' ?>>
+			
+			<figure id="item-media" class="item-img">
 				<a href="<?php echo $this->item->imageXLarge; ?>" title="<?php echo JText::_('K2_CLICK_TO_PREVIEW_IMAGE'); ?>">
 					<img src="<?php echo $this->item->image; ?>" alt="<?php
 					if (!empty($this->item->image_caption))
@@ -112,6 +112,12 @@ defined('_JEXEC') or die;
 		<?php } ?>
 		<?php echo $this->item->event->AfterDisplayContent; ?>
 		<?php echo $this->item->event->K2AfterDisplayContent; ?>
+		<?php
+		if ($this->item->params->get('itemVideo') && !empty($this->item->video)) {
+			// echo '<script src="https://cdn.jsdelivr.net/gh/clappr/clappr@latest/dist/clappr.min.js"></script>';
+			echo $this->item->video;
+		}
+		?>
 	</div>
 	<div class="item-footer row">
 		<div class="col-12 col-sm-6">

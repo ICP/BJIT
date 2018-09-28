@@ -16,8 +16,8 @@ class plgContentJw_allvideos extends JPlugin
 {
     // JoomlaWorks reference parameters
     public $plg_name              = "jw_allvideos";
-    public $plg_copyrights_start  = "\n\n<!-- JoomlaWorks \"AllVideos\" Plugin (v4.8.0) starts here -->\n";
-    public $plg_copyrights_end    = "\n<!-- JoomlaWorks \"AllVideos\" Plugin (v4.8.0) ends here -->\n\n";
+    public $plg_copyrights_start  = "";
+    public $plg_copyrights_end    = "";
 
     public function __construct(&$subject, $params)
     {

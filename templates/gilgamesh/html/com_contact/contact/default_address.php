@@ -54,6 +54,12 @@ defined('_JEXEC') or die;
 				<?php echo JText::_('COM_CONTACT_ADDRESS'); ?>
 				<span><?php echo $this->contact->address; ?></span>
 			</li>
+			<?php if ($this->contact->postcode && $this->params->get('show_postcode')) : ?>
+			<li class="email">
+				<?php echo JText::_('POSTCODE'); ?>
+				<span><?php echo $this->contact->postcode; ?></span>
+			</li>
+			<?php endif; ?>
 		</ul>
 	</div>
 </section>
