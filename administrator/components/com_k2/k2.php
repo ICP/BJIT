@@ -111,14 +111,6 @@ if(
 	$k2ComponentHeader = '<div id="k2AdminContainer" class="K2AdminView'.ucfirst($view).$k2CSSContainerClass.'">';
 	$k2ComponentFooter = '
 	</div>
-
-	<div id="k2AdminFooter" class="'.$k2FooterClass.'">
-		<a target="_blank" href="https://getk2.org/">K2 v'.K2_CURRENT_VERSION.K2_BUILD.'</a> | Copyright &copy; 2006-'.date('Y').' <a target="_blank" href="http://www.joomlaworks.net/">JoomlaWorks Ltd.</a>
-	</div>
-
-	<!-- K2 Update Service -->
-	<script type="text/javascript">var K2_INSTALLED_VERSION = \''.K2_CURRENT_VERSION.'\';</script>
-	<script type="text/javascript" src="https://getk2.org/app/update.js?t='.date('Ymd').'"></script>
 	';
 }
 else
