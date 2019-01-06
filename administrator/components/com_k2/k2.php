@@ -1,9 +1,9 @@
 <?php
 /**
- * @version    2.8.x
+ * @version    2.9.x
  * @package    K2
- * @author     JoomlaWorks http://www.joomlaworks.net
- * @copyright  Copyright (c) 2006 - 2017 JoomlaWorks Ltd. All rights reserved.
+ * @author     JoomlaWorks https://www.joomlaworks.net
+ * @copyright  Copyright (c) 2006 - 2018 JoomlaWorks Ltd. All rights reserved.
  * @license    GNU/GPL license: http://www.gnu.org/copyleft/gpl.html
  */
 
@@ -35,7 +35,7 @@ if(K2_JVERSION=='15')
 }
 else
 {
-	JLoader::register('K2HelperPermissions', JPATH_SITE.'/components/com_k2/helpers/permissions.j16.php');
+	JLoader::register('K2HelperPermissions', JPATH_SITE.'/administrator/components/com_k2/helpers/permissions.php');
 	K2HelperPermissions::checkPermissions();
 
 	// Compatibility for gid variable
@@ -111,6 +111,14 @@ if(
 	$k2ComponentHeader = '<div id="k2AdminContainer" class="K2AdminView'.ucfirst($view).$k2CSSContainerClass.'">';
 	$k2ComponentFooter = '
 	</div>
+
+	<div id="k2AdminFooter" class="'.$k2FooterClass.'">
+		<a target="_blank" href="https://getk2.org/">K2 v'.K2_CURRENT_VERSION.K2_BUILD.'</a> | Copyright &copy; 2006-'.date('Y').' <a target="_blank" href="https://www.joomlaworks.net/">JoomlaWorks Ltd.</a>
+	</div>
+
+	<!-- K2 Update Service -->
+	<script type="text/javascript">var K2_INSTALLED_VERSION = \''.K2_CURRENT_VERSION.'\';</script>
+	<script type="text/javascript" src="https://getk2.org/app/update.js?t='.date('Ymd').'"></script>
 	';
 }
 else
