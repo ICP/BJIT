@@ -49,14 +49,18 @@
             <file>file:/C:/xampp/htdocs/irib/doctv/libraries/fof_/view/form.php</file>
         </group>
         <group name="IKTV Group">
-            <file>file:/C:/xampp/htdocs/irib/doctv/templates/gilgamesh/html/com_j2store/checkout/default.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/plugins/j2store/payment_payir/payment_payir/tmpl/prepayment.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/plugins/j2store/payment_payir/trangell_inputcheck.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/assets/js/j2store.js</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/assets/js/gilgamesh.js</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/plugins/j2store/payment_payir/payment_payir.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/plugins/j2store/payment_payir/payment_payir.xml</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/plugins/j2store/payment_zarinpal/payment_zarinpal.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/ngomag/blocks/header.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/scss/ngomag/parts/_menu.scss</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/scss/ngomag/parts/_main.scss</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/rahafar/blocks/header.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/ngomag/blocks/mainbody.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/scss/ngomag/box/_search.scss</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/scss/ngomag/box/_cols.scss</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/ngomag/templateDetails.xml</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/scss/ngomag/parts/_header.scss</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/scss/ngomag/_variables.scss</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/js/ngomag.js</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/ngomag/html/mod_menu/default.php</file>
         </group>
     </open-files>
 </project-private>
