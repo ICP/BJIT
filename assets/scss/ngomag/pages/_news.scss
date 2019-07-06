@@ -1,0 +1,61 @@
+article.item {
+	.item-header {
+		.item-title {
+			h5, h6 { font-family: $item-title-h4-font-family; font-size: $item-title-h4-font-size; font-weight: $font-weight-bold; }
+		}
+	}
+	.item-summary {
+		background: transparent;
+		figure {
+			width: 50%; border: 3px solid $gray-200;
+			& ~ p {
+				margin-left: 50%;
+				body.ltr & { margin-right: 50%; }
+			}
+            @include media-breakpoint-down(sm) {
+                width: 100%;
+                & ~ p { margin-left: 0 !important; margin-right: 0 !important; }
+            }
+		}
+		.introtext {
+			padding-top: 0; padding-right: 0; padding-bottom: 0; line-height: 1.8;
+			body.ltr & { padding-left: 0; padding-right: $grid-gutter-width; }
+		}
+	}
+	.item-body {
+		a { color: $red; font-weight: $font-weight-bold; }
+		@include media-breakpoint-down(md) {
+			img { max-width: 100% !important; height: auto !important; }
+		} // SM
+	}
+    .item-date { float: left; }
+    .summary {
+            line-height: 2; font-size: 0.85rem; word-spacing: 1px;
+    }
+
+	/* Rating Star Widgets Style */
+/*	.rating-stars {
+		.rate-count { display: inline-block; }
+		ul {
+			display: inline-block; font-size: 0; margin-right: $grid-gutter-width / 2;
+			list-style-type:none; padding:0;
+			-moz-user-select:none; -webkit-user-select:none;
+			> li.star {
+				display:inline-block; cursor: pointer; height: 40px; line-height: 40px; width: 20px; text-align: center;
+				 Idle State of the stars 
+				> i {
+					font-size:1rem;  Change the size of the stars 
+					color:#ccc;  Color on idle state 
+				}
+				 Hover state of the stars 
+				&.hover > i {
+					color:#FFCC36;
+				}
+				 Selected state of the stars 
+				&.selected > i {
+					color:#FF912C;
+				}
+			}
+		}
+	}*/
+}

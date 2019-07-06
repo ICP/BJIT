@@ -1,0 +1,28 @@
+.box.poll {
+	.question { font-size: 16px; margin-bottom: ($grid-gutter-width / 2); }
+	.form-group {
+		margin-bottom: 0;
+		label { line-height: 18px; margin-top: -4px; }
+		input { margin: 10px 0 0 8px; display: inline-block; }
+	}
+/*	.percent { display: none; }
+	&.show-percent {*/
+		.percent {
+			display: block; margin: 3px 0 12px; height: 10px; border: 1px solid #ababab; padding: 1px; position: relative;
+			&:before { content: attr(title); display: block; position: absolute; left: 2px; top: 10px; text-shadow: 0 0 2px #fff; font-size: 12px; }
+			/*&.hidden { display: none; }*/
+			.bar { height: 6px; background: #ababab; }
+		}
+	/*}*/
+	.btn-wrapper {
+		float: left; margin-top: 8px;
+		.btn { border-radius: 0; }
+	}
+	&.show-results {
+		.results {
+			.form-group {
+				label:after { content: "("attr(data-vote)")"; }
+			}
+		}
+	}
+}

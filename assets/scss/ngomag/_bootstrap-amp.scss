@@ -1,0 +1,66 @@
+// Bootstrap v4.1.1 (https://getbootstrap.com)
+
+@import "../../global/scss/bootstrap-4.1.1-amp/functions";
+@import "../../global/scss/bootstrap-4.1.1-amp/variables";
+@import "../../global/scss/bootstrap-4.1.1-amp/mixins";
+// @import "../../global/scss/bootstrap-4.1.1-amp/root";
+@import "../../global/scss/bootstrap-4.1.1-amp/reboot";
+/*@import "../../global/scss/bootstrap-4.1.1-amp/type";*/
+// @import "../../global/scss/bootstrap-4.1.1-amp/images";
+// @import "../../global/scss/bootstrap-4.1.1-amp/code";
+/*@import "../../global/scss/bootstrap-4.1.1-amp/grid";*/
+@if $enable-grid-classes {
+	.container {
+		@include make-container();
+		@include make-container-max-widths();
+	}
+}
+@if $enable-grid-classes {
+	.row {
+		@include make-row();
+	}
+}
+@if $enable-grid-classes {
+	@include make-grid-columns();
+}
+// @import "../../global/scss/bootstrap-4.1.1-amp/tables";
+/*@import "../../global/scss/bootstrap-4.1.1-amp/forms";*/
+/*@import "../../global/scss/bootstrap-4.1.1-amp/buttons";*/
+/*@import "../../global/scss/bootstrap-4.1.1-amp/transitions";*/
+// @import "../../global/scss/bootstrap-4.1.1-amp/dropdown";
+// @import "../../global/scss/bootstrap-4.1.1-amp/button-group";
+// @import "../../global/scss/bootstrap-4.1.1-amp/input-group";
+// @import "../../global/scss/bootstrap-4.1.1-amp/custom-forms";
+// @import "../../global/scss/bootstrap-4.1.1-amp/nav";
+// @import "../../global/scss/bootstrap-4.1.1-amp/navbar";
+// @import "../../global/scss/bootstrap-4.1.1-amp/card";
+// @import "../../global/scss/bootstrap-4.1.1-amp/breadcrumb";
+/*@import "../../global/scss/bootstrap-4.1.1-amp/pagination";*/
+// @import "../../global/scss/bootstrap-4.1.1-amp/badge";
+// @import "../../global/scss/bootstrap-4.1.1-amp/jumbotron";
+/*@import "../../global/scss/bootstrap-4.1.1-amp/alert";*/
+// @import "../../global/scss/bootstrap-4.1.1-amp/progress";
+// @import "../../global/scss/bootstrap-4.1.1-amp/media";
+// @import "../../global/scss/bootstrap-4.1.1-amp/list-group";
+// @import "../../global/scss/bootstrap-4.1.1-amp/close";
+// @import "../../global/scss/bootstrap-4.1.1-amp/modal";
+// @import "../../global/scss/bootstrap-4.1.1-amp/tooltip";
+// @import "../../global/scss/bootstrap-4.1.1-amp/popover";
+// @import "../../global/scss/bootstrap-4.1.1-amp/carousel";
+/*@import "../../global/scss/bootstrap-4.1.1-amp/print";*/
+
+// Utilities
+/*@import "../../global/scss/bootstrap-4.1.1-amp/utilities/align";*/
+/*@import "../../global/scss/bootstrap-4.1.1-amp/utilities/background";*/
+/*@import "../../global/scss/bootstrap-4.1.1-amp/utilities/borders";*/
+/*@import "../../global/scss/bootstrap-4.1.1-amp/utilities/clearfix";
+@import "../../global/scss/bootstrap-4.1.1-amp/utilities/display";*/
+/*@import "../../global/scss/bootstrap-4.1.1-amp/utilities/embed";*/
+/*@import "../../global/scss/bootstrap-4.1.1-amp/utilities/flex";*/
+/*@import "../../global/scss/bootstrap-4.1.1-amp/utilities/float";*/
+/*@import "../../global/scss/bootstrap-4.1.1-amp/utilities/position";*/
+/*@import "../../global/scss/bootstrap-4.1.1-amp/utilities/screenreaders";*/
+/*@import "../../global/scss/bootstrap-4.1.1-amp/utilities/sizing";*/
+/*@import "../../global/scss/bootstrap-4.1.1-amp/utilities/spacing";*/
+/*@import "../../global/scss/bootstrap-4.1.1-amp/utilities/text";*/
+/*@import "../../global/scss/bootstrap-4.1.1-amp/utilities/visibility";*/

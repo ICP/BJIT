@@ -1,0 +1,17 @@
+html, body { min-height: 100vh; transition: $transition-default; max-width: 100vw; overflow-x: hidden; }
+body {
+    background: $body-bg; 
+	direction: rtl; text-align: right;
+	&.has-frame {
+		padding-top: 137px;
+		> iframe { position: fixed; top: 0; left: 0; z-index: 2200; }
+	}
+}
+body {  }
+.ltr { direction: ltr; text-align: left; }
+a {
+    transition: $transition-default;
+}
+
+// TEMP
+.placeholders { height: 60px; background: $gray-500; }

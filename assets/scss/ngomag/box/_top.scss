@@ -1,0 +1,75 @@
+.box.top {
+    ul li {
+        figure {
+			font-size: 2rem;
+		}
+        .desc {
+            h3 {
+				font-size: 1.5rem; line-height: 2rem; margin-bottom: 0.85rem;
+				body.ltr & { font-size: 1.3rem; line-height: 1.8rem; font-weight: bold; padding-bottom: 10px; }
+				a { display: inline-block; padding: $grid-gutter-width / 2 0; }
+			}
+        }
+    }
+	&.desc-overlay {
+		ul li .desc h3 { font-size: 1.5rem; }
+	}
+
+	&.top-cols {
+		> header {
+			h2 { padding: $grid-gutter-width 0; }
+		}
+		.slick-list { padding-top: 0; }
+		ul li {
+			@include clearfix;
+			figure {
+				width: 50%; float: left;
+				body.ltr & { float: right; }
+			}
+			.desc {
+				margin-left: 50%; padding-left: $grid-gutter-width;
+				body.ltr & { margin-left: 0; padding-left: 0; margin-right: 50%; padding-right: $grid-gutter-width; }
+				h3 {
+					a { padding: 0; }
+				}
+			}
+			@include media-breakpoint-down(md) {
+				display: flex; flex-flow: column;
+				figure { width: 100%; float: none; order: 2; }
+				.desc {
+					margin: 0; padding-left: 0; order: 1; padding-bottom: $grid-gutter-width / 2;
+					body.ltr & { margin-right: 0; }
+				}
+			} // SM
+		}
+	}
+	&.desc-overlay {
+		ul li {
+			.desc {
+				@include media-breakpoint-down(sm) { padding-bottom: 0; } // XS
+				h3 {
+					margin-bottom: 0;
+					&:hover {
+						a { color: $gray-400 }
+					}
+					@include media-breakpoint-down(sm) {
+						font-size: 1.2rem; margin-bottom: 4px; line-height: 1.5;
+					} // XS
+				}
+			}
+		}
+	}
+	&.move-subtitle {
+		ul li {
+			padding-top: 3rem;
+			> h4 {
+				position: absolute; top: 0; line-height: 3rem; width: 100%;
+				font-size: 1.8rem; font-weight: bold;  margin: 0; padding: 0;
+				@include media-breakpoint-down(sm) { font-size: 1.2rem; } // XS
+				a {
+					display: block; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+				}
+			}
+		}
+	}
+}

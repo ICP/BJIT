@@ -4,7 +4,7 @@ class JConfig {
 	public $offline_message = 'This site is down for maintenance.<br />Please check back again soon.';
 	public $display_offline_message = '1';
 	public $offline_image = '';
-	public $sitename = 'PDA';
+	public $sitename = 'نشریه نهاد مردمی';
 	public $editor = 'tinymce';
 	public $captcha = '0';
 	public $list_limit = '50';
@@ -15,8 +15,8 @@ class JConfig {
 	public $host = 'localhost';
 	public $user = 'root';
 	public $password = 'root';
-	public $db = 'pda';
-	public $dbprefix = 'dtv_';
+	public $db = 'ngo';
+	public $dbprefix = 'ngo_';
 	public $live_site = '';
 	public $secret = 'f5C2O6Wv0TCMgNbG';
 	public $gzip = '0';
@@ -98,4 +98,5 @@ class JConfig {
 	public $session_redis_server_port = '6379';
 	public $session_redis_server_auth = '';
 	public $session_redis_server_db = '0';
+	public $debug_lang_const = '1';
 }

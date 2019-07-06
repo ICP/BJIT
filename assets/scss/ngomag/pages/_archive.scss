@@ -1,0 +1,59 @@
+.archive-fileds {
+	background: $archive-filters-bg; position: relative; line-height: $archive-filters-height; min-height: $archive-filters-height;
+	@include media-breakpoint-down(md) { line-height: 40px; }
+	&:before, &:after {
+		display: block; content: ''; width: 100vw; height: 100%; position: absolute; top: 0; background: $archive-filters-bg;
+		z-index: 0; left: 100%;
+	}
+	&:after { left: auto; right: 100%; }
+	.filter-toggle {
+		float: left; margin-top: 5px; margin-left: 5px; display: none;
+		@include media-breakpoint-down(sm) { display: block; }
+	}
+
+	.filters-group {
+		float: right;
+		body.ltr & { float: left; }
+		& ~ .filters-group {
+			margin-right: $grid-gutter-width / 2;
+			body.ltr & { margin-right: 0; margin-left: $grid-gutter-width / 2; }
+		}
+		@include media-breakpoint-down(md) {
+			float: none; margin: 0 !important; 
+			&:last-child {
+				position: absolute; top: 0; left: 0;
+				body.ltr & { left: auto; right: 0; }
+			}
+		} // SM-
+		@include media-breakpoint-down(sm) {
+			float: none; display: none;
+			.form-group {
+				display: block;
+				label { display: block; }
+				select.form-control { display: block; max-width: none; width: 100%; margin-top: 0; margin-bottom: 10px; }
+			}
+			&:last-child { position: static; text-align: center; }
+		} // XS
+	}
+	.form-group {
+		margin-bottom: 0; margin-left: $grid-gutter-width / 4; display: inline-block;
+		body.ltr & { margin-left: 0; margin-right: $grid-gutter-width / 4; }
+		label { 
+			margin-bottom: 0; margin-left: 10px; color: $gray-200;
+			body.ltr & { margin-left: 0; margin-right: 10px; }
+			@include media-breakpoint-down(sm) { display: none; } // XS
+		}
+		select.form-control {
+			display: inline-block; max-width: 170px;
+			width: auto; padding: 0.275rem 0.75rem; height: calc(1.75rem + 2px); margin-top: 7px;
+		}
+		
+		&.has-divider {
+			
+		}
+		.select2-container {
+			@include media-breakpoint-down(lg) { max-width: 170px; } // MD-
+			@include media-breakpoint-down(sm) { max-width: none; width: 100% !important; } // XS
+		}
+	}
+}

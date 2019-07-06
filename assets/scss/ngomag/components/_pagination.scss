@@ -1,0 +1,4 @@
+.page-item {
+	body.rtl &:first-child .page-link { border-top-right-radius: 0.25rem; border-bottom-right-radius: 0.25rem; border-top-left-radius: 0; border-bottom-left-radius: 0; }
+	body.rtl &:last-child .page-link { border-top-left-radius: 0.25rem; border-bottom-left-radius: 0.25rem; border-top-right-radius: 0; border-bottom-right-radius: 0; }
+}

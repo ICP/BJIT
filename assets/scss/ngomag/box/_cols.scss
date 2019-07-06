@@ -1,0 +1,152 @@
+.box {
+    &.cols {
+        > div ul {
+            /*@include clearfix;*/
+            margin: 0 ($grid-gutter-width / -2);
+            display: flex; flex-wrap: wrap;
+			body.dark & { margin: 0 ($grid-gutter-width * -1); }
+            li {
+                /*width: 50%; float: right;*/
+                border-left: $grid-gutter-width / 2 solid transparent; border-right: $grid-gutter-width / 2 solid transparent;
+				/*body.dark & { border-left-width: $grid-gutter-width; border-right-width: $grid-gutter-width; }*/
+                display: flex; flex: 0 0 50%; flex-direction: column;
+				/*body.ltr & { float: left; }*/
+            }
+        }
+		&:not(.hidden-img), &:not(.title-only) {
+			> div ul li {
+				> figure {
+					& + .desc {
+						& > *:first-child {
+							a {
+								padding-top: 6px; display: block;
+								body.ltr & { padding-top: 0; }
+							}
+						}
+					}
+				}
+			}
+		}
+        &.cols-2 > div ul li {
+/*            width: 50%;
+            &:nth-child(2n+1) { clear: both; }*/
+            flex: 0 0 50%;
+			&:nth-child(n+3) { margin-top: $grid-gutter-width; }
+        }
+        &.cols-3 > div ul li {
+            /*width: 33.333333%;*/
+            flex: 0 0 33.333333%;
+            /*&:nth-child(3n+1) { clear: both; }*/
+			&:nth-child(n+4) { margin-top: $grid-gutter-width; }
+            h3 {
+				font-size: 1rem;
+                a { display: block; padding: $grid-gutter-width / 2 0; }
+				/*body.ltr & { font-size: 1rem; }*/
+			}
+            @include media-breakpoint-down(sm) {
+                flex: 0 0 100%; flex-direction: row; margin-bottom: 10px;
+                figure {
+                    width: 5rem; min-width: 5rem;
+                    & + .desc { margin-right: .5rem; }
+                }
+                .desc {
+                    h3 { font-size: 0.85rem; }
+                }
+            }
+        }
+        &.cols-4 > div ul li {
+            width: 25%;
+            &:nth-child(4n+1) { clear: both; }
+			&:nth-child(n+5) { margin-top: $grid-gutter-width; }
+        }
+        &.cols-5 > div ul li {
+            /*width: 20%;*/
+            flex: 0 0 20%;
+            &:nth-child(5n+1) { clear: both; }
+        }
+        &.cols-6 > div ul li {
+            width: 16.666666%;
+            h3 {
+                font-size: 14px; font-family: $font-family-base;
+				body.ltr & { font-family: $headings-font-family-en; }
+            }
+            &:nth-child(6n+1) { clear: both; }
+        }
+        &.first-featured > div ul li {
+            &:nth-child(2n+1) { clear: none; }
+            &:nth-child(2n) { clear: both; }
+            &:first-child {
+                width: 100%;
+                & ~ li {
+                    figure {
+                        & > a {
+                            max-height: 120px; overflow: hidden;
+                            img { min-height: 120px; }
+                        }
+                    }
+                }
+            }
+        }
+		&.cols-sm-2 > div ul li {
+			@include media-breakpoint-down(sm) {
+				width: 50%;
+				&:nth-child(2n+1) { clear: both; }
+				&:nth-child(3n+1) { clear: none; }
+				&:nth-child(n+3) { margin-top: $grid-gutter-width; }
+			}
+		}
+
+		
+		// Homepage "most-popular" box
+		&.cols-grid {
+			&.cols-3 > div ul li {
+				position: relative;
+				h3 {
+					max-height: 81px; overflow: hidden;
+				}
+				&:nth-child(n+4) {
+					margin-top: $grid-gutter-width / 2; padding-top: $grid-gutter-width / 2;
+					&:before {
+						content: ''; display: block; position: absolute; top: 0; right: 0; width: 120%; height: 1px; background: $gray-200;
+						body.ltr & { right: auto; left: 0; }
+					}
+				}
+				&:nth-child(3n+3) {
+					&:before { width: 100%; }
+				}
+				
+				&:not(:nth-child(3n)) {
+					&:after { content: ''; display: block; position: absolute; top: 0; left: -1 * $grid-gutter-width / 2; width: 1px; height: 100%; background: $gray-200; }
+				}
+				&:not(:nth-child(n+4)) {
+					&:after { height: 150%; }
+				}
+			}
+			&.bg-graylight {
+				> div ul li {
+					&:nth-child(n+4) {
+						&:before { background: $gray-300; }
+					}
+					&:not(:nth-child(3n)) {
+						&:after { background: $gray-300; }
+					}
+				}
+			}
+		}
+
+        &.has-carousel {
+            > div ul li {
+				clear: none !important; width: 100%; border-left: 0 none; margin-top: 0 !important;
+				body.ltr & { border-right: 0; border-left: $grid-gutter-width / 2 solid transparent; }
+			}
+        }
+
+        > footer {
+            .pagination {
+                li {
+                    clear: none !important; width: auto; float: none; padding: 0;
+                }
+            }
+        }
+    }
+}

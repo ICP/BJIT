@@ -1,0 +1,5 @@
+body:not(.dark) #photo {
+	.item-body p, #photo .summary { color: $text-color; }
+	.short-link-container input { background: #efefef; box-shadow: 0 0 2px #ccc; color: $text-color; }
+	.box.photoGall>div a { background: #efefef; }
+}

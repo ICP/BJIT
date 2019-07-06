@@ -1,0 +1,61 @@
+@media print {
+	.container { width: auto; }
+	.main-content {
+		max-width: 100%; flex: 0 0 100%;
+		.row:not(.item-nav) [class*="col-"] { max-width: 100%; flex: 0 0 100%; }
+	}
+    .page-header { display: none; }
+	.print-header {
+		display: block !important; 
+		.logo { float: right; width: 300px; }
+		.meta {
+			.barcode {
+				float: left;
+				img { float: left; margin-right: $grid-gutter-width; }
+			}
+			ul {
+				float: left; text-align: left;
+				li {
+					margin-bottom: 7px;
+					&.date { color: #333; font-size: $font-size-base; }
+					ol {
+						padding: 0; margin: 0; list-style: none;
+						li {
+							display: inline-block;
+							& ~ li {
+								position: relative;
+								&:before { content: '/'; padding: 0 10px; }
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+    .col-md-7 { width: 100%; max-width: none; flex: 0 0 100%; }
+	.row { display: block; } // Firefox print bug
+	aside, .sidebar { display: none !important; }
+	#header, #footer, #ads-container { display: none !important; }
+	.box:not(#item) { display: none; }
+	article.item {
+		.item-header {
+			clear: both;
+			.item-nav { display: none; }
+		}
+		.item-body p { font-size: 16px; }
+		.item-footer { display: none; }
+
+		.item-img { display: none; }
+		.item-summary {
+			background: transparent; padding-bottom: $grid-gutter-width; border-bottom: 1px dotted $gray-400;
+			.introtext { padding: 0; color: $gray-600; font-size: 16px; }
+		}
+		.gallery-item { display: none !important; }
+		blockquote { border: 0 none; }
+		.item-code { display: none; }
+		.item-author { display: none; }
+	}
+	
+	// Removing item ads
+	[id^="yektanet-"], [class*="yektanet-"] { display: none; }
+}

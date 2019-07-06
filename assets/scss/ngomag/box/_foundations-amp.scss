@@ -1,0 +1,127 @@
+.box {
+    @include clearfix;
+    margin: $grid-gutter-width 0; transform: translateZ(0);
+    > header {
+		background: $box-header-bg; height: $box-header-height; line-height: $box-header-height; margin-bottom: $box-header-margin;
+        h2 {
+            font-size: $box-header-font-size; font-weight: bold; padding: 0 0 0 0; line-height: 1.6; margin: 0; color: $box-header-border-color;
+			background: #fff; position: relative; z-index: 1; display: inline-block; padding-left: $grid-gutter-width;
+			line-height: $box-header-height;
+			body.dark & { color: #fff; background: $body-bg-dark; }
+			body.ltr & { padding-left: 0; padding-right: $grid-gutter-width; }
+            > a {
+				display: block; text-decoration: none; color: $box-header-border-color;
+				body.dark & { color: #fff; }
+			}
+            > span { display: block; }
+
+			&:hover {
+				a { color: $link-hover-color; }
+			}
+        }
+    }
+    > div {
+		ul {
+			list-style: none; padding: 0; margin: 0;
+			li {
+				figure {
+					margin: 0;
+					> a {
+						@include responsive-ratio($image-aspect-ratio-w $image-aspect-ratio-h);
+						display: block; overflow: hidden; position: relative;
+						img {
+							display: block; width: 100%; height: auto; min-height: 100%;
+							position: absolute; top: 50%; transform: translateY(-50%); 
+						}
+					}
+
+				}
+				.desc {
+					h1, h2, h3, h4, h5 { margin: 0; }
+					h3 {
+						font: $title-font;
+						body.ltr & { font-family: $headings-font-family-en; }
+					}
+					h4 {
+						font: $subtitle-font;
+						body.ltr & { font-family: $font-family-base-en; }
+						&, & a { color: $gray-600; }
+					}
+					p {color: $gray-600; }
+					time {
+						a {
+							color: $gray-500; font-size: 0.7rem; display: inline-block;
+							&:before {
+								font-family: $font-family-icons; content: '\e845'; display: inline-block; margin-left: 5px; font-size: 0.75rem;
+								body.ltr & { margin-left: 0; margin-right: 5px; }
+							}
+						}
+					}
+				}
+				a {
+					color: $box-link-color; text-decoration: $box-link-decoration;
+					&:hover { color: $box-link-hover-color; }
+				}
+
+				body .mainbody &.inline-ad { // Overriding original box rules without using !important
+					figure {
+						float: none; width: 100%; margin-left: 0;
+						a {
+							height: auto; padding: 0;
+							> img { position: static; min-height: 0; transform: none; }
+						}
+					}
+				}
+			}
+		}
+	}
+
+    &.no-header > header, &.no-title > header { display: none; }
+    &.header-clean {
+        & > header {
+            background: transparent; border: 0 none;
+			h2 { background: transparent; }
+            &, h2, h2 a { color: $body-color; border: 0 none; }
+			&:after { display: none; }
+			.social-links { background: transparent; }
+        }
+    }
+	
+    &.hidden-time {
+        & > div ul li time { display: none; }
+    }
+    &.hidden-summary {
+        ul li p { display: none; }
+    }
+    &.hidden-subtitle {
+        ul li h4 { display: none; }
+    }
+    &.hidden-title {
+        ul li h3 { display: none; }
+    }
+    &.hidden-desc {
+        ul li .desc { display: none; }
+    }
+    &.hidden-img {
+        ul li figure { display: none; }
+    }
+	&.title-only {
+		ul li .desc > *:not(h3) { display: none; }
+	}
+
+	// Backgrounds
+	&[class*=" bg-"] {
+		padding: $grid-gutter-width / 2;
+		> header {
+			margin: $grid-gutter-width / -2 $grid-gutter-width / -2 $box-header-margin $grid-gutter-width / -2;
+		}
+	}
+	&.bg-graylight {
+		background: $box-gray-bg;
+		> header {
+		}
+	}
+	&.inner-bg {
+		> div { background: $box-gray-bg; }
+	}
+}

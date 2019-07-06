@@ -1,0 +1,34 @@
+.box.trending-tags {
+    & > header {
+        h2 a{ color: #fff; font-size: 18px; padding: 0; text-decoration: none }
+    }
+    ul {
+		padding: 0;
+        li {
+            margin: 5px 16px 5px 12px; display: inline-block;
+            h3 {
+                margin: 0; padding: 0; line-height: 26px; font-size: .8rem; font-weight: bold;
+                a {
+                    color: #b3b3b3; display: block; padding: 0 8px; position: relative; background: #333;
+                    &:after, &:before { display: block; content: ''; position: absolute; transition: $transition-default; }
+                    &:before {
+						width: 5px; height: 5px; background: #666; top: 10px; right: -3px; z-index: 11; border-radius: 100%;
+						body.ltr & { right: auto; left: -3px; }
+					}
+                    &:after {
+						width: 0; height: 0; border-left: 16px solid #333; right: -16px; top: 0;
+						border-top: 13px solid transparent; border-bottom: 13px solid transparent; z-index: 10;
+						body.ltr & { right: auto; left: -16px; border-left: 0 none; border-right: 16px solid #333; }
+					}
+                    &:hover {
+                        text-decoration: none; color: #fff; background: #e00;
+                        &:after {
+							border-left-color: #e00;
+							body.ltr & { border-left-color: #e00; } // Fixed overriding bug
+						}
+                    }
+                }
+            }
+        }
+    }
+}

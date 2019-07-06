@@ -1,0 +1,14 @@
+.box {
+    &.breaking {
+		> header {
+			h2, h2 a { color: $accent; }
+		}
+		> div {
+			ul li {
+				.desc {
+					h3 { font-size: 1.2rem; line-height: 2; }
+				}
+			}
+		}
+	}
+}

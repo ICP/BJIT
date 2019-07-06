@@ -1,0 +1,19 @@
+body.dark {
+	background: $body-bg-dark; color: $gray-300;
+	a {
+		color: #fff;
+		&:hover { color: $accent; }
+	}
+	.box {
+		margin-top: $grid-gutter-width * 1.5;
+		> header {
+			margin-bottom: $grid-gutter-width;
+		}
+		ul li .desc {
+			* a {
+				color: #fff;
+				&:hover { color: $accent; }
+			}
+		}
+	}
+}

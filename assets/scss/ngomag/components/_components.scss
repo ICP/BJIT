@@ -1,0 +1,64 @@
+/*@import 'carousel';*/
+@import 'pagination';
+/*@import '../../global/components/select2';*/
+@import '../../global/components/slick';
+
+// Inline Overrides
+.fancybox-caption:after { display: none; }
+
+
+// Store
+.j2store-cart {
+    margin: $grid-gutter-width 0; min-height: 300px;
+}
+.product-qty {
+    width: 100px; float: right;
+    /*&:before { content: 'تعداد'; display: inline-block; width: 50px; height: 34px; margin-left: 50px; }*/
+}
+.j2store-cart-table {
+    .cart-thumb-image {
+        display: block; width: 60px; float: right; margin-left: $grid-gutter-width;
+        img { display: block; width: 100%; height: auto; }
+    }
+    .product-qty { width: 70px; }
+    .remove-icon { float: left; }
+}
+
+.checkout {
+    padding: $grid-gutter-width * 2 0;
+    h2 { margin-bottom: $grid-gutter-width*2; display: none; }
+    #j2store-checkout-content {
+        > div {
+            border: 1px solid $gray-400; margin-bottom: $grid-gutter-width / 2;
+        }
+    }
+    .checkout-heading {
+        height: 40px; line-height: 40px; padding: 0 $grid-gutter-width / 2; font-weight: bold;
+        background: $gray-400; border-bottom: 0 none;
+        a { display: block; float: left; cursor: pointer; }
+    }
+    .checkout-content {
+        padding: $grid-gutter-width / 2;
+        &:empty { display: none; }
+        h3 {
+            font-size: 1re,; font-weight: bold; padding-right: $grid-gutter-width / 2; border-right: 4px solid $primary; color: $gray-800;
+            margin: $grid-gutter-width 0;
+        }
+    }
+}
+#billing-address, #shipping-address, #billing-new, #shipping-new, #address {
+    label {
+        width: 130px; line-height: 36px; padding-right: 20px; margin-right: -10px;
+        &[for="shipping"], &[for*="-address"] { width: auto; }
+    }
+    input#shipping { min-width: 0; }
+    .j2store_field_required { display: inline-block; color: red; width: 0; overflow: visible; }
+    input {
+        &[type="text"], &[type="email"], &[type="number"], &[type="password"] { min-width: 50%; }
+        &[type="button"] { min-width: 0; clear: both; }
+    }
+}
+.j2store-shipping {
+    label { white-space: nowrap; }
+}
+.customer-note textarea { width: 50%; clear: both; }

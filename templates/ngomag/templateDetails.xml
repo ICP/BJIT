@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE install PUBLIC "-//Joomla! 2.5//DTD template 1.0//EN" "http://www.joomla.org/xml/dtd/1.6/template-install.dtd">
+<extension version="3.1" type="template" client="site">
+    <name>NGO Magazine</name>
+    <creationDate>April 2019</creationDate>
+    <author>Farid Roshan</author>
+    <authorEmail>faridv@gmail.com</authorEmail>
+    <authorUrl>http://www.faridr.ir</authorUrl>
+    <copyright>Copyright (C) 2019 Farid Roshan. All rights reserved.</copyright>
+    <license>GNU General Public License version 2 or later</license>
+    <version>1.0.0</version>
+    <description>NGO Magazine: website template</description>
+    <files>
+        <folder>html</folder>
+        <folder>libs</folder>
+        <folder>sources</folder>
+        <filename>index.html</filename>
+        <filename>index.php</filename>
+        <filename>templateDetails.xml</filename>
+        <filename>helper.php</filename>
+        <filename>error.php</filename>
+    </files>
+    <positions>
+        <position>debug</position>
+        <position>breadcrumbs</position>
+        <position>search</position>
+        <position>schedule</position>
+        <position>menu</position>
+        <position>left</position>
+        <position>right</position>
+        <position>showcase</position>
+        <position>special</position>
+        <position>special-left</position>
+        <position>special-right</position>
+        <position>content</position>
+        <position>content-left</position>
+        <position>content-center</position>
+        <position>content-right</position>
+        <position>top</position>
+        <position>top-left</position>
+        <position>top-right</position>
+        <position>main</position>
+        <position>main-top</position>
+        <position>main-left</position>
+        <position>main-right</position>
+        <position>subscribe</position>
+        <position>bot</position>
+        <position>sidebar</position>
+        <position>sidebar-bot</position>
+        <position>footer</position>
+        <position>copyright</position>
+        <position>footer-about</position>
+        <position>footer-left</position>
+        <position>logo</position>
+        <position>ads</position>
+        <position>multimedia_carousels</position>
+    </positions>
+    <config>
+        <fields name="params">
+            <fieldset name="advanced">
+                
+            </fieldset>
+        </fields>
+    </config>
+    <languages folder="language">
+		<language tag="fa-IR">fa-IR/fa-IR.tpl_gilgamesh.ini</language>
+		<language tag="en-GB">en-GB/en-GB.tpl_gilgamesh.ini</language>
+	</languages>
+</extension>

@@ -23,12 +23,29 @@ defined('_JEXEC') or die('Restricted access');
 					</figure>
 				<?php } ?>
 				<div class="desc">
+					<?php if ($params->get('itemCategory')): ?>
+						<span class="category">
+							<a href="<?php echo $item->categoryLink; ?>"><?php echo $item->categoryname; ?></a>
+						</span>
+					<?php endif; ?>
 					<?php if ($params->get('itemTitle')) { ?>
 						<h3><a href="<?php echo $item->link; ?>"><?php echo $item->title; ?></a></h3>
 					<?php } ?>
 					<?php if ($params->get('itemIntroText')) { ?>
 						<div class="introtext"><?php echo $item->introtext; ?></div>
 					<?php } ?>
+					<?php if ($params->get('itemAuthor')): ?>
+						<div class="item-author">
+							<?php if (isset($item->authorLink) && isset($item->author_id)): ?>
+								<a rel="author" title="<?php echo K2HelperUtilities::cleanHtml($item->author); ?>" href="<?php echo JRoute::_('index.php?Itemid=150') . '/author/' . $item->author_id . '-' . $item->author; ?>">
+									<!--<span class="avatar"></span>-->
+									<?php echo $item->author; ?>
+								</a>
+								<?php // else: ?>
+								<?php // echo $item->author; ?>
+							<?php endif; ?>
+						</div>
+					<?php endif; ?>
 					<?php if ($params->get('itemReadMore')) { ?>
 						<a class="more" href="<?php echo $item->link; ?>">بیشتر</a>
 					<?php } ?>

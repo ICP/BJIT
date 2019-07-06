@@ -1,0 +1,41 @@
+$bootstrap-version: '4.3.1';
+$path: '..';
+$path-global: 'global';
+
+// Bootstrap functions are needed before it's variables file import
+/*@import '../../global/scss/bootstrap-4.0.0/functions';*/
+
+// Custom snippets are small utility mixin/functions without direct output
+@import 'global/snippets/snippets';
+
+// Variables, defines, etc.
+/*@import 'variables-bootstrap';*/
+@import 'ngomag/variables';
+
+// Bootstrap itself
+@import 'ngomag/bootstrap';
+
+
+// Components (sliders, datepickers, etc.)
+@import 'global/components/components';
+@import 'ngomag/components/components';
+
+// Generic pages and overrides, if any...
+@import 'ngomag/pages/pages';
+
+// Nastooh icons
+/*@import '../../global/scss/components/icons';*/
+/*@import '../../global/font/nastooh-icons/nastooh-icons';*/
+
+// Project-specific files
+@import 'ngomag/scaffolding';
+@import 'ngomag/typography';
+@import 'ngomag/parts/parts';
+@import 'ngomag/box/box';
+
+// Styles (dark, occassions, etc.)
+@import 'ngomag/styles/styles';
+@import 'ngomag/compatibility';
+
+// Responsive files
+@import 'ngomag/responsive/responsive';

@@ -1,0 +1,27 @@
+.box.map {
+	> div { display: flex; flex-wrap: wrap; }
+	.iran { margin-right: -$grid-gutter-width / 2; }
+	svg { max-height: 400px; float: right; }
+	#provinces path {
+		fill: #fff; cursor: pointer; transition: $transition-default;
+		&[data-active="active"], &.active, &:hover { fill: $primary; }
+	}
+
+	// Map Items
+	.header-clean {
+		> header {
+			margin: 0 0 $grid-gutter-width 0;
+			h2 {
+				background: transparent; color: $box-header-link-color;
+				a {
+					color: $box-header-link-color;
+					&:hover { color: $box-header-link-hover-color; }
+				}
+			}
+		}
+	}
+	.more {
+		font-weight: bold; display: block; float: left;
+		body.ltr & { float: right; }
+	}
+}

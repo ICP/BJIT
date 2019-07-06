@@ -1,0 +1,112 @@
+#header {
+    @include clearfix();
+    background: $header-bg; position: relative; z-index: 80;
+    color: $header-text-color; height: $header-height;
+    border-top: 2px solid $menu-bg;
+    @include media-breakpoint-down(sm) { height: auto; } // XS
+    body.dark & { background: $header-bg-dark; }
+    a {
+        color: $header-link-color; text-decoration: none; transition: $t;
+        &:hover { color: $header-link-hover-color; }
+    }
+    .container { position: relative; }
+    h1.page-header { margin: 0; }
+    .logo {
+        width: $logo-width;
+        a {
+            @include text-hide;
+            display: block; background: $logo-bg; height: $logo-height; width: 100%; margin-top: 2px; background-position: right center;
+            body.ltr & { background-image: $logo-img-en; }
+            @include media-breakpoint-down(sm) { width: 100%; background-position: center center; } // XS
+        }
+        @include media-breakpoint-down(sm) { max-width: 70%; } // XS
+    }
+    .date {
+        display: block; position: absolute; top: 0; right: $logo-width + $grid-gutter-width * 2; line-height: $header-height - $menu-height; margin: 0; padding: 0;
+        @include media-breakpoint-down(lg) { display: none; } // XS
+    }
+
+    .h-item {
+        height: $header-height; min-width: $header-height; text-align: center; line-height: $header-height  - $menu-height;
+        float: right;
+    }
+    .menu-toggle {
+        background: transparent; color: $header-text-color; font-size: 24px; border: 0 none; box-shadow: none;
+        border-left: 2px solid $body-bg; padding: 0; cursor: pointer; transition: 0.2s all;
+        &:hover { color: $header-link-hover-color; }
+        /*body.amp & {*/
+        position: absolute; top: 50%; left: $grid-gutter-width; transform: translateY(-50%)
+            /*}*/
+    }
+    .tools {
+        float: left; list-style: none; padding: 0; margin: 0; line-height: $header-height;
+        li {
+            border-right: 2px solid $body-bg; display: inline-block;
+            > a {
+                display: block; min-width: $header-height; text-align: center; padding: 0 $grid-gutter-width / 2;
+            }
+        }
+    }
+
+    .box {
+        margin: 0; height: 100%;
+        &.ads {
+            display: flex; justify-content: center; flex-direction: column;// align-items: center;
+            ul li {
+                border: 0 none; line-height: 1.5; text-align: center;
+                figure { margin-bottom: 0; max-height: 60px; overflow: hidden; }
+            }
+        }
+    }
+
+    [data-toggle] {
+        @include media-breakpoint-down(md) {
+            height: 40px; padding: 0; text-align: center; margin-top: $grid-gutter-width / 2;
+            font-size: 1.5rem; background: transparent; line-height: 40px;
+        }
+        @include media-breakpoint-down(sm) {
+            text-align: center; border: 0 none; padding-left: 0; padding-right: 0; margin-left: 0; margin-right: 0; float: right;
+        }
+    }
+    .search-toggle {
+        @include media-breakpoint-down(md) {
+            position: absolute; top: 50%; left: 80px; transform: translateY(-50%); margin-top: 0;
+        }
+        @include media-breakpoint-down(sm) { left: 60px; line-height: 50px; }
+    }
+
+    body.sticky-header & {
+        @include media-breakpoint-up(md) {
+            #masthead { height: 0; }
+            height: $menu-height; position: fixed; top: 0; left: 0; width: 100%; z-index: 888;
+            .logo {
+                height: 0; overflow: hidden;
+                /*            height: 45px;  margin-top: 3px;*/
+                a { background-size: contain; max-height: 100%; }
+            }
+            button[data-toggle] { margin-top: 5px; }
+            .box { display: none; }
+        }
+    }
+}
+
+.nav-menu {
+    list-style: none; padding: 0; margin: 0; height: $masthead-height; line-height: $masthead-height;
+    li {
+        display: inline-block; font-size: 0.7rem;
+        @include media-breakpoint-down(md) { font-size: 0.6rem; } // SM
+        a { display: block; padding: 0 $grid-gutter-width / 3; }
+    }
+}
+
+.date {
+    display: inline-block; font-size: 0.7rem; color: $gray-400;
+    @include media-breakpoint-down(sm) {
+        float: left; line-height: $masthead-height;
+        body.ltr & { float: right; }
+    } // XS
+}
+
+#header-ad {
+    .box { margin: $grid-gutter-width / 2 0; }
+}

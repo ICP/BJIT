@@ -49,18 +49,55 @@
             <file>file:/C:/xampp/htdocs/irib/doctv/libraries/fof_/view/form.php</file>
         </group>
         <group name="IKTV Group">
-            <file>file:/C:/xampp/htdocs/irib/doctv/templates/ngomag/blocks/header.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/assets/scss/ngomag/parts/_menu.scss</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/scss/ngomag/box/_snip.scss</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/modules/mod_content/helper.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/scss/ngomag/pages/_news.scss</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/scss/ngomag/box/_list-basics.scss</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/ngomag/html/modules.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/scss/ngomag/parts/_main.scss</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/templates/rahafar/blocks/header.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/scss/pda/box/_foundations.scss</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/templates/ngomag/blocks/mainbody.php</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/assets/scss/ngomag/box/_search.scss</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/assets/scss/ngomag/box/_cols.scss</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/templates/ngomag/templateDetails.xml</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/scss/ngomag/parts/_header.scss</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/ngomag/html/com_k2/default/category_item.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/modules/mod_content/tmpl/Standard/default.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/gilgamesh/pages.less</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/ngomag/html/com_users/login/default_login.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/gilgamesh/variables.less</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/scss/ngomag/parts/_menu.scss</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/scss/ngomag/box/_foundations.scss</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/ngomag/html/com_k2/default/item.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/modules/mod_content/mod_content.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/scss/global/font/_nastooh-icons.scss</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/assets/scss/ngomag/_variables.scss</file>
-            <file>file:/C:/xampp/htdocs/irib/doctv/assets/js/ngomag.js</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/gilgamesh/box.less</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/ngomag/html/com_k2/register.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/ngomag/html/com_k2/_comments/form.php</file>
             <file>file:/C:/xampp/htdocs/irib/doctv/templates/ngomag/html/mod_menu/default.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/scss/ngomag/box/_comment.scss</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/ngomag/html/mod_k2_tools/search.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/gilgamesh/header.less</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/scss/ngomag/box/_search.scss</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/ngomag/html/com_k2/default/category.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/ngomag/templateDetails.xml</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/ngomag/html/com_users/profile/default.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/ngomag/html/com_users/profile/edit.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/ngomag/html/com_search/search/default_form.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/less/gilgamesh/components.less</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/scss/ngomag/box/_box.scss</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/scss/ngomag/components/_components.scss</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/js/ngomag.js</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/ngomag/html/com_k2/profile.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/ngomag/html/mod_content/List/default.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/ngomag/html/mod_search/default.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/scss/ngomag/box/_ads.scss</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/scss/ngomag/parts/_footer.scss</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/scss/ngomag.scss</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/scss/ngomag/pages/_pages.scss</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/scss/global/bootstrap-4.3.1/_forms.scss</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/templates/ngomag/html/mod_content/Thumbs/default.php</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/scss/ngomag/box/_cols.scss</file>
+            <file>file:/C:/xampp/htdocs/irib/doctv/assets/scss/ngomag/styles/_print.scss</file>
         </group>
     </open-files>
 </project-private>
