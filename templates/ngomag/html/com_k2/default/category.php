@@ -36,7 +36,7 @@ if ($limitstart && $limitstart > 0) {
 <div id="category" class="itemlist<?php if ($this->params->get('pageclass_sfx')) echo ' ' . $this->params->get('pageclass_sfx'); ?>">
 	<?php if ((isset($this->leading) || isset($this->primary) || isset($this->secondary) || isset($this->links)) && (count($this->leading) || count($this->primary) || count($this->secondary) || count($this->links))) { ?>
 		<?php if (isset($this->leading) && count($this->leading)) { ?>
-			<section class="box top top-cols has-border-bottom">
+			<section class="box top top-cols has-border-bottom<?php echo ($this->leading[0]->catid === 2) ? ' img-v' : ''; ?>">
 				<div>
 					<ul>
 						<?php
@@ -58,7 +58,7 @@ if ($limitstart && $limitstart > 0) {
 			</section>
 		<?php } ?>
 		<?php if (isset($this->primary) && count($this->primary)) { ?>
-			<section class="box list list-bordered list-thumbs thumbs-lg highlights">
+			<section class="box list list-bordered list-thumbs thumbs-lg highlights<?php echo ($this->primary[0]->catid == 2) ? ' img-v' : ''; ?>">
 				<div>
 					<ul>
 						<?php foreach ($this->primary as $key => $item) { ?>
